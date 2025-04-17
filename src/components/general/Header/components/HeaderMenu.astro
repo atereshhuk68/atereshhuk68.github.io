@@ -1,7 +1,11 @@
-<nav>
+---
+const { class: className } = Astro.props;
+---
+
+<nav class={`${className}`}>
 	<ul class="flex items-center gap-8 font-medium">
-		<li><a href="#services">Services</a></li>
-		<li><a href="#aboutUs">About Us</a></li>
-		<li><a href="#contacts">Contacts</a></li>
+		<li><a class="text-black-900 hover:text-black-600 transition-[color] duration-200" href="#services">Services</a></li>
+		<li><a class="text-black-900 hover:text-black-600 transition-[color] duration-200" href="#aboutUs">About Us</a></li>
+		<li><a class="text-black-900 hover:text-black-600 transition-[color] duration-200" href="/job-opening">Job opening</a></li>
 	</ul>
 </nav>

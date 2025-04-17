@@ -7,7 +7,7 @@ function ServiceRow(service: ServiceProps) {
 		<li className="flex justify-between gap-2 pt-2">
 			<div className="flex flex-col">
 				<span>{title}</span>
-				{description && <span className="text-sm text-gray-500">{description}</span>}
+				{description && <span className="text-sm text-black-600">{description}</span>}
 			</div>
 			<span className="flex items-baseline gap-1 flex-shrink-0 font-medium">
 				{price}
@@ -19,11 +19,11 @@ function ServiceRow(service: ServiceProps) {
 
 export function ServiceCard({ name, services }: ServiceCardProps) {
 	return (
-		<motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
-			<div className="p-6 space-y-4 h-full">
-				<strong className="text-xl">{name}</strong>
+		<motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+			<div className="p-6 space-y-4 h-full bg-black-100 rounded-lg">
+				<strong className="text-2xl font-heading">{name}</strong>
 
-				<ul className="space-y-2 divide-y-1 divide-gray-200">
+				<ul className="space-y-2 divide-y-1 divide-black-200">
 					{services.map(({ title, ...props }: ServiceProps) => (
 						<ServiceRow title={title} key={title} {...props} />
 					))}

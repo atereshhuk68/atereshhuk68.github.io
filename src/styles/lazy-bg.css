@@ -1,0 +1,12 @@
+.lazy-bg {
+	@apply inline-flex;
+	@apply bg-contain bg-no-repeat bg-center;
+}
+
+.lazy-mask {
+	@apply inline-flex;
+
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	mask-position: center;
+}

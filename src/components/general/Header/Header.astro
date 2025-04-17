@@ -1,4 +1,5 @@
 ---
+import { Button } from '@heroui/react';
 import {HeaderLangs} from './components/HeaderLangs.tsx';
 import HeaderLogo from './components/HeaderLogo.astro';
 import HeaderMenu from './components/HeaderMenu.astro';
@@ -7,9 +8,14 @@ import HeaderMenu from './components/HeaderMenu.astro';
 <header>
 	<div class="container">
 		<div class="flex items-center justify-between gap-2 py-4">
-			<HeaderMenu />
+			<HeaderMenu class="w-[350px]" />
 			<HeaderLogo />
-			<HeaderLangs client:visible />
+			<div class="flex items-center gap-4 w-[350px]">
+				<Button variant='bordered' radius='sm' className="w-[150px] font-medium text-cove-700 border-cove-700 px-0" client:visible>
+					Appointment
+				</Button>
+				<HeaderLangs client:visible />
+			</div>
 		</div>
 	</div>
 </header>

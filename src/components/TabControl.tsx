@@ -1,49 +1,54 @@
 import { Button, type PressEvent } from '@heroui/react';
-import { Eye, EyeClosed, Footprints, Hand, Scroll } from 'lucide-react';
+import { useState } from 'react';
+import { ServiceFilters } from '../data/services';
 
-interface TabControlProps {
-	onPress: (event: PressEvent) => void;
+interface Filter {
+	title: string;
+	value: string;
+	icon: string;
 }
 
-export function TabControl({ onPress: handleClickFilter }: TabControlProps) {
+interface TabControlProps {
+	onPress: (event: PressEvent, filterValue: string) => void;
+}
+
+const iconMap: { [key: string]: string } = {
+	all: 'service-all-w32',
+	manicure: 'service-manicure-w32',
+	pedicure: 'service-pedicure-w32',
+	eyes: 'service-brows-w32',
+	makeup: 'service-makeup-w32',
+	massage: 'service-massage-w32',
+};
+
+export function TabControl({ onPress }: TabControlProps) {
+	const [activeFilter, setActiveFilter] = useState<string>(ServiceFilters[0]?.value || 'all');
+
+	const handleClickFilter = (event: PressEvent, filterValue: string) => {
+		setActiveFilter(filterValue);
+		onPress(event, filterValue);
+	};
+
 	return (
 		<div className="flex items-center gap-1">
-			<Button
-				variant="light"
-				size="md"
-				disableRipple={true}
-				radius="sm"
-				data-filter="all"
-				className="text-base active"
-				onPress={handleClickFilter}
-				startContent={<Scroll size={16} />}>
-				All
-			</Button>
-			<Button
-				variant="light"
-				size="md"
-				disableRipple={true}
-				radius="sm"
-				data-filter="manicure"
-				className="text-base"
-				onPress={handleClickFilter}
-				startContent={<EyeClosed size={16} />}>
-				Manicure
-			</Button>
-			<Button
-				variant="light"
-				size="md"
-				disableRipple={true}
-				radius="sm"
-				data-filter="pedicure"
-				className="text-base"
-				onPress={handleClickFilter}
-				startContent={<Footprints size={16} />}>
-				Pedicure
-			</Button>
-			<Button variant="light" size="md" disableRipple={true} radius="sm" data-filter="eyes" className="text-base" onPress={handleClickFilter} startContent={<Eye size={16} />}>
-				Eyes
-			</Button>
+			{ServiceFilters.map((filter: Filter) => {
+				const isActive = filter.value === activeFilter;
+
+				return (
+					<Button
+						key={filter.value}
+						variant="light"
+						size="md"
+						disableRipple={true}
+						radius="sm"
+						data-filter={filter.value}
+						className={`text-base ${isActive ? 'active' : ''}`}
+						onPress={(e) => handleClickFilter(e, filter.value)}
+						startContent={<span className={`lazy-bg size-6 ${iconMap[filter.icon]}`}></span>}>
+						{filter.title}
+					</Button>
+				);
+			})}
 		</div>
 	);
 }

@@ -1,13 +1,14 @@
 import type { PressEvent } from '@heroui/react';
+import { shuffle } from 'es-toolkit';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { CardsData } from 'src/data/cards';
+import { ServicesData } from 'src/data/services';
 import type { CardServiceTypes } from 'src/types/types';
 import { ServiceCard } from './Card';
 import { TabControl } from './TabControl';
 
 export function Cards() {
-	const [cards, setCards] = useState(CardsData);
+	const [cards, setCards] = useState(() => shuffle(ServicesData));
 
 	const handleClickFilter = (event: PressEvent) => {
 		document.querySelector('.active')?.classList.remove('active');
@@ -19,11 +20,11 @@ export function Cards() {
 		const filter = currentButton.getAttribute('data-filter');
 
 		if (filter === 'all') {
-			setCards(CardsData);
+			setCards(shuffle(ServicesData));
 			return;
 		}
 
-		const filteredCards = CardsData.filter((card) => card.type === filter);
+		const filteredCards = ServicesData.filter((card) => card.type === filter);
 		setCards(filteredCards);
 	};
 
