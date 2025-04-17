@@ -11,6 +11,7 @@ export default {
 		colors: {
 			black: {
 				100: '#ECEFF2',
+				200: '#D5DBE2',
 				300: '#B0BBC9',
 				600: '#516278',
 				900: '#333C47',
@@ -26,6 +27,10 @@ export default {
 				50: '#FAF7F6',
 				300: '#DEBDB4',
 			},
+		},
+		fontFamily: {
+			sans: ['Inter', 'sans-serif'],
+			heading: ['Grompled', 'serif'],
 		},
 	},
 	plugins: [heroui()],
