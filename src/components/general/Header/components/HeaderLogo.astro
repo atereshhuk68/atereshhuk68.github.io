@@ -1,0 +1,16 @@
+---
+import Logo from '@assets/logo/bfancy-logo-w220.svg';
+import { Image } from 'astro:assets';
+import cx from 'classix';
+
+const aspectRatioClass = `${Logo.width}/${Logo.height}`;
+---
+
+<Image
+	src={Logo}
+	alt="BFancy Logo"
+	format='webp'
+	class={cx(aspectRatioClass, 'w-[220px] h-auto')}
+	width={Logo.width}
+	height={Logo.height}
+	/>

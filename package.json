@@ -1,0 +1,27 @@
+{
+	"name": "hero-ui-test",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/react": "^4.2.4",
+		"@astrojs/tailwind": "^6.0.2",
+		"@heroui/react": "^2.7.6",
+		"@internationalized/date": "^3.8.0",
+		"@types/react": "^19.1.2",
+		"@types/react-dom": "^19.1.2",
+		"astro": "^5.7.0",
+		"classix": "^2.2.2",
+		"framer-motion": "^12.7.3",
+		"lucide-react": "^0.488.0",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"sharp": "^0.34.1",
+		"tailwindcss": "3"
+	}
+}

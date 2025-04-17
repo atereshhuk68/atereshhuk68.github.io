@@ -1,0 +1,15 @@
+---
+import {HeaderLangs} from './components/HeaderLangs.tsx';
+import HeaderLogo from './components/HeaderLogo.astro';
+import HeaderMenu from './components/HeaderMenu.astro';
+---
+
+<header>
+	<div class="container">
+		<div class="flex items-center justify-between gap-2 py-4">
+			<HeaderMenu />
+			<HeaderLogo />
+			<HeaderLangs client:visible />
+		</div>
+	</div>
+</header>

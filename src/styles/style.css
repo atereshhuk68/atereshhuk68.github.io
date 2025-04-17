@@ -1,0 +1,4 @@
+.active {
+	@apply bg-golden-200 text-black-900;
+	@apply pointer-events-none;
+}
