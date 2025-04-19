@@ -39,7 +39,6 @@ export function TabControl({ onPress }: TabControlProps) {
 						key={filter.value}
 						variant="light"
 						size="md"
-						disableRipple={true}
 						radius="sm"
 						data-filter={filter.value}
 						className={`text-base ${isActive ? 'active' : ''}`}

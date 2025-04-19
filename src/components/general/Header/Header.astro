@@ -1,20 +1,31 @@
 ---
 import { Button } from '@heroui/react';
-import {HeaderLangs} from './components/HeaderLangs.tsx';
+import { HeaderLangs } from './components/HeaderLangs.tsx';
 import HeaderLogo from './components/HeaderLogo.astro';
-import HeaderMenu from './components/HeaderMenu.astro';
+import { HeaderMenu } from './components/HeaderMenu.tsx';
+import { VerticalSeparator } from '@components/icons/VerticalSeparator';
+import { Calendar, Menu } from 'lucide-react';
 ---
 
-<header>
+<header class="py-8">
 	<div class="container">
-		<div class="flex items-center justify-between gap-2 py-4">
-			<HeaderMenu class="w-[350px]" />
-			<HeaderLogo />
-			<div class="flex items-center gap-4 w-[350px]">
-				<Button variant='bordered' radius='sm' className="w-[150px] font-medium text-cove-700 border-cove-700 px-0" client:visible>
-					Appointment
+		<div class="flex items-center justify-between sm:gap-1">
+			<HeaderMenu className="lg:w-[350px] order-last lg:order-[initial]" client:load />
+
+			<HeaderLogo class="flex-grow lg:flex-grow-0" />
+
+			<div class="items-center sm:gap-4 justify-end md:w-[350px] contents lg:flex">
+				<Button variant="bordered" size="lg" radius="sm" className="text-cove-700 border-cove-700 inline-flex sm:hidden" isIconOnly client:load>
+					<Calendar size={24} />
 				</Button>
-				<HeaderLangs client:visible />
+
+				<Button variant="bordered" size="lg" radius="sm" className="font-medium text-cove-700 border-cove-700 border-[2px] hidden sm:inline-flex" client:load> Appointment</Button>
+
+				<VerticalSeparator client:load />
+
+				<HeaderLangs client:load />
+
+				<VerticalSeparator className="lg:hidden" client:load />
 			</div>
 		</div>
 	</div>

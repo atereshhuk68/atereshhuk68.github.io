@@ -1,5 +1,5 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Languages } from 'lucide-react';
 import { useState } from 'react';
 
 export function HeaderLangs() {
@@ -10,19 +10,16 @@ export function HeaderLangs() {
 	};
 
 	return (
-		<Dropdown onOpenChange={handleOpenChange}>
+		<Dropdown onOpenChange={handleOpenChange} className="bg-black-100">
 			<DropdownTrigger>
-				<Button variant="bordered" endContent={open ? <ChevronUp /> : <ChevronDown />}>
-					Open Menu
+				<Button variant="light" isIconOnly={true} startContent={<Languages size={24} />}>
+					{' '}
 				</Button>
 			</DropdownTrigger>
 			<DropdownMenu aria-label="Static Actions">
-				<DropdownItem key="new">New file</DropdownItem>
-				<DropdownItem key="copy">Copy link</DropdownItem>
-				<DropdownItem key="edit">Edit file</DropdownItem>
-				<DropdownItem key="delete" className="text-danger" color="danger">
-					Delete file
-				</DropdownItem>
+				<DropdownItem key="new">Polski</DropdownItem>
+				<DropdownItem key="copy">Українська</DropdownItem>
+				<DropdownItem key="edit">Русский</DropdownItem>
 			</DropdownMenu>
 		</Dropdown>
 	);

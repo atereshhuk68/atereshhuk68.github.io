@@ -20,7 +20,7 @@ function ServiceRow(service: ServiceProps) {
 export function ServiceCard({ name, services }: ServiceCardProps) {
 	return (
 		<motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-			<div className="p-6 space-y-4 h-full bg-black-100 rounded-lg">
+			<div className="p-6 space-y-4 h-full bg-black-100 rounded-lg min-h-[280px]">
 				<strong className="text-2xl font-heading">{name}</strong>
 
 				<ul className="space-y-2 divide-y-1 divide-black-200">

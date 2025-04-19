@@ -1,16 +1,15 @@
 ---
+const { class: className } = Astro.props;
 import Logo from '@assets/logo/bfancy-logo-w220.svg';
+import SquareLogo from '@assets/logo/bfancy-square-w96.svg';
 import { Image } from 'astro:assets';
 import cx from 'classix';
 
-const aspectRatioClass = `${Logo.width}/${Logo.height}`;
+const mainLogoAspectRatioClass = `${Logo.width}/${Logo.height}`;
 ---
 
-<Image
-	src={Logo}
-	alt="BFancy Logo"
-	format='webp'
-	class={cx(aspectRatioClass, 'w-[220px] h-auto')}
-	width={Logo.width}
-	height={Logo.height}
-	/>
+<div class={cx('order-first lg:order-[initial]', className)}>
+	<Image src={Logo} alt="BFancy Logo" class={cx(mainLogoAspectRatioClass, 'w-[180px] xl:w-[220px] h-auto hidden sm:inline-flex')} width={Logo.width} height={Logo.height} />
+
+	<Image src={SquareLogo} alt="BFancy Logo" class="aspect-square w-24 sm:hidden" width={SquareLogo.width} height={SquareLogo.height} />
+</div>
