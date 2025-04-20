@@ -3,8 +3,8 @@ import { shuffle, uniq } from 'es-toolkit';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import type { ServicesDataTypes } from 'src/types/types';
-import { ServiceCard } from '../Card';
-import { TabControl } from '../TabControl';
+import { ServiceCard } from './ServiceCard';
+import { TabControl } from './TabControl';
 
 export function Services({ service: services }: { service: ServicesDataTypes[] }) {
 	const [cards, setCards] = useState(services);

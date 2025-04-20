@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { ServiceCardProps, ServiceProps } from '../types/types';
+import type { ServiceCardProps, ServiceProps } from '../../../types/types';
 
 function ServiceRow(service: ServiceProps) {
 	const { title, price, description, currency } = service;
