@@ -14,6 +14,7 @@ export default {
 				100: '#ECEFF2',
 				200: '#D5DBE2',
 				300: '#B0BBC9',
+				500: '#667A91',
 				600: '#516278',
 				900: '#333C47',
 			},
@@ -34,5 +35,5 @@ export default {
 			heading: ['Grompled', 'serif'],
 		},
 	},
-	plugins: [heroui(), require('@tailwindcss/typography')],
+	plugins: [require('@tailwindcss/typography'), heroui()],
 };

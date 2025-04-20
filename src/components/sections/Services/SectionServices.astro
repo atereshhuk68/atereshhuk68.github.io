@@ -6,4 +6,6 @@ const services = await getCollection('services');
 const serviceData = services.map((service) => service.data);
 ---
 
-<Services service={serviceData} client:visible />
+<div class="my-[120px]">
+	<Services service={serviceData} client:visible />
+</div>

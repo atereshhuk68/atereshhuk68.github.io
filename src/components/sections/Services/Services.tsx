@@ -31,7 +31,7 @@ export function Services({ service: services }: { service: ServicesDataTypes[] }
 	};
 
 	return (
-		<div className="container">
+		<>
 			<TabControl onPress={handleClickFilter} filters={filters} />
 
 			<div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-4">
@@ -41,6 +41,6 @@ export function Services({ service: services }: { service: ServicesDataTypes[] }
 					))}
 				</AnimatePresence>
 			</div>
-		</div>
+		</>
 	);
 }

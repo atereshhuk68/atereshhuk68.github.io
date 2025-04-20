@@ -1,0 +1,46 @@
+---
+import { Button } from '@heroui/react';
+
+import GridImage from '@assets/images/hero-demo-photo-w736.webp';
+import { Image } from 'astro:assets';
+---
+
+<div class="grid sm:grid-cols-[225px_1fr] lg:grid-cols-2 gap-5 xl:gap-8 pt-8">
+	<div class="bg-golden-200 text-black-900 py-11 lg:py-[120px] px-6 xl:px-8 rounded-2xl grid content-start justify-items-start gap-6 sm:col-span-2 lg:col-span-1 lg:row-span-2">
+		<div class="grid gap-4">
+			<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">Flawless Nails & Makeup for Every Occasion</h1>
+
+			<p class="text-lg">
+				Discover the perfect blend of elegance and artistry. Our expert nail and makeup services are designed to make you shine, whether it’s for a special event or everyday
+				beauty.
+			</p>
+		</div>
+
+		<Button variant="solid" color="primary" radius="sm" className="bg-black-900" client:load>Schedule Your Appointment</Button>
+
+		<small class="text-xs font-medium text-black-500">Contact us for a quick and easy appointment!</small>
+	</div>
+
+	<div class="bg-black-600 rounded-2xl overflow-hidden hidden sm:block">
+		<Image
+			src={GridImage}
+			alt="Nail and Makeup Services"
+			class={`aspect-${GridImage.width / GridImage.height} object-cover lg:object-[position:0_-125px] xl:object-[position:0_-220px] 2xl:object-[position:0_-280px] h-full lg:h-[281px]`}
+			width={736}
+			height={736}
+		/>
+	</div>
+
+	<div class="bg-shell-300 rounded-2xl p-6 lg:p-8 space-y-4">
+		<strong class="text-2xl lg:text-3xl font-heading">We stand by our quality. Not satisfied? We'll make it right!</strong>
+
+		<p class="text-base lg:text-lg">
+			At our salon, your satisfaction is our top priority. Our skilled professionals use only premium products and follow the highest standards to ensure exceptional results every
+			time.
+		</p>
+
+		<hr />
+
+		<p>Check our latest reviews in Instagram</p>
+	</div>
+</div>
