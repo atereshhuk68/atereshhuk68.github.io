@@ -9,6 +9,7 @@ export default {
 			padding: '1rem',
 		},
 		colors: {
+			white: '#fefefe',
 			black: {
 				100: '#ECEFF2',
 				200: '#D5DBE2',
@@ -33,5 +34,5 @@ export default {
 			heading: ['Grompled', 'serif'],
 		},
 	},
-	plugins: [heroui()],
+	plugins: [heroui(), require('@tailwindcss/typography')],
 };

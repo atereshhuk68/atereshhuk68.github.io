@@ -1,15 +1,21 @@
 ---
-const { class: className } = Astro.props;
 import Logo from '@assets/logo/bfancy-logo-w220.svg';
 import SquareLogo from '@assets/logo/bfancy-square-w96.svg';
 import { Image } from 'astro:assets';
 import cx from 'classix';
 
+const { class: className } = Astro.props;
+
 const mainLogoAspectRatioClass = `${Logo.width}/${Logo.height}`;
+const isHomepage = Astro.url.pathname === '/';
+
+// Determine the wrapper component based on the page
+const Wrapper = isHomepage ? 'div' : 'a';
+const wrapperProps = isHomepage ? {} : { href: '/', 'aria-label': 'Go to homepage' };
 ---
 
-<div class={cx('order-first lg:order-[initial]', className)}>
+<Wrapper {...wrapperProps} class={cx('order-first lg:order-[initial]', className)}>
 	<Image src={Logo} alt="BFancy Logo" class={cx(mainLogoAspectRatioClass, 'w-[180px] xl:w-[220px] h-auto hidden sm:inline-flex')} width={Logo.width} height={Logo.height} />
 
 	<Image src={SquareLogo} alt="BFancy Logo" class="aspect-square w-24 sm:hidden" width={SquareLogo.width} height={SquareLogo.height} />
-</div>
+</Wrapper>

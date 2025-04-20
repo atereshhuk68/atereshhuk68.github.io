@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from 'src/layouts/Layout.astro';
+import { CareerCard } from '@components/Careers/CareerCard.tsx';
+import type { CareerCardTypes } from 'src/types/types';
+
+const careers = await getCollection('careers');
+---
+
+<Layout>
+	<div class="container py-12">
+		<div class="text-center mb-12">
+			<h1 class="font-heading text-4xl">Join Our Team</h1>
+			<p class="text-lg text-pretty">We're looking for talented individuals to help us grow. Explore our open positions below.</p>
+		</div>
+
+		<div class="grid grid-cols-2 gap-8 max-w-screen-lg mx-auto">
+			{
+				careers.map((career: CareerCardTypes) => {
+					return <CareerCard {...career} />;
+				})
+			}
+		</div>
+	</div>
+</Layout>
