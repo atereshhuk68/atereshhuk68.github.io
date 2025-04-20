@@ -1,5 +1,4 @@
 import type { CollectionEntry } from 'astro:content';
-import type { ReactNode } from 'react';
 
 export type ServiceProps = {
 	title: string;
@@ -13,3 +12,7 @@ export type ServiceCardProps = {
 };
 
 export type CareerCardTypes = CollectionEntry<'careers'>;
+
+export type ServiceCardTypes = CollectionEntry<'services'>;
+
+export type ServicesDataTypes = CollectionEntry<'services'>['data'];

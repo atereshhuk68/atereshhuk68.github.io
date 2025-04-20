@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+import { Services } from './Services.tsx';
+
+const services = await getCollection('services');
+const serviceData = services.map((service) => service.data);
+---
+
+<Services service={serviceData} client:visible />
