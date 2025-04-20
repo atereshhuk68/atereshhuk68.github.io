@@ -37,8 +37,9 @@ export function TabControl({ onPress, filters }: TabControlProps) {
 						radius="sm"
 						data-filter={filter}
 						className={`text-base ${isActive ? 'active' : ''}`}
-						onPress={(e) => handleClickFilter(e, filter)}
-						startContent={<span className={`lazy-bg size-6 ${iconMap[filter]}`}></span>}>
+						onPress={(e) => handleClickFilter(e, filter)}>
+						<span className={`lazy-bg size-6 ${iconMap[filter]}`}></span>
+
 						{filterTitle}
 					</Button>
 				);

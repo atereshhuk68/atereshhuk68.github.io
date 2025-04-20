@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, CardHeader, Chip, Divider, Link } from '@heroui/react';
+import { Card, CardBody, CardFooter, CardHeader, Chip, Divider } from '@heroui/react';
 import { Briefcase, MapPin } from 'lucide-react';
 import type { CareerCardTypes } from 'src/types/types';
 
@@ -30,9 +30,9 @@ export function CareerCard({ ...career }: CareerCardTypes) {
 					Open
 				</Chip>
 
-				<Link size="sm" href={`/careers/${slug}`}>
+				<a className="text-sm text-cove-600 hover:text-cove-600/75" href={`/careers/${slug}`}>
 					Details
-				</Link>
+				</a>
 			</CardFooter>
 		</Card>
 	);

@@ -1,4 +1,4 @@
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link } from '@heroui/react';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useMediaQuery } from '@hooks/useMediaQuery';
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -55,9 +55,9 @@ export function HeaderMenu({ className }: { className?: string }) {
 					const linkClasses = `${baseLinkClasses} ${isActive ? activeLinkClasses : ''}`;
 					return (
 						<li key={item.href}>
-							<Link className={linkClasses.trim()} color="foreground" href={item.href}>
+							<a className={linkClasses.trim()} href={item.href}>
 								{item.label}
-							</Link>
+							</a>
 						</li>
 					);
 				})}
