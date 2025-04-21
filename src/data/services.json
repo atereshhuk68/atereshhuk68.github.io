@@ -30,7 +30,7 @@
 				"description": "(gel polish removal, manicure, gel polish)"
 			}
 		],
-		"type": "manicure"
+		"type": "nails"
 	},
 	{
 		"id": 2,
@@ -49,7 +49,7 @@
 				"price": 250
 			}
 		],
-		"type": "manicure"
+		"type": "nails"
 	},
 	{
 		"id": 3,
@@ -68,7 +68,7 @@
 				"price": 220
 			}
 		],
-		"type": "manicure"
+		"type": "nails"
 	},
 	{
 		"id": 4,
@@ -85,7 +85,7 @@
 				"description": "(super long length and any complexity of design)"
 			}
 		],
-		"type": "manicure"
+		"type": "nails"
 	},
 	{
 		"id": 5,
@@ -113,7 +113,7 @@
 				"price": 15
 			}
 		],
-		"type": "manicure"
+		"type": "nails"
 	},
 	{
 		"id": 6,
@@ -146,7 +146,7 @@
 				"description": "(gel polish removal, pedicure, gel polish)"
 			}
 		],
-		"type": "pedicure"
+		"type": "nails"
 	},
 	{
 		"id": 7,
@@ -174,7 +174,7 @@
 				"description": "(shaping, tinting)"
 			}
 		],
-		"type": "eyes"
+		"type": "visage"
 	},
 	{
 		"id": 8,
@@ -193,7 +193,7 @@
 				"price": 350
 			}
 		],
-		"type": "eyes"
+		"type": "visage"
 	},
 	{
 		"id": 9,
@@ -220,7 +220,7 @@
 				"price": 210
 			}
 		],
-		"type": "eyes"
+		"type": "visage"
 	},
 	{
 		"id": 10,
@@ -247,7 +247,7 @@
 				"price": 190
 			}
 		],
-		"type": "eyes"
+		"type": "visage"
 	},
 	{
 		"id": 11,
@@ -266,7 +266,7 @@
 				"price": 50
 			}
 		],
-		"type": "eyes"
+		"type": "visage"
 	},
 	{
 		"id": 12,
@@ -306,7 +306,7 @@
 				"price": 50
 			}
 		],
-		"type": "makeup"
+		"type": "visage"
 	},
 	{
 		"id": 13,

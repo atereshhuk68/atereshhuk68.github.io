@@ -7,12 +7,10 @@ interface TabControlProps {
 }
 
 const iconMap: { [key: string]: string } = {
-	all: 'service-all-w32',
-	manicure: 'service-manicure-w32',
-	pedicure: 'service-pedicure-w32',
-	eyes: 'service-brows-w32',
-	makeup: 'service-makeup-w32',
-	massage: 'service-massage-w32',
+	all: 'service-list-w64',
+	nails: 'service-nails-w64',
+	visage: 'service-visage-w64',
+	massage: 'service-massage-w64',
 };
 
 export function TabControl({ onPress, filters }: TabControlProps) {
@@ -24,7 +22,7 @@ export function TabControl({ onPress, filters }: TabControlProps) {
 	};
 
 	return (
-		<div className="flex flex-nowrap items-center gap-1 overflow-x-auto">
+		<div className="grid grid-cols-2 sm:flex flex-nowrap items-center gap-1 overflow-x-auto">
 			{filters.map((filter: string) => {
 				const isActive = filter === activeFilter;
 				const filterTitle = filter.charAt(0).toUpperCase() + filter.slice(1);
@@ -36,9 +34,9 @@ export function TabControl({ onPress, filters }: TabControlProps) {
 						size="md"
 						radius="sm"
 						data-filter={filter}
-						className={`text-base flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
+						className={`text-base px-8 flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
 						onPress={(e) => handleClickFilter(e, filter)}>
-						<span className={`lazy-bg size-6 flex-shrink-0 ${iconMap[filter]}`}></span>
+						<span className={`lazy-bg size-5 flex-shrink-0 ${iconMap[filter]}`}></span>
 
 						{filterTitle}
 					</Button>

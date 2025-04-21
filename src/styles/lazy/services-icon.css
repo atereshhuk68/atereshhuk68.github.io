@@ -1,27 +1,15 @@
-.service-all-w32 {
-	background-image: url('../../assets/vector/services/all-w32.svg');
+.service-list-w64 {
+	background-image: url('../../assets/vector/services/list-w64.svg');
 }
 
-.service-manicure-w32 {
-	background-image: url('../../assets/vector/services/manicure-w32.svg');
+.service-nails-w64 {
+	background-image: url('../../assets/vector/services/nails-w64.svg');
 }
 
-.service-brows-w32 {
-	background-image: url('../../assets/vector/services/brows-w32.svg');
+.service-visage-w64 {
+	background-image: url('../../assets/vector/services/visage-w64.svg');
 }
 
-.service-pedicure-w32 {
-	background-image: url('../../assets/vector/services/pedicure-w32.svg');
-}
-
-.service-styling-w32 {
-	background-image: url('../../assets/vector/services/styling-w32.svg');
-}
-
-.service-makeup-w32 {
-	background-image: url('../../assets/vector/services/makeup-w32.svg');
-}
-
-.service-massage-w32 {
-	background-image: url('../../assets/vector/services/massage-w32.svg');
+.service-massage-w64 {
+	background-image: url('../../assets/vector/services/massage-w64.svg');
 }
