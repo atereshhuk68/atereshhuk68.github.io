@@ -10,3 +10,12 @@
 	mask-size: contain;
 	mask-position: center;
 }
+
+.decor-star-w300 {
+	@apply bg-black-900;
+	mask-image: url('../assets/vector/decor-star-w300.svg');
+}
+
+.decor-blur-blue-star-w770 {
+	background-image: url('../assets/vector/decor-blur-blue-star-w770.svg');
+}
