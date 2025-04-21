@@ -24,7 +24,7 @@ export function TabControl({ onPress, filters }: TabControlProps) {
 	};
 
 	return (
-		<div className="flex items-center gap-1">
+		<div className="flex flex-nowrap items-center gap-1 overflow-x-auto">
 			{filters.map((filter: string) => {
 				const isActive = filter === activeFilter;
 				const filterTitle = filter.charAt(0).toUpperCase() + filter.slice(1);
@@ -36,9 +36,9 @@ export function TabControl({ onPress, filters }: TabControlProps) {
 						size="md"
 						radius="sm"
 						data-filter={filter}
-						className={`text-base ${isActive ? 'active' : ''}`}
+						className={`text-base flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
 						onPress={(e) => handleClickFilter(e, filter)}>
-						<span className={`lazy-bg size-6 ${iconMap[filter]}`}></span>
+						<span className={`lazy-bg size-6 flex-shrink-0 ${iconMap[filter]}`}></span>
 
 						{filterTitle}
 					</Button>

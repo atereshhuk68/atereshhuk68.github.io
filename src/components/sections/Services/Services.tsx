@@ -34,7 +34,7 @@ export function Services({ service: services }: { service: ServicesDataTypes[] }
 		<>
 			<TabControl onPress={handleClickFilter} filters={filters} />
 
-			<div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-4">
+			<div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-4">
 				<AnimatePresence>
 					{cards.map(({ id, name, services }: ServicesDataTypes) => (
 						<ServiceCard key={id} name={name} services={services} />

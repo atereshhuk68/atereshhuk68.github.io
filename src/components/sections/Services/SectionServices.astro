@@ -6,6 +6,13 @@ const services = await getCollection('services');
 const serviceData = services.map((service) => service.data);
 ---
 
-<div class="my-[120px]">
-	<Services service={serviceData} client:visible />
-</div>
+<section class="py-12 sm:py-16 lg:py-20">
+	<div class="container">
+		<div class="mb-12">
+			<h2 class="text-4xl lg:text-5xl font-heading text-balance">BFancy Salon Services and Prices</h2>
+			<p class="text-lg">See our salon services grouped by categories. If you need all list of services, click on the card</p>
+		</div>
+
+		<Services service={serviceData} client:visible />
+	</div>
+</section>
