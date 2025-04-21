@@ -1,0 +1,55 @@
+---
+import { Link } from '@heroui/react';
+import { Image } from 'astro:assets';
+
+import AboutUsImage from '@assets/images/about-us-image-w782.png';
+---
+
+<section id="aboutUs" class="py-12 sm:py-20 lg:py-32 relative isolate overflow-hidden">
+	<div class="container">
+		<div class="grid lg:grid-cols-2 gap-8 content-start">
+			<div class="space-y-4">
+				<h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[44px] lg:leading-tight text-balance">Meet the Team Behind the Beauty</h2>
+
+				<p class="text-base md:text-lg">
+					Our studio is more than just a place for beauty services – it’s a space where artistry meets passion. Our experienced nail and makeup professionals are dedicated to
+					bringing your vision to life, using top-quality products and the latest techniques. Step in and let us make your beauty shine!
+				</p>
+
+				<p class="text-base md:text-lg">
+					Stay connected with us on social media! Follow us for the latest updates, special offers, and inspiration. Discover behind-the-scenes moments and see why our clients love
+					us. Join our growing community today!
+				</p>
+
+				<p class="text-base md:text-lg">
+					Subscribe on our <Link client:visible className="text-black-900 underline hover:no-underline font-bold cursor-pointer" isExternal showAnchorIcon>Instagram</Link>
+				</p>
+
+				<hr />
+
+				<p class="text-base md:text-lg">Other our social media:</p>
+
+				<ul class="space-y-4">
+					<li>
+						<Link client:visible className="text-black-900 underline hover:no-underline font-bold cursor-pointer" isExternal>Facebook</Link>
+					</li>
+					<li>
+						<Link client:visible className="text-black-900 underline hover:no-underline font-bold cursor-pointer" isExternal>Telegram</Link>
+					</li>
+				</ul>
+			</div>
+
+			<Image
+				src={AboutUsImage}
+				alt="About Us"
+				width={782}
+				height={782}
+				class="rounded-xl object-cover object-center sm:object-[position:0_-200px] lg:object-center max-h-[300px] lg:max-h-[763px]"
+				loading="lazy"
+				format="webp"
+			/>
+		</div>
+	</div>
+
+	<div class="lazy-bg inline-flex size-[770px] absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-0 z-[-1] decor-blur-blue-star-w770"></div>
+</section>
