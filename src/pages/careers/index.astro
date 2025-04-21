@@ -14,7 +14,7 @@ const careers = await getCollection('careers');
 			<p class="text-lg text-pretty">We're looking for talented individuals to help us grow. Explore our open positions below.</p>
 		</div>
 
-		<div class="grid grid-cols-2 gap-8 max-w-screen-lg mx-auto">
+		<div class="grid md:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
 			{
 				careers.map((career: CareerCardTypes) => {
 					return <CareerCard {...career} />;
