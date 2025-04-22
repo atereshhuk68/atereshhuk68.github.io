@@ -1,46 +1,37 @@
-import type { PressEvent } from '@heroui/react';
-import { shuffle, uniq } from 'es-toolkit';
-import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { Button } from '@heroui/react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useServicesStore } from 'src/store/servicesStore';
 import type { ServicesDataTypes } from 'src/types/types';
 import { ServiceCard } from './ServiceCard';
 import { TabControl } from './TabControl';
 
-export function Services({ service: services }: { service: ServicesDataTypes[] }) {
-	const [cards, setCards] = useState(services);
+export function Services({ services }: { services: ServicesDataTypes[] }) {
+	const { filteredCards, showAll, setServices, showAllCards } = useServicesStore();
 
-	const filters = uniq(services.map((service) => service.type));
-	filters.unshift('all');
-
-	const handleClickFilter = (event: PressEvent) => {
-		document.querySelector('.active')?.classList.remove('active');
-
-		const currentButton = event.target as HTMLButtonElement;
-
-		currentButton.classList.add('active');
-
-		const filter = currentButton.getAttribute('data-filter');
-
-		if (filter === 'all') {
-			setCards(shuffle(services));
-			return;
-		}
-
-		const filteredCards = services.filter((card) => card.type === filter);
-		setCards(filteredCards);
-	};
+	useEffect(() => {
+		setServices(services);
+	}, [services, setServices]);
 
 	return (
 		<>
-			<TabControl onPress={handleClickFilter} filters={filters} />
+			<TabControl />
 
-			<div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-4">
+			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4" data-service-card>
 				<AnimatePresence>
-					{cards.map(({ id, name, services }: ServicesDataTypes) => (
-						<ServiceCard key={id} name={name} services={services} />
+					{filteredCards.map(({ id, name, services: serviceItems }: ServicesDataTypes) => (
+						<ServiceCard key={id} name={name} services={serviceItems} />
 					))}
 				</AnimatePresence>
 			</div>
+
+			{!showAll && (
+				<motion.div className="flex justify-center mt-8" data-all-services>
+					<Button size="md" variant="solid" className="bg-golden-200 text-black-900 font-medium" onPress={showAllCards}>
+						Display all services
+					</Button>
+				</motion.div>
+			)}
 		</>
 	);
 }

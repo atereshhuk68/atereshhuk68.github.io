@@ -1,9 +1,10 @@
-import { Button, type PressEvent } from '@heroui/react';
-import { useState } from 'react';
+import { Button } from '@heroui/react';
+import { useServicesStore } from 'src/store/servicesStore';
 
 interface TabControlProps {
-	onPress: (event: PressEvent, filterValue: string) => void;
+	onPress: (filterValue: string) => void;
 	filters: string[];
+	activeFilter: string;
 }
 
 const iconMap: { [key: string]: string } = {
@@ -13,13 +14,8 @@ const iconMap: { [key: string]: string } = {
 	massage: 'service-massage-w64',
 };
 
-export function TabControl({ onPress, filters }: TabControlProps) {
-	const [activeFilter, setActiveFilter] = useState<string>(filters[0] || 'all');
-
-	const handleClickFilter = (event: PressEvent, filterValue: string) => {
-		setActiveFilter(filterValue);
-		onPress(event, filterValue);
-	};
+export function TabControl() {
+	const { activeFilter, filters, setFilter } = useServicesStore();
 
 	return (
 		<div className="grid grid-cols-2 sm:flex flex-nowrap items-center gap-1 overflow-x-auto">
@@ -35,9 +31,9 @@ export function TabControl({ onPress, filters }: TabControlProps) {
 						radius="sm"
 						data-filter={filter}
 						className={`text-base px-8 flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
-						onPress={(e) => handleClickFilter(e, filter)}>
+						onPress={() => setFilter(filter)}
+						aria-pressed={isActive}>
 						<span className={`lazy-bg size-5 flex-shrink-0 ${iconMap[filter]}`}></span>
-
 						{filterTitle}
 					</Button>
 				);

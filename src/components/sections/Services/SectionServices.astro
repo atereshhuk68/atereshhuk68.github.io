@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import { Services } from './Services.tsx';
 
 const services = await getCollection('services');
-const serviceData = services.map((service) => service.data);
+const servicesData = services.map((service) => service.data);
 ---
 
 <section class="py-12 sm:py-16 lg:py-20">
@@ -13,6 +13,6 @@ const serviceData = services.map((service) => service.data);
 			<p class="text-lg">See our salon services grouped by categories. If you need all list of services, click on the card</p>
 		</div>
 
-		<Services service={serviceData} client:visible />
+		<Services services={servicesData} client:visible />
 	</div>
 </section>

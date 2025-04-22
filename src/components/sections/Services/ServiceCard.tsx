@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import type { ServiceCardProps, ServiceProps } from '../../../types/types';
 
-function ServiceRow(service: ServiceProps) {
-	const { title, price, description, currency } = service;
+function ServiceRow({ title, price, description, currency }: ServiceProps) {
 	return (
 		<li className="flex justify-between gap-2 pt-2">
 			<div className="flex flex-col">

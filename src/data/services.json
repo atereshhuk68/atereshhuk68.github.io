@@ -1,5 +1,56 @@
 [
 	{
+		"id": 7,
+		"name": "Brows",
+		"services": [
+			{
+				"title": "Shape correction",
+				"price": 50
+			},
+			{
+				"title": "Full shaping",
+				"price": 70
+			},
+			{
+				"title": "Tinting",
+				"price": 60
+			},
+			{
+				"title": "Brow lamination",
+				"price": 100
+			},
+			{
+				"title": "Brow lamination combo",
+				"price": 200,
+				"description": "(shaping, tinting)"
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 15,
+		"name": "Men’s Massage",
+		"services": [
+			{
+				"title": "Regular",
+				"price": 220
+			},
+			{
+				"title": "1.5 hours",
+				"price": 290
+			},
+			{
+				"title": "Sports",
+				"price": 250
+			},
+			{
+				"title": "Sports 1.5 hours",
+				"price": 320
+			}
+		],
+		"type": "massage"
+	},
+	{
 		"id": 1,
 		"name": "Manicure",
 		"services": [
@@ -33,6 +84,68 @@
 		"type": "nails"
 	},
 	{
+		"id": 4,
+		"name": "Slay Nails",
+		"services": [
+			{
+				"title": "Standard",
+				"price": 300,
+				"description": "(extensions and any complexity of design)"
+			},
+			{
+				"title": "Extra",
+				"price": 350,
+				"description": "(super long length and any complexity of design)"
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 11,
+		"name": "Extras",
+		"services": [
+			{
+				"title": "Wet effect",
+				"price": 30
+			},
+			{
+				"title": "Colored lashes",
+				"price": 30
+			},
+			{
+				"title": "Lash removal",
+				"price": 50
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 13,
+		"name": "Classic Massage",
+		"services": [
+			{
+				"title": "1 hour",
+				"price": 180
+			},
+			{
+				"title": "1.5 hours",
+				"price": 250
+			}
+		],
+		"type": "massage"
+	},
+	{
+		"id": 17,
+		"name": "Massage",
+		"services": [
+			{
+				"title": "Anti-cellulite Massage",
+				"price": 220
+			}
+		],
+		"type": "massage"
+	},
+	{
 		"id": 2,
 		"name": "Nail Extensions",
 		"services": [
@@ -52,40 +165,31 @@
 		"type": "nails"
 	},
 	{
-		"id": 3,
-		"name": "Nail extension Correction",
+		"id": 9,
+		"name": "Eyelash Extensions",
 		"services": [
 			{
-				"title": "Short",
+				"title": "1:1",
+				"price": 170
+			},
+			{
+				"title": "2:1",
 				"price": 180
 			},
 			{
-				"title": "Medium",
+				"title": "3:1",
+				"price": 190
+			},
+			{
+				"title": "4:1",
 				"price": 200
 			},
 			{
-				"title": "Long",
-				"price": 220
+				"title": "5:1",
+				"price": 210
 			}
 		],
-		"type": "nails"
-	},
-	{
-		"id": 4,
-		"name": "Slay Nails",
-		"services": [
-			{
-				"title": "Standard",
-				"price": 300,
-				"description": "(extensions and any complexity of design)"
-			},
-			{
-				"title": "Extra",
-				"price": 350,
-				"description": "(super long length and any complexity of design)"
-			}
-		],
-		"type": "nails"
+		"type": "visage"
 	},
 	{
 		"id": 5,
@@ -114,6 +218,48 @@
 			}
 		],
 		"type": "nails"
+	},
+	{
+		"id": 16,
+		"name": "Additional Massage",
+		"services": [
+			{
+				"title": "Head Massage",
+				"price": 50
+			},
+			{
+				"title": "Face Massage",
+				"price": 100
+			}
+		],
+		"type": "massage"
+	},
+	{
+		"id": 10,
+		"name": "Eyelash extensions correction",
+		"services": [
+			{
+				"title": "1:1",
+				"price": 150
+			},
+			{
+				"title": "2:1",
+				"price": 160
+			},
+			{
+				"title": "3:1",
+				"price": 170
+			},
+			{
+				"title": "4:1",
+				"price": 180
+			},
+			{
+				"title": "5:1",
+				"price": 190
+			}
+		],
+		"type": "visage"
 	},
 	{
 		"id": 6,
@@ -149,32 +295,38 @@
 		"type": "nails"
 	},
 	{
-		"id": 7,
-		"name": "Brows",
+		"id": 14,
+		"name": "Sports Massage",
 		"services": [
 			{
-				"title": "Shape correction",
-				"price": 50
+				"title": "1 hour",
+				"price": 220
 			},
 			{
-				"title": "Full shaping",
-				"price": 70
-			},
-			{
-				"title": "Tinting",
-				"price": 60
-			},
-			{
-				"title": "Brow lamination",
-				"price": 100
-			},
-			{
-				"title": "Brow lamination combo",
-				"price": 200,
-				"description": "(shaping, tinting)"
+				"title": "1.5 hours",
+				"price": 290
 			}
 		],
-		"type": "visage"
+		"type": "massage"
+	},
+	{
+		"id": 3,
+		"name": "Nail extension Correction",
+		"services": [
+			{
+				"title": "Short",
+				"price": 180
+			},
+			{
+				"title": "Medium",
+				"price": 200
+			},
+			{
+				"title": "Long",
+				"price": 220
+			}
+		],
+		"type": "nails"
 	},
 	{
 		"id": 8,
@@ -191,79 +343,6 @@
 			{
 				"title": "Brow & Lash lamination",
 				"price": 350
-			}
-		],
-		"type": "visage"
-	},
-	{
-		"id": 9,
-		"name": "Eyelash Extensions",
-		"services": [
-			{
-				"title": "1:1",
-				"price": 170
-			},
-			{
-				"title": "2:1",
-				"price": 180
-			},
-			{
-				"title": "3:1",
-				"price": 190
-			},
-			{
-				"title": "4:1",
-				"price": 200
-			},
-			{
-				"title": "5:1",
-				"price": 210
-			}
-		],
-		"type": "visage"
-	},
-	{
-		"id": 10,
-		"name": "Eyelash extensions correction",
-		"services": [
-			{
-				"title": "1:1",
-				"price": 150
-			},
-			{
-				"title": "2:1",
-				"price": 160
-			},
-			{
-				"title": "3:1",
-				"price": 170
-			},
-			{
-				"title": "4:1",
-				"price": 180
-			},
-			{
-				"title": "5:1",
-				"price": 190
-			}
-		],
-		"type": "visage"
-	},
-	{
-		"id": 11,
-		"name": "Extras",
-		"services": [
-			{
-				"title": "Wet effect",
-				"price": 30
-			},
-			{
-				"title": "Colored lashes",
-				"price": 30
-			},
-			{
-				"title": "Lash removal",
-				"price": 50
 			}
 		],
 		"type": "visage"
@@ -307,84 +386,5 @@
 			}
 		],
 		"type": "visage"
-	},
-	{
-		"id": 13,
-		"name": "Classic Massage",
-		"services": [
-			{
-				"title": "1 hour",
-				"price": 180
-			},
-			{
-				"title": "1.5 hours",
-				"price": 250
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 14,
-		"name": "Sports Massage",
-		"services": [
-			{
-				"title": "1 hour",
-				"price": 220
-			},
-			{
-				"title": "1.5 hours",
-				"price": 290
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 15,
-		"name": "Men’s Massage",
-		"services": [
-			{
-				"title": "Regular",
-				"price": 220
-			},
-			{
-				"title": "1.5 hours",
-				"price": 290
-			},
-			{
-				"title": "Sports",
-				"price": 250
-			},
-			{
-				"title": "Sports 1.5 hours",
-				"price": 320
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 16,
-		"name": "Additional Massage",
-		"services": [
-			{
-				"title": "Head Massage",
-				"price": 50
-			},
-			{
-				"title": "Face Massage",
-				"price": 100
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 17,
-		"name": "Massage",
-		"services": [
-			{
-				"title": "Anti-cellulite Massage",
-				"price": 220
-			}
-		],
-		"type": "massage"
 	}
 ]
