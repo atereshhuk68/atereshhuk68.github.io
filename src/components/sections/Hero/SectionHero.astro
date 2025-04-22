@@ -1,5 +1,5 @@
 ---
-import { Button } from '@heroui/react';
+import { Button, Link } from '@heroui/react';
 
 import GridImage from '@assets/images/hero-demo-photo-w736.webp';
 import { Image } from 'astro:assets';
@@ -11,17 +11,17 @@ import { motion } from 'framer-motion';
 		<div
 			class="bg-golden-200 text-black-900 py-11 lg:py-[120px] px-6 xl:px-8 rounded-2xl grid content-start justify-items-start gap-6 sm:col-span-2 lg:col-span-1 lg:row-span-2 relative isolate overflow-hidden">
 			<div class="grid gap-4">
-				<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">Flawless Nails & Makeup for Every Occasion</h1>
+				<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">At BFancy, we fulfill not only dreams, but also stylish fantasies!</h1>
 
 				<p class="text-lg">
-					Discover the perfect blend of elegance and artistry. Our expert nail and makeup services are designed to make you shine, whether it’s for a special event or everyday
-					beauty.
+					Professional manicure, nail styling, make-up, eyebrows grooming and relaxing massages - everything to make you feel confident and special. Our specialists will take care
+					of every detail, and you can just... be yourself.
 				</p>
 			</div>
 
 			<Button variant="solid" size="lg" color="primary" radius="sm" className="bg-black-900" client:load>Schedule Your Appointment</Button>
 
-			<small class="text-xs font-medium text-black-500">Contact us for a quick and easy appointment!</small>
+			<small class="text-xs font-medium text-black-500">BFancy - beauty starts right here. Make an appointment today!</small>
 
 			<motion.div
 				animate={{ rotate: 360 }}
@@ -52,7 +52,16 @@ import { motion } from 'framer-motion';
 
 			<hr />
 
-			<p>Check our latest reviews in Instagram</p>
+			<p>
+				<Link
+					isExternal
+					showAnchorIcon
+					className="text-black-900 underline hover:no-underline font-semibold cursor-pointer"
+					href="https://maps.app.goo.gl/MNJ9LVHxZKGLBDd86?g_st=com.google.maps.preview.copy"
+					rel="noopener noreferrer"
+					client:load>Check our latest reviews</Link
+				>
+			</p>
 		</div>
 	</div>
 </div>
