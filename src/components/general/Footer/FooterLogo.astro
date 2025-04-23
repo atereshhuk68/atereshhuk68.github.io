@@ -1,0 +1,18 @@
+---
+import Logo from '@assets/logo/footer-logo-w160.svg';
+import { Image } from 'astro:assets';
+import cx from 'classix';
+
+const mainLogoAspectRatioClass = `${Logo.width}/${Logo.height}`;
+const isHomepage = Astro.url.pathname === '/';
+
+// Determine the wrapper component based on the page
+const Wrapper = isHomepage ? 'div' : 'a';
+const wrapperProps = isHomepage ? {} : { href: '/', 'aria-label': 'Go to homepage' };
+---
+
+<div class="flex lg:justify-center flex-grow order-first lg:order-[initial]">
+	<Wrapper {...wrapperProps} class="aspect-[160/155] w-[120px] h-auto">
+		<Image src={Logo} alt="BFancy Footer Logo" class={cx(mainLogoAspectRatioClass, 'w-[180px] xl:w-[220px] h-auto')} width={Logo.width} height={Logo.height} />
+	</Wrapper>
+</div>

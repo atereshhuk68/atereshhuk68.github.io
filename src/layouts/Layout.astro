@@ -3,10 +3,11 @@ import '../styles/font.css';
 import '../styles/style.css';
 import Header from '../components/general/Header/Header.astro';
 import { ClientRouter } from 'astro:transitions';
+import Footer from '@components/general/Footer/Footer.astro';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth min-h-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -15,8 +16,11 @@ import { ClientRouter } from 'astro:transitions';
 		<title>BFancy</title>
 		<ClientRouter fallback="none" />
 	</head>
-	<body class="font-sans bg-shell-50 min-w-[360px] min-h-[2100px] overflow-x-hidden">
+	<body class="font-sans bg-shell-50 min-w-[360px] min-h-[2100px] overflow-x-hidden grid grid-rows-[auto_1fr_auto]">
 		<Header />
-		<slot />
+		<main>
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
