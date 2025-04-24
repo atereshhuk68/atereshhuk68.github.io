@@ -1,5 +1,6 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useMediaQuery } from '@hooks/useMediaQuery';
+import cx from 'classix';
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -36,7 +37,7 @@ export function HeaderMenu({ className }: { className?: string }) {
 						{(item) => {
 							const isActive = currentPath === item.href;
 							return (
-								<DropdownItem key={item.href} href={item.href} className={isActive ? activeLinkClasses : ''}>
+								<DropdownItem key={item.href} href={item.href} className={cx(baseLinkClasses, isActive ? activeLinkClasses : '')}>
 									{item.label}
 								</DropdownItem>
 							);
