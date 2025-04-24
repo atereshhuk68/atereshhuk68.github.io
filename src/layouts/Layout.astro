@@ -1,5 +1,6 @@
 ---
 import '../styles/font.css';
+import '../styles/global.css';
 import '../styles/style.css';
 import Header from '../components/general/Header/Header.astro';
 import { ClientRouter } from 'astro:transitions';
@@ -16,9 +17,9 @@ import Footer from '@components/general/Footer/Footer.astro';
 		<title>BFancy</title>
 		<ClientRouter fallback="none" />
 	</head>
-	<body class="font-sans bg-shell-50 min-w-[360px] min-h-[2100px] overflow-x-hidden grid grid-rows-[auto_1fr_auto]">
+	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto]">
 		<Header />
-		<main>
+		<main class="pb-20">
 			<slot />
 		</main>
 		<Footer />

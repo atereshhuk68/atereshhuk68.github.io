@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@plugin '../../hero.ts';
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--color-golden-200: #ffce6b;
+
+	--color-black-100: #eceff2;
+	--color-black-200: #d5dbe2;
+	--color-black-300: #b0bbc9;
+	--color-black-500: #667a91;
+	--color-black-600: #516278;
+	--color-black-900: #333c47;
+
+	--color-white: #fefefe;
+
+	--color-cove-600: #5b76b5;
+	--color-cove-700: #5065a5;
+
+	--color-shell-50: #faf7f6;
+	--color-shell-300: #debdb4;
+
+	--font-sans: 'Inter', sans-serif;
+	--font-heading: 'Grompled', serif;
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+}
