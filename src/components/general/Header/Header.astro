@@ -4,13 +4,26 @@ import { HeaderLangs } from './components/HeaderLangs.tsx';
 import HeaderLogo from './components/HeaderLogo.astro';
 import { HeaderMenu } from './components/HeaderMenu.tsx';
 import { VerticalSeparator } from '@components/icons/VerticalSeparator';
-import { Calendar, Menu } from 'lucide-react';
+import { Calendar } from 'lucide-react';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { LanguagesList } from '@i18n/langs';
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const menuItems = [
+	{ href: '#services', label: t('header.nav.services') },
+	{ href: '#aboutUs', label: t('header.nav.aboutUs') },
+	{ href: getRelativeLocaleUrl(lang, 'careers'), label: t('header.nav.careers') },
+];
 ---
 
 <header class="py-8">
 	<div class="container">
 		<div class="flex items-center justify-between sm:gap-1">
-			<HeaderMenu className="lg:w-[350px] order-last lg:order-[initial]" client:load />
+			<HeaderMenu menuItems={menuItems} className="lg:w-[350px] order-last lg:order-[initial]" client:load />
 
 			<HeaderLogo class="flex-grow lg:flex-grow-0" />
 
@@ -19,7 +32,9 @@ import { Calendar, Menu } from 'lucide-react';
 					<Calendar size={24} />
 				</Button>
 
-				<Button variant="bordered" size="lg" radius="sm" className="font-medium text-cove-700 border-cove-700 border-[2px] hidden sm:inline-flex" client:load> Appointment</Button>
+				<Button variant="bordered" size="lg" radius="sm" className="font-medium text-cove-700 border-cove-700 border-[2px] hidden sm:inline-flex" client:load>
+					<span>{t('header.cta.appointment')}</span>
+				</Button>
 
 				<VerticalSeparator client:load />
 

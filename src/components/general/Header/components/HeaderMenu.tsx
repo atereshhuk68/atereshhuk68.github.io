@@ -4,16 +4,18 @@ import cx from 'classix';
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const menuItems = [
-	{ href: '#services', label: 'Services' },
-	{ href: '#aboutUs', label: 'About Us' },
-	{ href: '/careers', label: 'Careers' },
-];
-
 const activeLinkClasses = 'pointer-events-none text-cove-700';
 const baseLinkClasses = 'text-black-900 hover:text-black-600 transition-[color] duration-200';
 
-export function HeaderMenu({ className }: { className?: string }) {
+interface HeaderMenuProps {
+	menuItems: {
+		label: string;
+		href: string;
+	}[];
+	className?: string;
+}
+
+export function HeaderMenu({ className, menuItems = [] }: HeaderMenuProps) {
 	const isSmallOrMediumScreen = useMediaQuery('(max-width: 1023.98px)');
 	const [currentPath, setCurrentPath] = useState('');
 

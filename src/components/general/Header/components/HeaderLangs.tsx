@@ -1,25 +1,19 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import { Languages } from 'lucide-react';
-import { useState } from 'react';
+import { LanguagesList } from '@i18n/langs';
+import { Languages as LanguagesIcon } from 'lucide-react';
 
 export function HeaderLangs() {
-	const [open, setOpen] = useState(false);
-
-	const handleOpenChange = (open: boolean) => {
-		setOpen(open);
-	};
-
 	return (
-		<Dropdown onOpenChange={handleOpenChange} className="bg-black-100">
+		<Dropdown className="bg-black-100">
 			<DropdownTrigger>
-				<Button variant="light" isIconOnly={true} startContent={<Languages size={24} />}>
-					{' '}
-				</Button>
+				<Button variant="light" isIconOnly startContent={<LanguagesIcon size={24} />}></Button>
 			</DropdownTrigger>
-			<DropdownMenu aria-label="Static Actions">
-				<DropdownItem key="new">Polski</DropdownItem>
-				<DropdownItem key="copy">Українська</DropdownItem>
-				<DropdownItem key="edit">Русский</DropdownItem>
+			<DropdownMenu aria-label="Static Actions" items={LanguagesList}>
+				{({ href, name }) => (
+					<DropdownItem key={name} href={href}>
+						{name}
+					</DropdownItem>
+				)}
 			</DropdownMenu>
 		</Dropdown>
 	);

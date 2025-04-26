@@ -7,6 +7,14 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://atereshhuk68.github.io',
+	trailingSlash: 'always',
+	i18n: {
+		locales: ['pl', 'en', 'uk', 'ru'],
+		defaultLocale: 'pl',
+		routing: {
+			prefixDefaultLocale: false,
+		},
+	},
 	devToolbar: {
 		enabled: false,
 	},
