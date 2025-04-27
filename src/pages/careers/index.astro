@@ -4,9 +4,12 @@ import { CareerCard } from '@components/Careers/CareerCard.tsx';
 import type { CareerCardType } from 'src/types/types';
 
 const careers: CareerCardType[] = Object.values(import.meta.glob('./*.md', { eager: true }));
+
+const title = 'Join Our Team';
+const description = 'We are always looking for talented individuals to join our team. Explore our open positions and apply today!';
 ---
 
-<Layout>
+<Layout {title} {description}>
 	<div class="container py-12">
 		<div class="text-center mb-12">
 			<h1 class="font-heading text-4xl">POLSKI Join Our Team</h1>

@@ -5,6 +5,9 @@ import '../styles/style.css';
 import Header from '../components/general/Header/Header.astro';
 import { ClientRouter } from 'astro:transitions';
 import Footer from '@components/general/Footer/Footer.astro';
+import Favicons from '@components/general/Head/Favicons.astro';
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,9 +15,10 @@ import Footer from '@components/general/Footer/Footer.astro';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="robots" content="noindex nofollow" />
-		<title>BFancy</title>
+		<Favicons />
+		<title>{title}</title>
+		<meta name="description" content={description} />
 		<ClientRouter fallback="none" />
 	</head>
 	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto]">
