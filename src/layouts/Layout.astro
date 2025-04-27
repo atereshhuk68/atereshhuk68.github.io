@@ -6,12 +6,15 @@ import Header from '../components/general/Header/Header.astro';
 import { ClientRouter } from 'astro:transitions';
 import Footer from '@components/general/Footer/Footer.astro';
 import Favicons from '@components/general/Head/Favicons.astro';
+import { getLangFromUrl } from '@i18n/utils';
+import OpenGraph from '@components/general/Head/OpenGraph.astro';
 
 const { title, description } = Astro.props;
+const currentLang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth min-h-full">
+<html lang={currentLang} class="scroll-smooth min-h-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -19,6 +22,7 @@ const { title, description } = Astro.props;
 		<Favicons />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<OpenGraph {title} {description} />
 		<ClientRouter fallback="none" />
 	</head>
 	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto]">
