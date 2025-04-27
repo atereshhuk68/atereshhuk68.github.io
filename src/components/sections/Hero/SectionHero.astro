@@ -4,24 +4,31 @@ import { Button, Link } from '@heroui/react';
 import GridImage from '@assets/images/hero-demo-photo-w736.webp';
 import { Image } from 'astro:assets';
 import { motion } from 'framer-motion';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <div class="container">
 	<div class="grid sm:grid-cols-[225px_1fr] lg:grid-cols-2 gap-5 xl:gap-8 sm:pt-8">
 		<div
 			class="bg-golden-200 text-black-900 py-11 lg:py-[120px] px-6 xl:px-8 rounded-2xl grid content-start justify-items-start gap-6 sm:col-span-2 lg:col-span-1 lg:row-span-2 relative isolate overflow-hidden">
-			<div class="grid">
-				<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">At BFancy, we fulfill not only dreams, but also stylish fantasies!</h1>
+			<div class="grid gap-3">
+				<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">
+					{t('hero.h1')}
+				</h1>
 
 				<p class="text-lg">
-					Professional manicure, nail styling, make-up, eyebrows grooming and relaxing massages - everything to make you feel confident and special. Our specialists will take care
-					of every detail, and you can just... be yourself.
+					{t('hero.p')}
 				</p>
 			</div>
 
-			<Button variant="solid" size="lg" color="primary" radius="sm" className="bg-black-900" client:load>Schedule Your Appointment</Button>
+			<Button variant="solid" size="lg" color="primary" radius="sm" className="bg-black-900" client:load>
+				{t('hero.cta')}
+			</Button>
 
-			<small class="text-xs font-medium text-black-500">BFancy - beauty starts right here. Make an appointment today!</small>
+			<small class="text-xs font-medium text-black-500">{t('hero.note')}</small>
 
 			<motion.div
 				animate={{ rotate: 360 }}
@@ -43,11 +50,12 @@ import { motion } from 'framer-motion';
 		</div>
 
 		<div class="bg-shell-300 rounded-2xl p-6 lg:p-8 space-y-4">
-			<strong class="text-2xl lg:text-3xl font-heading">We stand by our quality. Not satisfied? We'll make it right!</strong>
+			<strong class="text-2xl lg:text-3xl font-heading flex mb-3">
+				{t('hero.strong')}
+			</strong>
 
 			<p class="text-base lg:text-lg">
-				At our salon, your satisfaction is our top priority. Our skilled professionals use only premium products and follow the highest standards to ensure exceptional results
-				every time.
+				{t('hero.second.p')}
 			</p>
 
 			<hr />
@@ -59,8 +67,9 @@ import { motion } from 'framer-motion';
 					className="text-black-900 underline hover:no-underline font-semibold cursor-pointer"
 					href="https://maps.app.goo.gl/MNJ9LVHxZKGLBDd86?g_st=com.google.maps.preview.copy"
 					rel="noopener noreferrer"
-					client:load>Check our latest reviews</Link
-				>
+					client:load>
+					{t('hero.reviews')}
+				</Link>
 			</p>
 		</div>
 	</div>

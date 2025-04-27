@@ -6,7 +6,7 @@ import type { Service } from 'src/types/types';
 import { ServiceCard } from './ServiceCard';
 import { TabControl } from './TabControl';
 
-export function Services({ services }: { services: Service[] }) {
+export function Services({ services, ctaText }: { services: Service[]; ctaText: string }) {
 	const { filteredCards, showAll, setServices, showAllCards } = useServicesStore();
 
 	useEffect(() => {
@@ -28,7 +28,7 @@ export function Services({ services }: { services: Service[] }) {
 			{!showAll && (
 				<motion.div className="flex justify-center mt-8" data-all-services>
 					<Button size="md" variant="solid" className="bg-golden-200 text-black-900 font-medium" onPress={showAllCards}>
-						Display all services
+						{ctaText}
 					</Button>
 				</motion.div>
 			)}
