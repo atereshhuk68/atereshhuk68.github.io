@@ -5,18 +5,20 @@ import HeaderLogo from './components/HeaderLogo.astro';
 import { HeaderMenu } from './components/HeaderMenu.tsx';
 import { VerticalSeparator } from '@components/icons/VerticalSeparator';
 import { Calendar } from 'lucide-react';
+
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import { LanguagesList } from '@i18n/langs';
-
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLang } from '@i18n/langs';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const careersHref = currentLang === defaultLang ? '/pl/careers/' : getRelativeLocaleUrl(currentLang, 'careers');
 
 const menuItems = [
 	{ href: '#services', label: t('header.nav.services') },
 	{ href: '#aboutUs', label: t('header.nav.aboutUs') },
-	{ href: getRelativeLocaleUrl(lang, 'careers'), label: t('header.nav.careers') },
+	{ href: careersHref, label: t('header.nav.careers') },
 ];
 ---
 

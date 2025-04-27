@@ -3,8 +3,18 @@ import { getCollection } from 'astro:content';
 import Layout from 'src/layouts/Layout.astro';
 import { CareerCard } from '@components/Careers/CareerCard.tsx';
 import type { CareerCardTypes } from 'src/types/types';
+import { Languages } from '@i18n/langs';
 
-const careers = await getCollection('careers');
+const currentLang = Astro.params.lang;
+const careers = await getCollection('careers', ({ slug }) => slug.startsWith(currentLang + '/'));
+
+export async function getStaticPaths() {
+	return Object.keys(Languages).map((lang) => {
+		return {
+			params: { lang },
+		};
+	});
+}
 ---
 
 <Layout>
@@ -16,9 +26,13 @@ const careers = await getCollection('careers');
 
 		<div class="grid md:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
 			{
-				careers.map((career: CareerCardTypes) => {
-					return <CareerCard {...career} />;
-				})
+				careers.length > 0 ? (
+					careers.map((career: CareerCardTypes) => {
+						return <CareerCard {...career} />;
+					})
+				) : (
+					<p class="col-span-full text-center text-default-500">No open positions available in this language currently.</p>
+				)
 			}
 		</div>
 	</div>

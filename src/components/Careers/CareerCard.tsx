@@ -4,6 +4,13 @@ import type { CareerCardTypes } from 'src/types/types';
 
 export function CareerCard({ ...career }: CareerCardTypes) {
 	const { data, slug } = career;
+
+	const splitedSlug = slug.split('/');
+
+	const lang = splitedSlug[0];
+
+	const newHref = `${lang}/careers/${splitedSlug[1]}`;
+
 	return (
 		<Card>
 			<CardHeader className="grid gap-3 grid-cols-[max-content_1fr] items-start">
@@ -30,7 +37,7 @@ export function CareerCard({ ...career }: CareerCardTypes) {
 					Open
 				</Chip>
 
-				<a className="text-sm text-cove-600 hover:text-cove-600/75" href={`/careers/${slug}/`}>
+				<a className="text-sm text-cove-600 hover:text-cove-600/75" href={`/${newHref}/`}>
 					Details
 				</a>
 			</CardFooter>
