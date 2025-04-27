@@ -1,0 +1,25 @@
+---
+import Layout from 'src/layouts/Layout.astro';
+import { CareerCard } from '@components/Careers/CareerCard.tsx';
+
+const careers = Object.values(import.meta.glob('./*.md', { eager: true }));
+---
+
+<Layout>
+	<div class="container py-12">
+		<div class="text-center mb-12">
+			<h1 class="font-heading text-4xl">ENGLISH Join Our Team</h1>
+			<p class="text-lg text-pretty">We're looking for talented individuals to help us grow. Explore our open positions below.</p>
+		</div>
+
+		<div class="grid md:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
+			{
+				careers.length > 0 ? (
+					careers.map((career: CareerCardType) => <CareerCard key={career.frontmatter.title} {...career} client:load />)
+				) : (
+					<p class="col-span-full text-center text-default-500">No open positions available currently.</p>
+				)
+			}
+		</div>
+	</div>
+</Layout>

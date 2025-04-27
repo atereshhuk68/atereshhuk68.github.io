@@ -1,9 +1,8 @@
 ---
-title: Makeup Artist-Brow Specialist-Lash Technician
+layout: '@layouts/TextContentLayout.astro'
+title: POLKSI Makeup Artist-Brow Specialist-Lash Technician
 description: A new beauty salon in the center of Warsaw is looking for a makeup artist-brow specialist-lash technician in one person!
 location: Warsaw
-contactPhone: +48452917711
-contactName: Daria
 ---
 
 ## Requirements:

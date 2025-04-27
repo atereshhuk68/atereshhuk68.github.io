@@ -1,4 +1,5 @@
 ---
+layout: '@layouts/TextContentLayout.astro'
 title: POLKSI Masseur
 description: A new beauty salon in the center of Warsaw is looking for a professional massage therapist!
 location: Warsaw

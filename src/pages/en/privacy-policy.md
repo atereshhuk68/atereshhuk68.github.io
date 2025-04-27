@@ -1,3 +1,8 @@
+---
+layout: '@layouts/TextContentLayout.astro'
+title: 'Privacy Policy'
+---
+
 # Privacy Policy
 
 BFancy Limited Liability Company – www.bfancy.pl

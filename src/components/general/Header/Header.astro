@@ -13,12 +13,10 @@ import { defaultLang } from '@i18n/langs';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
-const careersHref = currentLang === defaultLang ? '/pl/careers/' : getRelativeLocaleUrl(currentLang, 'careers');
-
 const menuItems = [
 	{ href: '#services', label: t('header.nav.services') },
 	{ href: '#aboutUs', label: t('header.nav.aboutUs') },
-	{ href: careersHref, label: t('header.nav.careers') },
+	{ href: getRelativeLocaleUrl(currentLang, 'careers'), label: t('header.nav.careers') },
 ];
 ---
 

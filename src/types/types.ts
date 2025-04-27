@@ -11,7 +11,14 @@ export type ServiceCardProps = {
 	services: ServiceProps[];
 };
 
-export type CareerCardTypes = CollectionEntry<'careers'>;
+export type CareerCardType = {
+	frontmatter: {
+		title: string;
+		description: string;
+		location: string;
+	};
+	url: string;
+};
 
 export type ServiceCardTypes = CollectionEntry<'services'>;
 
