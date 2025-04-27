@@ -1,8 +1,8 @@
-import { file, glob } from 'astro/loaders';
+import { file } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 const careers = defineCollection({
-	loader: glob({ pattern: '**/*.md', base: 'src/data/careers' }),
+	type: 'content',
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),

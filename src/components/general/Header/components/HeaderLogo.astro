@@ -18,9 +18,10 @@ const homePageUrl = lang === defaultLang ? '/' : `/${lang}/`;
 const isHomepage = Astro.url.pathname === homePageUrl;
 
 const Comp = isHomepage ? 'div' : 'a';
+const CompProps = isHomepage ? {} : { href: '/', 'aria-label': 'Go to homepage' };
 ---
 
-<Comp class={cx('order-first lg:order-[initial]', className)}>
+<Comp class={cx('order-first lg:order-[initial]', className)} {...CompProps}>
 	<Image src={Logo} alt="BFancy Logo" class={cx(mainLogoAspectRatioClass, 'w-[180px] xl:w-[220px] h-auto hidden sm:inline-flex')} width={Logo.width} height={Logo.height} />
 
 	<Image src={SquareLogo} alt="BFancy Logo" class="aspect-square w-24 sm:hidden" width={SquareLogo.width} height={SquareLogo.height} />

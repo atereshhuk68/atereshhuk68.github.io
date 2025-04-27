@@ -1,3 +1,8 @@
+---
+layout: '@layouts/TextContentLayout.astro'
+title: 'Polityka Prywatności'
+---
+
 # Polityka Prywatności
 
 BFancy Spółka z ograniczoną odpowiedzialnością – www.bfancy.pl

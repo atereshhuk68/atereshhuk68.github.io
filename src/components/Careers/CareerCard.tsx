@@ -3,7 +3,7 @@ import { Briefcase, MapPin } from 'lucide-react';
 import type { CareerCardTypes } from 'src/types/types';
 
 export function CareerCard({ ...career }: CareerCardTypes) {
-	const { data, id: slug } = career;
+	const { data, slug } = career;
 	return (
 		<Card>
 			<CardHeader className="grid gap-3 grid-cols-[max-content_1fr] items-start">
@@ -30,7 +30,7 @@ export function CareerCard({ ...career }: CareerCardTypes) {
 					Open
 				</Chip>
 
-				<a className="text-sm text-cove-600 hover:text-cove-600/75" href={`/careers/${slug}`}>
+				<a className="text-sm text-cove-600 hover:text-cove-600/75" href={`/careers/${slug}/`}>
 					Details
 				</a>
 			</CardFooter>
