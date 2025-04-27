@@ -2,11 +2,11 @@ import { Button } from '@heroui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useServicesStore } from 'src/store/servicesStore';
-import type { ServicesDataTypes } from 'src/types/types';
+import type { Service } from 'src/types/types';
 import { ServiceCard } from './ServiceCard';
 import { TabControl } from './TabControl';
 
-export function Services({ services }: { services: ServicesDataTypes[] }) {
+export function Services({ services }: { services: Service[] }) {
 	const { filteredCards, showAll, setServices, showAllCards } = useServicesStore();
 
 	useEffect(() => {
@@ -19,7 +19,7 @@ export function Services({ services }: { services: ServicesDataTypes[] }) {
 
 			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4" data-service-card>
 				<AnimatePresence>
-					{filteredCards.map(({ id, name, services: serviceItems }: ServicesDataTypes) => (
+					{filteredCards.map(({ id, name, services: serviceItems }: Service) => (
 						<ServiceCard key={id} name={name} services={serviceItems} />
 					))}
 				</AnimatePresence>

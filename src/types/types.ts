@@ -1,16 +1,3 @@
-import type { CollectionEntry } from 'astro:content';
-
-export type ServiceProps = {
-	title: string;
-	price: number | string;
-	description?: string;
-	currency?: string;
-};
-export type ServiceCardProps = {
-	name: string;
-	services: ServiceProps[];
-};
-
 export type CareerCardType = {
 	frontmatter: {
 		title: string;
@@ -20,6 +7,15 @@ export type CareerCardType = {
 	url: string;
 };
 
-export type ServiceCardTypes = CollectionEntry<'services'>;
+export type ServiceCategory = {
+	title: string;
+	price: number | string;
+	description?: string;
+};
 
-export type ServicesDataTypes = CollectionEntry<'services'>['data'];
+export type Service = {
+	id: string;
+	name: string;
+	services: ServiceCategory[];
+	type: string;
+};

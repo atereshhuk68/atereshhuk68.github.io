@@ -11,8 +11,7 @@
 			"@assets/*": ["src/assets/*"],
 			"@hooks/*": ["src/hooks/*"],
 			"@content/*": ["src/content/*"],
-			"@i18n/*": ["src/i18n/*"],
-			"@types/*": ["src/types/*"]
+			"@i18n/*": ["src/i18n/*"]
 		},
 		"jsx": "react-jsx",
 		"jsxImportSource": "react"
