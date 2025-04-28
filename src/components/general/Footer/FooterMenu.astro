@@ -12,14 +12,7 @@ const basePath = getTranslatedURL(currentLang, currentPathname);
 <ul class="flex items-center gap-4 lg:w-[280px] text-sm">
 	{
 		LanguagesList.map(({ locale, name }) => (
-			<li>
-				{locale === currentLang ? (
-					<span class="text-cove-600 pointer-events-none">{name}</span>
-				) : (
-					// Use the Astro helper function here
-					<a href={getRelativeLocaleUrl(locale, basePath)}>{name}</a>
-				)}
-			</li>
+			<li>{locale === currentLang ? <span class="text-cove-600 pointer-events-none">{name}</span> : <a href={getRelativeLocaleUrl(locale, basePath)}>{name}</a>}</li>
 		))
 	}
 </ul>

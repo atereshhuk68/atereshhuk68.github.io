@@ -8,7 +8,7 @@ import { Calendar } from 'lucide-react';
 
 import { getLangFromUrl, getTranslatedURL, useTranslations } from '@i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { defaultLang } from '@i18n/langs';
+import { LanguagesList, defaultLang } from '@i18n/langs';
 
 const currentLang = getLangFromUrl(Astro.url);
 const currentPathname = Astro.url.pathname;
@@ -29,6 +29,12 @@ const menuItems = [
 	{ href: modifyUrl('#aboutUs'), label: t('header.nav.aboutUs') },
 	{ href: getRelativeLocaleUrl(currentLang, 'careers'), label: t('header.nav.careers') },
 ];
+
+const ModifiedLanguagesList = LanguagesList.map(({ locale, name }) => ({
+	locale,
+	name,
+	href: getRelativeLocaleUrl(locale, basePath),
+}));
 ---
 
 <header class="py-8">
@@ -49,7 +55,7 @@ const menuItems = [
 
 				<VerticalSeparator client:load />
 
-				<HeaderLangs client:load />
+				<HeaderLangs items={ModifiedLanguagesList} client:load />
 
 				<VerticalSeparator className="lg:hidden" client:load />
 			</div>

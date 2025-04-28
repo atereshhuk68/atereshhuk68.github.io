@@ -19,6 +19,12 @@ export type LanguageListTypes = {
 	name: string;
 };
 
+export type LanguagesListType = {
+	locale: Locales;
+	href: string;
+	name: string;
+};
+
 export const LanguagesList = Object.entries(Languages).map(([key, value]) => ({
 	locale: key,
 	href: key === defaultLang ? '/' : `/${key}/`,
