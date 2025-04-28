@@ -6,7 +6,7 @@ import type { Service } from 'src/types/types';
 import { ServiceCard } from './ServiceCard';
 import { TabControl } from './TabControl';
 
-export function Services({ services, ctaText }: { services: Service[]; ctaText: string }) {
+export function ServicesSection({ services, ctaText }: { services: Service[]; ctaText: string }) {
 	const { filteredCards, showAll, setServices, showAllCards } = useServicesStore();
 
 	useEffect(() => {
@@ -19,8 +19,8 @@ export function Services({ services, ctaText }: { services: Service[]; ctaText: 
 
 			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4" data-service-card>
 				<AnimatePresence>
-					{filteredCards.map(({ id, name, services: serviceItems }: Service) => (
-						<ServiceCard key={id} name={name} services={serviceItems} />
+					{filteredCards.map(({ ...props }: Service) => (
+						<ServiceCard {...props} />
 					))}
 				</AnimatePresence>
 			</div>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import type { ServiceCardProps, ServiceProps } from '../../../types/types';
+import type { Service, ServiceListItem } from '../../../types/types';
 
-function ServiceRow({ title, price, description, currency }: ServiceProps) {
+function ServiceRow({ title, price, description, currency }: ServiceListItem) {
 	return (
 		<li className="flex justify-between gap-2 pt-2">
 			<div className="flex flex-col">
@@ -16,15 +16,15 @@ function ServiceRow({ title, price, description, currency }: ServiceProps) {
 	);
 }
 
-export function ServiceCard({ name, services }: ServiceCardProps) {
+export function ServiceCard({ name, list }: Service) {
 	return (
 		<motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
 			<div className="p-6 space-y-4 h-full bg-black-100 rounded-lg min-h-[280px]">
 				<strong className="text-2xl font-heading">{name}</strong>
 
 				<ul className="space-y-2 divide-y-1 divide-black-200">
-					{services.map(({ title, ...props }: ServiceProps) => (
-						<ServiceRow title={title} key={title} {...props} />
+					{list.map(({ title, ...props }: ServiceListItem) => (
+						<ServiceRow key={title} title={title} {...props} />
 					))}
 				</ul>
 			</div>

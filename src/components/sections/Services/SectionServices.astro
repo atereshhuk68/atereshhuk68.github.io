@@ -1,7 +1,6 @@
 ---
-import { Services } from './Services.tsx';
-import servicesData from '../../../data/services.json';
-import { type Service } from '../../../types/types.ts';
+import { ServicesSection } from './Services.tsx';
+import Services from '../../../data/services.json';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
@@ -17,11 +16,12 @@ const ctaText = t('services.cta');
 			<h2 class="text-4xl lg:text-5xl font-heading text-balance">
 				{t('services.h2')}
 			</h2>
+
 			<p class="text-lg max-w-3xl">
 				{t('services.p')}
 			</p>
 		</div>
 
-		<Services services={servicesData as Service[]} {ctaText} client:visible />
+		<ServicesSection services={Services} {ctaText} client:load />
 	</div>
 </section>

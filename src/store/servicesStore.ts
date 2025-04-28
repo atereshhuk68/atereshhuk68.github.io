@@ -1,17 +1,17 @@
 // filepath: src/store/servicesStore.ts
 import { shuffle } from 'es-toolkit';
-import type { ServicesDataTypes } from 'src/types/types';
+import { type Service } from 'src/types/types';
 import { create } from 'zustand';
 
 const MAX_INITIAL_CARDS = 6;
 
 interface ServicesState {
-	allServices: ServicesDataTypes[];
-	filteredCards: ServicesDataTypes[];
+	allServices: Service[];
+	filteredCards: Service[];
 	activeFilter: string;
 	showAll: boolean;
 	filters: string[];
-	setServices: (services: ServicesDataTypes[]) => void;
+	setServices: (services: Service[]) => void;
 	setFilter: (filterValue: string) => void;
 	showAllCards: () => void;
 }
@@ -23,7 +23,7 @@ export const useServicesStore = create<ServicesState>((set, get) => ({
 	showAll: false,
 	filters: [],
 
-	setServices: (services: ServicesDataTypes[]) => {
+	setServices: (services: Service[]) => {
 		const initialFilter = 'all';
 
 		const initialCards = services.slice(0, MAX_INITIAL_CARDS);
@@ -41,7 +41,6 @@ export const useServicesStore = create<ServicesState>((set, get) => ({
 		});
 	},
 
-	// Action to set the active filter and update cards
 	setFilter: (filterValue) => {
 		const { allServices } = get();
 		let newFilteredCards;
@@ -60,7 +59,6 @@ export const useServicesStore = create<ServicesState>((set, get) => ({
 		});
 	},
 
-	// Action to show all cards for the current filter
 	showAllCards: () => {
 		const { allServices, activeFilter } = get();
 		let cardsToShow;

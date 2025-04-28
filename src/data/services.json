@@ -2,7 +2,7 @@
 	{
 		"id": 7,
 		"name": "Brows",
-		"services": [
+		"list": [
 			{
 				"title": "Shape correction",
 				"price": 50
@@ -30,7 +30,7 @@
 	{
 		"id": 15,
 		"name": "Men’s Massage",
-		"services": [
+		"list": [
 			{
 				"title": "Regular",
 				"price": 220
@@ -53,7 +53,7 @@
 	{
 		"id": 1,
 		"name": "Manicure",
-		"services": [
+		"list": [
 			{
 				"title": "Manicure",
 				"price": 80
@@ -86,7 +86,7 @@
 	{
 		"id": 4,
 		"name": "Slay Nails",
-		"services": [
+		"list": [
 			{
 				"title": "Standard",
 				"price": 300,
@@ -103,7 +103,7 @@
 	{
 		"id": 11,
 		"name": "Extras",
-		"services": [
+		"list": [
 			{
 				"title": "Wet effect",
 				"price": 30
@@ -122,7 +122,7 @@
 	{
 		"id": 13,
 		"name": "Classic Massage",
-		"services": [
+		"list": [
 			{
 				"title": "1 hour",
 				"price": 180
@@ -137,7 +137,7 @@
 	{
 		"id": 17,
 		"name": "Massage",
-		"services": [
+		"list": [
 			{
 				"title": "Anti-cellulite Massage",
 				"price": 220
@@ -148,7 +148,7 @@
 	{
 		"id": 2,
 		"name": "Nail Extensions",
-		"services": [
+		"list": [
 			{
 				"title": "Short",
 				"price": 200
@@ -167,7 +167,7 @@
 	{
 		"id": 9,
 		"name": "Eyelash Extensions",
-		"services": [
+		"list": [
 			{
 				"title": "1:1",
 				"price": 170
@@ -194,7 +194,7 @@
 	{
 		"id": 5,
 		"name": "Extras",
-		"services": [
+		"list": [
 			{
 				"title": "Nail strengthening",
 				"price": 40
@@ -222,7 +222,7 @@
 	{
 		"id": 16,
 		"name": "Additional Massage",
-		"services": [
+		"list": [
 			{
 				"title": "Head Massage",
 				"price": 50
@@ -237,7 +237,7 @@
 	{
 		"id": 10,
 		"name": "Eyelash extensions correction",
-		"services": [
+		"list": [
 			{
 				"title": "1:1",
 				"price": 150
@@ -264,7 +264,7 @@
 	{
 		"id": 6,
 		"name": "Pedicure",
-		"services": [
+		"list": [
 			{
 				"title": "Hygienic Pedicure",
 				"price": 110
@@ -297,7 +297,7 @@
 	{
 		"id": 14,
 		"name": "Sports Massage",
-		"services": [
+		"list": [
 			{
 				"title": "1 hour",
 				"price": 220
@@ -312,7 +312,7 @@
 	{
 		"id": 3,
 		"name": "Nail extension Correction",
-		"services": [
+		"list": [
 			{
 				"title": "Short",
 				"price": 180
@@ -331,7 +331,7 @@
 	{
 		"id": 8,
 		"name": "Lashes",
-		"services": [
+		"list": [
 			{
 				"title": "Lash tinting",
 				"price": 50
@@ -350,7 +350,7 @@
 	{
 		"id": 12,
 		"name": "Makeup",
-		"services": [
+		"list": [
 			{
 				"title": "Light Makeup",
 				"price": 130

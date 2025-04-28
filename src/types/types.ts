@@ -7,15 +7,16 @@ export type CareerCardType = {
 	url: string;
 };
 
-export type ServiceCategory = {
+export type ServiceListItem = {
 	title: string;
 	price: number | string;
 	description?: string;
+	currency?: string;
 };
 
 export type Service = {
-	id: string;
+	id: number;
 	name: string;
-	services: ServiceCategory[];
+	list: ServiceListItem[];
 	type: string;
 };
