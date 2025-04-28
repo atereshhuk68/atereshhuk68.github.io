@@ -2,34 +2,31 @@
 import '../styles/font.css';
 import '../styles/global.css';
 import '../styles/style.css';
-import Header from '../components/general/Header/Header.astro';
-import { ClientRouter } from 'astro:transitions';
-import Footer from '@components/general/Footer/Footer.astro';
-import Favicons from '@components/general/Head/Favicons.astro';
+
 import { getLangFromUrl } from '@i18n/utils';
-import OpenGraph from '@components/general/Head/OpenGraph.astro';
+import { browserLocales } from '@i18n/langs';
+
+import Header from '../components/general/Header/Header.astro';
+import Footer from '@components/general/Footer/Footer.astro';
+import Head from '@components/general/Head/Head.astro';
+
+const currentLang = getLangFromUrl(Astro.url);
+const locale = browserLocales[currentLang] || 'en_US';
 
 const { title, description } = Astro.props;
-const currentLang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang={currentLang} class="scroll-smooth min-h-full">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="robots" content="noindex nofollow" />
-		<Favicons />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<OpenGraph {title} {description} />
-		<ClientRouter fallback="none" />
-	</head>
+<html lang={locale} class="scroll-smooths min-h-full">
+	<Head {title} {description} />
+
 	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto]">
 		<Header />
+
 		<main class="pb-20">
 			<slot />
 		</main>
+
 		<Footer />
 	</body>
 </html>

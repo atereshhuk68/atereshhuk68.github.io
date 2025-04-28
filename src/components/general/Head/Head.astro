@@ -1,0 +1,19 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+import Favicons from '@components/general/Head/Favicons.astro';
+import OpenGraph from '@components/general/Head/OpenGraph.astro';
+
+const { title, description } = Astro.props;
+---
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="robots" content="noindex nofollow" />
+	<Favicons />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<OpenGraph {title} {description} />
+	<ClientRouter fallback="none" />
+</head>

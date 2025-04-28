@@ -1,10 +1,10 @@
 ---
-import { Link } from '@heroui/react';
 import { Image } from 'astro:assets';
 
 import AboutUsImage from '@assets/images/about-us-image-w782.png';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { ExternalLink } from 'lucide-react';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -27,15 +27,17 @@ const t = useTranslations(currentLang);
 				</p>
 
 				<p class="text-base md:text-lg">
-					<Link
-						client:visible
-						className="text-black-900 underline hover:no-underline font-semibold cursor-pointer"
+					<a
+						class="text-black-900 underline hover:no-underline font-semibold cursor-pointer inline-flex gap-1 items-center"
 						href="https://www.instagram.com/bfancy.warsaw"
-						rel="noopener noreferrer"
-						isExternal
-						showAnchorIcon>
-						{t('about.instagram')}
-					</Link>
+						rel="noopener"
+						target="_blank">
+						<span>
+							{t('about.instagram')}
+						</span>
+
+						<ExternalLink size={20} strokeWidth={2} />
+					</a>
 				</p>
 
 				<hr />
@@ -44,10 +46,10 @@ const t = useTranslations(currentLang);
 
 				<ul class="space-y-4">
 					<li>
-						<Link client:visible className="text-black-900 underline hover:no-underline font-bold cursor-pointer" isExternal>Facebook</Link>
+						<a href="#" class="text-black-900 underline hover:no-underline font-bold cursor-pointer" target="_blank" rel="noopener">Facebook</a>
 					</li>
 					<li>
-						<Link client:visible className="text-black-900 underline hover:no-underline font-bold cursor-pointer" isExternal>Telegram</Link>
+						<a href="#" class="text-black-900 underline hover:no-underline font-bold cursor-pointer" target="_blank" rel="noopener">Telegram</a>
 					</li>
 				</ul>
 			</div>

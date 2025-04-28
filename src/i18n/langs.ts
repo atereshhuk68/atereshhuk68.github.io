@@ -1,5 +1,18 @@
 type Locales = 'en' | 'pl' | 'uk' | 'ru';
 
+type ISOLanguageCodes = 'en-US' | 'pl-PL' | 'uk-UA' | 'ru-RU';
+
+type browserLocalesTypes = {
+	[key in Locales]: ISOLanguageCodes;
+};
+
+export const browserLocales: browserLocalesTypes = {
+	en: 'en-US',
+	pl: 'pl-PL',
+	uk: 'uk-UA',
+	ru: 'ru-RU',
+};
+
 export type LanguagesTypes = {
 	[key in Locales]: string;
 };
