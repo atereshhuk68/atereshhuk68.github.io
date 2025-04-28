@@ -1,30 +1,34 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Masseur
-description: A new beauty salon in the center of Warsaw is looking for a professional massage therapist!
-location: Warsaw
+title: Masażysta/ka
+description: Nowy salon kosmetyczny w centrum Warszawy poszukuje profesjonalnego masażysty/ki!
+location: Warszawa
 ---
 
-## Requirements:
+# Masażysta/ka
 
-- At least 1 year of experience
-- Knowledge of various massage techniques (classic, relaxing, anti-cellulite, and others)
-- Ability to work with different clients and their needs
-- Responsibility, punctuality, and attention to details
-- Good communication skills and a desire to grow in the profession
+Nowy salon kosmetyczny w centrum Warszawy poszukuje profesjonalnego masażysty/ki!
 
-## We offer:
+## Wymagania:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and professional development
-- Stable salary and performance-based bonuses
-- Opportunities for career growth
+- Doświadczenie w pracy min. 1 rok
+- Znajomość różnych technik masażu (klasyczny, relaksacyjny, antycellulitowy i inne)
+- Umiejętność pracy z różnymi klientami i ich potrzebami
+- Odpowiedzialność, punktualność, dbałość o szczegóły
+- Dobre umiejętności komunikacyjne i chęć rozwoju zawodowego
 
-If you want to work in a team of professionals, develop in the beauty industry, and create an atmosphere of comfort and relaxation for our clients, send us your resume or give us a call!
+## Oferujemy:
 
-## Contact for inquiries:
+- Pracę w nowoczesnym i stylowym salonie
+- Komfortowe warunki pracy i przyjazną atmosferę
+- Szkolenie i rozwój zawodowy
+- Stabilne wynagrodzenie i bonusy w zależności od wyników pracy
+- Możliwość awansu zawodowego
 
-- [+48452917711](tel:+48452917711) Daria
+Jeśli chcesz pracować w zespole profesjonalistów, rozwijać się w branży beauty i tworzyć atmosferę relaksu dla naszych klientów, wyślij swoje CV lub zadzwoń!
 
-We look forward to having you on our team!
+Kontakt:
+
+- [+48452917711](+48452917711) Daria
+
+Czekamy na Ciebie w naszym zespole!

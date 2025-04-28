@@ -1,31 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Nail Service Specialist
-description: A new beauty salon in the center of Warsaw is looking for a talented and creative nail service specialist!
-location: Warsaw
+title: Stylista/ka paznokcie
+description: Nowy salon kosmetyczny w centrum Warszawy poszukuje utalentowanego i kreatywnego stylisty/stki paznokcie!
+location: Warszawa
 ---
 
-## Requirements:
+# Stylista/ka paznokcie
 
-- At least 1 year of experience
-- Ability to perform manicure, pedicure, nail extensions, and designs
-- Creativity and attention to detail
-- Ability to work with different techniques and materials
-- Willingness to develop and learn new skills
-- Responsibility, punctuality, and good communication skills
+Nowy salon kosmetyczny w centrum Warszawy poszukuje utalentowanego i kreatywnego stylisty/stki paznokcie!
 
-## We offer:
+## Wymagania:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and professional development
-- Stable salary and bonuses based on performance
-- Career growth opportunities
+• Doświadczenie w pracy min. 1 rok
+• Umiejętność wykonywania manicure, pedicure, przedłużania paznokci i zdobień
+• Kreatywność i dbałość o szczegóły
+• Umiejętność pracy z różnymi technikami i materiałami
+• Chęć rozwoju i nauki nowych umiejętności
+• Odpowiedzialność, punktualność i dobre umiejętności komunikacyjne
 
-If you want to grow in the beauty industry and work in a team of professionals, send your resume with examples of your work to our contact!
+## Oferujemy:
 
-## Contact for inquiries:
+• Pracę w nowoczesnym i stylowym salonie
+• Komfortowe warunki pracy i przyjazną atmosferę
+• Szkolenie i rozwój zawodowy
+• Stabilne wynagrodzenie oraz bonusy w zależności od wyników pracy
+• Możliwość awansu zawodowego
 
-- [+48452917711](tel:+48452917711) Daria
+Jeśli chcesz rozwijać się w branży beauty i pracować w zespole profesjonalistów, wyślij swoje CV z przykładami prac na nasz adres!
 
-We look forward to having you on our team!
+Kontakt:
+
+- [+48452917711](+48452917711) Daria
+
+Czekamy na Ciebie w naszym zespole!

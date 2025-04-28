@@ -1,31 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Makeup Artist-Brow Specialist-Lash Technician
-description: A new beauty salon in the center of Warsaw is looking for a makeup artist-brow specialist-lash technician in one person!
-location: Warsaw
+title: Визажист-бровист-лашмейкер
+description: Новый салон красоты в центре Варшавы ищет визажиста-бровиста-лашмейкера в одном лице!
+location: Варшава
 ---
 
-## Requirements:
+# Визажист-бровист-лашмейкер
 
-- At least 1 year of experience in the beauty industry
-- Knowledge of modern trends and techniques in makeup
-- Ability to work with different skin types and face shapes
-- Creativity, attention to detail, and a sense of style
-- Willingness to develop and learn new skills
-- Responsibility, punctuality, and good communication skills
+Новый салон красоты в центре Варшавы ищет визажиста-бровиста-лашмейкера в одном лице!
 
-## We offer:
+## Требования:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and development in the professional field
-- Stable salary and performance-based bonuses
-- Career growth opportunities
+- Опыт работы в сфере красоты 1 года
+- Знание современных тенденций и техник в макияже
+- Умение работать с различными типами кожи и лиц
+- Креативность, внимание к деталям и чувство стиля
+- Желание развиваться и обучаться новому
+- Ответственность, пунктуальность, хорошие коммуникативные навыки
 
-If you want to work in a team of professionals, grow in the beauty industry, and create stylish looks for our clients, send your resume with examples of your work to our address!
+## Мы предлагаем:
 
-## Contact for inquiries:
+- Работу в современном и стильном салоне
+- Комфортные условия труда и дружелюбную атмосферу
+- Обучение и развитие в профессиональной сфере
+- Стабильную оплату труда и бонусы по результатам работы
+- Возможность карьерного роста
 
-- [+48452917711](tel:+48452917711) Daria
+Если ты хочешь работать в команде профессионалов, развиваться в сфере красоты и создавать стильные образы для наших клиентов, присылай резюме с примерами своих работ на наш адрес!
 
-We look forward to having you on our team!
+Контакты для связи:
+
+- [+48452917711](+48452917711) Дарья
+
+Ждём тебя в нашей команде!

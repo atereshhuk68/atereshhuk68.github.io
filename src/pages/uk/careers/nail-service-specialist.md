@@ -1,31 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Nail Service Specialist
-description: A new beauty salon in the center of Warsaw is looking for a talented and creative nail service specialist!
-location: Warsaw
+title: Майстер манікюру
+description: Новий салон краси в центрі Варшави шукає талановитого та креативного майстра манікюру!
+location: Варшава
 ---
 
-## Requirements:
+# Майстер манікюру
 
-- At least 1 year of experience
-- Ability to perform manicure, pedicure, nail extensions, and designs
-- Creativity and attention to detail
-- Ability to work with different techniques and materials
-- Willingness to develop and learn new skills
-- Responsibility, punctuality, and good communication skills
+Новий салон краси в центрі Варшави шукає талановитого та креативного майстра манікюру!
 
-## We offer:
+## Вимоги:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and professional development
-- Stable salary and bonuses based on performance
-- Career growth opportunities
+- Досвід роботи від 1 року
+- Уміння робити манікюр, педикюр, нарощування нігтів, дизайни
+- Креативність, увага до деталей
+- Навичкі працювати з різними техніками та матеріалами
+- Бажання розвиватися та навчатися новому
+- Відповідальність, пунктуальність, гарні комунікаційні навички
 
-If you want to grow in the beauty industry and work in a team of professionals, send your resume with examples of your work to our contact!
+## Ми пропонуємо:
 
-## Contact for inquiries:
+- Роботу в сучасному та стильному салоні
+- Комфортні умови праці та дружню атмосферу
+- Навчання та розвиток у професійній сфері
+- Стабільну оплату праці та бонуси за результатами роботи
+- Можливість кар’єрного росту
 
-- [+48452917711](tel:+48452917711) Daria
+Якщо ти хочеш розвиватися в сфері краси та працювати в команді професіоналів, надсилай резюме з прикладами своїх робіт на нашу адресу!
 
-We look forward to having you on our team!
+Контакти для зв’язку:
+
+- [+48452917711](+48452917711) Дар’я
+
+Чекаємо тебе в нашій команді!

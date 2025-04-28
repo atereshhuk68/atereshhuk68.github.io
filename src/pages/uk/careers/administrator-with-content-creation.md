@@ -1,35 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Administrator with Content Creation
-description: A new beauty salon in the center of Warsaw is looking for an administrator who will also handle content creation for our social media!
-location: Warsaw
+title: Адміністратор зі створенням контенту
+description: Новий салон краси в центрі Варшави шукає адміністратора, який також буде займатися створенням контенту для наших соціальних мереж!
+location: Варшава
 ---
 
-# POLKSI Administrator with Content Creation
+# Адміністратор зі створенням контенту
 
-A new beauty salon in the center of Warsaw is looking for an administrator who will also handle content creation for our social media!
+Новий салон краси в центрі Варшави шукає адміністратора, який також буде займатися створенням контенту для наших соціальних мереж!
 
-## Requirements:
+## Вимоги:
 
-- Ability and desire to create interesting and visually appealing content
-- Creativity, attention to detail
-- Good communication skills, responsibility, and punctuality
-- Good knowledge of both polish and russian languages
-- Experience as an administrator in the beauty industry or a similar field is a plus
-- Experience with social media (Instagram, Facebook) is a plus
+- Уміння та бажання створювати цікавий та візуально привабливий контент
+- Креативність, увага до деталей
+- Гарні комунікаційні навички, відповідальність та пунктуальність
+- Вільне володіння польською та українською мовами
+- Досвід роботи адміністратором у сфері краси або аналогічній сфері буде перевагою
+- Досвід роботи з соціальними мережами (Instagram, Facebook) буде перевагою
 
-## We offer:
+## Ми пропонуємо:
 
-- Work in a modern and stylish salon
-- A friendly atmosphere and comfortable working conditions
-- Training and development in the professional field
-- Stable salary and bonuses based on performance
-- Career growth opportunities
+- Роботу в сучасному та стильному салоні
+- Дружню атмосферу та комфортні умови праці
+- Навчання та розвиток у професійній сфері
+- Стабільну оплату праці та бонуси за результатами роботи
+- Можливість кар’єрного росту
 
-If you enjoy working with people, creating interesting and attractive content, and want to develop in the beauty industry, send your resume or give us a call!
+Якщо ти любиш працювати з людьми, вмієш створювати цікавий, привабливий контент та хочеш розвиватися в сфері краси, надсилай своє резюме або телефонуй!
 
-## Contact for inquiries:
+Контакти для зв’язку:
 
-- [+48452917711](tel:+48452917711) Daria
+- [+48452917711](+48452917711) Дар’я
 
-We look forward to having you on our team!
+Чекаємо на тебе в нашій команді!

@@ -1,35 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Administrator with Content Creation
-description: A new beauty salon in the center of Warsaw is looking for an administrator who will also handle content creation for our social media!
-location: Warsaw
+title: Administrator/rka z tworzeniem treści
+description: Nowy salon piękności w centrum Warszawy poszukuje administratora, który będzie także odpowiedzialny za tworzenie treści do naszych mediów społecznościowych!
+location: Warszawa
 ---
 
-# POLKSI Administrator with Content Creation
+# Administrator/rka z tworzeniem treści
 
-A new beauty salon in the center of Warsaw is looking for an administrator who will also handle content creation for our social media!
+Nowy salon piękności w centrum Warszawy poszukuje administratora, który będzie także odpowiedzialny za tworzenie treści do naszych mediów społecznościowych!
 
-## Requirements:
+## Wymagania:
 
-- Ability and desire to create interesting and visually appealing content
-- Creativity, attention to detail
-- Good communication skills, responsibility, and punctuality
-- Good knowledge of both polish and russian languages
-- Experience as an administrator in the beauty industry or a similar field is a plus
-- Experience with social media (Instagram, Facebook) is a plus
+- Umiejętność i chęć tworzenia interesujących i wizualnie atrakcyjnych treści
+- Kreatywność, dbałość o szczegóły
+- Dobre umiejętności komunikacyjne, odpowiedzialność i punktualność
+- Biegła znajomość języka polskiego oraz rosyjskiego/ukraińskiego
+- Doświadczenie na stanowisku administratora w branży beauty lub pokrewnej będzie dodatkowym atutem
+- Doświadczenie w pracy z mediami społecznościowymi (Instagram, Facebook) będzie dodatkowym atutem
 
-## We offer:
+## Oferujemy:
 
-- Work in a modern and stylish salon
-- A friendly atmosphere and comfortable working conditions
-- Training and development in the professional field
-- Stable salary and bonuses based on performance
-- Career growth opportunities
+- Pracę w nowoczesnym i stylowym salonie
+- Przyjazną atmosferę i komfortowe warunki pracy
+- Szkolenie i rozwój zawodowy
+- Stabilne wynagrodzenie i bonusy w zależności od wyników pracy
+- Możliwość rozwoju kariery
 
-If you enjoy working with people, creating interesting and attractive content, and want to develop in the beauty industry, send your resume or give us a call!
+Jeśli lubisz pracować z ludźmi, tworzysz interesujące i atrakcyjne treści, a chcesz rozwijać się w branży beauty, wyślij swoje CV lub zadzwoń!
 
-## Contact for inquiries:
+Kontakt:
 
-- [+48452917711](tel:+48452917711) Daria
+- [+48452917711](+48452917711) Daria
 
-We look forward to having you on our team!
+Czekamy na Ciebie w naszym zespole!

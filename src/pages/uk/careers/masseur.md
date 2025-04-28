@@ -1,30 +1,34 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Masseur
-description: A new beauty salon in the center of Warsaw is looking for a professional massage therapist!
-location: Warsaw
+title: Масажист
+description: Новий салон краси в центрі Варшави шукає професійного масажиста!
+location: Варшава
 ---
 
-## Requirements:
+# Масажист
 
-- At least 1 year of experience
-- Knowledge of various massage techniques (classic, relaxing, anti-cellulite, and others)
-- Ability to work with different clients and their needs
-- Responsibility, punctuality, and attention to details
-- Good communication skills and a desire to grow in the profession
+Новий салон краси в центрі Варшави шукає професійного масажиста!
 
-## We offer:
+## Вимоги:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and professional development
-- Stable salary and performance-based bonuses
-- Opportunities for career growth
+- Досвід роботи від 1 року
+- Знання різних технік масажу (класичний, розслаблюючий, антицелюлітний та інші)
+- Вміння працювати з різними клієнтами та їх запитами
+- Відповідальність, пунктуальність та уважність
+- Гарні комунікаційні навички та бажання розвиватися в своїй професії
 
-If you want to work in a team of professionals, develop in the beauty industry, and create an atmosphere of comfort and relaxation for our clients, send us your resume or give us a call!
+## Ми пропонуємо:
 
-## Contact for inquiries:
+- Роботу в сучасному та стильному салоні
+- Комфортні умови праці та дружню атмосферу
+- Навчання та розвиток у професійній сфері
+- Стабільну оплату праці та бонуси за результатами роботи
+- Можливість кар’єрного росту
 
-- [+48452917711](tel:+48452917711) Daria
+Якщо ти хочеш працювати в команді професіоналів, розвиватися в сфері краси та створювати атмосферу затишку і релаксу для наших клієнтів, тоді надсилай своє резюме або дзвони!
 
-We look forward to having you on our team!
+Контакти для зв’язку:
+
+- [+48452917711](+48452917711) Дар’я
+
+Чекаємо на тебе в нашій команді!

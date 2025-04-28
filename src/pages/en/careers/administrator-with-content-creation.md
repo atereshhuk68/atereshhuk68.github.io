@@ -1,11 +1,11 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: ENGLISH Administrator with Content Creation
+title: Administrator with Content Creation
 description: A new beauty salon in the center of Warsaw is looking for an administrator who will also handle content creation for our social media!
 location: Warsaw
 ---
 
-# ENGLISH Administrator with Content Creation
+# Administrator with Content Creation
 
 A new beauty salon in the center of Warsaw is looking for an administrator who will also handle content creation for our social media!
 

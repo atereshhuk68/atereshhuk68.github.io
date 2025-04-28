@@ -1,25 +1,30 @@
 ---
 import Layout from 'src/layouts/Layout.astro';
-import { CareerCard } from '@components/Careers/CareerCard.tsx';
+import CareerCard from '@components/Careers/CareerCard.astro';
 import type { CareerCardType } from 'src/types/types';
+
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 
 const careers: CareerCardType[] = Object.values(import.meta.glob('./*.md', { eager: true }));
 
-const title = 'Join Our Team';
-const description = 'We are always looking for talented individuals to join our team. Explore our open positions and apply today!';
+const title = t('career.heading');
+const description = t('career.p');
 ---
 
 <Layout {title} {description}>
 	<div class="container py-12">
 		<div class="text-center mb-12">
-			<h1 class="font-heading text-4xl">POLSKI Join Our Team</h1>
-			<p class="text-lg text-pretty">We're looking for talented individuals to help us grow. Explore our open positions below.</p>
+			<h1 class="font-heading text-4xl">{t('career.heading')}</h1>
+			<p class="text-lg text-pretty">{t('career.p')}</p>
 		</div>
 
 		<div class="grid md:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
 			{
 				careers.length > 0 ? (
-					careers.map((career) => <CareerCard {...career} client:load />)
+					careers.map((career: CareerCardType) => <CareerCard {...career} />)
 				) : (
 					<p class="col-span-full text-center text-default-500">No open positions available currently.</p>
 				)

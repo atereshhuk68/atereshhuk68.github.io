@@ -1,31 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Nail Service Specialist
-description: A new beauty salon in the center of Warsaw is looking for a talented and creative nail service specialist!
-location: Warsaw
+title: Мастер ногтевого сервиса
+description: Новый салон красоты в центре Варшавы ищет талантливого и креативного мастера ногтевого сервиса!
+location: Варшава
 ---
 
-## Requirements:
+# Мастер ногтевого сервиса
 
-- At least 1 year of experience
-- Ability to perform manicure, pedicure, nail extensions, and designs
-- Creativity and attention to detail
-- Ability to work with different techniques and materials
-- Willingness to develop and learn new skills
-- Responsibility, punctuality, and good communication skills
+Новый салон красоты в центре Варшавы ищет талантливого и креативного мастера ногтевого сервиса!
 
-## We offer:
+## Требования:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and professional development
-- Stable salary and bonuses based on performance
-- Career growth opportunities
+• Опыт работы от 1 года
+• Умение делать маникюр, педикюр, наращивание ногтей, дизайны
+• Креативность, внимательность к деталям
+• Навыки работы с различными техниками и материалами
+• Желание развиваться и обучаться новому
+• Ответственность, пунктуальность, хорошие коммуникативные навыки
 
-If you want to grow in the beauty industry and work in a team of professionals, send your resume with examples of your work to our contact!
+## Мы предлагаем:
 
-## Contact for inquiries:
+• Работу в современном и стильном салоне
+• Комфортные условия труда и дружелюбную атмосферу
+• Обучение и развитие в профессиональной сфере
+• Стабильную оплату труда и бонусы по результатам работы
+• Возможность карьерного роста
 
-- [+48452917711](tel:+48452917711) Daria
+Если ты хочешь развиваться в сфере красоты и работать в команде профессионалов, присылай резюме с примерами своих работ на наш адрес!
 
-We look forward to having you on our team!
+Контакты для связи:
+
+- [+48452917711](+48452917711) Дарья
+
+Ждём тебя в нашей команде!

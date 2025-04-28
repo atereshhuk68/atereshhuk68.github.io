@@ -1,11 +1,11 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: ENGLISH Makeup Artist-Brow Specialist-Lash Technician
+title: Makeup Artist-Brow Specialist-Lash Technician
 description: A new beauty salon in the center of Warsaw is looking for a makeup artist-brow specialist-lash technician in one person!
 location: Warsaw
 ---
 
-# ENGLISH Makeup Artist-Brow Specialist-Lash Technician
+# Makeup Artist-Brow Specialist-Lash Technician
 
 A new beauty salon in the center of Warsaw is looking for a makeup artist-brow specialist-lash technician in one person!
 

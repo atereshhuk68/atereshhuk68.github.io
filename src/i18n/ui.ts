@@ -24,6 +24,10 @@ export const ui = {
 		'services.p':
 			'Odkryj wszystkie usługi oferowane przez BFancy, pogrupowane w pomocne kategorie. Interaktywne karty kategorii pozwalają filtrować widok i skupić się na tym, co Cię interesuje.',
 		'services.cta': 'Wyświetl wszystkie usługi',
+		'career.heading': 'Dołącz do Naszego Zespołu',
+		'career.p': 'Szukamy utalentowanych osób, które pomogą nam się rozwijać. Sprawdź nasze otwarte stanowiska poniżej.',
+		'career.status': 'Wolne stanowisko',
+		'career.more': 'Zobacz szczegóły',
 	},
 	en: {
 		'header.nav.services': 'Services',
@@ -49,6 +53,10 @@ export const ui = {
 		'services.h2': 'Explore BFancy Services and Prices',
 		'services.p': 'Discover all the services BFancy offers, grouped into helpful categories. Interact with the category cards to filter the view and focus on what interests you.',
 		'services.cta': 'Display all services',
+		'career.heading': 'Join Our Team',
+		'career.p': "We're looking for talented individuals to help us grow. Explore our open positions below.",
+		'career.status': 'Open position',
+		'career.more': 'View details',
 	},
 	uk: {
 		'header.nav.services': 'Послуги',
@@ -75,6 +83,10 @@ export const ui = {
 		'services.p':
 			'Відкрийте для себе всі послуги, які пропонує BFancy, згруповані у зручні категорії. Взаємодійте з картками категорій, щоб відфільтрувати перегляд та зосередитись на тому, що вас цікавить.',
 		'services.cta': 'Показати всі послуги',
+		'career.heading': 'Приєднуйтесь до Нашої Команди',
+		'career.p': 'Ми шукаємо талановитих людей, які допоможуть нам розвиватися. Ознайомтеся з нашими відкритими вакансіями нижче.',
+		'career.status': 'Відкрита вакансія',
+		'career.more': 'Переглянути деталі',
 	},
 	ru: {
 		'header.nav.services': 'Услуги',
@@ -101,5 +113,9 @@ export const ui = {
 		'services.p':
 			'Откройте для себя все услуги, предлагаемые BFancy, сгруппированные по полезным категориям. Взаимодействуйте с карточками категорий, чтобы отфильтровать представление и сосредоточиться на том, что вас интересует.',
 		'services.cta': 'Показать все услуги',
+		'career.heading': 'Присоединяйтесь к Нашей Команде',
+		'career.p': 'Мы ищем талантливых людей, которые помогут нам расти. Ознакомьтесь с нашими открытыми вакансиями ниже.',
+		'career.status': 'Открытая вакансия',
+		'career.more': 'Посмотреть детали',
 	},
 } as const;

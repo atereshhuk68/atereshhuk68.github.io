@@ -1,31 +1,35 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Makeup Artist-Brow Specialist-Lash Technician
-description: A new beauty salon in the center of Warsaw is looking for a makeup artist-brow specialist-lash technician in one person!
-location: Warsaw
+title: Wizażysta-Browistka-Lashmaker
+description: Nowy salon kosmetyczny w centrum Warszawy poszukuje wizażysty-browisty-lashmakera w jednej osobie!
+location: Warszawa
 ---
 
-## Requirements:
+# Wizażysta-Browistka-Lashmaker
 
-- At least 1 year of experience in the beauty industry
-- Knowledge of modern trends and techniques in makeup
-- Ability to work with different skin types and face shapes
-- Creativity, attention to detail, and a sense of style
-- Willingness to develop and learn new skills
-- Responsibility, punctuality, and good communication skills
+Nowy salon kosmetyczny w centrum Warszawy poszukuje wizażysty-browisty-lashmakera w jednej osobie!
 
-## We offer:
+## Wymagania:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and development in the professional field
-- Stable salary and performance-based bonuses
-- Career growth opportunities
+- Doświadczenie w branży beauty min. 1 rok
+- Znajomość nowoczesnych trendów i technik w makijażu
+- Umiejętność pracy z różnymi typami skóry i kształtami twarzy
+- Kreatywność, dbałość o szczegóły i poczucie stylu
+- Chęć rozwoju i nauki nowych umiejętności
+- Odpowiedzialność, punktualność, dobre umiejętności komunikacyjne
 
-If you want to work in a team of professionals, grow in the beauty industry, and create stylish looks for our clients, send your resume with examples of your work to our address!
+## Oferujemy:
 
-## Contact for inquiries:
+- Pracę w nowoczesnym i stylowym salonie
+- Komfortowe warunki pracy i przyjazną atmosferę
+- Szkolenie i rozwój zawodowy
+- Stabilne wynagrodzenie i bonusy w zależności od wyników pracy
+- Możliwość rozwoju zawodowego
 
-- [+48452917711](tel:+48452917711) Daria
+Jeśli chcesz pracować w zespole profesjonalistów, rozwijać się w branży beauty i tworzyć stylowe looki dla naszych klientów, wyślij swoje CV z przykładami swojej pracy na nasz adres!
 
-We look forward to having you on our team!
+Kontakt:
+
+- [+48452917711](+48452917711) Daria
+
+Czekamy na Ciebie w naszym zespole!

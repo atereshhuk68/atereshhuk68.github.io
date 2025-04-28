@@ -1,11 +1,11 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: ENGLISH Masseur
+title: Masseur
 description: A new beauty salon in the center of Warsaw is looking for a professional massage therapist!
 location: Warsaw
 ---
 
-# ENGLISH Masseur
+# Masseur
 
 A new beauty salon in the center of Warsaw is looking for a professional massage therapist!
 

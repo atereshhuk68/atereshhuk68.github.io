@@ -1,30 +1,34 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: POLKSI Masseur
-description: A new beauty salon in the center of Warsaw is looking for a professional massage therapist!
-location: Warsaw
+title: Массажист
+description: Новый салон красоты в центре Варшавы ищет профессионального массажиста!
+location: Варшава
 ---
 
-## Requirements:
+# Массажист
 
-- At least 1 year of experience
-- Knowledge of various massage techniques (classic, relaxing, anti-cellulite, and others)
-- Ability to work with different clients and their needs
-- Responsibility, punctuality, and attention to details
-- Good communication skills and a desire to grow in the profession
+Новый салон красоты в центре Варшавы ищет профессионального массажиста!
 
-## We offer:
+## Требования:
 
-- Work in a modern and stylish salon
-- Comfortable working conditions and a friendly atmosphere
-- Training and professional development
-- Stable salary and performance-based bonuses
-- Opportunities for career growth
+- Опыт работы от 1 года
+- Знание различных техник массажа (классический, расслабляющий, антицеллюлитный и другие)
+- Умение работать с различными клиентами и их запросами
+- Ответственность, пунктуальность и внимательность
+- Хорошие коммуникативные навыки и желание развиваться в своей профессии
 
-If you want to work in a team of professionals, develop in the beauty industry, and create an atmosphere of comfort and relaxation for our clients, send us your resume or give us a call!
+## Мы предлагаем:
 
-## Contact for inquiries:
+- Работу в современном и стильном салоне
+- Комфортные условия труда и дружелюбную атмосферу
+- Обучение и развитие в профессиональной сфере
+- Стабильную оплату труда и бонусы по результатам работы
+- Возможность карьерного роста
 
-- [+48452917711](tel:+48452917711) Daria
+Если ты хочешь работать в команде профессионалов, развиваться в сфере красоты и создавать атмосферу уюта и релакса для наших клиентов, тогда присылай своё резюме или звони!
 
-We look forward to having you on our team!
+Контакты для связи:
+
+- [+48452917711](+48452917711) Дарья
+
+Ждём тебя в нашей команде!
