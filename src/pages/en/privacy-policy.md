@@ -1,20 +1,21 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
 title: 'Privacy Policy'
+description: 'BFancy Salon Privacy Policy. Learn how we protect your personal data, what information we collect and how you can manage your data.'
 ---
 
 # Privacy Policy
 
 BFancy Limited Liability Company – www.bfancy.pl
 
-Last updated: (Date to be inserted when the site is connected to the domain).
+Last updated: **April 28, 2025**
 
 This Privacy Policy defines the rules for processing personal data obtained through the website www.bfancy.pl operated by:
 
 BFancy Limited Liability Company.
 NIP: 1251779205
 KRS: 0001144572
-E-mail: kontakt@bfancy.pl
+E-mail: [kontakt@bfancy.pl](mailto:kontakt@bfancy.pl)
 
 ## 1. Personal Data Administrator
 

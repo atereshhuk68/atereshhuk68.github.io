@@ -1,94 +1,94 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
-title: 'Polityka Prywatności'
+title: 'Політика Конфіденційності'
+description: 'Політика конфіденційності салону BFancy. Дізнайтеся, як ми захищаємо ваші персональні дані, яку інформацію збираємо та як ви можете керувати своїми даними.'
 ---
 
-# Polityka Prywatności
+# Політика Конфіденційності
 
-BFancy Spółka z ograniczoną odpowiedzialnością – www.bfancy.pl
+BFancy Товариство з обмеженою відповідальністю – www.bfancy.pl
 
-Data aktualizacji: (тут треба буде вписати дату коли підключимо сайт до домену).
+Дата оновлення: **28.04.2025.**
 
-Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych pozyskiwanych za pośrednictwem strony internetowej www.bfancy.pl prowadzonej przez:
+Ця Політика Конфіденційності визначає правила обробки персональних даних, отриманих через веб-сайт www.bfancy.pl, керований:
 
-BFancy spółka z ograniczoną odpowiedzialnością.
+BFancy товариство з обмеженою відповідальністю.
 NIP: 1251779205
 KRS: 0001144572
-E-mail: kontakt@bfancy.pl
+E-mail: [kontakt@bfancy.pl](mailto:kontakt@bfancy.pl)
 
-## 1. Administrator danych osobowych
+## 1. Адміністратор персональних даних
 
-Administratorem Państwa danych osobowych jest BFancy spółka z ograniczoną odpowiedzialnością
-, z siedzibą w Warszawie, przy ul Szwoleżerów 68B/3.
+Адміністратором Ваших персональних даних є BFancy товариство з обмеженою відповідальністю, з місцезнаходженням у Варшаві, за адресою вул. Шволежерів 68B/3.
 
-## 2. Jakie dane zbieramy?
+## 2. Які дані ми збираємо?
 
-Zbieramy dane wyłącznie w zakresie niezbędnym do świadczenia naszych usług, takich jak:
+Ми збираємо дані виключно в обсязі, необхідному для надання наших послуг, таких як:
 
-- Imię i nazwisko
-- Numer telefonu
-- Adres e-mail
-- Informacje zawarte w formularzu rezerwacyjnym lub kontaktowym
-- Dane dotyczące wizyt (np. usługi, terminy, preferencje)
+- Ім'я та прізвище
+- Номер телефону
+- Адреса електронної пошти
+- Інформація, що міститься у формі бронювання або контактній формі
+- Дані про візити (наприклад, послуги, дати, уподобання)
 
-## 3. Cel przetwarzania danych
+## 3. Мета обробки даних
 
-Państwa dane osobowe przetwarzane są w następujących celach:
+Ваші персональні дані обробляються з наступною метою:
 
-- Umawianie wizyt i kontakt z klientem
-- Świadczenie usług kosmetycznych
-- Prowadzenie korespondencji
-- Wysyłka przypomnień SMS/e-mail
-- Marketing bezpośredni (np. oferty promocyjne, newsletter – tylko za zgodą)
+- Запис на візити та контакт з клієнтом
+- Надання косметичних послуг
+- Ведення листування
+- Надсилання SMS/e-mail нагадувань
+- Прямий маркетинг (наприклад, рекламні пропозиції, розсилка новин – тільки за згодою)
 
-## 4. Podstawy prawne przetwarzania
+## 4. Правові підстави обробки
 
-Dane przetwarzane są zgodnie z art. 6 ust. 1 lit. a, b oraz f RODO, tj.:
+Дані обробляються відповідно до ст. 6 п. 1 літ. a, b та f GDPR, тобто:
 
-- na podstawie zgody osoby, której dane dotyczą
-- w celu realizacji umowy lub przed jej zawarciem
-- w uzasadnionym interesie administratora (np. marketing własny)
+- на підставі згоди особи, якої дані стосуються
+- для виконання договору або перед його укладенням
+- у законних інтересах адміністратора (наприклад, власний маркетинг)
 
-## 5. Komu możemy przekazać dane?
+## 5. Кому ми можемо передати дані?
 
-Twoje dane mogą być udostępniane wyłącznie zaufanym podmiotom wspierającym naszą działalność, takim jak:
+Ваші дані можуть бути передані лише довіреним суб'єктам, що підтримують нашу діяльність, таким як:
 
-- dostawcy systemów rezerwacyjnych
-- dostawcy usług mailingowych i SMS
-- biuro rachunkowe
-- firmy IT (hosting strony)
+- постачальники систем бронювання
+- постачальники послуг розсилки та SMS
+- бухгалтерське бюро
+- IT-компанії (хостинг сайту)
 
-Wszystkie podmioty przetwarzają dane na podstawie umów powierzenia danych i zgodnie z RODO.
+Усі суб'єкти обробляють дані на підставі договорів доручення обробки даних та відповідно до GDPR.
 
-## 6. Czas przechowywania danych
+## 6. Термін зберігання даних
 
-Państwa dane przechowujemy:
+Ваші дані ми зберігаємо:
 
-- przez okres trwania relacji klient–salon
-- do momentu wycofania zgody (w przypadku działań marketingowych)
-- przez okres wymagany przepisami prawa (np. rachunkowość)
+- протягом терміну відносин клієнт–салон
+- до моменту відкликання згоди (у випадку маркетингових дій)
+- протягом терміну, що вимагається законодавством (наприклад, бухгалтерський облік)
 
-## 7. Państwo mają prawo do:
+## 7. Ви маєте право на:
 
-- dostępu do swoich danych
-- sprostowania danych
-- usunięcia danych
-- ograniczenia przetwarzania
-- przenoszenia danych
-- wniesienia sprzeciwu
-- cofnięcia zgody
-- wniesienia skargi do Prezesa UODO (www.uodo.gov.pl)
+- доступ до своїх даних
+- виправлення даних
+- видалення даних
+- обмеження обробки
+- перенесення даних
+- заперечення проти обробки
+- відкликання згоди
+- подання скарги Голові UODO (www.uodo.gov.pl)
 
-## 8. Pliki cookies
+## 8. Файли cookies
 
-Strona korzysta z plików cookies w celu:
+Сайт використовує файли cookies з метою:
 
-- zapewnienia prawidłowego działania serwisu
-- analizowania ruchu (Google Analytics)
-- personalizacji treści
+- забезпечення правильної роботи сервісу
+- аналізу трафіку (Google Analytics)
+- персоналізації контенту
 
-Użytkownik może w każdej chwili zmienić ustawienia dotyczące cookies w swojej przeglądarce.
+Користувач може в будь-який час змінити налаштування cookies у своєму браузері.
 
-## 9. Zmiany w Polityce Prywatności
+## 9. Зміни в Політиці Конфіденційності
 
-Zastrzegamy sobie prawo do wprowadzenia zmian w Polityce Prywatności. Nowa wersja będzie publikowana na stronie z odpowiednim oznaczeniem daty.
+Ми залишаємо за собою право вносити зміни до Політики Конфіденційності. Нова версія буде опублікована на сайті з відповідною датою.

@@ -1,20 +1,21 @@
 ---
 layout: '@layouts/TextContentLayout.astro'
 title: 'Polityka Prywatności'
+description: 'Polityka Prywatności salonu BFancy. Sprawdź, jak chronimy Twoje dane osobowe, jakie informacje zbieramy i jak możesz zarządzać swoimi danymi.'
 ---
 
 # Polityka Prywatności
 
 BFancy Spółka z ograniczoną odpowiedzialnością – www.bfancy.pl
 
-Data aktualizacji: (тут треба буде вписати дату коли підключимо сайт до домену).
+Data aktualizacji: 28.04.2025
 
 Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych pozyskiwanych za pośrednictwem strony internetowej www.bfancy.pl prowadzonej przez:
 
 BFancy spółka z ograniczoną odpowiedzialnością.
 NIP: 1251779205
 KRS: 0001144572
-E-mail: kontakt@bfancy.pl
+E-mail: [kontakt@bfancy.pl](mailto:kontakt@bfancy.pl)
 
 ## 1. Administrator danych osobowych
 
