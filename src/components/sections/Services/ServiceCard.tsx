@@ -3,7 +3,7 @@ import type { Service, ServiceListItem } from '../../../types/types';
 
 function ServiceRow({ title, price, description, currency }: ServiceListItem) {
 	return (
-		<li className="flex justify-between gap-2 pt-2">
+		<li className="flex justify-between gap-2 pb-2">
 			<div className="flex flex-col">
 				<span>{title}</span>
 				{description && <span className="text-sm text-black-600">{description}</span>}

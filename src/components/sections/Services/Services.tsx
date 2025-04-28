@@ -20,7 +20,7 @@ export function ServicesSection({ services, ctaText }: { services: Service[]; ct
 			<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4" data-service-card>
 				<AnimatePresence>
 					{filteredCards.map(({ ...props }: Service) => (
-						<ServiceCard {...props} />
+						<ServiceCard key={props.id} {...props} />
 					))}
 				</AnimatePresence>
 			</div>

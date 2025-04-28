@@ -1,0 +1,390 @@
+[
+	{
+		"id": 1,
+		"name": "Manicure",
+		"list": [
+			{
+				"title": "Manicure",
+				"price": 80
+			},
+			{
+				"title": "Men’s Manicure",
+				"price": 100
+			},
+			{
+				"title": "Japanese Manicure",
+				"price": 130
+			},
+			{
+				"title": "Manicure with regular polish",
+				"price": 100
+			},
+			{
+				"title": "Manicure with gel polish",
+				"price": 140,
+				"description": "(hybrid)"
+			},
+			{
+				"title": "Combo Manicure",
+				"price": 150,
+				"description": "(gel polish removal, manicure, gel polish)"
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 2,
+		"name": "Nail Extensions",
+		"list": [
+			{
+				"title": "Short",
+				"price": 200
+			},
+			{
+				"title": "Medium",
+				"price": 220
+			},
+			{
+				"title": "Long",
+				"price": 250
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 3,
+		"name": "Nail extension Correction",
+		"list": [
+			{
+				"title": "Short",
+				"price": 180
+			},
+			{
+				"title": "Medium",
+				"price": 200
+			},
+			{
+				"title": "Long",
+				"price": 220
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 4,
+		"name": "Slay Nails",
+		"list": [
+			{
+				"title": "Standard",
+				"price": 300,
+				"description": "(extensions and any complexity of design)"
+			},
+			{
+				"title": "Extra",
+				"price": 350,
+				"description": "(super long length and any complexity of design)"
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 5,
+		"name": "Extras",
+		"list": [
+			{
+				"title": "Nail strengthening",
+				"price": 40
+			},
+			{
+				"title": "Tip strengthening",
+				"price": 30
+			},
+			{
+				"title": "Nail design",
+				"price": "5-15",
+				"currency": "zł / nail"
+			},
+			{
+				"title": "Gel polish removal",
+				"price": 30
+			},
+			{
+				"title": "Nail repair",
+				"price": 15
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 6,
+		"name": "Pedicure",
+		"list": [
+			{
+				"title": "Hygienic Pedicure",
+				"price": 110
+			},
+			{
+				"title": "Men’s Pedicure",
+				"price": 130
+			},
+			{
+				"title": "Japanese Pedicure",
+				"price": 150
+			},
+			{
+				"title": "Pedicure with regular polish",
+				"price": 130
+			},
+			{
+				"title": "Pedicure with gel polish",
+				"price": 170,
+				"description": "(hybrid)"
+			},
+			{
+				"title": "Combo Pedicure",
+				"price": 190,
+				"description": "(gel polish removal, pedicure, gel polish)"
+			}
+		],
+		"type": "nails"
+	},
+	{
+		"id": 7,
+		"name": "Brows",
+		"list": [
+			{
+				"title": "Shape correction",
+				"price": 50
+			},
+			{
+				"title": "Full shaping",
+				"price": 70
+			},
+			{
+				"title": "Tinting",
+				"price": 60
+			},
+			{
+				"title": "Brow lamination",
+				"price": 100
+			},
+			{
+				"title": "Brow lamination combo",
+				"price": 200,
+				"description": "(shaping, tinting)"
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 8,
+		"name": "Lashes",
+		"list": [
+			{
+				"title": "Lash tinting",
+				"price": 50
+			},
+			{
+				"title": "Lash lamination",
+				"price": 70
+			},
+			{
+				"title": "Brow & Lash lamination",
+				"price": 350
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 9,
+		"name": "Eyelash Extensions",
+		"list": [
+			{
+				"title": "1:1",
+				"price": 170
+			},
+			{
+				"title": "2:1",
+				"price": 180
+			},
+			{
+				"title": "3:1",
+				"price": 190
+			},
+			{
+				"title": "4:1",
+				"price": 200
+			},
+			{
+				"title": "5:1",
+				"price": 210
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 10,
+		"name": "Eyelash extensions correction",
+		"list": [
+			{
+				"title": "1:1",
+				"price": 150
+			},
+			{
+				"title": "2:1",
+				"price": 160
+			},
+			{
+				"title": "3:1",
+				"price": 170
+			},
+			{
+				"title": "4:1",
+				"price": 180
+			},
+			{
+				"title": "5:1",
+				"price": 190
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 11,
+		"name": "Extras",
+		"list": [
+			{
+				"title": "Wet effect",
+				"price": 30
+			},
+			{
+				"title": "Colored lashes",
+				"price": 30
+			},
+			{
+				"title": "Lash removal",
+				"price": 50
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 12,
+		"name": "Makeup",
+		"list": [
+			{
+				"title": "Light Makeup",
+				"price": 130
+			},
+			{
+				"title": "Daily Makeup",
+				"price": 150
+			},
+			{
+				"title": "Cocktail Makeup",
+				"price": 170
+			},
+			{
+				"title": "Evening Makeup",
+				"price": 200
+			},
+			{
+				"title": "Occasional Makeup",
+				"price": 300,
+				"description": "(wedding, photo shoot, birthday, etc.)"
+			},
+			{
+				"title": "Trial Makeup",
+				"price": 150
+			},
+			{
+				"title": "Eye patches",
+				"price": 25
+			},
+			{
+				"title": "Hydrating face mask",
+				"price": 50
+			}
+		],
+		"type": "visage"
+	},
+	{
+		"id": 13,
+		"name": "Classic Massage",
+		"list": [
+			{
+				"title": "1 hour",
+				"price": 180
+			},
+			{
+				"title": "1.5 hours",
+				"price": 250
+			}
+		],
+		"type": "massage"
+	},
+	{
+		"id": 14,
+		"name": "Sports Massage",
+		"list": [
+			{
+				"title": "1 hour",
+				"price": 220
+			},
+			{
+				"title": "1.5 hours",
+				"price": 290
+			}
+		],
+		"type": "massage"
+	},
+	{
+		"id": 15,
+		"name": "Men’s Massage",
+		"list": [
+			{
+				"title": "Regular",
+				"price": 220
+			},
+			{
+				"title": "1.5 hours",
+				"price": 290
+			},
+			{
+				"title": "Sports",
+				"price": 250
+			},
+			{
+				"title": "Sports 1.5 hours",
+				"price": 320
+			}
+		],
+		"type": "massage"
+	},
+	{
+		"id": 16,
+		"name": "Additional Massage",
+		"list": [
+			{
+				"title": "Head Massage",
+				"price": 50
+			},
+			{
+				"title": "Face Massage",
+				"price": 100
+			}
+		],
+		"type": "massage"
+	},
+	{
+		"id": 17,
+		"name": "Massage",
+		"list": [
+			{
+				"title": "Anti-cellulite Massage",
+				"price": 220
+			}
+		],
+		"type": "massage"
+	}
+]

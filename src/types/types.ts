@@ -7,6 +7,8 @@ export type CareerCardType = {
 	url: string;
 };
 
+type ServiceType = 'visage' | 'massage' | 'nails' | 'all';
+
 export type ServiceListItem = {
 	title: string;
 	price: number | string;
@@ -18,5 +20,5 @@ export type Service = {
 	id: number;
 	name: string;
 	list: ServiceListItem[];
-	type: string;
+	type: ServiceType;
 };

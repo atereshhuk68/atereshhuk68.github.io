@@ -1,11 +1,16 @@
 ---
+import { shuffle } from 'es-toolkit';
 import { ServicesSection } from './Services.tsx';
-import Services from '../../../data/services.json';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { getCollection } from 'astro:content';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+
+const Services = await getCollection('services');
+const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLang));
+const ServicesData = ServicesFiltered?.data ?? [];
 
 const ctaText = t('services.cta');
 ---
@@ -22,6 +27,6 @@ const ctaText = t('services.cta');
 			</p>
 		</div>
 
-		<ServicesSection services={Services} {ctaText} client:load />
+		<ServicesSection services={shuffle(ServicesData)} {ctaText} client:load />
 	</div>
 </section>
