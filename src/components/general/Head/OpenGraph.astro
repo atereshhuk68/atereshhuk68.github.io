@@ -1,16 +1,19 @@
 ---
 import { browserLocales } from '@i18n/langs';
 import { getLangFromUrl } from '@i18n/utils';
+import { SITE } from 'consts';
 
 const { title, description } = Astro.props;
 
 const currentLang = getLangFromUrl(Astro.url);
 const currentPathname = Astro.url.pathname;
 
+const ogUrl = `${SITE}${currentPathname}`;
+
 const locale = browserLocales[currentLang] || 'en_US';
 ---
 
-<meta property="og:url" content={currentPathname} />
+<meta property="og:url" content={ogUrl} />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
