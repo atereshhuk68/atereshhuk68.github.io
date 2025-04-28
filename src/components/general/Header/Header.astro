@@ -8,13 +8,22 @@ import { Calendar } from 'lucide-react';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLang } from '@i18n/langs';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
+const modifyUrl = (anchor: string) => {
+	if (currentLang !== defaultLang) {
+		return `/${currentLang}/${anchor}`;
+	}
+
+	return `${anchor}`;
+};
+
 const menuItems = [
-	{ href: '#services', label: t('header.nav.services') },
-	{ href: '#aboutUs', label: t('header.nav.aboutUs') },
+	{ href: modifyUrl('#services'), label: t('header.nav.services') },
+	{ href: modifyUrl('#aboutUs'), label: t('header.nav.aboutUs') },
 	{ href: getRelativeLocaleUrl(currentLang, 'careers'), label: t('header.nav.careers') },
 ];
 ---

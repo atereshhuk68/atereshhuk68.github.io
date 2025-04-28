@@ -4,13 +4,9 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const currentLocale = Astro.currentLocale;
 
 const privacyPolicyUrl = getRelativeLocaleUrl(currentLocale ?? 'pl', 'privacy-policy');
-const termsConditionsUrl = getRelativeLocaleUrl(currentLocale ?? 'pl', 'Terms of Conditions');
 ---
 
 <ul class="flex items-center justify-end gap-4 lg:w-[280px] text-sm text-black-600">
-	<li>
-		<a href={termsConditionsUrl}>Terms of Conditions</a>
-	</li>
 	<li>
 		<a href={privacyPolicyUrl}>Privacy Policy</a>
 	</li>
