@@ -29,6 +29,6 @@ Jeśli chcesz pracować w zespole profesjonalistów, rozwijać się w branży be
 
 Kontakt:
 
-- [+48452917711](+48452917711) Daria
+- [+48452917711](tel:+48452917711) Daria
 
 Czekamy na Ciebie w naszym zespole!

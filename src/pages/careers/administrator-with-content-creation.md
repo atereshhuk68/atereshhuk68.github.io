@@ -30,6 +30,6 @@ Jeśli lubisz pracować z ludźmi, tworzysz interesujące i atrakcyjne treści, 
 
 Kontakt:
 
-- [+48452917711](+48452917711) Daria
+- [+48452917711](tel:+48452917711) Daria
 
 Czekamy na Ciebie w naszym zespole!
