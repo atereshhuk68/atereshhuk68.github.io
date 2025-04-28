@@ -9,20 +9,20 @@ export const ui = {
 			'Profesjonalny manicure, stylizacja paznokci, makijaż, pielęgnacja brwi i relaksujące masaże - wszystko, abyś poczuła się pewnie i wyjątkowo. Nasi specjaliści zadbają o każdy szczegół, a Ty możesz po prostu... być sobą.',
 		'hero.cta': 'Umów wizytę',
 		'hero.note': 'BFancy - piękno zaczyna się właśnie tutaj. Umów się na wizytę już dziś!',
-		'hero.strong': 'Gwarantujemy jakość. Niezadowolona? Naprawimy to!',
+		'hero.strong': 'Gwarantujemy jakość. Coś Ci się nie spodobało? Naprawimy to!',
 		'hero.second.p':
 			'W naszym salonie Twoja satysfakcja jest naszym priorytetem. Nasi wykwalifikowani specjaliści używają wyłącznie produktów premium i przestrzegają najwyższych standardów, aby zapewnić wyjątkowe rezultaty za każdym razem.',
 		'hero.reviews': 'Sprawdź nasze najnowsze opinie',
-		'about.h2': 'Poznaj Zespół Stojący za Pięknem',
+		'about.h2': 'Trochę o nas',
 		'about.p1':
 			'Nasze studio to coś więcej niż tylko miejsce usług kosmetycznych – to przestrzeń, w której artyzm spotyka się z pasją. Nasi doświadczeni profesjonaliści są oddani realizacji Twojej wizji, używając najwyższej jakości produktów i najnowszych innowacji kosmetycznych. Wejdź i pozwól nam sprawić, by Twoje piękno zabłysło!',
 		'about.p2':
 			'Pozostań w kontakcie z nami w mediach społecznościowych! Obserwuj nas, aby otrzymywać najnowsze aktualizacje, oferty specjalne i inspiracje. Odkryj kulisy i zobacz, dlaczego nasi klienci nas kochają. Dołącz do naszej rosnącej społeczności już dziś!',
 		'about.instagram': 'Subskrybuj nasz Instagram',
 		'about.other': 'Inne nasze media społecznościowe:',
-		'services.h2': 'Poznaj Usługi i Ceny BFancy',
+		'services.h2': 'Cennik Usług',
 		'services.p':
-			'Odkryj wszystkie usługi oferowane przez BFancy, pogrupowane w pomocne kategorie. Interaktywne karty kategorii pozwalają filtrować widok i skupić się na tym, co Cię interesuje.',
+			'Odkryj wszystkie oferowane przez nas usługi, pogrupowane w pomocne kategorie. Interaktywne karty kategorii pozwalają filtrować widok i skupić się na tym, co Cię interesuje.',
 		'services.cta': 'Wyświetl wszystkie usługi',
 		'career.heading': 'Dołącz do Naszego Zespołu',
 		'career.p': 'Szukamy utalentowanych osób, które pomogą nam się rozwijać. Sprawdź nasze otwarte stanowiska poniżej.',
