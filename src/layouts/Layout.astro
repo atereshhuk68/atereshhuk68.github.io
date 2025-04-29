@@ -9,6 +9,7 @@ import { browserLocales } from '@i18n/langs';
 import Header from '../components/general/Header/Header.astro';
 import Footer from '@components/general/Footer/Footer.astro';
 import Head from '@components/general/Head/Head.astro';
+import CookiePopup from '@components/general/CookiePopup.astro';
 
 const currentLang = getLangFromUrl(Astro.url);
 const locale = browserLocales[currentLang] || 'en_US';
@@ -28,5 +29,7 @@ const { title, description } = Astro.props;
 		</main>
 
 		<Footer />
+
+		<CookiePopup />
 	</body>
 </html>

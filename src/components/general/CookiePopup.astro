@@ -1,0 +1,85 @@
+---
+import { Button } from '@heroui/react';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<div class="fixed bottom-0 left-0 p-4 flex justify-center w-full">
+	<div id="cookiePopup" class="bg-white max-w-[400px] grid gap-4 place-items-center p-4 rounded-xl text-center shadow-2xl" style="transform: scale(0.4); opacity: 0;">
+		<p class="text-sm text-black-900 text-pretty">
+			{t('cookie.p')}
+		</p>
+
+		<Button id="cookiePopupButton" variant="flat" size="md" className="bg-black-900 text-white" client:visible>
+			<span class="font-medium">{t('cookie.cta')}</span>
+		</Button>
+	</div>
+</div>
+
+<script>
+	import { animate } from 'framer-motion';
+	// @ts-ignore
+	import { getCookie, setCookie } from 'typescript-cookie';
+	import { DOMAIN, COOKIE_NAME } from 'consts';
+
+	const cookiePopup = document.querySelector<HTMLDivElement>('#cookiePopup');
+	const cookieButton = document.querySelector<HTMLButtonElement>('#cookiePopupButton');
+
+	const abortController = new AbortController();
+	const { signal } = abortController;
+
+	const saveCookie = (name: string, value: boolean): void => {
+		try {
+			setCookie(name, String(value), {
+				domain: DOMAIN,
+				expires: 365,
+				path: '/',
+				sameSite: 'None',
+				secure: true,
+			});
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error('🚨 Failed to save cookie:', error);
+		}
+	};
+
+	const handleClosePopup = (): void => {
+		if (cookiePopup) {
+			animate(cookiePopup, { scale: 0.4, opacity: 0 }, { duration: 0.9, type: 'spring', bounce: 0.4 });
+		}
+
+		saveCookie(COOKIE_NAME, true);
+
+		abortController.abort();
+	};
+
+	const setEventListeners = (): void => {
+		cookieButton?.addEventListener('click', () => handleClosePopup(), { signal });
+	};
+
+	const displayPopup = () => {
+		if (cookiePopup) {
+			animate(cookiePopup, { scale: 1, opacity: 1 }, { delay: 1, duration: 0.9, type: 'spring', bounce: 0.4 });
+		}
+	};
+
+	const preparePopup = (): void => {
+		if (getCookie(COOKIE_NAME)) return;
+
+		if (cookiePopup) {
+			displayPopup();
+			saveCookie(COOKIE_NAME, true);
+		}
+	};
+
+	const init = () => {
+		if (cookiePopup) {
+			preparePopup();
+			setEventListeners();
+		}
+	};
+
+	init();
+</script>

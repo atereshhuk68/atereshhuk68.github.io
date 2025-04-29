@@ -62,6 +62,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.4
+      typescript-cookie:
+        specifier: ^1.0.6
+        version: 1.0.6
       zod:
         specifier: ^3.24.3
         version: 3.24.3
@@ -3090,6 +3093,10 @@ packages:
   type-fest@4.40.0:
     resolution: {integrity: sha512-ABHZ2/tS2JkvH1PEjxFDTUWC8dB5OsIGZP4IFLhR293GqT5Y5qB1WwL2kMPYhQW9DVgVD8Hd7I8gjwPIf5GFkw==}
     engines: {node: '>=16'}
+
+  typescript-cookie@1.0.6:
+    resolution: {integrity: sha512-s+BZr7/9BUG6Kg7jGGcOY/4XJcP+iZRFdF3q4FPTfRSP83ivLWF94OcH8PrzGmnS8Ab9qP7ENu/ikLwNFsIafA==}
+    engines: {node: '>=14'}
 
   typescript@5.8.3:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
@@ -7633,6 +7640,8 @@ snapshots:
   tslib@2.8.1: {}
 
   type-fest@4.40.0: {}
+
+  typescript-cookie@1.0.6: {}
 
   typescript@5.8.3: {}
 
