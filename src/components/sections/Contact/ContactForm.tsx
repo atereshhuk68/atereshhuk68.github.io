@@ -56,8 +56,31 @@ export function ContactForm() {
 		}
 
 		try {
+			const response = await fetch('/send.php', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			});
+
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+
+			const data = await response.json();
+
+			if (data.success) {
+				setSubmitMessage('Form submitted successfully!');
+				setFormData({ userName: '', userEmail: '', description: '' });
+			} else {
+				setSubmitMessage('Failed to submit the form. Please try again.');
+			}
 		} catch (error) {
+			console.error('Submission error:', error);
+			setSubmitMessage('An error occurred. Please try again.');
 		} finally {
+			setIsSubmitting(false);
 		}
 	};
 
@@ -119,6 +142,7 @@ export function ContactForm() {
 						</p>
 					)}
 				</div>
+
 				<Button size="lg" className="bg-golden-200 text-black-900 disabled:opacity-50" type="submit" disabled={isSubmitting}>
 					{isSubmitting ? 'Sending...' : 'Надіслати'}
 				</Button>

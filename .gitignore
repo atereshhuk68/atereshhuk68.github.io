@@ -4,6 +4,8 @@ dist/
 # generated types
 .astro/
 
+public/send.php
+
 # dependencies
 node_modules/
 
