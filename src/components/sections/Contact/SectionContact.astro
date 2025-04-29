@@ -1,8 +1,9 @@
 ---
 import { ContactForm } from './ContactForm.tsx';
+import { motion } from 'framer-motion';
 ---
 
-<section>
+<section class="relative isolate overflow-x-clip py-12">
 	<div class="container">
 		<div class="space-y-4 text-center text-base sm:text-lg lg:text-xl mb-12">
 			<h2 class="text-black-900 text-3xl sm:text-4xl lg:text-5xl text-balance font-heading">Get in Touch with Ease in Just Two Steps</h2>
@@ -14,8 +15,19 @@ import { ContactForm } from './ContactForm.tsx';
 			<p class="text-black-600 max-w-3xl mx-auto">Want a faster response? Send us a message on <a href="">Instagram Direct</a> and we’ll get back to you in no time!</p>
 		</div>
 
-		<div class="max-w-5xl mx-auto">
+		<div class="max-w-5xl mx-auto relative isolate">
 			<ContactForm client:visible />
+
+			<motion.div
+				id="rotatedText"
+				animate={{ rotate: 360 }}
+				transition={{ repeat: Infinity, ease: 'linear', duration: 30 }}
+				className="lazy-bg absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 aspect-square w-[400px] h-auto z-[-1]"
+				data-bg-name="rotated-sentence-w550"
+				client:visible
+			/>
 		</div>
 	</div>
+
+	<span class="lazy-bg absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 aspect-square w-[770px] h-auto z-[-1]" data-bg-name="decor-blur-yellow-star-w770"></span>
 </section>

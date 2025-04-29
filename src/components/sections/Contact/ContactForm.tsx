@@ -72,7 +72,7 @@ export function ContactForm() {
 						name="userName"
 						value={formData.userName}
 						onChange={handleChange}
-						className={`border ${errors.userName ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full`}
+						className={`border ${errors.userName ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full rounded-md`}
 						aria-invalid={!!errors.userName}
 						aria-describedby={errors.userName ? 'userName-error' : undefined}
 					/>
@@ -91,7 +91,7 @@ export function ContactForm() {
 						name="userEmail"
 						value={formData.userEmail}
 						onChange={handleChange}
-						className={`border ${errors.userEmail ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full`}
+						className={`border ${errors.userEmail ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full rounded-md`}
 						aria-invalid={!!errors.userEmail}
 						aria-describedby={errors.userEmail ? 'userEmail-error' : undefined}
 					/>
@@ -109,7 +109,7 @@ export function ContactForm() {
 						name="description"
 						value={formData.description}
 						onChange={handleChange}
-						className={`border ${errors.description ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full resize-none h-44`}
+						className={`border ${errors.description ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full resize-none rounded-md h-44`}
 						aria-invalid={!!errors.description}
 						aria-describedby={errors.description ? 'description-error' : undefined}
 					/>
