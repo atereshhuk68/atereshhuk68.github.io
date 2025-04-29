@@ -30,6 +30,7 @@ export const ui = {
 		'career.more': 'Zobacz szczegóły',
 		'cookie.p': 'Używamy plików cookie, aby poprawić Twoje doświadczenie i analizować ruch na stronie; zapoznaj się z naszą Polityką Prywatności, aby uzyskać więcej informacji.',
 		'cookie.cta': 'Ok',
+		'privacy.anchor': 'Polityka prywatności',
 	},
 	en: {
 		'header.nav.services': 'Services',
@@ -61,6 +62,7 @@ export const ui = {
 		'career.more': 'View details',
 		'cookie.p': 'We use cookies to enhance your experience and analyze site traffic; please review our Privacy Policy for more information.',
 		'cookie.cta': 'Ok',
+		'privacy.anchor': 'Privacy policy',
 	},
 	uk: {
 		'header.nav.services': 'Послуги',
@@ -94,6 +96,7 @@ export const ui = {
 		'cookie.p':
 			'Ми використовуємо файли cookie, щоб покращити ваш досвід та аналізувати трафік сайту; будь ласка, ознайомтеся з нашою Політикою Конфіденційності для отримання додаткової інформації.',
 		'cookie.cta': 'Ok',
+		'privacy.anchor': 'Політика конфіденційності',
 	},
 	ru: {
 		'header.nav.services': 'Услуги',
@@ -127,5 +130,6 @@ export const ui = {
 		'cookie.p':
 			'Мы используем файлы cookie, чтобы улучшить ваш опыт и анализировать трафик сайта; пожалуйста, ознакомьтесь с нашей Политикой Конфиденциальности для получения дополнительной информации.',
 		'cookie.cta': 'Ok',
+		'privacy.anchor': 'Политика конфиденциальности',
 	},
 } as const;

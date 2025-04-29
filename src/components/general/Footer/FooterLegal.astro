@@ -1,13 +1,27 @@
 ---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const currentLocale = Astro.currentLocale;
+const currentPathname = Astro.url.pathname;
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 
 const privacyPolicyUrl = getRelativeLocaleUrl(currentLocale ?? 'pl', 'privacy-policy');
+
+const isSamePage = currentPathname === privacyPolicyUrl;
 ---
 
 <ul class="flex items-center justify-end gap-4 lg:w-[280px] text-sm text-black-600">
 	<li>
-		<a href={privacyPolicyUrl}>Privacy Policy</a>
+		{
+			isSamePage ? (
+				<span class="text-cove-700 pointer-events-none">{t('privacy.anchor')}</span>
+			) : (
+				<a href={privacyPolicyUrl} class="text-black-900 hover:text-cove-700 transition-[color] duration-200">
+					{t('privacy.anchor')}
+				</a>
+			)
+		}
 	</li>
 </ul>
