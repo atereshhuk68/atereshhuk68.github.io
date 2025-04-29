@@ -6,13 +6,13 @@ const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
 
-<div class="fixed bottom-0 left-0 p-4 flex justify-center w-full">
+<div class="fixed bottom-0 left-0 p-4 flex justify-center w-full pointer-events-none">
 	<div id="cookiePopup" class="bg-white max-w-[400px] grid gap-4 place-items-center p-4 rounded-xl text-center shadow-2xl" style="transform: scale(0.4); opacity: 0;">
 		<p class="text-sm text-black-900 text-pretty">
 			{t('cookie.p')}
 		</p>
 
-		<Button id="cookiePopupButton" variant="flat" size="md" className="bg-black-900 text-white" client:visible>
+		<Button id="cookiePopupButton" variant="flat" size="md" className="bg-black-900 text-white pointer-events-auto" client:visible>
 			<span class="font-medium">{t('cookie.cta')}</span>
 		</Button>
 	</div>
