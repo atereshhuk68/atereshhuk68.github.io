@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<div class="relative w-full">
+	<label for="userMessage" class="sr-only">
+		{t('contact.usermessage')}
+	</label>
+	<textarea
+		required
+		placeholder={t('contact.usermessage')}
+		id="userMessage"
+		name="userMessage"
+		class="border border-black-500 bg-white placeholder:text-black-300 py-3 px-6 w-full resize-none rounded-md h-44"></textarea>
+	<span class="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]" data-error="userMessage"></span>
+</div>

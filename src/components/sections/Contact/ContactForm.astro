@@ -1,0 +1,180 @@
+---
+import { Button } from '@heroui/react';
+
+import UserName from './fields/UserName.astro';
+import UserEmail from './fields/UserEmail.astro';
+import UserMessage from './fields/UserMessage.astro';
+
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<div class="border border-black-300 bg-black-100 rounded-xl py-12 px-4 md:px-8">
+	<form class="grid place-items-center space-y-8 max-w-[512px] mx-auto" method="post" data-contact-form>
+		<UserName />
+
+		<UserEmail />
+
+		<UserMessage />
+
+		<Button size="lg" className="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px]" type="submit" client:load>
+			<span>loader</span>
+			{t('contact.submittext')}
+		</Button>
+	</form>
+</div>
+
+<script>
+	import { z } from 'zod';
+
+	const contactForm = document.querySelector<HTMLFormElement>('form[data-contact-form]');
+	const contactFormFields = contactForm?.querySelectorAll<HTMLInputElement>('input, textarea');
+
+	const contactFormSchema = z.object({
+		userName: z.string().min(1, { message: 'Name is required' }),
+		userEmail: z.string().email({ message: 'Invalid email address' }),
+		userMessage: z.string().min(1, { message: 'Message is required' }),
+	});
+
+	// type ContactFormData = z.infer<typeof contactFormSchema>;
+
+	export type PostDataResponse = {
+		success: boolean;
+		errors?: {
+			mail_error: string;
+		};
+	};
+
+	const clearFieldError = (field: HTMLInputElement) => {
+		const inputName = field.name;
+		const form = field.closest('form');
+
+		if (!form) return;
+
+		const errorElement = form.querySelector<HTMLInputElement>(`[data-error="${inputName}"]`);
+		const inputWithError = form.querySelector<HTMLInputElement>(`[name="${inputName}"]`);
+
+		if (errorElement) {
+			errorElement.textContent = '';
+		}
+
+		if (inputWithError) {
+			inputWithError.removeAttribute('aria-invalid');
+		}
+	};
+
+	const clearErrors = (form: HTMLFormElement) => {
+		const errorElements = form.querySelectorAll<HTMLElement>('[data-error]');
+		const inputsWithError = form.querySelectorAll<HTMLInputElement>('input, textarea');
+
+		for (const errorElement of errorElements) {
+			errorElement.textContent = '';
+		}
+
+		for (const inputWithError of inputsWithError) {
+			inputWithError.removeAttribute('aria-invalid');
+		}
+	};
+
+	const displayErrors = (form: HTMLFormElement, errors: Record<string, string[] | undefined>) => {
+		for (const [fieldName, fieldErrors] of Object.entries(errors)) {
+			if (fieldErrors && fieldErrors.length > 0) {
+				const errorElement = form.querySelector<HTMLElement>(`[data-error="${fieldName}"]`);
+				const inputWithError = form.querySelector<HTMLInputElement>(`[name="${fieldName}"]`);
+
+				if (inputWithError && errorElement) {
+					inputWithError.setAttribute('aria-invalid', 'true');
+					errorElement.textContent = fieldErrors[0];
+				}
+			}
+		}
+	};
+
+	const validateFormBySchema = <T extends z.ZodTypeAny>(form: HTMLFormElement, schema: T): z.SafeParseReturnType<z.infer<T>, z.infer<T>> => {
+		const formData = new FormData(form);
+		const formValues = Object.fromEntries(formData);
+
+		const result = schema.safeParse(formValues);
+
+		return result;
+	};
+
+	const disableSubmitButton = (submitButton: HTMLButtonElement) => {
+		if (submitButton) {
+			submitButton.disabled = true;
+		}
+	};
+
+	const enableSubmitButton = (submitButton: HTMLButtonElement) => {
+		if (submitButton) {
+			submitButton.disabled = false;
+		}
+	};
+
+	const postFormData = async (form: HTMLFormElement, submitButton: HTMLButtonElement) => {
+		const formData = new FormData(form);
+
+		try {
+			const response = await fetch('/send.php', {
+				body: formData,
+				method: 'POST',
+			});
+
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+
+			const result: PostDataResponse = await response.json();
+
+			return result;
+		} catch (error) {
+		} finally {
+			enableSubmitButton(submitButton);
+		}
+	};
+
+	const handleSubmit = async (event: SubmitEvent) => {
+		event.preventDefault();
+
+		const submittedForm = event.currentTarget as HTMLFormElement;
+		const submitButton = event.submitter as HTMLButtonElement;
+
+		clearErrors(submittedForm);
+
+		const result = validateFormBySchema(submittedForm, contactFormSchema);
+
+		if (!result.success) {
+			const errors = result.error.flatten().fieldErrors;
+
+			displayErrors(submittedForm, errors);
+
+			return;
+		}
+
+		disableSubmitButton(submitButton);
+
+		await postFormData(submittedForm, submitButton);
+	};
+
+	const setEventListeners = () => {
+		contactForm?.addEventListener('submit', handleSubmit);
+
+		if (contactFormFields) {
+			for (const formField of contactFormFields) {
+				formField.addEventListener('input', (event) => {
+					const field = event.currentTarget as HTMLInputElement;
+
+					clearFieldError(field);
+				});
+			}
+		}
+	};
+
+	const init = () => {
+		setEventListeners();
+	};
+
+	init();
+</script>

@@ -35,3 +35,8 @@
 		padding-inline: 1rem;
 	}
 }
+
+input[aria-invalid],
+textarea[aria-invalid] {
+	@apply border-red-500;
+}

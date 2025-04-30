@@ -1,0 +1,21 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<div class="relative w-full">
+	<label for="userName" class="sr-only">
+		{t('contact.username')}
+	</label>
+	<input
+		id="userName"
+		placeholder={t('contact.username')}
+		required
+		type="text"
+		name="userName"
+		class="border border-black-500 bg-white placeholder:text-black-300 py-3 px-6 w-full rounded-md"
+	/>
+	<span class="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]" data-error="userName"></span>
+</div>

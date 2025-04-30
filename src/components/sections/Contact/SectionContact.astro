@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import { ContactForm } from './ContactForm.tsx';
+import ContactForm from './ContactForm.astro';
 import { motion } from 'framer-motion';
 
 const currentLang = getLangFromUrl(Astro.url);
@@ -27,7 +27,7 @@ const t = useTranslations(currentLang);
 		</div>
 
 		<div class="max-w-5xl mx-auto relative isolate">
-			<ContactForm client:visible />
+			<ContactForm />
 
 			<motion.div
 				id="rotatedText"
