@@ -22,5 +22,8 @@ export default defineConfig({
 	integrations: [react(), sitemap()],
 	vite: {
 		plugins: [tailwindcss()],
+		build: {
+			assetsInlineLimit: 0,
+		},
 	},
 });
