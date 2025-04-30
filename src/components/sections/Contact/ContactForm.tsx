@@ -5,7 +5,7 @@ import { z } from 'zod';
 const contactFormSchema = z.object({
 	userName: z.string().min(1, { message: 'Name is required' }),
 	userEmail: z.string().email({ message: 'Invalid email address' }),
-	description: z.string().min(1, { message: 'Description is required' }),
+	userMessage: z.string().min(1, { message: 'Message is required' }),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -15,7 +15,7 @@ export function ContactForm() {
 	const [formData, setFormData] = useState<ContactFormData>({
 		userName: '',
 		userEmail: '',
-		description: '',
+		userMessage: '',
 	});
 	const [errors, setErrors] = useState<FormErrors>({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -72,7 +72,7 @@ export function ContactForm() {
 
 			if (data.success) {
 				setSubmitMessage('Form submitted successfully!');
-				setFormData({ userName: '', userEmail: '', description: '' });
+				setFormData({ userName: '', userEmail: '', userMessage: '' });
 			} else {
 				setSubmitMessage('Failed to submit the form. Please try again.');
 			}
@@ -128,23 +128,23 @@ export function ContactForm() {
 				<div className="relative w-full">
 					<textarea
 						required
-						placeholder="Enter your description"
-						name="description"
-						value={formData.description}
+						placeholder="Enter your message"
+						name="userMessage"
+						value={formData.userMessage}
 						onChange={handleChange}
-						className={`border ${errors.description ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full resize-none rounded-md h-44`}
-						aria-invalid={!!errors.description}
-						aria-describedby={errors.description ? 'description-error' : undefined}
+						className={`border ${errors.userMessage ? 'border-red-500' : 'border-black-500'} bg-white placeholder:text-black-300 py-3 px-6 w-full resize-none rounded-md h-44`}
+						aria-invalid={!!errors.userMessage}
+						aria-describedby={errors.userMessage ? 'userMessage-error' : undefined}
 					/>
-					{errors.description && (
-						<p id="description-error" className="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]">
-							{errors.description}
+					{errors.userMessage && (
+						<p id="userMessage-error" className="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]">
+							{errors.userMessage}
 						</p>
 					)}
 				</div>
 
-				<Button size="lg" className="bg-golden-200 text-black-900 disabled:opacity-50" type="submit" disabled={isSubmitting}>
-					{isSubmitting ? 'Sending...' : 'Надіслати'}
+				<Button size="lg" isLoading={isSubmitting} className="bg-golden-200 text-black-900 disabled:opacity-50 min-w-[200px]" type="submit" disabled={isSubmitting}>
+					Надіслати
 				</Button>
 			</form>
 		</div>
