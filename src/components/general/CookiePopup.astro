@@ -22,7 +22,7 @@ const t = useTranslations(currentLang);
 	import { animate } from 'framer-motion';
 	// @ts-ignore
 	import { getCookie, setCookie } from 'typescript-cookie';
-	import { DOMAIN, COOKIE_NAME } from 'consts';
+	import { COOKIE_NAME } from 'consts';
 
 	const cookiePopup = document.querySelector<HTMLDivElement>('#cookiePopup');
 	const cookieButton = document.querySelector<HTMLButtonElement>('#cookiePopupButton');
@@ -33,7 +33,6 @@ const t = useTranslations(currentLang);
 	const saveCookie = (name: string, value: boolean): void => {
 		try {
 			setCookie(name, String(value), {
-				domain: DOMAIN,
 				expires: 365,
 				path: '/',
 				sameSite: 'None',
