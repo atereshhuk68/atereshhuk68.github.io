@@ -6,6 +6,7 @@ import UserEmail from './fields/UserEmail.astro';
 import UserMessage from './fields/UserMessage.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import Dialog from './dialog/Dialog.astro';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -24,13 +25,20 @@ const t = useTranslations(currentLang);
 			{t('contact.submittext')}
 		</Button>
 	</form>
+
+	<Dialog />
 </div>
 
 <script>
+	import { animate } from 'framer-motion';
 	import { z } from 'zod';
 
 	const contactForm = document.querySelector<HTMLFormElement>('form[data-contact-form]');
 	const contactFormFields = contactForm?.querySelectorAll<HTMLInputElement>('input, textarea');
+
+	const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
+	const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
+	const closeDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-dialog]');
 
 	const contactFormSchema = z.object({
 		userName: z.string().min(1, { message: 'Name is required' }),
@@ -38,13 +46,25 @@ const t = useTranslations(currentLang);
 		userMessage: z.string().min(1, { message: 'Message is required' }),
 	});
 
-	// type ContactFormData = z.infer<typeof contactFormSchema>;
-
 	export type PostDataResponse = {
 		success: boolean;
 		errors?: {
 			mail_error: string;
 		};
+	};
+
+	const toggleDialog = (dialog: HTMLDialogElement, isOpen: boolean) => {
+		if (isOpen) {
+			animate(dialog, { scale: 1, opacity: 1 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
+			dialog.showModal();
+			document.body.style.overflow = 'hidden';
+		} else {
+			animate(dialog, { scale: 0.4, opacity: 0 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
+			setTimeout(() => {
+				dialog.close();
+			}, 200);
+			document.body.style.overflow = 'auto';
+		}
 	};
 
 	const clearFieldError = (field: HTMLInputElement) => {
@@ -130,6 +150,11 @@ const t = useTranslations(currentLang);
 
 			return result;
 		} catch (error) {
+			if (errorDialog) {
+				console.error('Error:', error);
+				toggleDialog(errorDialog, true);
+			}
+			return { success: false };
 		} finally {
 			enableSubmitButton(submitButton);
 		}
@@ -155,11 +180,29 @@ const t = useTranslations(currentLang);
 
 		disableSubmitButton(submitButton);
 
-		await postFormData(submittedForm, submitButton);
+		const { success } = await postFormData(submittedForm, submitButton);
+
+		if (success) {
+			if (successDialog) {
+				toggleDialog(successDialog, true);
+			}
+		}
 	};
 
 	const setEventListeners = () => {
 		contactForm?.addEventListener('submit', handleSubmit);
+
+		if (closeDialogButtons) {
+			for (const closeDialogButton of closeDialogButtons) {
+				closeDialogButton.addEventListener('click', (event) => {
+					const openedDialog = document.querySelector<HTMLDialogElement>('dialog[open]');
+
+					if (openedDialog) {
+						toggleDialog(openedDialog, false);
+					}
+				});
+			}
+		}
 
 		if (contactFormFields) {
 			for (const formField of contactFormFields) {
