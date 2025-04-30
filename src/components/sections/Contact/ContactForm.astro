@@ -7,6 +7,7 @@ import UserMessage from './fields/UserMessage.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Dialog from './dialog/Dialog.astro';
+import { LoaderCircle } from 'lucide-react';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -20,8 +21,7 @@ const t = useTranslations(currentLang);
 
 		<UserMessage />
 
-		<Button size="lg" className="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px]" type="submit" client:load>
-			<span>loader</span>
+		<Button size="lg" className="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px] peer" type="submit" client:load>
 			{t('contact.submittext')}
 		</Button>
 	</form>
