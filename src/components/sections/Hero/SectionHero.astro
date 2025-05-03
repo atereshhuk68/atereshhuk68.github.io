@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-import { Button } from '@heroui/react';
+import { Link, Button } from '@heroui/react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
@@ -26,8 +26,10 @@ const t = useTranslations(currentLang);
 				</p>
 			</div>
 
-			<Button variant="solid" size="lg" color="primary" radius="sm" className="bg-black-900" client:load>
-				{t('hero.cta')}
+			<Button variant="solid" size="lg" color="primary" radius="sm" className="bg-black-900 px-0" client:load>
+				<a class="px-8" href="https://ig.me/m/bfancy.warsaw" target="_blank" rel="noopener">
+					{t('hero.cta')}
+				</a>
 			</Button>
 
 			<small class="text-xs font-medium text-black-500">{t('hero.note')}</small>
