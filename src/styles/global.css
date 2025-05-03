@@ -40,3 +40,29 @@ input[aria-invalid],
 textarea[aria-invalid] {
 	@apply border-red-500;
 }
+
+.custom-list {
+	li {
+		@apply relative;
+		@apply flex items-center gap-3;
+		@apply opacity-0;
+
+		&::before {
+			@apply content-[''];
+			@apply size-4 inline-flex;
+			@apply mask-[contain] mask-[center] mask-[no-repeat];
+			@apply bg-black-900;
+			@apply transition-[background-color] duration-200;
+
+			mask-image: url('../assets/vector/star-marker-w16.svg');
+		}
+
+		&:hover a {
+			@apply text-cove-600;
+		}
+
+		&:hover::before {
+			@apply bg-cove-600;
+		}
+	}
+}

@@ -44,22 +44,40 @@ const t = useTranslations(currentLang);
 
 				<p class="text-base md:text-lg">{t('about.other')}</p>
 
-				<ul class="space-y-4">
+				<ul class="custom-list space-y-4">
 					<li>
 						<a
 							href="https://www.facebook.com/share/18dnZPTrj1/?mibextid=wwXIfr"
 							target="_blank"
 							rel="noopener"
-							class="text-black-900 underline hover:no-underline font-bold cursor-pointer"
+							class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
 							target="_blank"
 							rel="noopener">Facebook</a
 						>
 					</li>
 					<li>
-						<a href="#" class="text-black-900 underline hover:no-underline font-bold cursor-pointer" target="_blank" rel="noopener">Telegram</a>
+						<a
+							href="https://t.me/bfancy_warsaw"
+							class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
+							target="_blank"
+							rel="noopener">Telegram</a
+						>
 					</li>
 					<li>
-						<a href="#" class="text-black-900 underline hover:no-underline font-bold cursor-pointer" target="_blank" rel="noopener">Telegram</a>
+						<a
+							href="https://api.whatsapp.com/send/?phone=48690647476&type=phone_number&app_absent=0"
+							class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
+							target="_blank"
+							rel="noopener">Whatsapp</a
+						>
+					</li>
+					<li>
+						<a
+							href="viber://chat?number=48690647476"
+							class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
+							target="_blank"
+							rel="noopener">Viber</a
+						>
 					</li>
 				</ul>
 			</div>
@@ -78,3 +96,13 @@ const t = useTranslations(currentLang);
 
 	<div class="lazy-bg inline-flex size-[770px] absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-0 z-[-1]" data-bg-name="decor-blur-blue-star-w770"></div>
 </section>
+
+<script>
+	import { inView, animate, stagger } from 'framer-motion';
+
+	const callback = (element: Element) => {
+		animate(element, { opacity: 1, y: [50, 0] }, { delay: stagger(0.25) });
+	};
+
+	inView('.custom-list li', callback);
+</script>
