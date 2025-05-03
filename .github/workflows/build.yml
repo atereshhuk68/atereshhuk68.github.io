@@ -5,14 +5,16 @@ on:
     branches: [master]
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      dist-path: ${{ steps.set-dist-path.outputs.dist-path }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
@@ -25,18 +27,20 @@ jobs:
       - name: Setup Node.js and cache pnpm dependencies
         uses: actions/setup-node@v4
         with:
-          node-version: 23.11.0
+          node-version: 22.x
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build Astro site
         run: pnpm build
 
-      - name: Set dist path output
-        id: set-dist-path
-        run: echo "dist-path=dist" >> $GITHUB_OUTPUT
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: astro-site
+          path: dist/
 
   deploy:
     needs: build
@@ -44,8 +48,10 @@ jobs:
     environment:
       name: production
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: astro-site
 
       - name: FTP Deploy dist to remote directory
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -53,6 +59,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: ${{ secrets.SFTP_SERVER_DIR }}
+          server-dir: ${{ secrets.FTP_DIR }}
+          local-dir: ./
           protocol: ftps
+          log-level: verbose
