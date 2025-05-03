@@ -185,6 +185,7 @@ const t = useTranslations(currentLang);
 		if (success) {
 			if (successDialog) {
 				toggleDialog(successDialog, true);
+				submittedForm.reset();
 			}
 		}
 	};
