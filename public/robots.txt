@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bfancy.pl/sitemap.xml
+Sitemap: https://bfancy.pl/sitemap-index.xml
