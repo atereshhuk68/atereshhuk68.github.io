@@ -96,13 +96,3 @@ const t = useTranslations(currentLang);
 
 	<div class="lazy-bg inline-flex size-[770px] absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-0 z-[-1]" data-bg-name="decor-blur-blue-star-w770"></div>
 </section>
-
-<script>
-	import { inView, animate, stagger } from 'framer-motion';
-
-	const callback = (element: Element) => {
-		animate(element, { opacity: 1, y: [50, 0] }, { delay: stagger(0.25) });
-	};
-
-	inView('.custom-list li', callback);
-</script>

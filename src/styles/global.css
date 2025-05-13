@@ -45,7 +45,6 @@ textarea[aria-invalid] {
 	li {
 		@apply relative;
 		@apply flex items-center gap-3;
-		@apply opacity-0;
 
 		&::before {
 			@apply content-[''];
