@@ -24,6 +24,7 @@
 		"es-toolkit": "^1.36.0",
 		"framer-motion": "^12.9.2",
 		"lucide-react": "^0.503.0",
+		"maska": "^3.1.1",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"sharp": "^0.34.1",

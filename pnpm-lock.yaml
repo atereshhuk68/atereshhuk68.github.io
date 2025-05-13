@@ -53,6 +53,9 @@ importers:
       lucide-react:
         specifier: ^0.503.0
         version: 0.503.0(react@19.1.0)
+      maska:
+        specifier: ^3.1.1
+        version: 3.1.1
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -2646,6 +2649,9 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
+
+  maska@3.1.1:
+    resolution: {integrity: sha512-68ZJfZ6/YANwv7CufbQmcCNoHdJnIRxuQgZtSFZe5ltlmZ15ZdA01siUGLh9EfaUX65DN0l/A7g+o2xjTICeGQ==}
 
   mdast-util-definitions@6.0.0:
     resolution: {integrity: sha512-scTllyX6pnYNZH/AIp/0ePz6s4cZtARxImwoPJ7kS42n+MnVsI4XbnG6d4ibehRIldYMWM2LD7ImQblVhUejVQ==}
@@ -6922,6 +6928,8 @@ snapshots:
       source-map-js: 1.2.1
 
   markdown-table@3.0.4: {}
+
+  maska@3.1.1: {}
 
   mdast-util-definitions@6.0.0:
     dependencies:

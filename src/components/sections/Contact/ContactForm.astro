@@ -4,10 +4,10 @@ import { Button } from '@heroui/react';
 import UserName from './fields/UserName.astro';
 import UserEmail from './fields/UserEmail.astro';
 import UserMessage from './fields/UserMessage.astro';
+import UserPhone from './fields/UserPhone.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Dialog from './dialog/Dialog.astro';
-import { LoaderCircle } from 'lucide-react';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -16,6 +16,8 @@ const t = useTranslations(currentLang);
 <div class="border border-black-300 bg-black-100 rounded-xl py-12 px-4 md:px-8">
 	<form class="grid place-items-center space-y-8 max-w-[512px] mx-auto" method="post" data-contact-form>
 		<UserName />
+
+		<UserPhone />
 
 		<UserEmail />
 
@@ -42,6 +44,11 @@ const t = useTranslations(currentLang);
 
 	const contactFormSchema = z.object({
 		userName: z.string().min(1, { message: 'Name is required' }),
+		userPhone: z
+			.string()
+			.min(9, { message: 'Phone too short. Min 9 symbols' })
+			.max(15, { message: 'Phone too long. Max 15 symbols' })
+			.regex(/^\+?[0-9]*$/, { message: 'Invalid phone number' }),
 		userEmail: z.string().email({ message: 'Invalid email address' }),
 		userMessage: z.string().min(1, { message: 'Message is required' }),
 	});
@@ -112,13 +119,19 @@ const t = useTranslations(currentLang);
 		}
 	};
 
+	const sanitizePhoneNumber = (phoneNumber: string): string => {
+		return phoneNumber.replaceAll(/\D/g, '');
+	};
+
 	const validateFormBySchema = <T extends z.ZodTypeAny>(form: HTMLFormElement, schema: T): z.SafeParseReturnType<z.infer<T>, z.infer<T>> => {
 		const formData = new FormData(form);
 		const formValues = Object.fromEntries(formData);
 
-		const result = schema.safeParse(formValues);
+		if (formValues.userPhone) {
+			formValues.userPhone = sanitizePhoneNumber(formValues.userPhone as string);
+		}
 
-		return result;
+		return schema.safeParse(formValues);
 	};
 
 	const disableSubmitButton = (submitButton: HTMLButtonElement) => {
