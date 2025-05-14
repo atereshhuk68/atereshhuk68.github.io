@@ -2,8 +2,8 @@
  * TabControl component
  * Відображає таби для фільтрації сервісів.
  */
-import { Button } from '@heroui/react';
-import { useServicesStore } from 'src/store/servicesStore';
+import { Button, type PressEvent } from '@heroui/react';
+import { useCatalogStore } from 'src/store/CatalogStore';
 
 const ICON_MAP: Record<string, string> = {
 	all: 'service-list-w64',
@@ -13,7 +13,14 @@ const ICON_MAP: Record<string, string> = {
 };
 
 export function TabControl() {
-	const { activeFilter, filters, setFilter } = useServicesStore();
+	const { activeFilter, filters, setActiveFilter } = useCatalogStore();
+
+	const handlePressSetActiveFilter = (event: PressEvent) => {
+		const pressedButton = event.target as HTMLButtonElement;
+		const filter = pressedButton.dataset.filter || 'all';
+
+		setActiveFilter(filter);
+	};
 
 	return (
 		<div className="grid grid-cols-2 sm:flex flex-nowrap items-center gap-1 overflow-x-auto">
@@ -28,7 +35,7 @@ export function TabControl() {
 						radius="sm"
 						data-filter={filter}
 						className={`text-base px-8 flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
-						onPress={() => setFilter(filter)}
+						onPress={handlePressSetActiveFilter}
 						aria-pressed={isActive}>
 						<span className={`lazy-bg size-5 flex-shrink-0 ${ICON_MAP[filter]}`}></span>
 						{filterTitle}

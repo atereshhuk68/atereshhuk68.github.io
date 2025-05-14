@@ -36,7 +36,7 @@ export function HeaderMenu({ className, menuItems = [] }: HeaderMenuProps) {
 	if (isSmallOrMediumScreen) {
 		return (
 			<div className={className}>
-				<Dropdown className="bg-black-100">
+				<Dropdown className="bg-black-100" shouldBlockScroll={false}>
 					<DropdownTrigger>
 						<Button isIconOnly variant="light" aria-label="Menu">
 							<Menu size={32} />

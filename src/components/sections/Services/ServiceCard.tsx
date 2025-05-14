@@ -26,6 +26,7 @@ export function ServiceCard({ name, list }: Service) {
 		<motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
 			<div className="p-6 space-y-4 h-full bg-black-100 rounded-lg min-h-[280px]">
 				<strong className="flex text-2xl font-heading">{name}</strong>
+
 				<ul className="space-y-2 divide-y-1 divide-black-200">
 					{list.map((item) => (
 						<ServiceRow key={item.title} {...item} />

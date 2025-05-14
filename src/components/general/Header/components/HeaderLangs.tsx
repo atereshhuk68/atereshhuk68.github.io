@@ -6,14 +6,15 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import type { LanguagesListType } from '@i18n/langs';
 import { Languages } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-type HeaderLangsProps = {
+interface HeaderLangsProps {
 	items: LanguagesListType[];
-};
+}
 
 export function HeaderLangs({ items }: HeaderLangsProps) {
 	return (
-		<Dropdown className="bg-black-100">
+		<Dropdown className="bg-black-100" shouldBlockScroll={false}>
 			<DropdownTrigger>
 				<Button variant="light" isIconOnly startContent={<Languages size={24} />} />
 			</DropdownTrigger>

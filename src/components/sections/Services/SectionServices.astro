@@ -1,6 +1,7 @@
 ---
 import { shuffle } from 'es-toolkit';
-import { ServicesSection } from './Services.tsx';
+import { Catalog } from './Catalog.tsx';
+import { TabControl } from './TabControl.tsx';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import { getCollection } from 'astro:content';
@@ -27,6 +28,8 @@ const ctaText = t('services.cta');
 			</p>
 		</div>
 
-		<ServicesSection services={shuffle(ServicesData)} {ctaText} client:load />
+		<TabControl client:load />
+
+		<Catalog services={shuffle(ServicesData)} {ctaText} client:load />
 	</div>
 </section>
