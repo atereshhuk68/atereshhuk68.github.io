@@ -1,13 +1,11 @@
+/**
+ * TabControl component
+ * Відображає таби для фільтрації сервісів.
+ */
 import { Button } from '@heroui/react';
 import { useServicesStore } from 'src/store/servicesStore';
 
-interface TabControlProps {
-	onPress: (filterValue: string) => void;
-	filters: string[];
-	activeFilter: string;
-}
-
-const iconMap: { [key: string]: string } = {
+const ICON_MAP: Record<string, string> = {
 	all: 'service-list-w64',
 	nails: 'service-nails-w64',
 	visage: 'service-visage-w64',
@@ -22,7 +20,6 @@ export function TabControl() {
 			{filters.map((filter: string) => {
 				const isActive = filter === activeFilter;
 				const filterTitle = filter.charAt(0).toUpperCase() + filter.slice(1);
-
 				return (
 					<Button
 						key={filter}
@@ -33,7 +30,7 @@ export function TabControl() {
 						className={`text-base px-8 flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
 						onPress={() => setFilter(filter)}
 						aria-pressed={isActive}>
-						<span className={`lazy-bg size-5 flex-shrink-0 ${iconMap[filter]}`}></span>
+						<span className={`lazy-bg size-5 flex-shrink-0 ${ICON_MAP[filter]}`}></span>
 						{filterTitle}
 					</Button>
 				);
