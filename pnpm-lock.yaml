@@ -26,6 +26,9 @@ importers:
       '@internationalized/date':
         specifier: ^3.8.0
         version: 3.8.0
+      '@lucide/astro':
+        specifier: ^0.510.0
+        version: 0.510.0(astro@5.7.6(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.0)(typescript@5.8.3)(yaml@2.7.1))
       '@tailwindcss/postcss':
         specifier: ^4.1.4
         version: 4.1.4
@@ -1165,6 +1168,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@lucide/astro@0.510.0':
+    resolution: {integrity: sha512-j4TN4Y1VbdS2ebLEC5qLvkZHZBrQgsfVGftnh3UQ0fYLymd24sAwaYbpPklf/B3Up0PPzTr0Kra+VInreUIYEQ==}
+    peerDependencies:
+      astro: ^4 || ^5
 
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
@@ -4993,6 +5001,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@lucide/astro@0.510.0(astro@5.7.6(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.0)(typescript@5.8.3)(yaml@2.7.1))':
+    dependencies:
+      astro: 5.7.6(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.0)(typescript@5.8.3)(yaml@2.7.1)
 
   '@oslojs/encoding@1.1.0': {}
 

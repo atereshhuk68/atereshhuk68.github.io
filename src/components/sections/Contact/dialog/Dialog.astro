@@ -1,7 +1,7 @@
 ---
 import { Button } from '@heroui/react';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import { Check, X } from 'lucide-react';
+import { Check, X } from '@lucide/astro';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -13,7 +13,7 @@ const t = useTranslations(currentLang);
 	style="transform: scale(0.4); opacity: 0;">
 	<div class="mx-auto grid gap-4">
 		<div class="flex justify-center text-green-600">
-			<Check size={24} strokeWidth={3} />
+			<Check size={24} stroke-width={3} />
 		</div>
 
 		<div class="text-xl font-medium">We've received your message successfully.</div>
@@ -28,7 +28,7 @@ const t = useTranslations(currentLang);
 	style="transform: scale(0.4); opacity: 0;">
 	<div class="mx-auto grid gap-4">
 		<div class="flex justify-center text-red-500">
-			<X size={24} strokeWidth={3} />
+			<X size={24} stroke-width={3} />
 		</div>
 
 		<div class="text-xl font-medium">Your message wasn't sent, please try again.</div>

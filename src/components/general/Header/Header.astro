@@ -3,8 +3,7 @@ import { Button } from '@heroui/react';
 import { HeaderLangs } from './components/HeaderLangs.tsx';
 import HeaderLogo from './components/HeaderLogo.astro';
 import { HeaderMenu } from './components/HeaderMenu.tsx';
-import { VerticalSeparator } from '@components/icons/VerticalSeparator';
-import { Calendar } from 'lucide-react';
+import { Calendar, Minus } from '@lucide/astro';
 
 import { getLangFromUrl, getTranslatedURL, useTranslations } from '@i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
@@ -39,12 +38,12 @@ const ModifiedLanguagesList = LanguagesList.map(({ locale, name }) => ({
 
 <header class="py-8">
 	<div class="container">
-		<div class="flex items-center justify-between sm:gap-1">
+		<div class="flex items-center justify-between">
 			<HeaderMenu menuItems={menuItems} className="lg:w-[350px] order-last lg:order-[initial] min-w-10" client:load />
 
 			<HeaderLogo class="flex-grow lg:flex-grow-0" />
 
-			<div class="items-center sm:gap-4 justify-end md:w-[350px] contents lg:flex">
+			<div class="items-center justify-end md:w-[350px] contents lg:flex">
 				<Button variant="bordered" size="lg" radius="sm" className="text-cove-700 border-cove-700 inline-flex sm:hidden" isIconOnly client:load>
 					<a class="size-12 items-center justify-center inline-flex" href="https://booksy.com/pl-pl/dl/show-business/296324" target="_blank" rel="noopener">
 						<Calendar size={24} />
@@ -57,11 +56,11 @@ const ModifiedLanguagesList = LanguagesList.map(({ locale, name }) => ({
 					</a>
 				</Button>
 
-				<VerticalSeparator client:load />
+				<Minus stroke-width={1} size={32} class="rotate-90 opacity-25" />
 
 				<HeaderLangs items={ModifiedLanguagesList} client:load />
 
-				<VerticalSeparator className="lg:hidden" client:load />
+				<Minus stroke-width={1} size={32} class="rotate-90 opacity-25 lg:hidden" />
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 
-import { Link, Button } from '@heroui/react';
+import { Button } from '@heroui/react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink } from '@lucide/astro';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 import GridImage from '@assets/images/hero-demo-photo-w736.webp';
@@ -73,7 +73,7 @@ const t = useTranslations(currentLang);
 					{t('hero.reviews')}
 				</span>
 
-				<ExternalLink size={20} strokeWidth={2} />
+				<ExternalLink size={20} stroke-width={2} />
 			</a>
 		</div>
 	</div>

@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import AboutUsImage from '@assets/images/about-us-image-w782.png';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink } from '@lucide/astro';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -36,7 +36,7 @@ const t = useTranslations(currentLang);
 							{t('about.instagram')}
 						</span>
 
-						<ExternalLink size={20} strokeWidth={2} />
+						<ExternalLink size={20} stroke-width={2} />
 					</a>
 				</p>
 
