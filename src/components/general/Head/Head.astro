@@ -1,12 +1,11 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-
-import Favicons from '@components/general/Head/Favicons.astro';
-import OpenGraph from '@components/general/Head/OpenGraph.astro';
-import GTM from '../Analytics/GTM.astro';
-import Ahrefs from '../Analytics/Ahrefs.astro';
-import Clarity from '../Analytics/Clarity.astro';
-import Canonical from './Canonical.astro';
+import Favicons from './parts/Favicons.astro';
+import OpenGraph from './parts/OpenGraph.astro';
+import GTM from './parts/GTM.astro';
+import Ahrefs from './parts/Ahrefs.astro';
+import Clarity from './parts/Clarity.astro';
+import Canonical from './parts/Canonical.astro';
 
 const { title, description } = Astro.props;
 const isDev = import.meta.env.MODE === 'development';
