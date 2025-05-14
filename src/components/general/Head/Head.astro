@@ -5,7 +5,7 @@ import OpenGraph from './parts/OpenGraph.astro';
 import GTM from './parts/GTM.astro';
 import Ahrefs from './parts/Ahrefs.astro';
 import Clarity from './parts/Clarity.astro';
-// import Canonical from './parts/Canonical.astro';
+import Canonical from './parts/Canonical.astro';
 
 const { title, description } = Astro.props;
 const isDev = import.meta.env.MODE === 'development';
@@ -15,6 +15,7 @@ const isDev = import.meta.env.MODE === 'development';
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" />
 	<Favicons />
+	<Canonical />
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<OpenGraph {title} {description} />
