@@ -6,11 +6,11 @@ description: 'BFancy Salon Privacy Policy. Learn how we protect your personal da
 
 # Privacy Policy
 
-BFancy Limited Liability Company – www.bfancy.pl
+BFancy Limited Liability Company – **bfancy.pl**
 
 Last updated: **April 28, 2025**
 
-This Privacy Policy defines the rules for processing personal data obtained through the website www.bfancy.pl operated by:
+This Privacy Policy defines the rules for processing personal data obtained through the website **bfancy.pl** operated by:
 
 BFancy Limited Liability Company.
 NIP: 1251779205

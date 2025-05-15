@@ -6,11 +6,11 @@ description: 'Polityka Prywatności salonu BFancy. Sprawdź, jak chronimy Twoje 
 
 # Polityka Prywatności
 
-BFancy Spółka z ograniczoną odpowiedzialnością – www.bfancy.pl
+BFancy Spółka z ograniczoną odpowiedzialnością – **bfancy.pl**
 
 Data aktualizacji: 28.04.2025
 
-Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych pozyskiwanych za pośrednictwem strony internetowej www.bfancy.pl prowadzonej przez:
+Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych pozyskiwanych za pośrednictwem strony internetowej **bfancy.pl** prowadzonej przez:
 
 BFancy spółka z ograniczoną odpowiedzialnością.
 NIP: 1251779205
