@@ -1,10 +1,11 @@
 ---
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { useTranslations } from '@i18n/utils';
 import ContactForm from './ContactForm.astro';
 import { motion } from 'framer-motion';
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale);
 ---
 
 <section class="relative isolate overflow-x-clip py-12">

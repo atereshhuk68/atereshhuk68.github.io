@@ -2,15 +2,15 @@
 import { shuffle } from 'es-toolkit';
 import { Catalog } from './Catalog.tsx';
 import { TabControl } from './TabControl.tsx';
-
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { useTranslations } from '@i18n/utils';
 import { getCollection } from 'astro:content';
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale);
 
 const Services = await getCollection('services');
-const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLang));
+const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLocale));
 const ServicesData = ServicesFiltered?.data ?? [];
 
 const ctaText = t('services.cta');

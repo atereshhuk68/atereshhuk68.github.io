@@ -1,16 +1,14 @@
 ---
 import Logo from '@assets/logo/footer-logo-w160.svg';
 import { Image } from 'astro:assets';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import { defaultLang } from '@i18n/langs';
 import cx from 'classix';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const currentLocale = Astro.currentLocale;
 
 const mainLogoAspectRatioClass = `aspect-[${Logo.width}/${Logo.height}]`;
 
-const homePageUrl = lang === defaultLang ? '/' : `/${lang}/`;
+const homePageUrl = currentLocale === defaultLang ? '/' : `/${currentLocale}/`;
 
 const isHomepage = Astro.url.pathname === homePageUrl;
 

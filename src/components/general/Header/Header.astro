@@ -5,19 +5,22 @@ import HeaderLogo from './components/HeaderLogo.astro';
 import { HeaderMenu } from './components/HeaderMenu.tsx';
 import { Calendar, Minus } from '@lucide/astro';
 
-import { getLangFromUrl, getTranslatedURL, useTranslations } from '@i18n/utils';
+import { getTranslatedURL, useTranslations } from '@i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { LanguagesList, defaultLang } from '@i18n/langs';
 
-const currentLang = getLangFromUrl(Astro.url);
-const currentPathname = Astro.url.pathname;
-const t = useTranslations(currentLang);
+const {
+	url: { pathname },
+	currentLocale = 'pl',
+} = Astro;
 
-const basePath = getTranslatedURL(currentLang, currentPathname);
+const t = useTranslations(currentLocale);
+
+const basePath = getTranslatedURL(pathname, currentLocale);
 
 const modifyUrl = (anchor: string) => {
-	if (currentLang !== defaultLang) {
-		return `/${currentLang}/${anchor}`;
+	if (currentLocale !== defaultLang) {
+		return `/${currentLocale}/${anchor}`;
 	}
 
 	return `/${anchor}`;
@@ -26,7 +29,7 @@ const modifyUrl = (anchor: string) => {
 const menuItems = [
 	{ href: modifyUrl('#services'), label: t('header.nav.services') },
 	{ href: modifyUrl('#aboutUs'), label: t('header.nav.aboutUs') },
-	{ href: getRelativeLocaleUrl(currentLang, 'careers'), label: t('header.nav.careers') },
+	{ href: getRelativeLocaleUrl(currentLocale, 'careers'), label: t('header.nav.careers') },
 ];
 
 const ModifiedLanguagesList = LanguagesList.map(({ locale, name }) => ({

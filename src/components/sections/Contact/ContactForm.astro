@@ -6,11 +6,12 @@ import UserEmail from './fields/UserEmail.astro';
 import UserMessage from './fields/UserMessage.astro';
 import UserPhone from './fields/UserPhone.astro';
 
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { useTranslations } from '@i18n/utils';
 import Dialog from './dialog/Dialog.astro';
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale);
 ---
 
 <div class="border border-black-300 bg-black-100 rounded-xl py-12 px-4 md:px-8">

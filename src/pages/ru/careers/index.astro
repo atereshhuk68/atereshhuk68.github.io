@@ -2,11 +2,11 @@
 import Layout from 'src/layouts/Layout.astro';
 import CareerCard from '@components/Careers/CareerCard.astro';
 import type { CareerCardType } from 'src/types/types';
+import { useTranslations } from '@i18n/utils';
 
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+const { currentLocale = 'pl' } = Astro;
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const t = useTranslations(currentLocale);
 
 const careers: CareerCardType[] = Object.values(import.meta.glob('./*.md', { eager: true }));
 

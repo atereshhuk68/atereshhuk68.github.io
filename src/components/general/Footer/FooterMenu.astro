@@ -1,19 +1,21 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { LanguagesList } from '@i18n/langs';
-import { getLangFromUrl, getTranslatedURL } from '@i18n/utils';
+import { getTranslatedURL } from '@i18n/utils';
 
-const currentLang = getLangFromUrl(Astro.url);
-const currentPathname = Astro.url.pathname;
+const {
+	url: { pathname },
+	currentLocale,
+} = Astro;
 
-const basePath = getTranslatedURL(currentLang, currentPathname);
+const basePath = getTranslatedURL(pathname, currentLocale);
 ---
 
 <ul class="flex items-center gap-4 lg:w-[280px] text-sm">
 	{
 		LanguagesList.map(({ locale, name }) => (
 			<li>
-				{locale === currentLang ? (
+				{locale === currentLocale ? (
 					<span class="text-cove-700 pointer-events-none">{name}</span>
 				) : (
 					<a href={getRelativeLocaleUrl(locale, basePath)} class="text-black-900 hover:text-cove-600 transition-[color] duration-200">
@@ -23,4 +25,17 @@ const basePath = getTranslatedURL(currentLang, currentPathname);
 			</li>
 		))
 	}
+	<!-- {
+		LanguagesList.map(({ locale, name }) => (
+			<li>
+				{locale === currentLocale ? (
+					<span class="text-cove-700 pointer-events-none">{name}</span>
+				) : (
+					<a href={getRelativeLocaleUrl(locale, basePath)} class="text-black-900 hover:text-cove-600 transition-[color] duration-200">
+						{name}
+					</a>
+				)}
+			</li>
+		))
+	} -->
 </ul>

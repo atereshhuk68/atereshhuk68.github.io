@@ -1,15 +1,14 @@
 ---
 import { Image } from 'astro:assets';
-
 import { Button } from '@heroui/react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from '@lucide/astro';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
-
+import { useTranslations } from '@i18n/utils';
 import GridImage from '@assets/images/hero-demo-photo-w736.webp';
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale);
 ---
 
 <div class="container">

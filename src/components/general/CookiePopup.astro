@@ -1,9 +1,10 @@
 ---
 import { Button } from '@heroui/react';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { useTranslations } from '@i18n/utils';
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale);
 ---
 
 <div class="fixed bottom-0 left-0 p-4 flex justify-center w-full pointer-events-none">
