@@ -1,6 +1,5 @@
 ---
 import { useTranslations } from "@i18n/utils";
-import { motion } from "framer-motion";
 import type { Locales } from "src/types/types";
 import ContactForm from "./ContactForm.astro";
 
@@ -31,16 +30,22 @@ const t = useTranslations(currentLocale as Locales);
 		<div class="max-w-5xl mx-auto relative isolate">
 			<ContactForm />
 
-			<motion.div
+			<div
 				id="rotatedText"
-				animate={{ rotate: 360 }}
-				transition={{ repeat: Infinity, ease: 'linear', duration: 30 }}
-				className="lazy-bg absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 aspect-square w-[400px] h-auto z-[-1]"
-				data-bg-name="rotated-sentence-w550"
-				client:visible
-			/>
+				class="lazy-bg absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 aspect-square w-[400px] h-auto z-[-1]"
+				data-bg-name="rotated-sentence-w550"></div>
 		</div>
 	</div>
 
 	<span class="lazy-bg absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 aspect-square w-[770px] h-auto z-[-1]" data-bg-name="decor-blur-yellow-star-w770"></span>
 </section>
+
+<script>
+	import { animate } from 'framer-motion';
+
+	const rotatedText = document.getElementById('rotatedText');
+
+	if (rotatedText) {
+		animate(rotatedText, { rotate: 360 }, { duration: 30, repeat: Infinity, ease: 'linear' });
+	}
+</script>

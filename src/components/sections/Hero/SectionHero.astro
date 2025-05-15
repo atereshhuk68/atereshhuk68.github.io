@@ -4,7 +4,6 @@ import GridImage from "@assets/images/hero-demo-photo-w736.webp";
 import { Button } from "@heroui/react";
 import { useTranslations } from "@i18n/utils";
 import { ExternalLink } from "@lucide/astro";
-import { motion } from "framer-motion";
 import type { Locales } from "src/types/types";
 
 const { currentLocale = "pl" } = Astro;
@@ -34,12 +33,9 @@ const t = useTranslations(currentLocale as Locales);
 
 			<small class="text-xs font-medium text-black-500">{t('hero.note')}</small>
 
-			<motion.div
-				animate={{ rotate: 360 }}
-				transition={{ repeat: Infinity, ease: 'linear', duration: 20 }}
-				className="lazy-mask inline-flex size-[200px] lg:size-[300px] decor-star-w300 absolute bottom-[-70px] right-[-70px] lg:bottom-[-120px] lg:right-[-120px] z-[-1] pointer-events-none"
-				client:visible
-			/>
+			<div
+				id="rotatedStar"
+				class="lazy-mask inline-flex size-[200px] lg:size-[300px] decor-star-w300 absolute bottom-[-70px] right-[-70px] lg:bottom-[-120px] lg:right-[-120px] z-[-1] pointer-events-none"></div>
 		</div>
 
 		<div class="bg-black-600 rounded-2xl overflow-hidden hidden sm:block lg:h-[300px]">
@@ -78,3 +74,13 @@ const t = useTranslations(currentLocale as Locales);
 		</div>
 	</div>
 </div>
+
+<script>
+	import { animate } from 'framer-motion';
+
+	const rotatedStar = document.getElementById('rotatedStar');
+
+	if (rotatedStar) {
+		animate(rotatedStar, { rotate: 360 }, { duration: 20, repeat: Infinity, ease: 'linear' });
+	}
+</script>
