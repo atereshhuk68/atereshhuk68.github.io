@@ -2,10 +2,11 @@
 import { useTranslations } from '@i18n/utils';
 import ContactForm from './ContactForm.astro';
 import { motion } from 'framer-motion';
+import type { Locales } from 'src/types/types';
 
 const { currentLocale = 'pl' } = Astro;
 
-const t = useTranslations(currentLocale);
+const t = useTranslations(currentLocale as Locales);
 ---
 
 <section class="relative isolate overflow-x-clip py-12">

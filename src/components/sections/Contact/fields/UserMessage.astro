@@ -1,9 +1,10 @@
 ---
 import { useTranslations } from '@i18n/utils';
+import type { Locales } from 'src/types/types';
 
 const { currentLocale = 'pl' } = Astro;
 
-const t = useTranslations(currentLocale);
+const t = useTranslations(currentLocale as Locales);
 ---
 
 <div class="relative w-full">

@@ -4,10 +4,11 @@ import { Catalog } from './Catalog.tsx';
 import { TabControl } from './TabControl.tsx';
 import { useTranslations } from '@i18n/utils';
 import { getCollection } from 'astro:content';
+import type { Locales } from 'src/types/types';
 
 const { currentLocale = 'pl' } = Astro;
 
-const t = useTranslations(currentLocale);
+const t = useTranslations(currentLocale as Locales);
 
 const Services = await getCollection('services');
 const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLocale));

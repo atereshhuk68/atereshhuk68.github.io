@@ -4,7 +4,7 @@ import { HeaderLangs } from './components/HeaderLangs.tsx';
 import HeaderLogo from './components/HeaderLogo.astro';
 import { HeaderMenu } from './components/HeaderMenu.tsx';
 import { Calendar, Minus } from '@lucide/astro';
-
+import type { Locales } from 'src/types/types';
 import { getTranslatedURL, useTranslations } from '@i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { LanguagesList, defaultLang } from '@i18n/langs';
@@ -14,7 +14,7 @@ const {
 	currentLocale = 'pl',
 } = Astro;
 
-const t = useTranslations(currentLocale);
+const t = useTranslations(currentLocale as Locales);
 
 const basePath = getTranslatedURL(pathname, currentLocale);
 

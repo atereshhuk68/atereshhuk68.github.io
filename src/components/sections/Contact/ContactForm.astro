@@ -1,17 +1,16 @@
 ---
 import { Button } from '@heroui/react';
-
+import { useTranslations } from '@i18n/utils';
+import type { Locales } from 'src/types/types';
 import UserName from './fields/UserName.astro';
 import UserEmail from './fields/UserEmail.astro';
 import UserMessage from './fields/UserMessage.astro';
 import UserPhone from './fields/UserPhone.astro';
-
-import { useTranslations } from '@i18n/utils';
 import Dialog from './dialog/Dialog.astro';
 
 const { currentLocale = 'pl' } = Astro;
 
-const t = useTranslations(currentLocale);
+const t = useTranslations(currentLocale as Locales);
 ---
 
 <div class="border border-black-300 bg-black-100 rounded-xl py-12 px-4 md:px-8">

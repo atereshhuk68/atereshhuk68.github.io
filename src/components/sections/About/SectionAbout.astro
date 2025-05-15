@@ -3,10 +3,11 @@ import { Image } from 'astro:assets';
 import AboutUsImage from '@assets/images/about-us-image-w782.png';
 import { useTranslations } from '@i18n/utils';
 import { ExternalLink } from '@lucide/astro';
+import type { Locales } from 'src/types/types';
 
 const { currentLocale = 'pl' } = Astro;
 
-const t = useTranslations(currentLocale);
+const t = useTranslations(currentLocale as Locales);
 ---
 
 <section id="aboutUs" class="py-12 sm:py-20 lg:py-32 lg:pb-10 relative isolate overflow-hidden">
