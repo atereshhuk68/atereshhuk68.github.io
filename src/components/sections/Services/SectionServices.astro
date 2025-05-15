@@ -1,20 +1,22 @@
 ---
-import { shuffle } from 'es-toolkit';
-import { Catalog } from './Catalog.tsx';
-import { TabControl } from './TabControl.tsx';
-import { useTranslations } from '@i18n/utils';
-import { getCollection } from 'astro:content';
-import type { Locales } from 'src/types/types';
+import { getCollection } from "astro:content";
+import { useTranslations } from "@i18n/utils";
+import { shuffle } from "es-toolkit";
+import type { Locales } from "src/types/types";
+import { Catalog } from "./Catalog.tsx";
+import { TabControl } from "./TabControl.tsx";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
-const Services = await getCollection('services');
-const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLocale));
+const Services = await getCollection("services");
+const ServicesFiltered = Services.find((entry) =>
+	entry.id.startsWith(currentLocale),
+);
 const ServicesData = ServicesFiltered?.data ?? [];
 
-const ctaText = t('services.cta');
+const ctaText = t("services.cta");
 ---
 
 <section id="services" class="py-12 sm:py-16 lg:py-20 min-h-[1100px]">

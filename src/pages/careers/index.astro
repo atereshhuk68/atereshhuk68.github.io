@@ -1,18 +1,20 @@
 ---
-import Layout from 'src/layouts/Layout.astro';
-import CareerCard from '@components/Careers/CareerCard.astro';
-import type { CareerCardType } from 'src/types/types';
-import type { Locales } from 'src/types/types';
-import { useTranslations } from '@i18n/utils';
+import CareerCard from "@components/Careers/CareerCard.astro";
+import { useTranslations } from "@i18n/utils";
+import Layout from "src/layouts/Layout.astro";
+import type { CareerCardType } from "src/types/types";
+import type { Locales } from "src/types/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
-const careers: CareerCardType[] = Object.values(import.meta.glob('./*.md', { eager: true }));
+const careers: CareerCardType[] = Object.values(
+	import.meta.glob("./*.md", { eager: true }),
+);
 
-const title = t('career.heading');
-const description = t('career.p');
+const title = t("career.heading");
+const description = t("career.p");
 ---
 
 <Layout {title} {description}>

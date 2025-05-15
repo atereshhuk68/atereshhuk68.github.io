@@ -2,14 +2,14 @@
  * TabControl component
  * Відображає таби для фільтрації сервісів.
  */
-import { Button, type PressEvent } from '@heroui/react';
-import { useCatalogStore } from 'src/store/CatalogStore';
+import { Button, type PressEvent } from "@heroui/react";
+import { useCatalogStore } from "src/store/CatalogStore";
 
 const ICON_MAP: Record<string, string> = {
-	all: 'service-list-w64',
-	nails: 'service-nails-w64',
-	visage: 'service-visage-w64',
-	massage: 'service-massage-w64',
+	all: "service-list-w64",
+	nails: "service-nails-w64",
+	visage: "service-visage-w64",
+	massage: "service-massage-w64",
 };
 
 export function TabControl() {
@@ -17,7 +17,7 @@ export function TabControl() {
 
 	const handlePressSetActiveFilter = (event: PressEvent) => {
 		const pressedButton = event.target as HTMLButtonElement;
-		const filter = pressedButton.dataset.filter || 'all';
+		const filter = pressedButton.dataset.filter || "all";
 
 		setActiveFilter(filter);
 	};
@@ -34,10 +34,13 @@ export function TabControl() {
 						size="md"
 						radius="sm"
 						data-filter={filter}
-						className={`text-base px-8 flex-shrink-0 ${isActive ? 'bg-golden-200 text-black-900 pointer-events-none' : ''}`}
+						className={`text-base px-8 flex-shrink-0 ${isActive ? "bg-golden-200 text-black-900 pointer-events-none" : ""}`}
 						onPress={handlePressSetActiveFilter}
-						aria-pressed={isActive}>
-						<span className={`lazy-bg size-5 flex-shrink-0 ${ICON_MAP[filter]}`}></span>
+						aria-pressed={isActive}
+					>
+						<span
+							className={`lazy-bg size-5 flex-shrink-0 ${ICON_MAP[filter]}`}
+						></span>
 						{filterTitle}
 					</Button>
 				);

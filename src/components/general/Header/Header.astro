@@ -1,17 +1,17 @@
 ---
-import { Button } from '@heroui/react';
-import { HeaderLangs } from './components/HeaderLangs.tsx';
-import HeaderLogo from './components/HeaderLogo.astro';
-import { HeaderMenu } from './components/HeaderMenu.tsx';
-import { Calendar, Minus } from '@lucide/astro';
-import type { Locales } from 'src/types/types';
-import { getTranslatedURL, useTranslations } from '@i18n/utils';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { LanguagesList, defaultLang } from '@i18n/langs';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Button } from "@heroui/react";
+import { LanguagesList, defaultLang } from "@i18n/langs";
+import { getTranslatedURL, useTranslations } from "@i18n/utils";
+import { Calendar, Minus } from "@lucide/astro";
+import type { Locales } from "src/types/types";
+import { HeaderMenu } from "./components/HeaderMenu.tsx";
+import { HeaderLangs } from "./components/HeaderLangs.tsx";
+import HeaderLogo from "./components/HeaderLogo.astro";
 
 const {
 	url: { pathname },
-	currentLocale = 'pl',
+	currentLocale = "pl",
 } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
@@ -27,9 +27,12 @@ const modifyUrl = (anchor: string) => {
 };
 
 const menuItems = [
-	{ href: modifyUrl('#services'), label: t('header.nav.services') },
-	{ href: modifyUrl('#aboutUs'), label: t('header.nav.aboutUs') },
-	{ href: getRelativeLocaleUrl(currentLocale, 'careers'), label: t('header.nav.careers') },
+	{ href: modifyUrl("#services"), label: t("header.nav.services") },
+	{ href: modifyUrl("#aboutUs"), label: t("header.nav.aboutUs") },
+	{
+		href: getRelativeLocaleUrl(currentLocale, "careers"),
+		label: t("header.nav.careers"),
+	},
 ];
 
 const ModifiedLanguagesList = LanguagesList.map(({ locale, name }) => ({

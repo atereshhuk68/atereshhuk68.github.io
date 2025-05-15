@@ -1,8 +1,8 @@
 ---
-import { useTranslations } from '@i18n/utils';
-import type { Locales } from 'src/types/types';
+import { useTranslations } from "@i18n/utils";
+import type { Locales } from "src/types/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---

@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 const serviceListItemSchema = z.object({
 	title: z.string(),
@@ -8,13 +8,13 @@ const serviceListItemSchema = z.object({
 });
 
 const servicesCollection = defineCollection({
-	type: 'data',
+	type: "data",
 	schema: z.array(
 		z.object({
 			id: z.number(),
 			name: z.string(),
 			list: z.array(serviceListItemSchema),
-			type: z.enum(['visage', 'massage', 'nails', 'all']),
+			type: z.enum(["visage", "massage", "nails", "all"]),
 		}),
 	),
 });

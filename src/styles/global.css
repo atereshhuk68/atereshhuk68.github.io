@@ -1,10 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin '../../hero.ts';
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
-@import './lazy-bg.css';
-@import './lazy/services-icon.css';
+@import "./lazy-bg.css";
+@import "./lazy/services-icon.css";
 
 @theme {
 	--color-golden-200: #ffce6b;
@@ -25,8 +25,8 @@
 	--color-shell-50: #faf7f6;
 	--color-shell-300: #debdb4;
 
-	--font-sans: 'Inter', sans-serif;
-	--font-heading: 'Montserrat', serif;
+	--font-sans: "Inter", sans-serif;
+	--font-heading: "Montserrat", serif;
 }
 
 @utility container {
@@ -55,7 +55,7 @@ textarea[aria-invalid] {
 			@apply bg-black-900;
 			@apply transition-[background-color] duration-200;
 
-			mask-image: url('../assets/vector/star-marker-w16.svg');
+			mask-image: url("../assets/vector/star-marker-w16.svg");
 		}
 
 		&:hover a {

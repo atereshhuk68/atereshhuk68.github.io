@@ -18,10 +18,10 @@ export type Service = {
 	id: number;
 	name: string;
 	list: ServiceListItem[];
-	type: 'visage' | 'massage' | 'nails';
+	type: "visage" | "massage" | "nails";
 };
 
-export type Locales = 'en' | 'pl' | 'uk' | 'ru';
+export type Locales = "en" | "pl" | "uk" | "ru";
 
 export type LanguagesTypes = {
 	[key in Locales]: string;

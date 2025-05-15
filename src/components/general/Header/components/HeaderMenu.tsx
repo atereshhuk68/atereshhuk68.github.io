@@ -1,8 +1,14 @@
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import { useMediaQuery } from '@hooks/useMediaQuery';
-import cx from 'classix';
-import { Menu } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import {
+	Button,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownTrigger,
+} from "@heroui/react";
+import { useMediaQuery } from "@hooks/useMediaQuery";
+import cx from "classix";
+import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 
 /**
  * HeaderMenu component
@@ -19,15 +25,16 @@ interface HeaderMenuProps {
 	className?: string;
 }
 
-const ACTIVE_LINK_CLASSES = 'pointer-events-none text-cove-700';
-const BASE_LINK_CLASSES = 'text-black-900 hover:text-black-600 transition-[color] duration-200';
+const ACTIVE_LINK_CLASSES = "pointer-events-none text-cove-700";
+const BASE_LINK_CLASSES =
+	"text-black-900 hover:text-black-600 transition-[color] duration-200";
 
 export function HeaderMenu({ className, menuItems = [] }: HeaderMenuProps) {
-	const isSmallOrMediumScreen = useMediaQuery('(max-width: 1023.98px)');
-	const [currentPath, setCurrentPath] = useState('');
+	const isSmallOrMediumScreen = useMediaQuery("(max-width: 1023.98px)");
+	const [currentPath, setCurrentPath] = useState("");
 
 	useEffect(() => {
-		if (typeof window !== 'undefined') {
+		if (typeof window !== "undefined") {
 			setCurrentPath(window.location.pathname + window.location.hash);
 		}
 	}, []);
@@ -46,7 +53,14 @@ export function HeaderMenu({ className, menuItems = [] }: HeaderMenuProps) {
 						{(item: HeaderMenuItem) => {
 							const isActive = currentPath === item.href;
 							return (
-								<DropdownItem key={item.href} href={item.href} className={cx(BASE_LINK_CLASSES, isActive && ACTIVE_LINK_CLASSES)}>
+								<DropdownItem
+									key={item.href}
+									href={item.href}
+									className={cx(
+										BASE_LINK_CLASSES,
+										isActive && ACTIVE_LINK_CLASSES,
+									)}
+								>
 									{item.label}
 								</DropdownItem>
 							);
@@ -64,7 +78,13 @@ export function HeaderMenu({ className, menuItems = [] }: HeaderMenuProps) {
 					const isActive = currentPath === item.href;
 					return (
 						<li key={item.href}>
-							<a className={cx(BASE_LINK_CLASSES, isActive && ACTIVE_LINK_CLASSES)} href={item.href}>
+							<a
+								className={cx(
+									BASE_LINK_CLASSES,
+									isActive && ACTIVE_LINK_CLASSES,
+								)}
+								href={item.href}
+							>
 								{item.label}
 							</a>
 						</li>

@@ -13,21 +13,21 @@
 
 .decor-star-w300 {
 	background-color: var(--color-black-900);
-	mask-image: url('../assets/vector/decor-star-w300.svg');
+	mask-image: url("../assets/vector/decor-star-w300.svg");
 }
 
 .decor-blur-blue-star-w770 {
-	background-image: url('../assets/vector/decor-blur-blue-star-w770.svg');
+	background-image: url("../assets/vector/decor-blur-blue-star-w770.svg");
 }
 
 .decor-blur-yellow-star-w770 {
-	background-image: url('../assets/vector/decor-blur-yellow-star-w770.svg');
+	background-image: url("../assets/vector/decor-blur-yellow-star-w770.svg");
 }
 
 .footer-logo-w160 {
-	background-image: url('../assets/logo/footer-logo-w160.svg');
+	background-image: url("../assets/logo/footer-logo-w160.svg");
 }
 
 .rotated-sentence-w550 {
-	background-image: url('../assets/images/rotated-sentence-w550.webp');
+	background-image: url("../assets/images/rotated-sentence-w550.webp");
 }

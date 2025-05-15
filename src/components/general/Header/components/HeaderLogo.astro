@@ -1,26 +1,28 @@
 ---
-import { Image } from 'astro:assets';
-import { defaultLang } from '@i18n/langs';
-import cx from 'classix';
+import { Image } from "astro:assets";
+import { defaultLang } from "@i18n/langs";
+import cx from "classix";
 
-import Logo from '@assets/logo/bfancy-logo-w220.svg';
-import SquareLogo from '@assets/logo/bfancy-square-w96.svg';
+import Logo from "@assets/logo/bfancy-logo-w220.svg";
+import SquareLogo from "@assets/logo/bfancy-square-w96.svg";
 
 const {
 	url: { pathname },
-	currentLocale = 'pl',
+	currentLocale = "pl",
 } = Astro;
 
 const { class: className } = Astro.props;
 
 const mainLogoAspectRatioClass = `${Logo.width}/${Logo.height}`;
 
-const homePageUrl = currentLocale === defaultLang ? '/' : `/${currentLocale}/`;
+const homePageUrl = currentLocale === defaultLang ? "/" : `/${currentLocale}/`;
 
 const isSamePage = pathname === homePageUrl;
 
-const Comp = isSamePage ? 'div' : 'a';
-const CompProps = isSamePage ? {} : { href: homePageUrl, 'aria-label': 'Go to homepage' };
+const Comp = isSamePage ? "div" : "a";
+const CompProps = isSamePage
+	? {}
+	: { href: homePageUrl, "aria-label": "Go to homepage" };
 ---
 
 <Comp class={cx('order-first lg:order-[initial]', className)} {...CompProps}>

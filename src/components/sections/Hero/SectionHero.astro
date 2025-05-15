@@ -1,13 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import { Button } from '@heroui/react';
-import { motion } from 'framer-motion';
-import { ExternalLink } from '@lucide/astro';
-import { useTranslations } from '@i18n/utils';
-import type { Locales } from 'src/types/types';
-import GridImage from '@assets/images/hero-demo-photo-w736.webp';
+import { Image } from "astro:assets";
+import GridImage from "@assets/images/hero-demo-photo-w736.webp";
+import { Button } from "@heroui/react";
+import { useTranslations } from "@i18n/utils";
+import { ExternalLink } from "@lucide/astro";
+import { motion } from "framer-motion";
+import type { Locales } from "src/types/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---

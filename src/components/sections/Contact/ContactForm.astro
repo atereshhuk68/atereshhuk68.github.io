@@ -1,14 +1,14 @@
 ---
-import { Button } from '@heroui/react';
-import { useTranslations } from '@i18n/utils';
-import type { Locales } from 'src/types/types';
-import UserName from './fields/UserName.astro';
-import UserEmail from './fields/UserEmail.astro';
-import UserMessage from './fields/UserMessage.astro';
-import UserPhone from './fields/UserPhone.astro';
-import Dialog from './dialog/Dialog.astro';
+import { Button } from "@heroui/react";
+import { useTranslations } from "@i18n/utils";
+import type { Locales } from "src/types/types";
+import Dialog from "./dialog/Dialog.astro";
+import UserEmail from "./fields/UserEmail.astro";
+import UserMessage from "./fields/UserMessage.astro";
+import UserName from "./fields/UserName.astro";
+import UserPhone from "./fields/UserPhone.astro";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
