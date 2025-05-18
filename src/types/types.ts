@@ -18,7 +18,7 @@ export type Service = {
 	id: number;
 	name: string;
 	list: ServiceListItem[];
-	type: "visage" | "massage" | "nails";
+	type: "visage" | "massage" | "nails" | "eyelashes";
 };
 
 export type Locales = "en" | "pl" | "uk" | "ru";

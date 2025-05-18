@@ -14,7 +14,7 @@ const servicesCollection = defineCollection({
 			id: z.number(),
 			name: z.string(),
 			list: z.array(serviceListItemSchema),
-			type: z.enum(["visage", "massage", "nails", "all"]),
+			type: z.enum(["visage", "massage", "nails", "eyelashes", "all"]),
 		}),
 	),
 });

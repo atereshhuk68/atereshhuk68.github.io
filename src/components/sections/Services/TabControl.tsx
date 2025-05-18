@@ -12,6 +12,7 @@ const ICON_MAP: Record<string, string> = {
 	nails: 'service-nails-w64',
 	visage: 'service-visage-w64',
 	massage: 'service-massage-w64',
+	eyelashes: 'service-eyelashes-w64',
 };
 
 export function TabControl() {
@@ -30,6 +31,7 @@ export function TabControl() {
 			{filters.map((filter: string) => {
 				const isActive = filter === activeFilter;
 				const filterTitle = t(`services.filter.${filter}` as any);
+
 				return (
 					<Button
 						key={filter}

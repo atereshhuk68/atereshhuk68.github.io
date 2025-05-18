@@ -30,6 +30,7 @@ export const ui = {
 		"services.filter.nails": "Paznokcie",
 		"services.filter.visage": "Wizaż",
 		"services.filter.massage": "Masaż",
+		"services.filter.eyelashes": "Rzęsy",
 		"career.heading": "Dołącz do Naszego Zespołu",
 		"career.p":
 			"Szukamy utalentowanych osób, które pomogą nam się rozwijać. Sprawdź nasze otwarte stanowiska poniżej.",
@@ -85,6 +86,7 @@ export const ui = {
 		"services.filter.nails": "Nails",
 		"services.filter.visage": "Visage",
 		"services.filter.massage": "Massage",
+		"services.filter.eyelashes": "Eyelashes",
 		"career.heading": "Join Our Team",
 		"career.p":
 			"We're looking for talented individuals to help us grow. Explore our open positions below.",
@@ -138,6 +140,7 @@ export const ui = {
 		"services.filter.nails": "Нігті",
 		"services.filter.visage": "Візаж",
 		"services.filter.massage": "Масаж",
+		"services.filter.eyelashes": "Вії",
 		"career.heading": "Приєднуйтесь до Нашої Команди",
 		"career.p":
 			"Ми шукаємо талановитих людей, які допоможуть нам розвиватися. Ознайомтеся з нашими відкритими вакансіями нижче.",
@@ -191,6 +194,7 @@ export const ui = {
 		"services.filter.nails": "Ногти",
 		"services.filter.visage": "Визаж",
 		"services.filter.massage": "Массаж",
+		"services.filter.eyelashes": "Ресницы",
 		"career.heading": "Присоединяйтесь к Нашей Команде",
 		"career.p":
 			"Мы ищем талантливых людей, которые помогут нам расти. Ознакомьтесь с нашими открытыми вакансиями ниже.",
