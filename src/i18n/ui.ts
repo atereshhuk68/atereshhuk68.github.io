@@ -3,7 +3,7 @@ export const ui = {
 		"header.nav.services": "Usługi",
 		"header.nav.aboutUs": "O nas",
 		"header.nav.careers": "Kariera",
-		"header.cta.appointment": "Wizyta",
+		"header.cta.appointment": "Umów wizytę",
 		"hero.h1": "W BFancy spełniamy nie tylko marzenia, ale i stylowe fantazje!",
 		"hero.p":
 			"Profesjonalny manicure, stylizacja paznokci, makijaż, pielęgnacja brwi i relaksujące masaże - wszystko, abyś poczuła się pewnie i wyjątkowo. Nasi specjaliści zadbają o każdy szczegół, a Ty możesz po prostu... być sobą.",
@@ -58,7 +58,7 @@ export const ui = {
 		"header.nav.services": "Services",
 		"header.nav.aboutUs": "About Us",
 		"header.nav.careers": "Careers",
-		"header.cta.appointment": "Appointment",
+		"header.cta.appointment": "Book an appointment",
 		"hero.h1":
 			"At BFancy, we fulfill not only dreams, but also stylish fantasies!",
 		"hero.p":
