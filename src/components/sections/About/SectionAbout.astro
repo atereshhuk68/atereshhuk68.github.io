@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import AboutUsImage from "@assets/images/about-us-image-w782.png";
+import { Picture } from "astro:assets";
+import AboutUsImage from "@assets/images/about-us-image-w960.jpg";
 import { useTranslations } from "@i18n/utils";
 import { ExternalLink } from "@lucide/astro";
 import type { Locales } from "src/types/types";
@@ -82,14 +82,15 @@ const t = useTranslations(currentLocale as Locales);
 				</ul>
 			</div>
 
-			<Image
+			<Picture
 				src={AboutUsImage}
-				alt="About Us"
+				alt={t('about.h2')}
 				width={782}
 				height={782}
 				class="rounded-xl object-cover object-center sm:object-[0_-200px] lg:object-center max-h-[300px] lg:max-h-[763px]"
 				loading="lazy"
-				format="webp"
+				formats={["avif", "webp"]}
+				quality={65}
 			/>
 		</div>
 	</div>
