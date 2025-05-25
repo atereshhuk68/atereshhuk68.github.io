@@ -46,16 +46,19 @@ textarea[aria-invalid] {
 .custom-list {
 	li {
 		@apply relative;
-		@apply flex items-center gap-3;
+		@apply flex items-start gap-3;
 
 		&::before {
 			@apply content-[''];
-			@apply size-4 inline-flex;
-			@apply mask-[contain] mask-[center] mask-[no-repeat];
+			@apply w-4 inline-flex;
 			@apply bg-black-900;
 			@apply transition-[background-color] duration-200;
+			@apply h-[1lh];
 
 			mask-image: url('../assets/vector/star-marker-w16.svg');
+			mask-size: contain;
+			mask-position: center;
+			mask-repeat: no-repeat;
 		}
 
 		&:hover a {

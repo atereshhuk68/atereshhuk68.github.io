@@ -1,18 +1,15 @@
 ---
-import { useTranslations } from "@i18n/utils";
-import type { Locales } from "src/types/types";
+import { useTranslations } from '@i18n/utils';
+import type { Locales } from 'src/types/types';
 
-const { currentLocale = "pl" } = Astro;
+const { currentLocale = 'pl' } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
 
-<div class="relative w-full">
-	<label for="userName" class="sr-only">
-		{t('contact.userphone')}
-	</label>
+<label class="relative w-full">
+	<span class="sr-only">{t('contact.userphone')}</span>
 	<input
-		id="userPhone"
 		placeholder={t('contact.userphone')}
 		required
 		type="text"
@@ -21,16 +18,18 @@ const t = useTranslations(currentLocale as Locales);
 		class="border border-black-500 bg-white placeholder:text-black-300 py-3 px-6 w-full rounded-md"
 	/>
 	<span class="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]" data-error="userPhone"></span>
-</div>
+</label>
 
 <script>
 	import { MaskInput } from 'maska';
 
-	const phoneField = document.querySelector<HTMLInputElement>('#userPhone');
+	const phoneFields = document.querySelectorAll<HTMLInputElement>('input[name="userPhone"]');
 
-	if (phoneField) {
-		new MaskInput(phoneField, {
-			mask: '+#################',
-		});
+	if (phoneFields.length > 0) {
+		for (const phoneField of phoneFields) {
+			new MaskInput(phoneField, {
+				mask: '+#################',
+			});
+		}
 	}
 </script>

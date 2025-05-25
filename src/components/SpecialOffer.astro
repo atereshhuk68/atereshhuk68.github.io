@@ -1,0 +1,240 @@
+---
+import { Button } from '@heroui/react';
+import { useTranslations } from '@i18n/utils';
+import { X } from 'lucide-react';
+import type { Locales } from 'src/types/types';
+import UserName from './sections/Contact/fields/UserName.astro';
+import UserPhone from './sections/Contact/fields/UserPhone.astro';
+
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+---
+
+<button
+	class="fixed bottom-4 left-4 z-50 bg-golden-200 size-12 rounded-full shadow-lg hover:bg-golden-300 cursor-pointer hover:scale-110 transition-transform"
+	data-open-special-dialog
+	aria-label="Open Special Offer">
+	<span class="pointer-events-none">🔥</span>
+</button>
+
+<dialog
+	id="specialOfferDialog"
+	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white p-4 md:px-8 md:pb-10 md:pt-8 text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
+	style="transform: scale(0.4); opacity: 0;">
+	<div class="prose md:prose-lg">
+		<div class="font-heading text-2xl md:text-3xl text-center">
+			{t('specialOffer.heading')}
+		</div>
+
+		<p>{t('specialOffer.p1')}</p>
+
+		<ul class="custom-list not-prose">
+			<li>{t('specialOffer.listItem1')}</li>
+			<li>{t('specialOffer.listItem2')}</li>
+			<li>{t('specialOffer.listItem3')}</li>
+		</ul>
+
+		<p>{t('specialOffer.cta')}</p>
+
+		<form class="grid place-items-center space-y-8 max-w-[512px] mx-auto" method="post" data-special-offer-form>
+			<UserName />
+
+			<UserPhone />
+
+			<div class="grid gap-4 mb-0">
+				<Button size="lg" className="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px] peer" type="submit" client:load>
+					{t('specialOffer.submitText')}
+				</Button>
+
+				<Button size="md" variant="light" className="text-black-900 inline-flex gap-2 items-center font-medium min-w-[200px] peer" type="button" data-close-special-offer>
+					{t('specialOffer.later')}
+				</Button>
+			</div>
+
+			<small class="block text-center text-black-300 text-sm mt-4">{t('specialOffer.note')}</small>
+		</form>
+	</div>
+
+	<button
+		aria-label="Close special offer modal"
+		class="cursor-pointer absolute top-4 right-4 text-black-900 hover:text-black-500 focus:outline-none transition-colors"
+		data-close-special-offer>
+		<X />
+	</button>
+</dialog>
+
+<script>
+	import { animate } from 'framer-motion';
+	import { getCookie, setCookie } from 'typescript-cookie';
+	import { z } from 'zod';
+	import { clearErrors, clearFieldError, displayErrors } from '../utils/handle-errors';
+	import { enableSubmitButton, disableSubmitButton } from '../utils/handle-submit-button';
+	import { validateFormBySchema } from '../utils/handle-form-validation';
+
+	type PostDataResponse = {
+		success: boolean;
+		errors?: {
+			mail_error: string;
+		};
+	};
+
+	const specialOfferDialogModule = (() => {
+		const specialOfferTrigger = document.querySelector<HTMLButtonElement>('[data-open-special-dialog]');
+		const specialOfferDialog = document.querySelector<HTMLDialogElement>('#specialOfferDialog')!;
+		const specialOfferForm = document.querySelector<HTMLFormElement>('form[data-special-offer-form]');
+		const specialOfferFormFields = specialOfferForm?.querySelectorAll<HTMLInputElement>('input, textarea');
+		const closeSpecialOfferDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-special-offer]');
+		const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
+		const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
+
+		const offerFormSchema = z.object({
+			userName: z.string().min(1, { message: 'Name is required' }),
+			userPhone: z
+				.string()
+				.min(9, { message: 'Phone too short. Min 9 symbols' })
+				.max(15, { message: 'Phone too long. Max 15 symbols' })
+				.regex(/^\+?[0-9]*$/, { message: 'Invalid phone number' }),
+		});
+
+		const isUserSawOffer = getCookie('specialOffer');
+
+		const toggleDialog = (dialog: HTMLDialogElement, isOpen: boolean) => {
+			if (isOpen) {
+				animate(dialog, { scale: 1, opacity: 1 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
+				dialog.showModal();
+				document.body.style.overflow = 'hidden';
+			} else {
+				animate(dialog, { scale: 0.4, opacity: 0 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
+				setTimeout(() => {
+					dialog.close();
+				}, 200);
+				document.body.style.overflow = 'auto';
+			}
+		};
+
+		const postFormData = async (form: HTMLFormElement, submitButton: HTMLButtonElement) => {
+			const formData = new FormData(form);
+
+			try {
+				const response = await fetch('/offer.php', {
+					body: formData,
+					method: 'POST',
+				});
+
+				if (!response.ok) {
+					throw new Error('Network response was not ok');
+				}
+
+				const result: PostDataResponse = await response.json();
+
+				return result;
+			} catch (error) {
+				if (errorDialog) {
+					console.error('Error:', error);
+					toggleDialog(errorDialog, true);
+				}
+				return { success: false };
+			} finally {
+				enableSubmitButton(submitButton);
+			}
+		};
+
+		const handleSubmit = async (event: SubmitEvent) => {
+			event.preventDefault();
+
+			const submittedForm = event.currentTarget as HTMLFormElement;
+			const submitButton = event.submitter as HTMLButtonElement;
+
+			clearErrors(submittedForm);
+
+			const result = validateFormBySchema(submittedForm, offerFormSchema);
+
+			if (!result.success) {
+				const errors = result.error.flatten().fieldErrors;
+
+				displayErrors(submittedForm, errors);
+
+				return;
+			}
+
+			disableSubmitButton(submitButton);
+
+			const { success } = await postFormData(submittedForm, submitButton);
+
+			if (success) {
+				if (successDialog) {
+					toggleDialog(specialOfferDialog, false);
+					toggleDialog(successDialog, true);
+					submittedForm.reset();
+
+					setCookie('specialOffer', 'true', {
+						expires: 365,
+						path: '/',
+						sameSite: 'None',
+						secure: true,
+					});
+				}
+			}
+		};
+
+		const setEventListeners = () => {
+			specialOfferForm?.addEventListener('submit', handleSubmit);
+
+			window.addEventListener('load', () => {
+				if (!isUserSawOffer) {
+					setTimeout(() => {
+						toggleDialog(specialOfferDialog, true);
+					}, 2000);
+				}
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (!specialOfferDialog) return;
+
+				if (event.key === 'Escape' && specialOfferDialog.open) {
+					toggleDialog(specialOfferDialog, false);
+				}
+			});
+
+			specialOfferTrigger?.addEventListener('click', () => {
+				toggleDialog(specialOfferDialog, true);
+			});
+
+			if (specialOfferFormFields) {
+				for (const formField of specialOfferFormFields) {
+					formField.addEventListener('input', (event) => {
+						const field = event.currentTarget as HTMLInputElement;
+
+						clearFieldError(field);
+					});
+				}
+			}
+
+			if (closeSpecialOfferDialogButtons) {
+				for (const closeDialogButton of closeSpecialOfferDialogButtons) {
+					closeDialogButton.addEventListener('click', (event) => {
+						toggleDialog(specialOfferDialog, false);
+
+						setCookie('specialOffer', 'true', {
+							expires: 365,
+							path: '/',
+							sameSite: 'None',
+							secure: true,
+						});
+					});
+				}
+			}
+		};
+
+		const init = () => {
+			setEventListeners();
+		};
+
+		return {
+			init,
+		};
+	})();
+
+	specialOfferDialogModule.init();
+</script>

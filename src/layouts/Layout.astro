@@ -1,11 +1,13 @@
 ---
-import "../styles/font.css";
-import "../styles/global.css";
+import '../styles/font.css';
+import '../styles/global.css';
 
-import CookiePopup from "@components/general/CookiePopup.astro";
-import Footer from "@components/general/Footer/Footer.astro";
-import Head from "@components/general/Head/Head.astro";
-import Header from "../components/general/Header/Header.astro";
+import SpecialOffer from '@components/SpecialOffer.astro';
+import CookiePopup from '@components/general/CookiePopup.astro';
+import Footer from '@components/general/Footer/Footer.astro';
+import Head from '@components/general/Head/Head.astro';
+import Header from '../components/general/Header/Header.astro';
+import Dialog from '@components/sections/Contact/dialog/Dialog.astro';
 
 const currentLocale = Astro.currentLocale;
 
@@ -24,6 +26,10 @@ const { title, description } = Astro.props;
 		</main>
 
 		<Footer />
+
+		<SpecialOffer />
+
+		<Dialog />
 
 		<CookiePopup />
 	</body>
