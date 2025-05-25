@@ -1,14 +1,13 @@
 ---
-import { Button } from "@heroui/react";
-import { useTranslations } from "@i18n/utils";
-import type { Locales } from "src/types/types";
-import Dialog from "./dialog/Dialog.astro";
-import UserEmail from "./fields/UserEmail.astro";
-import UserMessage from "./fields/UserMessage.astro";
-import UserName from "./fields/UserName.astro";
-import UserPhone from "./fields/UserPhone.astro";
+import { Button } from '@heroui/react';
+import { useTranslations } from '@i18n/utils';
+import type { Locales } from 'src/types/types';
+import UserEmail from './fields/UserEmail.astro';
+import UserMessage from './fields/UserMessage.astro';
+import UserName from './fields/UserName.astro';
+import UserPhone from './fields/UserPhone.astro';
 
-const { currentLocale = "pl" } = Astro;
+const { currentLocale = 'pl' } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
@@ -27,13 +26,14 @@ const t = useTranslations(currentLocale as Locales);
 			{t('contact.submittext')}
 		</Button>
 	</form>
-
-	<Dialog />
 </div>
 
 <script>
 	import { animate } from 'framer-motion';
 	import { z } from 'zod';
+	import { clearErrors, clearFieldError, displayErrors } from '../../../utils/handle-errors';
+	import { enableSubmitButton, disableSubmitButton } from '../../../utils/handle-submit-button';
+	import { validateFormBySchema } from '../../../utils/handle-form-validation';
 
 	const contactForm = document.querySelector<HTMLFormElement>('form[data-contact-form]');
 	const contactFormFields = contactForm?.querySelectorAll<HTMLInputElement>('input, textarea');
@@ -43,7 +43,7 @@ const t = useTranslations(currentLocale as Locales);
 	const closeDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-dialog]');
 
 	const contactFormSchema = z.object({
-		userName: z.string().min(1, { message: 'Name is required' }),
+		userName: z.string().min(2, { message: 'Name is required' }),
 		userPhone: z
 			.string()
 			.min(9, { message: 'Phone too short. Min 9 symbols' })
@@ -53,7 +53,7 @@ const t = useTranslations(currentLocale as Locales);
 		userMessage: z.string().min(1, { message: 'Message is required' }),
 	});
 
-	export type PostDataResponse = {
+	type PostDataResponse = {
 		success: boolean;
 		errors?: {
 			mail_error: string;
@@ -71,78 +71,6 @@ const t = useTranslations(currentLocale as Locales);
 				dialog.close();
 			}, 200);
 			document.body.style.overflow = 'auto';
-		}
-	};
-
-	const clearFieldError = (field: HTMLInputElement) => {
-		const inputName = field.name;
-		const form = field.closest('form');
-
-		if (!form) return;
-
-		const errorElement = form.querySelector<HTMLInputElement>(`[data-error="${inputName}"]`);
-		const inputWithError = form.querySelector<HTMLInputElement>(`[name="${inputName}"]`);
-
-		if (errorElement) {
-			errorElement.textContent = '';
-		}
-
-		if (inputWithError) {
-			inputWithError.removeAttribute('aria-invalid');
-		}
-	};
-
-	const clearErrors = (form: HTMLFormElement) => {
-		const errorElements = form.querySelectorAll<HTMLElement>('[data-error]');
-		const inputsWithError = form.querySelectorAll<HTMLInputElement>('input, textarea');
-
-		for (const errorElement of errorElements) {
-			errorElement.textContent = '';
-		}
-
-		for (const inputWithError of inputsWithError) {
-			inputWithError.removeAttribute('aria-invalid');
-		}
-	};
-
-	const displayErrors = (form: HTMLFormElement, errors: Record<string, string[] | undefined>) => {
-		for (const [fieldName, fieldErrors] of Object.entries(errors)) {
-			if (fieldErrors && fieldErrors.length > 0) {
-				const errorElement = form.querySelector<HTMLElement>(`[data-error="${fieldName}"]`);
-				const inputWithError = form.querySelector<HTMLInputElement>(`[name="${fieldName}"]`);
-
-				if (inputWithError && errorElement) {
-					inputWithError.setAttribute('aria-invalid', 'true');
-					errorElement.textContent = fieldErrors[0];
-				}
-			}
-		}
-	};
-
-	const sanitizePhoneNumber = (phoneNumber: string): string => {
-		return phoneNumber.replaceAll(/\D/g, '');
-	};
-
-	const validateFormBySchema = <T extends z.ZodTypeAny>(form: HTMLFormElement, schema: T): z.SafeParseReturnType<z.infer<T>, z.infer<T>> => {
-		const formData = new FormData(form);
-		const formValues = Object.fromEntries(formData);
-
-		if (formValues.userPhone) {
-			formValues.userPhone = sanitizePhoneNumber(formValues.userPhone as string);
-		}
-
-		return schema.safeParse(formValues);
-	};
-
-	const disableSubmitButton = (submitButton: HTMLButtonElement) => {
-		if (submitButton) {
-			submitButton.disabled = true;
-		}
-	};
-
-	const enableSubmitButton = (submitButton: HTMLButtonElement) => {
-		if (submitButton) {
-			submitButton.disabled = false;
 		}
 	};
 

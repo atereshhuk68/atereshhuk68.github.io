@@ -89,7 +89,7 @@ const t = useTranslations(currentLocale as Locales);
 		const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
 
 		const offerFormSchema = z.object({
-			userName: z.string().min(1, { message: 'Name is required' }),
+			userName: z.string().min(2, { message: 'Name is required' }),
 			userPhone: z
 				.string()
 				.min(9, { message: 'Phone too short. Min 9 symbols' })
