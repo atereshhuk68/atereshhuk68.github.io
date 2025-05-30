@@ -25,6 +25,7 @@
 		"classix": "^2.2.2",
 		"es-toolkit": "^1.36.0",
 		"framer-motion": "^12.9.2",
+		"ky": "^1.8.1",
 		"lucide-react": "^0.503.0",
 		"maska": "^3.1.1",
 		"react": "^19.1.0",
