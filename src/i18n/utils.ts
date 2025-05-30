@@ -8,14 +8,10 @@ export const useTranslations = (locale: Locales) => {
 	};
 };
 
-export function getTranslatedURL(basePath: string, locale: Locales) {
-	const localePrefix = locale ? `/${locale}` : '';
-
-	if (locale && basePath.startsWith(localePrefix + '/')) {
-		basePath = basePath.substring(localePrefix.length);
-	} else if (locale && basePath === localePrefix) {
-		basePath = '/';
+export function getTranslatedURL(pathname: string, locale: Locales) {
+	if (locale && pathname.startsWith(`/${locale}/`)) {
+		return pathname.substring(`/${locale}/`.length);
 	}
 
-	return (basePath = basePath || '/');
+	return '/';
 }

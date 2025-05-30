@@ -1,14 +1,15 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { LanguagesList } from "@i18n/langs";
-import { getTranslatedURL } from "@i18n/utils";
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { LanguagesList } from '@i18n/langs';
+import { getTranslatedURL } from '@i18n/utils';
+import type { Locales } from 'src/types';
 
 const {
 	url: { pathname },
 	currentLocale,
 } = Astro;
 
-const basePath = getTranslatedURL(pathname, currentLocale);
+const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 ---
 
 <ul class="flex items-center gap-4 lg:w-[280px] text-sm">

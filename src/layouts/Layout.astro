@@ -6,8 +6,8 @@ import SpecialOffer from '@components/SpecialOffer.astro';
 import CookiePopup from '@components/general/CookiePopup.astro';
 import Footer from '@components/general/Footer/Footer.astro';
 import Head from '@components/general/Head/Head.astro';
-import Header from '../components/general/Header/Header.astro';
 import Dialog from '@components/sections/Contact/dialog/Dialog.astro';
+import Header from '../components/general/Header/Header.astro';
 
 const currentLocale = Astro.currentLocale;
 
@@ -18,7 +18,7 @@ const { title, description } = Astro.props;
 <html lang={currentLocale} class="scroll-smooth min-h-full">
 	<Head {title} {description} />
 
-	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] text-black-900">
+	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900">
 		<Header />
 
 		<main class="pb-20">

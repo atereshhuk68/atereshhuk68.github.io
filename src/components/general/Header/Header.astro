@@ -16,7 +16,7 @@ const {
 
 const t = useTranslations(currentLocale as Locales);
 
-const basePath = getTranslatedURL(pathname, currentLocale);
+const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 
 const modifyUrl = (anchor: string) => {
 	if (currentLocale !== defaultLang) {
