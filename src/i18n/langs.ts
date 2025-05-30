@@ -1,12 +1,12 @@
-import type { LanguagesTypes } from "src/types/types";
+import type { LanguagesTypes } from 'src/types';
 
-export const defaultLang = "pl";
+export const defaultLang = 'pl';
 
 export const Languages: LanguagesTypes = {
-	en: "English",
-	pl: "Polski",
-	uk: "Українська",
-	ru: "Русский",
+	en: 'English',
+	pl: 'Polski',
+	uk: 'Українська',
+	ru: 'Русский',
 };
 
 export const LanguagesList = Object.entries(Languages).map(([key, value]) => ({

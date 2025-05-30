@@ -1,15 +1,15 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { useTranslations } from "@i18n/utils";
-import type { Locales } from "src/types/types";
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations } from '@i18n/utils';
+import type { Locales } from 'src/types';
 
 const {
 	url: { pathname },
-	currentLocale = "pl",
+	currentLocale = 'pl',
 } = Astro;
 const t = useTranslations(currentLocale as Locales);
 
-const privacyPolicyUrl = getRelativeLocaleUrl(currentLocale, "privacy-policy");
+const privacyPolicyUrl = getRelativeLocaleUrl(currentLocale, 'privacy-policy');
 
 const isSamePage = pathname === privacyPolicyUrl;
 ---

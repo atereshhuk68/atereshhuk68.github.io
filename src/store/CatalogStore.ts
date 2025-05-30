@@ -1,6 +1,6 @@
-import { shuffle } from "es-toolkit";
-import type { Service } from "src/types/types";
-import { create } from "zustand";
+import { shuffle } from 'es-toolkit';
+import type { Service } from 'src/types';
+import { create } from 'zustand';
 
 const MAX_INITIAL_CARDS = 6;
 
@@ -16,11 +16,11 @@ interface CatalogState {
 export const useCatalogStore = create<CatalogState>((set, get) => ({
 	catalog: [],
 	catalogFiltered: [],
-	activeFilter: "all",
+	activeFilter: 'all',
 	filters: [],
 
 	setCatalog: (services: Service[]) => {
-		const servicesTypes = ["all", ...new Set(services.map((s) => s.type))];
+		const servicesTypes = ['all', ...new Set(services.map((s) => s.type))];
 
 		set({
 			catalog: services,
@@ -34,10 +34,8 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
 
 		let newCatalog;
 
-		if (newFilterValue !== "all") {
-			newCatalog = shuffle(
-				catalog.filter((card) => card.type === newFilterValue),
-			);
+		if (newFilterValue !== 'all') {
+			newCatalog = shuffle(catalog.filter((card) => card.type === newFilterValue));
 		} else {
 			newCatalog = shuffle([...catalog]);
 		}

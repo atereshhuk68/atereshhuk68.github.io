@@ -1,11 +1,11 @@
 ---
-import { Picture } from "astro:assets";
-import AboutUsImage from "@assets/images/about-us-image-w960.jpg";
-import { useTranslations } from "@i18n/utils";
-import { ExternalLink } from "@lucide/astro";
-import type { Locales } from "src/types/types";
+import { Picture } from 'astro:assets';
+import AboutUsImage from '@assets/images/about-us-image-w960.jpg';
+import { useTranslations } from '@i18n/utils';
+import { ExternalLink } from '@lucide/astro';
+import type { Locales } from 'src/types';
 
-const { currentLocale = "pl" } = Astro;
+const { currentLocale = 'pl' } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
@@ -89,7 +89,7 @@ const t = useTranslations(currentLocale as Locales);
 				height={782}
 				class="rounded-xl object-cover object-center sm:object-[0_-200px] lg:object-center max-h-[300px] lg:max-h-[763px]"
 				loading="lazy"
-				formats={["avif", "webp"]}
+				formats={['avif', 'webp']}
 				quality={65}
 			/>
 		</div>

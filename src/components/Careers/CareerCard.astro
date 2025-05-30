@@ -1,9 +1,9 @@
 ---
-import { useTranslations } from "@i18n/utils";
-import { Briefcase, MapPin } from "@lucide/astro";
-import type { Locales } from "src/types/types";
+import { useTranslations } from '@i18n/utils';
+import { Briefcase, MapPin } from '@lucide/astro';
+import type { Locales } from 'src/types';
 
-const { currentLocale = "pl" } = Astro;
+const { currentLocale = 'pl' } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 

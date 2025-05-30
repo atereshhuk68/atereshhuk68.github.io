@@ -5,7 +5,7 @@
 import { Button, type PressEvent } from '@heroui/react';
 import { useTranslations } from 'src/i18n/utils';
 import { useCatalogStore } from 'src/store/CatalogStore';
-import type { Locales } from 'src/types/types';
+import type { Locales } from 'src/types';
 
 const ICON_MAP: Record<string, string> = {
 	all: 'service-list-w64',
