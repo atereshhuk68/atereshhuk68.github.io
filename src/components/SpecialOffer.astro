@@ -65,19 +65,16 @@ const t = useTranslations(currentLocale as Locales);
 </dialog>
 
 <script>
-	import { animate } from 'framer-motion';
 	import { getCookie, setCookie } from 'typescript-cookie';
-	import { z } from 'zod';
 	import { clearErrors, clearFieldError, displayErrors } from '../utils/handle-errors';
 	import { enableSubmitButton, disableSubmitButton } from '../utils/handle-submit-button';
 	import { validateFormBySchema } from '../utils/handle-form-validation';
+	import { isDev } from '../constants';
+	import { toggleDialog } from 'src/utils/handle-dialogs';
+	import { sendForm } from 'src/utils/handle-form-submit';
+	import { offerFormSchema } from 'src/schemas';
 
-	type PostDataResponse = {
-		success: boolean;
-		errors?: {
-			mail_error: string;
-		};
-	};
+	const FETCH_URL = isDev ? 'http://localhost:8000/offer.php' : '/offer.php';
 
 	const specialOfferDialogModule = (() => {
 		const specialOfferTrigger = document.querySelector<HTMLButtonElement>('[data-open-special-dialog]');
@@ -88,57 +85,9 @@ const t = useTranslations(currentLocale as Locales);
 		const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
 		const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
 
-		const offerFormSchema = z.object({
-			userName: z.string().min(2, { message: 'Name is required' }),
-			userPhone: z
-				.string()
-				.min(9, { message: 'Phone too short. Min 9 symbols' })
-				.max(15, { message: 'Phone too long. Max 15 symbols' })
-				.regex(/^\+?[0-9]*$/, { message: 'Invalid phone number' }),
-		});
+		const COOKIE_NAME = 'specialOffer' as const;
 
-		const isUserSawOffer = getCookie('specialOffer');
-
-		const toggleDialog = (dialog: HTMLDialogElement, isOpen: boolean) => {
-			if (isOpen) {
-				animate(dialog, { scale: 1, opacity: 1 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
-				dialog.showModal();
-				document.body.style.overflow = 'hidden';
-			} else {
-				animate(dialog, { scale: 0.4, opacity: 0 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
-				setTimeout(() => {
-					dialog.close();
-				}, 200);
-				document.body.style.overflow = 'auto';
-			}
-		};
-
-		const postFormData = async (form: HTMLFormElement, submitButton: HTMLButtonElement) => {
-			const formData = new FormData(form);
-
-			try {
-				const response = await fetch('/offer.php', {
-					body: formData,
-					method: 'POST',
-				});
-
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-
-				const result: PostDataResponse = await response.json();
-
-				return result;
-			} catch (error) {
-				if (errorDialog) {
-					console.error('Error:', error);
-					toggleDialog(errorDialog, true);
-				}
-				return { success: false };
-			} finally {
-				enableSubmitButton(submitButton);
-			}
-		};
+		const isUserSawOffer = getCookie(COOKIE_NAME);
 
 		const handleSubmit = async (event: SubmitEvent) => {
 			event.preventDefault();
@@ -148,10 +97,10 @@ const t = useTranslations(currentLocale as Locales);
 
 			clearErrors(submittedForm);
 
-			const result = validateFormBySchema(submittedForm, offerFormSchema);
+			const { success: validationSuccess, data, error: validationErrors } = validateFormBySchema(submittedForm, offerFormSchema);
 
-			if (!result.success) {
-				const errors = result.error.flatten().fieldErrors;
+			if (!validationSuccess) {
+				const errors = validationErrors.flatten().fieldErrors;
 
 				displayErrors(submittedForm, errors);
 
@@ -160,7 +109,7 @@ const t = useTranslations(currentLocale as Locales);
 
 			disableSubmitButton(submitButton);
 
-			const { success } = await postFormData(submittedForm, submitButton);
+			const { success } = await sendForm(FETCH_URL, data);
 
 			if (success) {
 				if (successDialog) {
@@ -168,14 +117,20 @@ const t = useTranslations(currentLocale as Locales);
 					toggleDialog(successDialog, true);
 					submittedForm.reset();
 
-					setCookie('specialOffer', 'true', {
+					setCookie(COOKIE_NAME, 'true', {
 						expires: 365,
 						path: '/',
 						sameSite: 'None',
 						secure: true,
 					});
 				}
+			} else {
+				if (errorDialog) {
+					toggleDialog(errorDialog, true);
+				}
 			}
+
+			enableSubmitButton(submitButton);
 		};
 
 		const setEventListeners = () => {
@@ -227,12 +182,10 @@ const t = useTranslations(currentLocale as Locales);
 			}
 		};
 
-		const init = () => {
-			setEventListeners();
-		};
-
 		return {
-			init,
+			init: () => {
+				setEventListeners();
+			},
 		};
 	})();
 
