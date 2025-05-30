@@ -29,11 +29,13 @@ const t = useTranslations(currentLocale as Locales);
 </div>
 
 <script>
-	import { animate } from 'framer-motion';
-	import { z } from 'zod';
 	import { clearErrors, clearFieldError, displayErrors } from '../../../utils/handle-errors';
 	import { enableSubmitButton, disableSubmitButton } from '../../../utils/handle-submit-button';
 	import { validateFormBySchema } from '../../../utils/handle-form-validation';
+	import { isDev } from 'src/constants';
+	import { sendForm } from '../../../utils/handle-form-submit';
+	import { toggleDialog } from 'src/utils/handle-dialogs';
+	import { contactFormSchema } from 'src/schemas';
 
 	const contactForm = document.querySelector<HTMLFormElement>('form[data-contact-form]');
 	const contactFormFields = contactForm?.querySelectorAll<HTMLInputElement>('input, textarea');
@@ -42,64 +44,7 @@ const t = useTranslations(currentLocale as Locales);
 	const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
 	const closeDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-dialog]');
 
-	const contactFormSchema = z.object({
-		userName: z.string().min(2, { message: 'Name is required' }),
-		userPhone: z
-			.string()
-			.min(9, { message: 'Phone too short. Min 9 symbols' })
-			.max(15, { message: 'Phone too long. Max 15 symbols' })
-			.regex(/^\+?[0-9]*$/, { message: 'Invalid phone number' }),
-		userEmail: z.string().email({ message: 'Invalid email address' }),
-		userMessage: z.string().min(1, { message: 'Message is required' }),
-	});
-
-	type PostDataResponse = {
-		success: boolean;
-		errors?: {
-			mail_error: string;
-		};
-	};
-
-	const toggleDialog = (dialog: HTMLDialogElement, isOpen: boolean) => {
-		if (isOpen) {
-			animate(dialog, { scale: 1, opacity: 1 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
-			dialog.showModal();
-			document.body.style.overflow = 'hidden';
-		} else {
-			animate(dialog, { scale: 0.4, opacity: 0 }, { duration: 0.5, type: 'spring', bounce: 0.4 });
-			setTimeout(() => {
-				dialog.close();
-			}, 200);
-			document.body.style.overflow = 'auto';
-		}
-	};
-
-	const postFormData = async (form: HTMLFormElement, submitButton: HTMLButtonElement) => {
-		const formData = new FormData(form);
-
-		try {
-			const response = await fetch('/send.php', {
-				body: formData,
-				method: 'POST',
-			});
-
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-
-			const result: PostDataResponse = await response.json();
-
-			return result;
-		} catch (error) {
-			if (errorDialog) {
-				console.error('Error:', error);
-				toggleDialog(errorDialog, true);
-			}
-			return { success: false };
-		} finally {
-			enableSubmitButton(submitButton);
-		}
-	};
+	const FETCH_URL = isDev ? 'http://localhost:8000/send.php' : '/send.php';
 
 	const handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
@@ -109,10 +54,10 @@ const t = useTranslations(currentLocale as Locales);
 
 		clearErrors(submittedForm);
 
-		const result = validateFormBySchema(submittedForm, contactFormSchema);
+		const { success: validationSuccess, data, error: validationErrors } = validateFormBySchema(submittedForm, contactFormSchema);
 
-		if (!result.success) {
-			const errors = result.error.flatten().fieldErrors;
+		if (!validationSuccess) {
+			const errors = validationErrors.flatten().fieldErrors;
 
 			displayErrors(submittedForm, errors);
 
@@ -121,14 +66,20 @@ const t = useTranslations(currentLocale as Locales);
 
 		disableSubmitButton(submitButton);
 
-		const { success } = await postFormData(submittedForm, submitButton);
+		const { success } = await sendForm(FETCH_URL, data);
 
 		if (success) {
 			if (successDialog) {
 				toggleDialog(successDialog, true);
 				submittedForm.reset();
 			}
+		} else {
+			if (errorDialog) {
+				toggleDialog(errorDialog, true);
+			}
 		}
+
+		enableSubmitButton(submitButton);
 	};
 
 	const setEventListeners = () => {

@@ -1,9 +1,9 @@
 ---
-import { useTranslations } from "@i18n/utils";
-import type { Locales } from "src/types/types";
-import ContactForm from "./ContactForm.astro";
+import { useTranslations } from '@i18n/utils';
+import type { Locales } from 'src/types/types';
+import ContactForm from './ContactForm.astro';
 
-const { currentLocale = "pl" } = Astro;
+const { currentLocale = 'pl' } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
@@ -30,10 +30,8 @@ const t = useTranslations(currentLocale as Locales);
 		<div class="max-w-5xl mx-auto relative isolate">
 			<ContactForm />
 
-			<div
-				id="rotatedText"
-				class="lazy-bg absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 aspect-square w-[400px] h-auto z-[-1]"
-				data-bg-name="rotated-sentence-w550"></div>
+			<div id="rotatedText" class="lazy-bg absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 aspect-square w-[400px] h-auto z-[-1]" data-bg-name="rotated-sentence-w550">
+			</div>
 		</div>
 	</div>
 
@@ -41,11 +39,15 @@ const t = useTranslations(currentLocale as Locales);
 </section>
 
 <script>
-	import { animate } from 'framer-motion';
-
 	const rotatedText = document.getElementById('rotatedText');
 
-	if (rotatedText) {
-		animate(rotatedText, { rotate: 360 }, { duration: 30, repeat: Infinity, ease: 'linear' });
-	}
+	const keyframes: Keyframe[] = [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-360deg)' }];
+
+	const options: KeyframeAnimationOptions = {
+		duration: 20000,
+		iterations: Infinity,
+		easing: 'linear',
+	};
+
+	rotatedText?.animate(keyframes, options);
 </script>
