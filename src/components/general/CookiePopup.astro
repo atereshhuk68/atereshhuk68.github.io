@@ -21,9 +21,8 @@ const t = useTranslations(currentLocale as Locales);
 </div>
 
 <script>
-	import { animate } from 'framer-motion';
 	import { getCookie, setCookie } from 'typescript-cookie';
-	import { COOKIE_NAME } from 'consts';
+	import { COOKIE_NAME, CUBIC_BEZIER_BOUNCE } from '../../../constants';
 
 	const cookiePopup = document.querySelector<HTMLDivElement>('#cookiePopup');
 	const cookieButton = document.querySelector<HTMLButtonElement>('#cookiePopupButton');
@@ -47,7 +46,18 @@ const t = useTranslations(currentLocale as Locales);
 
 	const handleClosePopup = (): void => {
 		if (cookiePopup) {
-			animate(cookiePopup, { scale: 0.4, opacity: 0 }, { duration: 0.9, type: 'spring', bounce: 0.4 });
+			const keyframes: Keyframe[] = [
+				{ transform: 'scale(1)', opacity: 1 },
+				{ transform: 'scale(0.4)', opacity: 0 },
+			];
+
+			const options: KeyframeAnimationOptions = {
+				duration: 500,
+				easing: CUBIC_BEZIER_BOUNCE,
+				fill: 'forwards',
+			};
+
+			cookiePopup.animate(keyframes, options);
 		}
 
 		saveCookie(COOKIE_NAME, true);
@@ -61,7 +71,18 @@ const t = useTranslations(currentLocale as Locales);
 
 	const displayPopup = () => {
 		if (cookiePopup) {
-			animate(cookiePopup, { scale: 1, opacity: 1 }, { delay: 1, duration: 0.9, type: 'spring', bounce: 0.4 });
+			const keyframes: Keyframe[] = [
+				{ transform: 'scale(0.4)', opacity: 0 },
+				{ transform: 'scale(1)', opacity: 1 },
+			];
+
+			const options: KeyframeAnimationOptions = {
+				duration: 500,
+				easing: CUBIC_BEZIER_BOUNCE,
+				fill: 'forwards',
+			};
+
+			cookiePopup.animate(keyframes, options);
 		}
 	};
 
