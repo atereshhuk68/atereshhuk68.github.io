@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import Ahrefs from "./parts/Ahrefs.astro";
 import Canonical from "./parts/Canonical.astro";
@@ -28,4 +29,11 @@ const isDev = import.meta.env.MODE === "development";
 		<Clarity />
 	)}
 
+	<Font cssVariable='--font-inter' preload />
+
+	<style>
+		body {
+				font-family: var(--font-inter);
+		}
+	</style>
 </head>
