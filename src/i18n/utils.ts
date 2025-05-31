@@ -25,17 +25,14 @@ export const useTranslations = (locale: Locales) => {
  * - getTranslatedURL('/uk/about', 'en') -> '/about' (if 'en' is default)
  */
 export function getTranslatedURL(basePath: string, locale: Locales) {
-	let pathname = basePath.startsWith('/') ? basePath.slice(1) : basePath;
+	const localePrefix = locale ? `/${locale}` : '';
+	let pathname = basePath;
 
-	const localePrefix = `${locale}/`;
-
-	if (pathname.startsWith(localePrefix)) {
-		pathname = pathname.substring(localePrefix.length);
+	if (locale && basePath.startsWith(`${localePrefix}/`)) {
+		pathname = basePath.substring(localePrefix.length);
+	} else if (locale && basePath === localePrefix) {
+		pathname = '/';
 	}
 
-	if (locale === defaultLang) {
-		return pathname ? `/${pathname}` : '/';
-	}
-
-	return pathname ? `/${locale}/${pathname}` : `/${locale}`;
+	return (pathname = pathname || '/');
 }
