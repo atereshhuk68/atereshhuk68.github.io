@@ -22,7 +22,7 @@ const t = useTranslations(currentLocale as Locales);
 	id="specialOfferDialog"
 	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white p-4 md:px-8 md:pb-10 md:pt-8 text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
 	style="transform: scale(0.4); opacity: 0;">
-	<div class="prose md:prose-lg">
+	<div class="prose md:prose-lg mb-0">
 		<div class="font-heading text-2xl md:text-3xl text-center">
 			{t('specialOffer.heading')}
 		</div>
@@ -47,13 +47,13 @@ const t = useTranslations(currentLocale as Locales);
 					{t('specialOffer.submitText')}
 				</Button>
 
-				<Button size="md" variant="light" className="text-black-900 inline-flex gap-2 items-center font-medium min-w-[200px] peer" type="button" data-close-special-offer>
+				<Button size="md" variant="flat" className="text-black-900 inline-flex gap-2 items-center font-medium min-w-[200px] peer" type="button" data-close-special-offer>
 					{t('specialOffer.later')}
 				</Button>
 			</div>
-
-			<small class="block text-center text-black-300 text-sm mt-4">{t('specialOffer.note')}</small>
 		</form>
+
+		<small class="block text-center text-black-700 text-sm mt-10">{t('specialOffer.note')}</small>
 	</div>
 
 	<button
