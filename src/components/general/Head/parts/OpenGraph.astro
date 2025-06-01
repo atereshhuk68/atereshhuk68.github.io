@@ -1,10 +1,14 @@
 ---
+import { getISOLocale, getISOLocaleAlternates } from '@i18n/utils';
+import type { Locales } from 'src/types';
 import { SITE } from '../../../../../constants';
 
-const { title, description } = Astro.props;
-const currentPathname = Astro.url.pathname;
-const ogUrl = `${SITE}${currentPathname}`;
-const currentLocale = Astro.props.currentLocale;
+const { title, description, currentLocale } = Astro.props;
+const { pathname } = Astro.url;
+const ogUrl = `${SITE}${pathname}`;
+
+const ISOLocale = getISOLocale(currentLocale as Locales);
+const ISOLocaleAlternates = getISOLocaleAlternates(currentLocale as Locales);
 ---
 
 <meta property="og:url" content={ogUrl} />
@@ -12,8 +16,11 @@ const currentLocale = Astro.props.currentLocale;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content="/og-bfancy-image.jpg" />
-<meta property="og:locale" content={currentLocale} />
 <meta property="og:site_name" content="BFancy" />
+
+<meta property="og:locale" content={ISOLocale} />
+
+{ISOLocaleAlternates.map((ISOLocale) => <meta property="og:locale:alternate" content={ISOLocale} />)}
 
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />

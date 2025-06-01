@@ -8,7 +8,7 @@ import Favicons from "./parts/Favicons.astro";
 import GTM from "./parts/GTM.astro";
 import OpenGraph from "./parts/OpenGraph.astro";
 
-const { title, description } = Astro.props;
+const { title, description, currentLocale } = Astro.props;
 const isDev = import.meta.env.MODE === "development";
 ---
 
@@ -19,7 +19,7 @@ const isDev = import.meta.env.MODE === "development";
 	<Canonical />
 	<title>{title}</title>
 	<meta name="description" content={description} />
-	<OpenGraph {title} {description} />
+	<OpenGraph {title} {description} {currentLocale} />
 	<ClientRouter fallback="none" />
 	<link rel="sitemap" href="/sitemap-index.xml" />
 

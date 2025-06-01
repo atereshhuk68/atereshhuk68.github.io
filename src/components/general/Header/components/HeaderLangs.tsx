@@ -1,15 +1,13 @@
-/**
- * HeaderLangs component
- * Відображає випадаючий список мов для перемикання локалі.
- * @param {HeaderLangsProps} props - Список мов
- */
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import type { LanguagesListType } from '@i18n/langs';
 import { Languages } from 'lucide-react';
-import type { ReactNode } from 'react';
+import type { Locales } from 'src/types';
 
 interface HeaderLangsProps {
-	items: LanguagesListType[];
+	items: {
+		locale: Locales;
+		name: string;
+		href: string;
+	}[];
 }
 
 export function HeaderLangs({ items }: HeaderLangsProps) {
@@ -18,8 +16,8 @@ export function HeaderLangs({ items }: HeaderLangsProps) {
 			<DropdownTrigger>
 				<Button variant="light" isIconOnly startContent={<Languages size={24} />} aria-label="Open languages menu" />
 			</DropdownTrigger>
-			<DropdownMenu aria-label="Static Actions" items={items}>
-				{({ href, name }: LanguagesListType) => (
+			<DropdownMenu aria-label="List of languages" items={items}>
+				{({ href, name }: { href: string; name: string }) => (
 					<DropdownItem key={name} href={href}>
 						{name}
 					</DropdownItem>

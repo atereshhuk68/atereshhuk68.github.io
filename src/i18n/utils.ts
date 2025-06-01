@@ -1,5 +1,5 @@
 import type { Locales } from 'src/types.ts';
-import { defaultLang } from './langs.ts';
+import { ISOLocales, defaultLang } from './langs.ts';
 import { ui } from './ui.ts';
 
 /**
@@ -36,3 +36,25 @@ export function getTranslatedURL(basePath: string, locale: Locales) {
 
 	return (pathname = pathname || '/');
 }
+
+/**
+ * Converts a locale to its ISO format, defaulting to 'pl-PL' if not found.
+ * @param locale - The locale to convert
+ * @returns The ISO locale string
+ */
+export const getISOLocale = (locale: Locales) => {
+	if (!ISOLocales.has(locale)) return 'pl-PL';
+
+	return ISOLocales.get(locale);
+};
+
+/**
+ * Gets alternative ISO locale codes excluding the provided locale.
+ * @param locale - The locale to exclude from alternates
+ * @returns Array of alternative ISO locale codes, defaults to ['pl-PL'] if no alternates found
+ */
+export const getISOLocaleAlternates = (locale: Locales) => {
+	const alternates = ISOLocales.values().filter((ISOLocale) => ISOLocale !== getISOLocale(locale));
+
+	return alternates ? alternates : ['pl-PL'];
+};

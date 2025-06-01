@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { LanguagesList } from '@i18n/langs';
+import { Languages } from '@i18n/langs';
 import { getTranslatedURL } from '@i18n/utils';
 import type { Locales } from 'src/types';
 
@@ -10,11 +10,13 @@ const {
 } = Astro;
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);
+
+const langs = Array.from(Languages.entries());
 ---
 
 <ul class="flex items-center gap-4 lg:w-[280px] text-sm">
 	{
-		LanguagesList.map(({ locale, name }) => (
+		langs.map(([locale, name]) => (
 			<li>
 				{locale === currentLocale ? (
 					<span class="text-cove-700 pointer-events-none">{name}</span>
@@ -26,17 +28,4 @@ const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 			</li>
 		))
 	}
-	<!-- {
-		LanguagesList.map(({ locale, name }) => (
-			<li>
-				{locale === currentLocale ? (
-					<span class="text-cove-700 pointer-events-none">{name}</span>
-				) : (
-					<a href={getRelativeLocaleUrl(locale, basePath)} class="text-black-900 hover:text-cove-600 transition-[color] duration-200">
-						{name}
-					</a>
-				)}
-			</li>
-		))
-	} -->
 </ul>

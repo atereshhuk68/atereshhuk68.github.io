@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Button } from '@heroui/react';
-import { LanguagesList, defaultLang } from '@i18n/langs';
+import { Languages, defaultLang } from '@i18n/langs';
 import { getTranslatedURL, useTranslations } from '@i18n/utils';
 import { Calendar, Minus } from '@lucide/astro';
 import type { Locales } from 'src/types.ts';
@@ -35,7 +35,7 @@ const menuItems = [
 	},
 ];
 
-const ModifiedLanguagesList = LanguagesList.map(({ locale, name }) => ({
+const ModifiedLanguagesList = Array.from(Languages.entries()).map(([locale, name]) => ({
 	locale,
 	name,
 	href: getRelativeLocaleUrl(locale, basePath),

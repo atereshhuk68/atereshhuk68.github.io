@@ -9,14 +9,19 @@ import Head from '@components/general/Head/Head.astro';
 import Dialog from '@components/sections/Contact/dialog/Dialog.astro';
 import Header from '../components/general/Header/Header.astro';
 
+import type { Locales } from 'src/types';
+import { getISOLocale } from '../i18n/utils';
+
 const currentLocale = Astro.currentLocale;
 
 const { title, description } = Astro.props;
+
+const ISOLocale = getISOLocale(currentLocale as Locales);
 ---
 
 <!doctype html>
-<html lang={currentLocale} class="scroll-smooth min-h-full">
-	<Head {title} {description} />
+<html lang={ISOLocale} class="scroll-smooth min-h-full">
+	<Head {title} {description} {currentLocale} />
 
 	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900">
 		<Header />

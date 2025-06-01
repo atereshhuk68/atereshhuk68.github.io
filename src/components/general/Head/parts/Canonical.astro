@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { LanguagesList } from '@i18n/langs';
+import { Languages } from '@i18n/langs';
 import { getTranslatedURL } from '@i18n/utils';
 import type { Locales } from 'src/types';
 import { SITE } from '../../../../../constants';
@@ -12,9 +12,9 @@ const {
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 
-const canonicalUrl = SITE + pathname;
+const canonicalUrl = Astro.url.href;
 
-const alternates = LanguagesList.map(({ locale }) => {
+const alternates = Array.from(Languages.keys()).map((locale) => {
 	const altHref = getRelativeLocaleUrl(locale, basePath);
 	const absHref = SITE + altHref;
 	return { locale, absHref };

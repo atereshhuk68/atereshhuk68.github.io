@@ -1,10 +1,13 @@
-import ky, { type Input } from 'ky';
+import { isDev } from '../../constants';
+import ky from 'ky';
 
 type PostDataResponse = {
 	success: boolean;
 };
 
-export const sendForm = async <T extends Record<string, string>>(url: Input, payload: T) => {
+export const sendForm = async <T extends Record<string, string>>(payload: T) => {
+	const url = isDev ? 'http://localhost:8000/send.php' : '/send.php';
+
 	const formData = new FormData();
 
 	for (const [key, value] of Object.entries(payload)) {

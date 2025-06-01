@@ -1,15 +1,17 @@
-import type { LanguagesTypes } from 'src/types';
+import type { Locales } from 'src/types';
 
 export const defaultLang = 'pl';
 
-export const Languages: LanguagesTypes = {
-	en: 'English',
-	pl: 'Polski',
-	uk: 'Українська',
-	ru: 'Русский',
-};
+export const Languages: Map<Locales, string> = new Map([
+	['pl', 'Polski'],
+	['en', 'English'],
+	['uk', 'Українська'],
+	['ru', 'Русский'],
+]);
 
-export const LanguagesList = Object.entries(Languages).map(([key, value]) => ({
-	locale: key,
-	name: value,
-}));
+export const ISOLocales = new Map([
+	['pl', 'pl-PL'],
+	['en', 'en-US'],
+	['uk', 'uk-UA'],
+	['ru', 'ru-RU'],
+]);
