@@ -38,6 +38,8 @@ const t = useTranslations(currentLocale as Locales);
 		<p>{t('specialOffer.cta')}</p>
 
 		<form class="grid place-items-center space-y-8 max-w-[512px] mx-auto" method="post" data-special-offer-form>
+			<input type="hidden" name="formTitle" value="offer" />
+
 			<UserName />
 
 			<UserPhone />
@@ -69,12 +71,10 @@ const t = useTranslations(currentLocale as Locales);
 	import { clearErrors, clearFieldError, displayErrors } from '../utils/handle-errors';
 	import { enableSubmitButton, disableSubmitButton } from '../utils/handle-submit-button';
 	import { validateFormBySchema } from '../utils/handle-form-validation';
-	import { isDev } from '../../constants';
+	import { SPECIAL_OFFER_COOKIE_NAME } from '../../constants';
 	import { toggleDialog } from 'src/utils/handle-dialogs';
 	import { sendForm } from 'src/utils/handle-form-submit';
 	import { offerFormSchema } from 'src/schemas';
-
-	const FETCH_URL = isDev ? 'http://localhost:8000/offer.php' : '/offer.php';
 
 	const specialOfferDialogModule = (() => {
 		const specialOfferTrigger = document.querySelector<HTMLButtonElement>('[data-open-special-dialog]');
@@ -85,9 +85,7 @@ const t = useTranslations(currentLocale as Locales);
 		const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
 		const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
 
-		const COOKIE_NAME = 'specialOffer' as const;
-
-		const isUserSawOffer = getCookie(COOKIE_NAME);
+		const isUserSawOffer = getCookie(SPECIAL_OFFER_COOKIE_NAME);
 
 		const handleSubmit = async (event: SubmitEvent) => {
 			event.preventDefault();
@@ -109,7 +107,7 @@ const t = useTranslations(currentLocale as Locales);
 
 			disableSubmitButton(submitButton);
 
-			const { success } = await sendForm(FETCH_URL, data);
+			const { success } = await sendForm(data);
 
 			if (success) {
 				if (successDialog) {
@@ -117,7 +115,7 @@ const t = useTranslations(currentLocale as Locales);
 					toggleDialog(successDialog, true);
 					submittedForm.reset();
 
-					setCookie(COOKIE_NAME, 'true', {
+					setCookie(SPECIAL_OFFER_COOKIE_NAME, 'true', {
 						expires: 365,
 						path: '/',
 						sameSite: 'None',

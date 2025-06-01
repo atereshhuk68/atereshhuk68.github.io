@@ -1,7 +1,11 @@
 import { z } from 'zod';
 
 export const offerFormSchema = z.object({
-	userName: z.string().min(2, { message: 'Name is required' }),
+	formTitle: z.string(),
+	userName: z
+		.string()
+		.min(2, { message: 'Name is required' })
+		.regex(/^[a-zA-Z\s]+$/, { message: 'Name can only contain letters and spaces' }),
 	userPhone: z
 		.string()
 		.min(9, { message: 'Phone too short. Min 9 symbols' })
@@ -10,7 +14,10 @@ export const offerFormSchema = z.object({
 });
 
 export const contactFormSchema = z.object({
-	userName: z.string().min(2, { message: 'Name is required' }),
+	userName: z
+		.string()
+		.min(2, { message: 'Name is required' })
+		.regex(/^[a-zA-Z\s]+$/, { message: 'Name can only contain letters and spaces' }),
 	userPhone: z
 		.string()
 		.min(9, { message: 'Phone too short. Min 9 symbols' })
