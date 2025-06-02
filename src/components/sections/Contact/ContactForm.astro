@@ -44,8 +44,6 @@ const t = useTranslations(currentLocale as Locales);
 	const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
 	const closeDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-dialog]');
 
-	const FETCH_URL = isDev ? 'http://localhost:8000/send.php' : '/send.php';
-
 	const handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
 
@@ -66,7 +64,7 @@ const t = useTranslations(currentLocale as Locales);
 
 		disableSubmitButton(submitButton);
 
-		const { success } = await sendForm(FETCH_URL, data);
+		const { success } = await sendForm(data);
 
 		if (success) {
 			if (successDialog) {
