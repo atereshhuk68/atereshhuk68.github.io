@@ -1,7 +1,23 @@
 <?php
+
+if (!function_exists('json_encode')) {
+    die('PHP JSON extension is not available');
+}
+
+header("Access-Control-Allow-Origin: http://localhost:4321");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 $response = array();
 
 $inputs = array(
+	'formTitle'       => '',
 	'userName'       => '',
 	'userPhone'      => '',
 	'userEmail'      => '',
@@ -46,7 +62,6 @@ function is_email( $email ) {
  * @return bool True if the string contains only digits, false otherwise.
  */
 function is_phone_number( $phone_number ) {
-	// Allows an optional plus sign at the beginning, followed by one or more digits.
 	$pattern = '/^\+?\d+$/';
 	return preg_match( $pattern, $phone_number );
 }
@@ -56,10 +71,12 @@ function is_phone_number( $phone_number ) {
  *
  * @return bool True if validation passes for all checked fields, false otherwise.
  */
-function contact_form_validation() {
+function form_validation() {
 	global $response, $inputs;
 
 	$is_valid = false;
+
+    $inputs['formTitle'] = isset($_POST['formTitle']) ? sanitize_input($_POST['formTitle']) : '';
 
 	if ( field_exist_and_not_empty( 'userName' ) ) {
 		$inputs['userName'] = sanitize_input( $_POST['userName'] );
@@ -71,7 +88,7 @@ function contact_form_validation() {
 		} else {
 			array_push( $response, array( 'userPhone' => 'Invalid phone number format' ) );
 		}
-	}
+}
 
 	if ( field_exist_and_not_empty( 'userEmail' ) ) {
 		if ( is_email( $_POST['userEmail'] ) ) {
@@ -93,30 +110,186 @@ function contact_form_validation() {
 }
 
 /**
- * Prepares the HTML body for the contact form email.
- *
- * Uses the global variable `$inputs` to populate
- * placeholders for username, email, and message within an HTML template string.
- *
- * @global array $inputs An array containing the submitted form data.
- *                                       Expected keys: 'userName', 'userEmail', 'userMessage'.
- *
- * @return string The formatted HTML email body.
+ * Class ContactMessageFormatter
+ * Утиліта для форматування повідомлень для різних платформ
  */
-function prepare_mail_body() {
-	global $inputs;
+class ContactMessageFormatter {
+    private $data;
 
-	$mail_body = str_replace( '%username%', $inputs['userName'], '<b>User</b>: %username% <br> ' );
+    public function __construct(array $data) {
+        $this->data = $data;
+    }
 
-	$mail_body .= str_replace( '%useremail%', $inputs['userEmail'], '<b>Email</b>: %useremail% <br> ' );
+    /**
+     * Форматує повідомлення для HTML (email)
+     */
+    public function toHtml(): string {
+        $template = '
+            <div style="font-family: Arial, sans-serif; max-width: 600px;">
+                <h2 style="color: #333;">%formTitle%</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>👤 Персона:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">%userName%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>📧 Пошта:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">%userEmail%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>📱 Телефон:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">%userPhone%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💬 Повідомлення:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">%userMessage%</td>
+                    </tr>
+                </table>
+            </div>';
 
-	$mail_body .= str_replace( '%userphone%', $inputs['userPhone'], '<b>Phone number</b>: %userphone% <br> ' );
+        return $this->replacePlaceholders($template, [
+            '%formTitle%' => 'offer' === $this->data['formTitle'] ? "💥 Спеціальна пропозиція" : "💌 Нове повідомлення з форми зворотного зв'язку",
+            '%userName%' => htmlspecialchars($this->data['userName'] ?? '', ENT_QUOTES, 'UTF-8'),
+            '%userEmail%' => htmlspecialchars($this->data['userEmail'] ?? '', ENT_QUOTES, 'UTF-8'),
+            '%userPhone%' => htmlspecialchars($this->data['userPhone'] ?? '', ENT_QUOTES, 'UTF-8'),
+            '%userMessage%' => nl2br(htmlspecialchars($this->data['userMessage'] ?? '', ENT_QUOTES, 'UTF-8'))
+        ]);
+    }
 
-	$mail_body .= '<hr>';
+    /**
+     * Форматує повідомлення для Telegram (MarkdownV2)
+     */
+    public function toMarkdownV2(): string {
+        $isFormTypeOffer = 'offer' === $this->data['formTitle'];
 
-	$mail_body .= str_replace( '%usermessage%', $inputs['userMessage'], '<b>Message</b>: %usermessage%' );
+        $template = $isFormTypeOffer ? "💥 *Спеціальна пропозиція*\n\n" : "💌 *Нове повідомлення з форми зворотного зв'язку*\n\n";
+        $template .= "*👤 Персона:* %userName%\n";
+        $template .= "*📱 Номер телефону:* %userPhone%\n";
 
-	return $mail_body;
+        if (!$isFormTypeOffer) {
+            $template .= "*📧 Пошта:* %userEmail%\n";
+            $template .= "*💬 Повідомлення:* %userMessage%";
+
+            return $this->replacePlaceholders($template, [
+                '%userName%' => $this->escapeMarkdownV2($this->data['userName'] ?? ''),
+                '%userPhone%' => $this->escapeMarkdownV2($this->data['userPhone'] ?? ''),
+                '%userEmail%' => $this->escapeMarkdownV2($this->data['userEmail'] ?? ''),
+                '%userMessage%' => $this->escapeMarkdownV2($this->data['userMessage'] ?? '')
+            ]);
+        }
+
+        return $this->replacePlaceholders($template, [
+            '%userName%' => $this->escapeMarkdownV2($this->data['userName'] ?? ''),
+            '%userPhone%' => $this->escapeMarkdownV2($this->data['userPhone'] ?? ''),
+        ]);
+    }
+
+    /**
+     * Замінює плейсхолдери в шаблоні
+     */
+    private function replacePlaceholders(string $template, array $replacements): string {
+        return str_replace(array_keys($replacements), array_values($replacements), $template);
+    }
+
+    /**
+     * Екранує спеціальні символи для MarkdownV2
+     */
+    private function escapeMarkdownV2(string $text): string {
+        $text = strip_tags($text);
+
+        $specialChars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!'];
+
+        foreach ($specialChars as $char) {
+            $text = str_replace($char, '\\' . $char, $text);
+        }
+
+        return $text;
+    }
+}
+
+/**
+ * Class NotificationSender
+ * Утиліта для відправки повідомлень через різні канали
+ */
+class NotificationSender {
+    private $config;
+
+    public function __construct(array $config = []) {
+        $this->config = array_merge([
+            'telegram' => [
+                'bot_token' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+                'chat_id' => 'XXXXXXXXX'
+            ],
+            'email' => [
+                'to' => 'kontakt@bfancy.pl',
+                'subject_prefix' => 'BFancy | 💌 New Message'
+            ]
+        ], $config);
+    }
+
+    /**
+     * Відправляє повідомлення через Telegram
+     */
+    public function sendTelegram(string $message): bool {
+        $url = "https://api.telegram.org/bot{$this->config['telegram']['bot_token']}/sendMessage";
+
+        $data = [
+            'chat_id' => $this->config['telegram']['chat_id'],
+            'text' => $message,
+            'parse_mode' => 'MarkdownV2',
+            'disable_web_page_preview' => true,
+        ];
+
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data),
+            ],
+        ];
+
+        $context = stream_context_create($options);
+        $result = @file_get_contents($url, false, $context);
+
+        if ($result === false) {
+            return false;
+        }
+
+        $response = json_decode($result, true);
+        return isset($response['ok']) && $response['ok'];
+    }
+
+    /**
+     * Відправляє email
+     */
+    public function sendEmail(string $message, array $fromData): bool {
+        $to = $this->config['email']['to'];
+        $subject = $this->config['email']['subject_prefix'] . ' | Від ' . ($fromData['userName'] ?? 'Невідомий');
+
+        $headers = "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8\r\n";
+        $headers .= 'From: <' . ($fromData['userEmail'] ?? 'noreply@example.com') . '>' . "\r\n";
+
+        return mail($to, $subject, $message, $headers);
+    }
+
+    /**
+     * Відправляє повідомлення через всі доступні канали
+     */
+    public function sendAll(ContactMessageFormatter $formatter, array $fromData): array {
+        $results = [];
+
+        $telegramMessage = $formatter->toMarkdownV2();
+        $results['telegram'] = $this->sendTelegram($telegramMessage);
+
+        if (!$results['telegram']) {
+            $emailMessage = $formatter->toHtml();
+            $results['email'] = $this->sendEmail($emailMessage, $fromData);
+        } else {
+        }
+
+        return $results;
+    }
 }
 
 /**
@@ -149,39 +322,40 @@ function json_error( $data = null, $status_code = 400 ) {
 }
 
 /**
- * Sends an email using an external notification service via cURL.
- */
-function send_email() {
-	global $response, $inputs;
-
-	$to = 'kontakt@bfancy.pl';
-	$subject = 'BFancy| Contact Us | From ' . $inputs['userName'];
-	$message = prepare_mail_body();
-
-	$headers = "MIME-Version: 1.0" . "\r\n";
-	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-	$headers .= 'From: <' . $inputs['userEmail'] . '>' . "\r\n";
-
-	if ( mail( $to, $subject, $message, $headers ) ) {
-		json_success( array('status' => 'Email sent successfully') );
-	} else {
-		json_error( array( 'mail_error' => 'Server failed to send email. Please try again later.' ) );
-	}
-}
-
-/**
- * This function will be called when the AJAX action 'handle_request_form' is triggered.
+ * Оновлена функція для обробки форми
  */
 function handle_contact_form_callback() {
-	global $response;
+    global $response, $inputs;
 
-	$is_valid  = contact_form_validation();
+    $is_valid = form_validation();
 
-	if ( ! $is_valid ) {
-		json_error( array( 'mail_error' => 'Validation failed. Check fields and try again.' ) );
-	}
+    if ($is_valid) {
+        $formatter = new ContactMessageFormatter($inputs);
 
-	send_email();
+        $sender = new NotificationSender();
+
+        $results = $sender->sendAll($formatter, $inputs);
+
+        if (isset($results['telegram']) || isset($results['email'])) {
+            $successMessage = [];
+
+            if (isset($results['telegram']) && $results['telegram']) $successMessage[] = 'Telegram';
+
+            if (isset($results['email']) && $results['email']) $successMessage[] = 'Email';
+
+            json_success([
+                'status' => 'Message sent successfully via: ' . implode(', ', $successMessage),
+                'channels' => $results
+            ]);
+        } else {
+            json_error([
+                'mail_error' => 'Failed to send message through any channel. Please try again later.',
+                'channels' => $results
+            ]);
+        }
+    } else {
+           json_error(['mail_error' => 'Validation failed. Check fields and try again.']);
+    }
 }
 
 handle_contact_form_callback();

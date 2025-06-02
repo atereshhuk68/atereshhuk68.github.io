@@ -1,5 +1,5 @@
-import { isDev } from '../../constants';
 import ky from 'ky';
+import { isDev } from '../../constants';
 
 type PostDataResponse = {
 	success: boolean;
