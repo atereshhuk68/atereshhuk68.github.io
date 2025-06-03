@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/TextContentLayout.astro'
+layout: '@/layouts/TextContentLayout.astro'
 title: 'Политика Конфиденциальности'
 description: 'Политика конфиденциальности салона BFancy. Узнайте, как мы защищаем ваши персональные данные, какую информацию собираем и как вы можете управлять своими данными.'
 ---

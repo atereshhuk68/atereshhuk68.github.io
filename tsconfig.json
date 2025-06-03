@@ -6,12 +6,7 @@
 		"strictNullChecks": true,
 		"baseUrl": ".",
 		"paths": {
-			"@layouts/*": ["src/layouts/*"],
-			"@components/*": ["src/components/*"],
-			"@assets/*": ["src/assets/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@content/*": ["src/content/*"],
-			"@i18n/*": ["src/i18n/*"]
+			"@/*": ["src/*"]
 		},
 		"jsx": "react-jsx",
 		"jsxImportSource": "react"

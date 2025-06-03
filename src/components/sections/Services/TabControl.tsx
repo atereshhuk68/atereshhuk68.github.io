@@ -1,11 +1,11 @@
+import { useTranslations } from '@/lib/handle-ui-translations';
+import { useCatalogStore } from '@/stores/catalog-store/catalog-store';
 /**
  * TabControl component
  * Відображає таби для фільтрації сервісів.
  */
+import type { Locales } from '@/types';
 import { Button, type PressEvent } from '@heroui/react';
-import { useTranslations } from 'src/i18n/utils';
-import { useCatalogStore } from 'src/store/CatalogStore';
-import type { Locales } from 'src/types';
 
 const ICON_MAP: Record<string, string> = {
 	all: 'service-list-w64',

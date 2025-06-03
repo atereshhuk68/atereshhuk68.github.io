@@ -1,0 +1,94 @@
+---
+import { Picture } from 'astro:assets';
+import HeroImage from '@/assets/images/pixel/hero-demo-photo-w1150.jpg';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import { Button } from '@heroui/react';
+import { ExternalLink } from '@lucide/astro';
+
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+---
+
+<div class="container">
+	<div class="grid sm:grid-cols-[225px_1fr] lg:grid-cols-2 gap-5 xl:gap-8 sm:pt-8">
+		<div
+			class="bg-golden-200 text-black-900 py-11 lg:py-[120px] px-5 sm:px-6 xl:px-8 rounded-2xl grid content-start justify-items-start gap-6 sm:col-span-2 lg:col-span-1 lg:row-span-2 relative isolate overflow-hidden">
+			<div class="grid gap-3">
+				<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">
+					{t('hero.h1')}
+				</h1>
+
+				<p class="text-lg">
+					{t('hero.p')}
+				</p>
+			</div>
+
+			<Button variant="solid" size="lg" color="primary" radius="sm" className="bg-black-900 px-0" client:load>
+				<a class="inline-flex h-12 items-center px-8" href="https://booksy.com/pl-pl/dl/show-business/296324" target="_blank" rel="noopener">
+					{t('hero.cta')}
+				</a>
+			</Button>
+
+			<small class="text-xs font-medium text-black-500">{t('hero.note')}</small>
+
+			<div
+				id="rotatedStar"
+				class="lazy-mask inline-flex size-[200px] lg:size-[300px] decor-star-w300 absolute bottom-[-70px] right-[-70px] lg:bottom-[-120px] lg:right-[-120px] z-[-1] pointer-events-none">
+			</div>
+		</div>
+
+		<div class="bg-black-600 rounded-2xl overflow-hidden block h-[250px] sm:h-auto lg:h-[300px]">
+			<Picture
+				src={HeroImage}
+				alt={t('hero.h1')}
+				class={`aspect-${HeroImage.width / HeroImage.height} object-cover lg:object-[0_-25px] xl:object-[0_-100px] 2xl:object-[0_-180px] h-full`}
+				formats={['avif', 'webp']}
+				width={736}
+				height={724}
+				quality={65}
+				loading="eager"
+				priority={true}
+			/>
+		</div>
+
+		<div class="bg-shell-300 text-black-900 rounded-2xl py-6 px-5 sm:p-6 lg:p-8 space-y-4">
+			<strong class="text-2xl lg:text-3xl font-heading flex mb-3">
+				{t('hero.strong')}
+			</strong>
+
+			<p class="text-base lg:text-lg">
+				{t('hero.second.p')}
+			</p>
+
+			<hr />
+
+			<a
+				target="_blank"
+				class="text-black-900 underline hover:no-underline font-semibold cursor-pointer inline-flex gap-1 items-center"
+				href="https://maps.app.goo.gl/MNJ9LVHxZKGLBDd86?g_st=com.google.maps.preview.copy"
+				rel="noopener noreferrer">
+				<span>
+					{t('hero.reviews')}
+				</span>
+
+				<ExternalLink size={20} stroke-width={2} />
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	const rotatedStar = document.getElementById('rotatedStar');
+
+	const keyframes = [{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }];
+
+	const options = {
+		duration: 20000,
+		iterations: Infinity,
+		easing: 'linear',
+	};
+
+	rotatedStar?.animate(keyframes, options);
+</script>

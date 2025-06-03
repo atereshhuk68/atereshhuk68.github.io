@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/TextContentLayout.astro'
+layout: '@/layouts/TextContentLayout.astro'
 title: Nail Service Specialist
 description: A new beauty salon in the center of Warsaw is looking for a talented and creative nail service specialist!
 location: Warsaw

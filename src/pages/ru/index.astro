@@ -1,14 +1,13 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import SectionAbout from '@/components/sections/SectionAbout.astro';
+import SectionContact from '@/components/sections/SectionContact.astro';
+import SectionHero from '@/components/sections/SectionHero.astro';
+import SectionServices from '@/components/sections/services/SectionServices.astro';
+import Layout from '@/layouts/Layout.astro';
 
-import SectionAbout from "@components/sections/About/SectionAbout.astro";
-import SectionContact from "@components/sections/Contact/SectionContact.astro";
-import SectionHero from "@components/sections/Hero/SectionHero.astro";
-import SectionServices from "@components/sections/Services/SectionServices.astro";
-
-const title = "BFancy: Профессиональный маникюр, макияж и косметические услуги";
+const title = 'BFancy: Профессиональный маникюр, макияж и косметические услуги';
 const description =
-	"Откройте для себя BFancy: экспертный маникюр, дизайн ногтей, макияж, уход за бровями и массаж. Мы гарантируем качество и удовлетворение с использованием премиальных продуктов. Почувствуйте себя уверенно и особенно!";
+	'Откройте для себя BFancy: экспертный маникюр, дизайн ногтей, макияж, уход за бровями и массаж. Мы гарантируем качество и удовлетворение с использованием премиальных продуктов. Почувствуйте себя уверенно и особенно!';
 ---
 
 <Layout {title} {description}>

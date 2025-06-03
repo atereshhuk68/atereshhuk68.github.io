@@ -1,0 +1,45 @@
+---
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import { Briefcase, MapPin } from '@lucide/astro';
+
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+
+const {
+	frontmatter: { title, location, description },
+	url,
+} = Astro.props;
+---
+
+<div class="bg-white shadow-2xs p-4 rounded-2xl grid gap-3">
+	<header class="grid gap-3 grid-cols-[max-content_1fr] items-start">
+		<Briefcase size={24} />
+
+		<div class="grid content-start gap-1">
+			<p class="text-md font-medium">{title}</p>
+			<div class="flex items-center gap-1 text-small text-default-500">
+				<MapPin size={16} />
+
+				<span class="text-sm">{location}</span>
+			</div>
+		</div>
+	</header>
+
+	<hr class="border-black-100" />
+
+	<p>{description}</p>
+
+	<hr class="border-black-100" />
+
+	<div class="flex items-center gap-2 justify-between">
+		<div class="text-white bg-green-600 text-sm rounded-full px-2 py-1">
+			{t('career.status')}
+		</div>
+
+		<a class="text-sm text-cove-600 hover:text-cove-600/75" href={url}>
+			<span>{t('career.more')}</span>
+		</a>
+	</div>
+</div>

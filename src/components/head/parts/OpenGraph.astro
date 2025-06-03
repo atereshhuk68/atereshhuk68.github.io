@@ -1,0 +1,30 @@
+---
+import { SITE } from '@/constants';
+import { getISOLocale, getISOLocaleAlternates } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+
+const { title, description, currentLocale } = Astro.props;
+const { pathname } = Astro.url;
+const ogUrl = `${SITE}${pathname}`;
+
+const ISOLocale = getISOLocale(currentLocale as Locales);
+const ISOLocaleAlternates = getISOLocaleAlternates(currentLocale as Locales);
+---
+
+<meta property="og:url" content={ogUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content="/og-bfancy-image.jpg" />
+<meta property="og:site_name" content="BFancy" />
+
+<meta property="og:locale" content={ISOLocale} />
+
+{ISOLocaleAlternates.map((ISOLocale) => <meta property="og:locale:alternate" content={ISOLocale} />)}
+
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content="/og-bfancy-image.jpg" />

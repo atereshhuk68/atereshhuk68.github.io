@@ -1,15 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { useCatalogStore } from '@/stores/catalog-store/catalog-store';
+import type { Service } from '@/types';
+import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
-import { useCatalogStore } from 'src/store/CatalogStore';
-import type { Service } from 'src/types';
 import { ServiceCard } from './ServiceCard';
 
-type CatalogProps = {
-	services: Service[];
-	ctaText: string;
-};
-
-export function Catalog({ services }: CatalogProps) {
+export function Catalog({ services }: { services: Service[] }) {
 	const { catalogFiltered, setCatalog } = useCatalogStore();
 
 	useEffect(() => {

@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/TextContentLayout.astro'
+layout: '@/layouts/TextContentLayout.astro'
 title: 'Polityka Prywatności'
 description: 'Polityka Prywatności salonu BFancy. Sprawdź, jak chronimy Twoje dane osobowe, jakie informacje zbieramy i jak możesz zarządzać swoimi danymi.'
 ---

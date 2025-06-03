@@ -1,8 +1,3 @@
-/**
- * ServiceCard component
- * Відображає картку сервісу з переліком послуг.
- * @param {Service} props - Дані сервісу
- */
 import { motion } from 'framer-motion';
 import type { Service, ServiceListItem } from '../../../types';
 
