@@ -1,6 +1,5 @@
 ---
 import { Font } from "astro:assets";
-import { ClientRouter } from "astro:transitions";
 import { isDev } from '@/constants';
 import Ahrefs from "./parts/Ahrefs.astro";
 import Canonical from "./parts/Canonical.astro";
@@ -20,7 +19,6 @@ const { title, description, currentLocale } = Astro.props;
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<OpenGraph {title} {description} {currentLocale} />
-	<ClientRouter fallback="none" />
 	<link rel="sitemap" href="/sitemap-index.xml" />
 
 	{!isDev && (
