@@ -1,7 +1,7 @@
 ---
+import { Button } from '@/components/starwind/button';
 import { useTranslations } from '@/lib/handle-ui-translations';
 import type { Locales } from '@/types';
-import { Button } from '@heroui/react';
 
 const { currentLocale = 'pl' } = Astro;
 
@@ -14,7 +14,7 @@ const t = useTranslations(currentLocale as Locales);
 			{t('cookie.p')}
 		</p>
 
-		<Button id="cookiePopupButton" variant="flat" size="md" className="bg-black-900 text-white pointer-events-auto" client:visible>
+		<Button id="cookiePopupButton" variant="primary" size="sm" class="pointer-events-auto">
 			<span class="font-medium">{t('cookie.cta')}</span>
 		</Button>
 	</div>

@@ -1,9 +1,9 @@
 ---
 import UserName from '@/components/forms/fields/UserName.astro';
 import UserPhone from '@/components/forms/fields/UserPhone.astro';
+import { Button } from '@/components/starwind/button';
 import { useTranslations } from '@/lib/handle-ui-translations';
 import type { Locales } from '@/types';
-import { Button } from '@heroui/react';
 import { X } from 'lucide-react';
 
 const { currentLocale = 'pl' } = Astro;
@@ -20,9 +20,9 @@ const t = useTranslations(currentLocale as Locales);
 
 <dialog
 	id="specialOfferDialog"
-	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white p-4 md:px-8 md:pb-10 md:pt-8 text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
+	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
 	style="transform: scale(0.4); opacity: 0;">
-	<div class="prose md:prose-lg mb-0">
+	<div class="prose md:prose-lg mb-0 p-4 md:px-8 md:pb-10 md:pt-8">
 		<div class="font-heading text-2xl md:text-3xl text-center">
 			{t('specialOffer.heading')}
 		</div>
@@ -37,7 +37,7 @@ const t = useTranslations(currentLocale as Locales);
 
 		<p>{t('specialOffer.cta')}</p>
 
-		<form class="grid place-items-center space-y-8 max-w-[512px] mx-auto" method="post" data-special-offer-form>
+		<form class="grid min-[450px]:place-items-center space-y-6 max-w-[512px] mx-auto" method="post" data-special-offer-form>
 			<input type="hidden" name="formTitle" value="offer" />
 
 			<UserName />
@@ -45,11 +45,11 @@ const t = useTranslations(currentLocale as Locales);
 			<UserPhone />
 
 			<div class="grid gap-4 mb-0">
-				<Button size="lg" className="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px] peer" type="submit" client:load>
+				<Button size="lg" variant="secondary" class="disabled:opacity-50 min-w-[200px]" type="submit">
 					{t('specialOffer.submitText')}
 				</Button>
 
-				<Button size="md" variant="flat" className="text-black-900 inline-flex gap-2 items-center font-medium min-w-[200px] peer" type="button" data-close-special-offer>
+				<Button size="sm" variant="ghost" class="min-w-[200px]" type="button" data-close-special-offer>
 					{t('specialOffer.later')}
 				</Button>
 			</div>
@@ -58,12 +58,14 @@ const t = useTranslations(currentLocale as Locales);
 		<small class="block text-center text-black-700 text-sm mt-10">{t('specialOffer.note')}</small>
 	</div>
 
-	<button
+	<Button
+		size="md"
+		variant="ghost"
 		aria-label="Close special offer modal"
-		class="cursor-pointer absolute top-4 right-4 text-black-900 hover:text-black-500 focus:outline-none transition-colors"
+		class="cursor-pointer absolute top-1 right-1 text-black-900 hover:text-black-500 focus:outline-none transition-colors px-2"
 		data-close-special-offer>
 		<X />
-	</button>
+	</Button>
 </dialog>
 
 <script>
@@ -133,6 +135,12 @@ const t = useTranslations(currentLocale as Locales);
 
 		const setEventListeners = () => {
 			specialOfferForm?.addEventListener('submit', handleSubmit);
+
+			specialOfferDialog.addEventListener('click', (event: MouseEvent) => {
+				if (event.target === specialOfferDialog) {
+					toggleDialog(specialOfferDialog, false);
+				}
+			});
 
 			window.addEventListener('load', () => {
 				if (!isUserSawOffer) {
