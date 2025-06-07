@@ -1,0 +1,29 @@
+---
+import { Button } from '@/components/starwind/button';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import { Calendar } from '@lucide/astro';
+
+const { currentLocale = 'pl' } = Astro;
+const t = useTranslations(currentLocale as Locales);
+---
+
+<Button
+	variant="outline"
+	size="icon"
+	class="text-cove-700 border-2 border-cove-700 hover:text-cove-600 inline-flex md:hidden"
+	href="https://booksy.com/pl-pl/dl/show-business/296324"
+	target="_blank"
+	rel="noopener">
+	<span class="sr-only">{t('header.cta.appointment')}</span>
+	<Calendar size={24} />
+</Button>
+
+<Button
+	variant="outline"
+	class="text-cove-700 border-2 border-cove-700 hover:text-cove-600 hidden md:inline-flex"
+	href="https://booksy.com/pl-pl/dl/show-business/296324"
+	target="_blank"
+	rel="noopener">
+	<span>{t('header.cta.appointment')}</span>
+</Button>

@@ -1,0 +1,41 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Button from '@/components/starwind/button';
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@/components/starwind/dropdown';
+import { Languages } from '@/constants';
+import { getTranslatedURL } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import { Languages as LanguagesIcon } from '@lucide/astro';
+
+const {
+	url: { pathname },
+	currentLocale = 'pl',
+} = Astro;
+
+const basePath = getTranslatedURL(pathname, currentLocale as Locales);
+
+const langs = Array.from(Languages.entries()).map(([locale, name]) => ({
+	locale,
+	name,
+	href: getRelativeLocaleUrl(locale, basePath),
+}));
+
+const langWithoutCurrent = langs.filter(({ locale }) => locale !== currentLocale);
+---
+
+<Dropdown>
+	<DropdownTrigger asChild>
+		<Button variant="ghost" size="icon" aria-label="Toggle Lang Menu">
+			<LanguagesIcon size={24} />
+		</Button>
+	</DropdownTrigger>
+	<DropdownContent align="end">
+		{
+			langWithoutCurrent.map(({ href, name }: { href: string; name: string }) => (
+				<DropdownItem as="a" {href} title={name} class="text-sm cursor-pointer font-medium">
+					{name}
+				</DropdownItem>
+			))
+		}
+	</DropdownContent>
+</Dropdown>
