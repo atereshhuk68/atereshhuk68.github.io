@@ -1,7 +1,7 @@
 ---
+import Button from '@/components/starwind/button';
 import { useTranslations } from '@/lib/handle-ui-translations';
 import type { Locales } from '@/types';
-import { Button } from '@heroui/react';
 import UserEmail from './fields/UserEmail.astro';
 import UserMessage from './fields/UserMessage.astro';
 import UserName from './fields/UserName.astro';
@@ -22,7 +22,7 @@ const t = useTranslations(currentLocale as Locales);
 
 		<UserMessage />
 
-		<Button size="lg" className="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px] peer" type="submit" client:load>
+		<Button variant="secondary" size="lg" class="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px] peer" type="submit">
 			{t('contact.submittext')}
 		</Button>
 	</form>
