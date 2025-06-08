@@ -20,7 +20,7 @@ const langs = Array.from(Languages.entries()).map(([locale, name]) => ({
 	href: getRelativeLocaleUrl(locale, basePath),
 }));
 
-const langWithoutCurrent = langs.filter(({ locale }) => locale !== currentLocale);
+const langsWithoutCurrent = langs.filter(({ locale }) => locale !== currentLocale);
 ---
 
 <Dropdown>
@@ -31,7 +31,7 @@ const langWithoutCurrent = langs.filter(({ locale }) => locale !== currentLocale
 	</DropdownTrigger>
 	<DropdownContent align="end">
 		{
-			langWithoutCurrent.map(({ href, name }: { href: string; name: string }) => (
+			langsWithoutCurrent.map(({ href, name }: { href: string; name: string }) => (
 				<DropdownItem as="a" {href} title={name} class="text-sm cursor-pointer font-medium">
 					{name}
 				</DropdownItem>

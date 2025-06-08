@@ -11,12 +11,12 @@ const {
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 
-const langs = Array.from(Languages.entries());
+const langsWithoutCurrent = Array.from(Languages.entries()).filter(([locale]) => locale !== currentLocale);
 ---
 
 <ul class="flex items-center gap-4 lg:w-[280px] text-sm">
 	{
-		langs.map(([locale, name]) => (
+		langsWithoutCurrent.map(([locale, name]) => (
 			<li>
 				{locale === currentLocale ? (
 					<span class="text-cove-700 pointer-events-none">{name}</span>
