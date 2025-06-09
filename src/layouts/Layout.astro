@@ -4,7 +4,8 @@ import '@/styles/global.css';
 import '@/styles/starwind.css';
 
 import CookiePopup from '@/components/cookie-popup/CookiePopup.astro';
-import Dialog from '@/components/dialog/Dialog.astro';
+import ErrorDialog from '@/components/dialog/ErrorDialog.astro';
+import SuccessDialog from '@/components/dialog/SuccessDialog.astro';
 import Footer from '@/components/footer/Footer.astro';
 import SpecialOffer from '@/components/forms/SpecialOffer.astro';
 import Head from '@/components/head/Head.astro';
@@ -23,7 +24,7 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
 <html lang={ISOLocale} class="scroll-smooth min-h-full">
 	<Head {title} {description} {currentLocale} />
 
-	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900">
+	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900" data-current-locale={currentLocale}>
 		<Header />
 
 		<main class="pb-20">
@@ -34,7 +35,9 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
 
 		<SpecialOffer />
 
-		<Dialog />
+		<SuccessDialog />
+
+		<ErrorDialog />
 
 		<CookiePopup />
 	</body>
