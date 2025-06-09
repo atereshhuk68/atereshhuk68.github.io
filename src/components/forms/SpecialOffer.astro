@@ -76,7 +76,11 @@ const t = useTranslations(currentLocale as Locales);
 	import { SPECIAL_OFFER_COOKIE_NAME } from '../../constants';
 	import { toggleDialog } from '@/lib/handle-dialogs';
 	import { postFormPayload } from '@/lib/handle-form-submit';
-	import { offerFormSchema } from '@/schemas';
+	import { getOfferFormSchema } from '@/schemas/forms';
+	import type { Locales } from '@/types';
+
+	const currentLocale = (document.body.dataset.currentLocale || 'pl') as Locales;
+	const offerFormSchema = getOfferFormSchema(currentLocale);
 
 	const specialOfferDialogModule = (() => {
 		const specialOfferTrigger = document.querySelector<HTMLButtonElement>('[data-open-special-dialog]');
