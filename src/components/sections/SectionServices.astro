@@ -30,6 +30,6 @@ const serviceTypes = ['all', ...new Set(services.map((s) => s.type))];
 
 		<TabControl {serviceTypes} />
 
-		<Catalog {services} client:load />
+		<Catalog {services} client:visible />
 	</div>
 </section>
