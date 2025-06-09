@@ -1,6 +1,0 @@
-onlyBuiltDependencies:
-  - '@biomejs/biome'
-  - '@heroui/shared-utils'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
