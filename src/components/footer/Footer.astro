@@ -1,0 +1,20 @@
+---
+import FooterCopyright from './FooterCopyright.astro';
+import FooterLegal from './FooterLegal.astro';
+import FooterLogo from './FooterLogo.astro';
+import FooterMenu from './FooterMenu.astro';
+---
+
+<footer class="pb-12">
+	<div class="container">
+		<div class="grid lg:flex items-center justify-center justify-items-center lg:justify-between gap-8 lg:gap-4 mb-8">
+			<FooterMenu />
+
+			<FooterLogo />
+
+			<FooterLegal />
+		</div>
+
+		<FooterCopyright />
+	</div>
+</footer>

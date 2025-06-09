@@ -1,8 +1,8 @@
 ---
-import CareerCard from '@components/Careers/CareerCard.astro';
-import { useTranslations } from '@i18n/utils';
+import CareerCard from '@/components/cards/CareerCard.astro';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { CareerCardType, Locales } from '@/types';
 import Layout from 'src/layouts/Layout.astro';
-import type { CareerCardType, Locales } from 'src/types';
 
 const { currentLocale = 'pl' } = Astro;
 

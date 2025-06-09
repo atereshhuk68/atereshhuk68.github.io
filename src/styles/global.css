@@ -1,10 +1,7 @@
 @import 'tailwindcss';
-@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
-@custom-variant dark (&:is(.dark *));
-@import './lazy/lazy-bg.css';
-@import './lazy/services-icon.css';
+@import './modules/lazy-bg.css';
+@import './modules/services-icon.css';
 @plugin "@tailwindcss/typography";
-@plugin '../../hero.ts';
 
 @theme {
 	--color-golden-200: #ffce6b;
@@ -56,18 +53,37 @@ textarea[aria-invalid] {
 			@apply transition-[background-color] duration-200;
 			@apply h-[1lh];
 
-			mask-image: url('../assets/vector/star-marker-w16.svg');
+			mask-image: url('../assets/images/vector/star-marker-w16.svg');
 			mask-size: contain;
 			mask-position: center;
 			mask-repeat: no-repeat;
 		}
 
-		&:hover a {
-			@apply text-cove-600;
+		&:hover {
+			&::before {
+				animation: rotate 300ms ease-in-out forwards;
+			}
+
+			a {
+				@apply text-cove-600;
+			}
 		}
 
 		&:hover::before {
 			@apply bg-cove-600;
 		}
 	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(90deg);
+	}
+}
+
+button[aria-pressed='true'] {
+	@apply bg-golden-200 text-black-900 pointer-events-none;
 }

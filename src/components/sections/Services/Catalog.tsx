@@ -1,25 +1,21 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { $servicesFiltered, initServicesStore } from '@/stores/catalog-store/services-store';
+import type { Service } from '@/types';
+import { useStore } from '@nanostores/react';
+import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
-import { useCatalogStore } from 'src/store/CatalogStore';
-import type { Service } from 'src/types';
 import { ServiceCard } from './ServiceCard';
 
-type CatalogProps = {
-	services: Service[];
-	ctaText: string;
-};
-
-export function Catalog({ services }: CatalogProps) {
-	const { catalogFiltered, setCatalog } = useCatalogStore();
+export function Catalog({ services }: { services: Service[] }) {
+	const servicesFiltered = useStore($servicesFiltered);
 
 	useEffect(() => {
-		setCatalog(services);
-	}, [services, setCatalog]);
+		initServicesStore(services);
+	}, [services]);
 
 	return (
 		<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4" data-service-card>
 			<AnimatePresence>
-				{catalogFiltered.map((service: Service) => (
+				{servicesFiltered.map((service: Service) => (
 					<ServiceCard key={service.id} {...service} />
 				))}
 			</AnimatePresence>

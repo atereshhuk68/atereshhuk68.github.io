@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import { Catalog } from './services/Catalog.tsx';
+import TabControl from './services/TabControl.astro';
+
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+
+const Services = await getCollection('services');
+const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLocale));
+
+const services = ServicesFiltered?.data ?? [];
+const serviceTypes = ['all', ...new Set(services.map((s) => s.type))];
+---
+
+<section id="services" class="py-12 sm:py-16 lg:py-20 min-h-[800px]">
+	<div class="container">
+		<div class="mb-6 sm:mb-8 lg:mb-12 grid gap-3">
+			<h2 class="text-4xl lg:text-5xl font-heading text-balance">
+				{t('services.h2')}
+			</h2>
+
+			<p class="text-lg max-w-3xl">
+				{t('services.p')}
+			</p>
+		</div>
+
+		<TabControl {serviceTypes} />
+
+		<Catalog {services} client:visible />
+	</div>
+</section>

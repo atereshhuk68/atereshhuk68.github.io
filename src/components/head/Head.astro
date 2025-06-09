@@ -1,0 +1,37 @@
+---
+import { Font } from "astro:assets";
+import { isDev } from '@/constants';
+import Ahrefs from "./parts/Ahrefs.astro";
+import Canonical from "./parts/Canonical.astro";
+import Clarity from "./parts/Clarity.astro";
+import Favicons from "./parts/Favicons.astro";
+import GTM from "./parts/GTM.astro";
+import OpenGraph from "./parts/OpenGraph.astro";
+
+const { title, description, currentLocale } = Astro.props;
+---
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<Favicons />
+	<Canonical />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<OpenGraph {title} {description} {currentLocale} />
+	<link rel="sitemap" href="/sitemap-index.xml" />
+
+	{!isDev && (
+		<GTM />
+		<Ahrefs />
+		<Clarity />
+	)}
+
+	<Font cssVariable='--font-inter' preload />
+
+	<style>
+		body {
+				font-family: var(--font-inter);
+		}
+	</style>
+</head>

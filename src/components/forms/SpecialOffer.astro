@@ -1,0 +1,199 @@
+---
+import UserName from '@/components/forms/fields/UserName.astro';
+import UserPhone from '@/components/forms/fields/UserPhone.astro';
+import { Button } from '@/components/starwind/button';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import { X } from 'lucide-react';
+
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+---
+
+<button
+	class="fixed bottom-4 left-4 z-50 bg-golden-200 size-12 rounded-full shadow-lg hover:bg-golden-300 cursor-pointer hover:scale-110 transition-transform"
+	data-open-special-dialog
+	aria-label="Open Special Offer">
+	<span class="pointer-events-none">🔥</span>
+</button>
+
+<dialog
+	id="specialOfferDialog"
+	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
+	style="transform: scale(0.4); opacity: 0;">
+	<div class="prose md:prose-lg mb-0 p-4 md:px-8 md:pb-10 md:pt-8">
+		<div class="font-heading text-2xl md:text-3xl text-center">
+			{t('specialOffer.heading')}
+		</div>
+
+		<p>{t('specialOffer.p1')}</p>
+
+		<ul class="custom-list not-prose">
+			<li>{t('specialOffer.listItem1')}</li>
+			<li>{t('specialOffer.listItem2')}</li>
+			<li>{t('specialOffer.listItem3')}</li>
+		</ul>
+
+		<p>{t('specialOffer.cta')}</p>
+
+		<form class="grid min-[450px]:place-items-center space-y-6 max-w-[512px] mx-auto" method="post" data-special-offer-form>
+			<input type="hidden" name="formTitle" value="offer" />
+
+			<UserName />
+
+			<UserPhone />
+
+			<div class="grid gap-4 mb-0">
+				<Button size="lg" variant="secondary" class="disabled:opacity-50 min-w-[200px]" type="submit">
+					{t('specialOffer.submitText')}
+				</Button>
+
+				<Button size="sm" variant="ghost" class="min-w-[200px]" type="button" data-close-special-offer>
+					{t('specialOffer.later')}
+				</Button>
+			</div>
+		</form>
+
+		<small class="block text-center text-black-700 text-sm mt-10">{t('specialOffer.note')}</small>
+	</div>
+
+	<Button
+		size="md"
+		variant="ghost"
+		aria-label="Close special offer modal"
+		class="cursor-pointer absolute top-1 right-1 text-black-900 hover:text-black-500 focus:outline-none transition-colors px-2"
+		data-close-special-offer>
+		<X />
+	</Button>
+</dialog>
+
+<script>
+	import { getCookie, setCookie } from 'typescript-cookie';
+	import { resetFormErrors, clearInputError, renderFieldErrors } from '@/lib/handle-errors';
+	import { setSubmitButtonDisabled, setSubmitButtonEnabled } from '@/lib/handle-submit-button';
+	import { validateFormBySchema } from '@/lib/handle-form-validation';
+	import { SPECIAL_OFFER_COOKIE_NAME } from '../../constants';
+	import { toggleDialog } from '@/lib/handle-dialogs';
+	import { postFormPayload } from '@/lib/handle-form-submit';
+	import { offerFormSchema } from '@/schemas';
+
+	const specialOfferDialogModule = (() => {
+		const specialOfferTrigger = document.querySelector<HTMLButtonElement>('[data-open-special-dialog]');
+		const specialOfferDialog = document.querySelector<HTMLDialogElement>('#specialOfferDialog')!;
+		const specialOfferForm = document.querySelector<HTMLFormElement>('form[data-special-offer-form]');
+		const specialOfferFormFields = specialOfferForm?.querySelectorAll<HTMLInputElement>('input, textarea');
+		const closeSpecialOfferDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-special-offer]');
+		const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
+		const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
+
+		const isUserSawOffer = getCookie(SPECIAL_OFFER_COOKIE_NAME);
+
+		const handleSubmit = async (event: SubmitEvent) => {
+			event.preventDefault();
+
+			const submittedForm = event.currentTarget as HTMLFormElement;
+			const submitButton = event.submitter as HTMLButtonElement;
+
+			resetFormErrors(submittedForm);
+
+			const { success: validationSuccess, data, error: validationErrors } = validateFormBySchema(submittedForm, offerFormSchema);
+
+			if (!validationSuccess) {
+				const errors = validationErrors.flatten().fieldErrors;
+
+				renderFieldErrors(submittedForm, errors);
+
+				return;
+			}
+
+			setSubmitButtonDisabled(submitButton);
+
+			const { success } = await postFormPayload(data);
+
+			if (success) {
+				if (successDialog) {
+					toggleDialog(specialOfferDialog, false);
+					toggleDialog(successDialog, true);
+					submittedForm.reset();
+
+					setCookie(SPECIAL_OFFER_COOKIE_NAME, 'true', {
+						expires: 365,
+						path: '/',
+						sameSite: 'None',
+						secure: true,
+					});
+				}
+			} else {
+				if (errorDialog) {
+					toggleDialog(errorDialog, true);
+				}
+			}
+
+			setSubmitButtonEnabled(submitButton);
+		};
+
+		const setEventListeners = () => {
+			specialOfferForm?.addEventListener('submit', handleSubmit);
+
+			specialOfferDialog.addEventListener('click', (event: MouseEvent) => {
+				if (event.target === specialOfferDialog) {
+					toggleDialog(specialOfferDialog, false);
+				}
+			});
+
+			window.addEventListener('load', () => {
+				if (!isUserSawOffer) {
+					setTimeout(() => {
+						toggleDialog(specialOfferDialog, true);
+					}, 2000);
+				}
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (!specialOfferDialog) return;
+
+				if (event.key === 'Escape' && specialOfferDialog.open) {
+					toggleDialog(specialOfferDialog, false);
+				}
+			});
+
+			specialOfferTrigger?.addEventListener('click', () => {
+				toggleDialog(specialOfferDialog, true);
+			});
+
+			if (specialOfferFormFields) {
+				for (const formField of specialOfferFormFields) {
+					formField.addEventListener('input', (event) => {
+						const field = event.currentTarget as HTMLInputElement;
+
+						clearInputError(field);
+					});
+				}
+			}
+
+			if (closeSpecialOfferDialogButtons) {
+				for (const closeDialogButton of closeSpecialOfferDialogButtons) {
+					closeDialogButton.addEventListener('click', (event) => {
+						toggleDialog(specialOfferDialog, false);
+
+						setCookie(SPECIAL_OFFER_COOKIE_NAME, 'true', {
+							expires: 365,
+							path: '/',
+							sameSite: 'None',
+							secure: true,
+						});
+					});
+				}
+			}
+		};
+
+		return {
+			init: () => {
+				setEventListeners();
+			},
+		};
+	})();
+
+	specialOfferDialogModule.init();
+</script>

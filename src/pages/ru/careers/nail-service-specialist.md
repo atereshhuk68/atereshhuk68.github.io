@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/TextContentLayout.astro'
+layout: '@/layouts/TextContentLayout.astro'
 title: Мастер ногтевого сервиса
 description: Новый салон красоты в центре Варшавы ищет талантливого и креативного мастера ногтевого сервиса!
 location: Варшава

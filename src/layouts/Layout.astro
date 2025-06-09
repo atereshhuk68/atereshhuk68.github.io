@@ -1,18 +1,19 @@
 ---
-import '../styles/font.css';
-import '../styles/global.css';
+import '@/styles/font.css';
+import '@/styles/global.css';
+import '@/styles/starwind.css';
 
-import SpecialOffer from '@components/SpecialOffer.astro';
-import CookiePopup from '@components/general/CookiePopup.astro';
-import Footer from '@components/general/Footer/Footer.astro';
-import Head from '@components/general/Head/Head.astro';
-import Dialog from '@components/sections/Contact/dialog/Dialog.astro';
-import Header from '../components/general/Header/Header.astro';
+import CookiePopup from '@/components/cookie-popup/CookiePopup.astro';
+import ErrorDialog from '@/components/dialog/ErrorDialog.astro';
+import SuccessDialog from '@/components/dialog/SuccessDialog.astro';
+import Footer from '@/components/footer/Footer.astro';
+import SpecialOffer from '@/components/forms/SpecialOffer.astro';
+import Head from '@/components/head/Head.astro';
+import { getISOLocale } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import Header from '../components/header/Header.astro';
 
-import type { Locales } from 'src/types';
-import { getISOLocale } from '../i18n/utils';
-
-const currentLocale = Astro.currentLocale;
+const { currentLocale } = Astro;
 
 const { title, description } = Astro.props;
 
@@ -23,7 +24,7 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
 <html lang={ISOLocale} class="scroll-smooth min-h-full">
 	<Head {title} {description} {currentLocale} />
 
-	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900">
+	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900" data-current-locale={currentLocale}>
 		<Header />
 
 		<main class="pb-20">
@@ -34,15 +35,19 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
 
 		<SpecialOffer />
 
-		<Dialog />
+		<SuccessDialog />
+
+		<ErrorDialog />
 
 		<CookiePopup />
 	</body>
 </html>
 
 <script>
-	import { lazyBgLoader } from '../assets/ts/lazy-bg-loader';
-	import { scrollToViaUrl } from '../assets/ts/scroll-to-via-url';
-	lazyBgLoader.init();
-	scrollToViaUrl.init();
+	(async () => {
+		const [{ backgroundImageLazyLoader }, { scrollToViaUrl }] = await Promise.all([import('@/scripts/lazy-bg-loader'), import('@/scripts/scroll-to-via-url')]);
+
+		backgroundImageLazyLoader.init();
+		scrollToViaUrl.init();
+	})();
 </script>

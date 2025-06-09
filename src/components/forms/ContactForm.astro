@@ -1,0 +1,113 @@
+---
+import Button from '@/components/starwind/button';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import UserEmail from './fields/UserEmail.astro';
+import UserMessage from './fields/UserMessage.astro';
+import UserName from './fields/UserName.astro';
+import UserPhone from './fields/UserPhone.astro';
+
+const { currentLocale = 'pl' } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+---
+
+<div class="border border-black-300 bg-black-100 rounded-xl py-12 px-4 md:px-8">
+	<form class="grid place-items-center space-y-8 max-w-[512px] mx-auto" method="post" data-contact-form>
+		<UserName />
+
+		<UserPhone />
+
+		<UserEmail />
+
+		<UserMessage />
+
+		<Button variant="secondary" size="lg" class="bg-golden-200 text-black-900 inline-flex gap-2 items-center font-medium disabled:opacity-50 min-w-[200px] peer" type="submit">
+			{t('contact.submittext')}
+		</Button>
+	</form>
+</div>
+
+<script>
+	import { resetFormErrors, clearInputError, renderFieldErrors } from '@/lib/handle-errors';
+	import { setSubmitButtonEnabled, setSubmitButtonDisabled } from '@/lib/handle-submit-button';
+	import { validateFormBySchema } from '@/lib/handle-form-validation';
+	import { postFormPayload } from '@/lib/handle-form-submit';
+	import { toggleDialog } from '@/lib/handle-dialogs';
+	import { contactFormSchema } from '@/schemas';
+
+	const contactForm = document.querySelector<HTMLFormElement>('form[data-contact-form]');
+	const contactFormFields = contactForm?.querySelectorAll<HTMLInputElement>('input, textarea');
+
+	const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
+	const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
+	const closeDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-dialog]');
+
+	const handleSubmit = async (event: SubmitEvent) => {
+		event.preventDefault();
+
+		const submittedForm = event.currentTarget as HTMLFormElement;
+		const submitButton = event.submitter as HTMLButtonElement;
+
+		resetFormErrors(submittedForm);
+
+		const { success: validationSuccess, data, error: validationErrors } = validateFormBySchema(submittedForm, contactFormSchema);
+
+		if (!validationSuccess) {
+			const errors = validationErrors.flatten().fieldErrors;
+
+			renderFieldErrors(submittedForm, errors);
+
+			return;
+		}
+
+		setSubmitButtonDisabled(submitButton);
+
+		const { success } = await postFormPayload(data);
+
+		if (success) {
+			if (successDialog) {
+				toggleDialog(successDialog, true);
+				submittedForm.reset();
+			}
+		} else {
+			if (errorDialog) {
+				toggleDialog(errorDialog, true);
+			}
+		}
+
+		setSubmitButtonEnabled(submitButton);
+	};
+
+	const setEventListeners = () => {
+		contactForm?.addEventListener('submit', handleSubmit);
+
+		if (closeDialogButtons) {
+			for (const closeDialogButton of closeDialogButtons) {
+				closeDialogButton.addEventListener('click', (event) => {
+					const openedDialog = document.querySelector<HTMLDialogElement>('dialog[open]');
+
+					if (openedDialog) {
+						toggleDialog(openedDialog, false);
+					}
+				});
+			}
+		}
+
+		if (contactFormFields) {
+			for (const formField of contactFormFields) {
+				formField.addEventListener('input', (event) => {
+					const field = event.currentTarget as HTMLInputElement;
+
+					clearInputError(field);
+				});
+			}
+		}
+	};
+
+	const init = () => {
+		setEventListeners();
+	};
+
+	init();
+</script>
