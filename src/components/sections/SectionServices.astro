@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { Catalog } from '@/components/sections/Services/Catalog.tsx';
+import TabControl from '@/components/sections/Services/TabControl.astro';
 import { useTranslations } from '@/lib/handle-ui-translations';
 import type { Locales, Service } from '@/types';
-import { Catalog } from './services/Catalog.tsx';
-import TabControl from './services/TabControl.astro';
 
 const { currentLocale = 'pl' } = Astro;
 
