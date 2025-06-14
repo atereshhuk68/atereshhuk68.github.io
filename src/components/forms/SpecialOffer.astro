@@ -27,15 +27,12 @@ const t = useTranslations(currentLocale as Locales);
 			{t('specialOffer.heading')}
 		</div>
 
-		<p>{t('specialOffer.p1')}</p>
+		<p class="text-center grid place-items-center">
+			<span class="block">{t('specialOffer.p1')}</span>
+			<span class="bg-cove-600 px-4 rounded-sm font-bold block text-white">{t('specialOffer.p2')}</span>
+		</p>
 
-		<ul class="custom-list not-prose">
-			<li>{t('specialOffer.listItem1')}</li>
-			<li>{t('specialOffer.listItem2')}</li>
-			<li>{t('specialOffer.listItem3')}</li>
-		</ul>
-
-		<p>{t('specialOffer.cta')}</p>
+		<p class="text-base text-center">{t('specialOffer.cta')}</p>
 
 		<form class="grid min-[450px]:place-items-center space-y-6 max-w-[512px] mx-auto" method="post" data-special-offer-form>
 			<input type="hidden" name="formTitle" value="offer" />
