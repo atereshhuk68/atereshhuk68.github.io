@@ -13,7 +13,7 @@ export function Catalog({ services }: { services: Service[] }) {
 	}, [services]);
 
 	return (
-		<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4" data-service-card>
+		<div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 xl:col-span-2 gap-5 mt-4" data-service-card>
 			<AnimatePresence>
 				{servicesFiltered.map((service: Service) => (
 					<ServiceCard key={service.id} {...service} />

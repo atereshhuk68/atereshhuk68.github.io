@@ -18,17 +18,17 @@ const serviceTypes = ['all', ...new Set(services.map((s) => s.type))];
 
 <section id="services" class="py-12 sm:py-16 lg:py-20 min-h-[800px]">
 	<div class="container">
-		<div class="mb-6 sm:mb-8 lg:mb-12 grid gap-3">
-			<h2 class="text-4xl lg:text-5xl font-heading text-balance">
-				{t('services.h2')}
-			</h2>
+		<div class="flex flex-wrap gap-6 xl:gap-8 xl:justify-between">
+			<div class="text-lg space-y-3 xl:max-w-[560px] 2xl:max-w-3xl">
+				<h2 class="text-4xl lg:text-5xl font-heading text-balance">
+					{t('services.h2')}
+				</h2>
 
-			<p class="text-lg max-w-3xl">
-				{t('services.p')}
-			</p>
+				<p class="min-w-0">{t('services.p')}</p>
+			</div>
+
+			<TabControl {serviceTypes} />
 		</div>
-
-		<TabControl {serviceTypes} />
 
 		<Catalog {services} client:visible />
 	</div>
