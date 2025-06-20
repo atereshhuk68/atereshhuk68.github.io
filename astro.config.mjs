@@ -29,7 +29,7 @@ export default defineConfig({
 	experimental: {
 		fonts: [
 			{
-				provider: fontProviders.fontsource(),
+				provider: fontProviders.google(),
 				name: "Inter",
 				cssVariable: "--font-inter",
 				weights: ["100 900"],

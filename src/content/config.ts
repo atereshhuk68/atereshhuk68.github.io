@@ -1,5 +1,5 @@
+import { servicesCollectionsSchema } from '@/schemas/collections';
 import { defineCollection, z } from 'astro:content';
-import { servicesCollectionsSchema } from 'src/schemas';
 
 export const collections = {
 	services: defineCollection({

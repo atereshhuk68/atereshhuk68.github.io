@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { Catalog } from '@/components/sections/Services/Catalog.tsx';
+import TabControl from '@/components/sections/Services/TabControl.astro';
 import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
-import { Catalog } from './services/Catalog.tsx';
-import TabControl from './services/TabControl.astro';
+import type { Locales, Service } from '@/types';
 
 const { currentLocale = 'pl' } = Astro;
 
@@ -12,7 +12,7 @@ const t = useTranslations(currentLocale as Locales);
 const Services = await getCollection('services');
 const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLocale));
 
-const services = ServicesFiltered?.data ?? [];
+const services: Service[] = ServicesFiltered?.data ?? [];
 const serviceTypes = ['all', ...new Set(services.map((s) => s.type))];
 ---
 

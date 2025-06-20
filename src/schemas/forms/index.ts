@@ -2,7 +2,13 @@ import { getValidationMessages } from '@/constants/validation-messages';
 import type { Locales } from '@/types';
 import { z } from 'zod';
 
-const getCurrentLanguage = (): Locales => (document.body.dataset.currentLocale ?? 'pl') as Locales;
+const getCurrentLanguage = (locale?: Locales): Locales => {
+	if (locale) return locale;
+	if (typeof document !== 'undefined') {
+		return (document.body.dataset.currentLocale ?? 'pl') as Locales;
+	}
+	return 'pl'; // fallback для SSR
+};
 
 const createOfferFormSchema = (locale: Locales) => {
 	const messages = getValidationMessages(locale);
@@ -44,10 +50,6 @@ const createContactFormSchema = (locale: Locales) => {
 };
 
 // Export factory functions
-export const getOfferFormSchema = () => createOfferFormSchema(getCurrentLanguage());
+export const getOfferFormSchema = (locale?: Locales) => createOfferFormSchema(getCurrentLanguage(locale));
 
-export const getContactFormSchema = () => createContactFormSchema(getCurrentLanguage());
-
-// Export default schemas for backward compatibility
-export const offerFormSchema = getOfferFormSchema();
-export const contactFormSchema = getContactFormSchema();
+export const getContactFormSchema = (locale?: Locales) => createContactFormSchema(getCurrentLanguage(locale));

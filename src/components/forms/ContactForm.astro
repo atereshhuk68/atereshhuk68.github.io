@@ -34,7 +34,12 @@ const t = useTranslations(currentLocale as Locales);
 	import { validateFormBySchema } from '@/lib/handle-form-validation';
 	import { postFormPayload } from '@/lib/handle-form-submit';
 	import { toggleDialog } from '@/lib/handle-dialogs';
-	import { contactFormSchema } from '@/schemas';
+	import { getContactFormSchema } from '@/schemas/forms';
+	import type { Locales } from '@/types';
+
+	const currentLocale = (document.body.dataset.currentLocale || 'pl') as Locales;
+
+	const contactFormSchema = getContactFormSchema(currentLocale);
 
 	const contactForm = document.querySelector<HTMLFormElement>('form[data-contact-form]');
 	const contactFormFields = contactForm?.querySelectorAll<HTMLInputElement>('input, textarea');

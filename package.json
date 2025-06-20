@@ -1,5 +1,6 @@
 {
 	"name": "bfancy-astro",
+	"name": "bfancy-astro",
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
@@ -30,6 +31,7 @@
 		"ky": "^1.8.1",
 		"lucide-react": "^0.518.0",
 		"maska": "^3.1.1",
+		"nanostores": "^1.0.1",
 		"nanostores": "^1.0.1",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
