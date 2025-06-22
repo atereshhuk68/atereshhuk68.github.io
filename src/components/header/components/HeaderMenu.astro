@@ -60,8 +60,8 @@ const BASE_LINK_CLASSES = 'text-black-900 hover:text-black-600 transition-[color
 		<DropdownContent align="end">
 			{
 				menuItems.map(({ href, label }: { href: string; label: string }) => (
-					<DropdownItem as="li" class="text-sm cursor-pointer font-medium">
-						<a {href} title={label}>
+					<DropdownItem as="li" class="text-sm cursor-pointer font-medium p-0">
+						<a class="flex w-full p-1.5" {href} title={label}>
 							{label}
 						</a>
 					</DropdownItem>

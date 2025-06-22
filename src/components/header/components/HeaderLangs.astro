@@ -32,8 +32,8 @@ const langsWithoutCurrent = langs.filter(({ locale }) => locale !== currentLocal
 	<DropdownContent align="end">
 		{
 			langsWithoutCurrent.map(({ href, name }: { href: string; name: string }) => (
-				<DropdownItem as="li" class="text-sm cursor-pointer font-medium">
-					<a {href} title={name}>
+				<DropdownItem as="li" class="text-sm cursor-pointer font-medium p-0">
+					<a class="flex w-full p-1.5" {href} title={name}>
 						{name}
 					</a>
 				</DropdownItem>
