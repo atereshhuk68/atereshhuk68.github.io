@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
+import { useTranslations } from '@/lib/handle-ui-translations';
+import type { Locales } from '@/types';
+import type { ImageMetadata } from 'astro';
+import { shuffle } from 'es-toolkit';
+
+interface ExtandImageMetadata extends ImageMetadata {
+	optimizedUrl?: string;
+}
+
+const examplesImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/pixel/examples/*.webp', { eager: true });
+
+const images = Object.values(examplesImages).map((mod) => mod.default);
+
+const { currentLocale = 'pl' } = Astro;
+const t = useTranslations(currentLocale as Locales);
+---
+
+<div class="rounded-2xl overflow-hidden">
+	<div class="embla">
+		<div class="embla__container">
+			{
+				shuffle(images).map((image, i) => (
+					<div class="embla__slide">
+						<a class="flex aspect-square w-full h-full" href={image.src} data-pswp-width={image.width / 2} data-pswp-height={image.height / 2} target="_blank">
+							<Image
+								class="w-full h-full object-cover object-center"
+								src={image}
+								alt={`${t('imageAlt')} ${++i}`}
+								height={image.height / 2}
+								width={image.width / 2}
+								format="avif"
+								quality={'high'}
+							/>
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<script>
+	import PhotoSwipeLightbox from 'photoswipe/lightbox';
+	import 'photoswipe/style.css';
+	import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
+
+	const emblaNode = document.querySelector<HTMLElement>('.embla');
+	const emblaOptions: EmblaOptionsType = { loop: true };
+
+	if (emblaNode) {
+		const emblaApi = EmblaCarousel(emblaNode, emblaOptions);
+		console.log(emblaApi.slideNodes()); // Access API
+	}
+
+	const lightbox = new PhotoSwipeLightbox({
+		gallery: '.embla',
+		children: '.embla__slide a',
+		pswpModule: () => import('photoswipe'),
+		loop: false,
+	});
+
+	lightbox.init();
+</script>
