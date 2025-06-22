@@ -209,10 +209,9 @@ button[aria-pressed='true'] {
 		height: var(--slide-height);
 
 		@variant md {
-			display: flex;
 			touch-action: pan-x pinch-zoom;
+			margin-left: 0;
 			margin-top: calc(var(--slide-spacing) * -1);
-			height: var(--slide-height);
 			flex-direction: column;
 		}
 	}
@@ -223,17 +222,16 @@ button[aria-pressed='true'] {
 		min-width: 0;
 		padding-left: var(--slide-spacing);
 		height: var(--slide-height);
+		overflow: hidden;
 
 		@variant md {
 			@apply rounded-4xl;
 			display: grid;
 			place-items: center;
-			transform: translate3d(0, 0, 0);
-			flex: 0 0 var(--slide-size);
 			min-height: 0;
+			padding-left: 0;
 			padding-top: var(--slide-spacing);
 			height: 100%;
-			overflow: hidden;
 		}
 	}
 }

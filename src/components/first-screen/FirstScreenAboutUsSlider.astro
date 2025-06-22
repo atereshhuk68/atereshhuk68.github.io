@@ -18,9 +18,9 @@ const t = useTranslations(currentLocale as Locales);
 			{
 				images.map((image, i) => (
 					<div class="embla__slide">
-						<a class="flex aspect-[3/2] w-full h-full" href={image.src} data-pswp-width={image.width / 2} data-pswp-height={image.height / 2} target="_blank">
+						<a class="flex size-full" href={image.src} data-pswp-width={image.width / 2} data-pswp-height={image.height / 2} target="_blank">
 							<Image
-								class="w-full h-full object-cover object-center lg:object-top rounded-4xl"
+								class="size-full object-cover object-center lg:object-top rounded-4xl"
 								src={image}
 								alt={`${t('imageAlt')} ${++i}`}
 								height={image.height / 3}
