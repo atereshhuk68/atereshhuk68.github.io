@@ -1,6 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
-import AboutUsImage from '@/assets/images/pixel/about-us-image-w960.jpg';
+import AboutUsSlider from '@/components/sliders/AboutUsSlider/AboutUsSlider.astro';
 import { useTranslations } from '@/lib/handle-ui-translations';
 import type { Locales } from '@/types';
 import { ExternalLink } from '@lucide/astro';
@@ -13,16 +12,7 @@ const t = useTranslations(currentLocale as Locales);
 <section id="aboutUs" class="py-12 sm:py-20 lg:py-32 lg:pb-10 relative isolate overflow-hidden">
 	<div class="container">
 		<div class="grid lg:grid-cols-2 gap-8 content-start">
-			<Picture
-				src={AboutUsImage}
-				alt={t('about.h2')}
-				width={782}
-				height={782}
-				class="rounded-xl object-cover object-top max-h-[300px] lg:max-h-[763px]"
-				loading="lazy"
-				formats={['avif', 'webp']}
-				quality={65}
-			/>
+			<AboutUsSlider />
 
 			<div class="space-y-4">
 				<h2 class="text-4xl lg:text-5xl font-heading text-balance">

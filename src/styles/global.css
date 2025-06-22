@@ -89,35 +89,71 @@ button[aria-pressed='true'] {
 	@apply bg-golden-200 text-black-900 pointer-events-none;
 }
 
-.embla {
+/* Hero Slider */
+.embla[data-slider='hero-slider'] {
 	max-width: 48rem;
 	margin: auto;
 	--slide-height: 19rem;
 	--slide-spacing: 1rem;
 	--slide-size: 80%;
+
+	.embla__viewport {
+		overflow: hidden;
+	}
+	.embla__container {
+		display: flex;
+		touch-action: pan-y pinch-zoom;
+		margin-left: calc(var(--slide-spacing) * -1);
+	}
+	.embla__slide {
+		transform: translate3d(0, 0, 0);
+		flex: 0 0 var(--slide-size);
+		min-width: 0;
+		padding-left: var(--slide-spacing);
+	}
+	.embla__slide__number {
+		border: 1px solid black;
+		border-radius: 1.8rem;
+		font-size: 4rem;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: var(--slide-height);
+		user-select: none;
+	}
 }
-.embla__viewport {
-	overflow: hidden;
-}
-.embla__container {
-	display: flex;
-	touch-action: pan-y pinch-zoom;
-	margin-left: calc(var(--slide-spacing) * -1);
-}
-.embla__slide {
-	transform: translate3d(0, 0, 0);
-	flex: 0 0 var(--slide-size);
-	min-width: 0;
-	padding-left: var(--slide-spacing);
-}
-.embla__slide__number {
-	border: 1px solid black;
-	border-radius: 1.8rem;
-	font-size: 4rem;
-	font-weight: 600;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: var(--slide-height);
-	user-select: none;
+
+/* About Us Slider */
+.embla[data-slider='about-us-slider'] {
+	--slide-height: 50rem;
+	--slide-spacing: 1rem;
+	--slide-size: 90%;
+
+	@apply rounded-4xl overflow-hidden;
+
+	.embla__viewport {
+		@apply h-full;
+		overflow: hidden;
+	}
+
+	.embla__container {
+		display: flex;
+		touch-action: pan-x pinch-zoom;
+		margin-top: calc(var(--slide-spacing) * -1);
+		height: calc(var(--slide-spacing) + var(--slide-height));
+		flex-direction: column;
+	}
+
+	.embla__slide {
+		@apply rounded-4xl;
+		display: grid;
+		place-items: center;
+		transform: translate3d(0, 0, 0);
+		flex: 0 0 var(--slide-size);
+		min-height: 0;
+		padding-top: var(--slide-spacing);
+		height: 100%;
+		overflow: hidden;
+	}
 }
