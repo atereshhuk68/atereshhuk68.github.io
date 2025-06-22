@@ -131,7 +131,7 @@ class ContactMessageFormatter {
                         <td style="padding: 10px; border: 1px solid #ddd;">%userPhone%</td>
                     </tr>
                     <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💅🏻 Категорія, яку обрав користувач:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💅🏻 Категорія послуг:</strong></td>
                         <td style="padding: 10px; border: 1px solid #ddd;">%userServiceCategory%</td>
                     </tr>
                     <tr>
@@ -158,9 +158,9 @@ class ContactMessageFormatter {
         $isFormTypeOffer = 'offer' === $this->data['formTitle'];
 
         $template = $isFormTypeOffer ? "💥 *Спеціальна пропозиція*\n\n" : "💌 *Нове повідомлення з форми зворотного зв'язку*\n\n";
-        $template .= "*👤 Персона:* %userName%\n";
-        $template .= "*📱 Номер телефону:* %userPhone%\n";
-        $template .= "*💅🏻 Категорія, яку обрав користувач:* %userServiceCategory%\n";
+        $template .= ">*👤 Персона:* %userName%\n";
+        $template .= ">*📱 Номер телефону:* %userPhone%\n";
+        $template .= ">*💅🏻 Категорія послуг:* %userServiceCategory%\n";
 
         if (!$isFormTypeOffer) {
             $template .= "*📧 Пошта:* %userEmail%\n";
