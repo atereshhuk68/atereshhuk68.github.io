@@ -36,6 +36,7 @@
 	}
 }
 
+button:has(+ select[aria-invalid]),
 input[aria-invalid],
 textarea[aria-invalid] {
 	@apply border-red-500;

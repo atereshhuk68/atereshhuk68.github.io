@@ -26,7 +26,7 @@ export const clearInputError = (field: HTMLInputElement) => {
  */
 export const resetFormErrors = (form: HTMLFormElement) => {
 	const errorElements = form.querySelectorAll<HTMLElement>('[data-error]');
-	const inputsWithError = form.querySelectorAll<HTMLInputElement>('input, textarea');
+	const inputsWithError = form.querySelectorAll<HTMLInputElement>('input, textarea, select');
 
 	for (const errorElement of errorElements) {
 		errorElement.textContent = '';

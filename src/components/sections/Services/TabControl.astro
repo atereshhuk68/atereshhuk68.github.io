@@ -22,7 +22,7 @@ const { serviceTypes } = Astro.props;
 	{
 		serviceTypes.map((filter: string) => {
 			const isActive = filter === $activeServiceType.get();
-			const filterTitle = t(`services.filter.${filter}` as any);
+			const filterTitle = t(`services.type.${filter}` as any);
 
 			return (
 				<Button variant="ghost" size="md" data-filter={filter} class="text-base px-6 xl:px-5 flex-grow md:flex-shrink-0" aria-pressed={isActive}>

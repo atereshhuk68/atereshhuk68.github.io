@@ -10,6 +10,7 @@ export const ValidationMessages = {
 		PHONE_INVALID: 'Invalid phone number',
 		EMAIL_INVALID: 'Invalid email',
 		MESSAGE_REQUIRED: 'Enter a message',
+		SERVICE_CATEGORY_REQUIRED: 'Select a service category',
 	},
 	uk: {
 		NAME_REQUIRED: "Введіть ім'я",
@@ -20,6 +21,7 @@ export const ValidationMessages = {
 		PHONE_INVALID: 'Невірний телефон',
 		EMAIL_INVALID: 'Невірний email',
 		MESSAGE_REQUIRED: 'Введіть повідомлення',
+		SERVICE_CATEGORY_REQUIRED: 'Виберіть категорію послуги',
 	},
 	pl: {
 		NAME_REQUIRED: 'Podaj imię',
@@ -30,6 +32,7 @@ export const ValidationMessages = {
 		PHONE_INVALID: 'Nieprawidłowy telefon',
 		EMAIL_INVALID: 'Nieprawidłowy email',
 		MESSAGE_REQUIRED: 'Podaj wiadomość',
+		SERVICE_CATEGORY_REQUIRED: 'Wybierz kategorię usługi',
 	},
 	ru: {
 		NAME_REQUIRED: 'Введите имя',
@@ -40,6 +43,7 @@ export const ValidationMessages = {
 		PHONE_INVALID: 'Неверный телефон',
 		EMAIL_INVALID: 'Неверный email',
 		MESSAGE_REQUIRED: 'Введите сообщение',
+		SERVICE_CATEGORY_REQUIRED: 'Выберите категорию услуги',
 	},
 } as const;
 
