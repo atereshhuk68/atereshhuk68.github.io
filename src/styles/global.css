@@ -150,6 +150,7 @@ button[aria-pressed='true'] {
 	}
 
 	.embla__viewport {
+		@apply h-full;
 		overflow: hidden;
 	}
 
@@ -171,14 +172,21 @@ button[aria-pressed='true'] {
 
 /* About Us Slider */
 .embla[data-slider='about-us-slider'] {
-	--slide-height: 61rem;
-	--slide-spacing: 2rem;
-	--slide-size: 100%;
+	--slide-spacing: 1rem;
+	--slide-height: 18rem;
+	--slide-size: 65%;
 
 	@apply rounded-4xl overflow-hidden;
 
+	@variant sm {
+		--slide-height: 24rem;
+		--slide-size: 50%;
+	}
+
 	@variant md {
 		--slide-height: 32rem;
+		--slide-size: 100%;
+		--slide-spacing: 2rem;
 	}
 
 	@variant lg {
@@ -196,21 +204,36 @@ button[aria-pressed='true'] {
 
 	.embla__container {
 		display: flex;
-		touch-action: pan-x pinch-zoom;
-		margin-top: calc(var(--slide-spacing) * -1);
+		touch-action: pan-y pinch-zoom;
+		margin-left: calc(var(--slide-spacing) * -1);
 		height: var(--slide-height);
-		flex-direction: column;
+
+		@variant md {
+			display: flex;
+			touch-action: pan-x pinch-zoom;
+			margin-top: calc(var(--slide-spacing) * -1);
+			height: var(--slide-height);
+			flex-direction: column;
+		}
 	}
 
 	.embla__slide {
-		@apply rounded-4xl;
-		display: grid;
-		place-items: center;
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 var(--slide-size);
-		min-height: 0;
-		padding-top: var(--slide-spacing);
-		height: 100%;
-		overflow: hidden;
+		min-width: 0;
+		padding-left: var(--slide-spacing);
+		height: var(--slide-height);
+
+		@variant md {
+			@apply rounded-4xl;
+			display: grid;
+			place-items: center;
+			transform: translate3d(0, 0, 0);
+			flex: 0 0 var(--slide-size);
+			min-height: 0;
+			padding-top: var(--slide-spacing);
+			height: 100%;
+			overflow: hidden;
+		}
 	}
 }

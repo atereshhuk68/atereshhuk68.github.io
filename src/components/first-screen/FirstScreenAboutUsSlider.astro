@@ -11,11 +11,9 @@ const images = Object.values(examplesImages).map((mod) => mod.default);
 
 const { currentLocale = 'pl' } = Astro;
 const t = useTranslations(currentLocale as Locales);
-
-const { class: className = '' } = Astro.props;
 ---
 
-<div class={`embla ${className}`} data-slider="about-us-slider" style="grid-area: aboutusslider">
+<div class="embla" data-slider="about-us-slider" style="grid-area: aboutusslider">
 	<div class="embla__viewport">
 		<div class="embla__container">
 			{
@@ -44,17 +42,20 @@ const { class: className = '' } = Astro.props;
 	import 'photoswipe/style.css';
 	import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
 
-	const VIEWPORT_SELECTOR = '.embla[data-slider="about-us-slider"] .embla__viewport';
-
-	const emblaOptions: EmblaOptionsType = { axis: 'y', loop: true };
-
-	const emblaNode = document.querySelector<HTMLElement>(VIEWPORT_SELECTOR);
-
-	if (emblaNode) {
-		EmblaCarousel(emblaNode, emblaOptions);
-	}
-
 	const SLIDER_SELECTOR = '.embla[data-slider="about-us-slider"]';
+	const VIEWPORT_SELECTOR = `${SLIDER_SELECTOR} .embla__viewport`;
+
+	const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+	const desktopOptions: EmblaOptionsType = { axis: 'y', loop: true };
+	const mobileOptions: EmblaOptionsType = { loop: true, align: 'center' };
+
+	const sliderNodeOptions: EmblaOptionsType = isMobile ? mobileOptions : desktopOptions;
+	const sliderNode = document.querySelector<HTMLElement>(VIEWPORT_SELECTOR);
+
+	if (sliderNode) {
+		EmblaCarousel(sliderNode, sliderNodeOptions);
+	}
 
 	const lightbox = new PhotoSwipeLightbox({
 		gallery: SLIDER_SELECTOR,
