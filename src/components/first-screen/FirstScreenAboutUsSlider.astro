@@ -11,9 +11,11 @@ const images = Object.values(examplesImages).map((mod) => mod.default);
 
 const { currentLocale = 'pl' } = Astro;
 const t = useTranslations(currentLocale as Locales);
+
+const { class: className = '' } = Astro.props;
 ---
 
-<div class="embla" data-slider="about-us-slider">
+<div class={`embla ${className}`} data-slider="about-us-slider" style="grid-area: aboutusslider">
 	<div class="embla__viewport">
 		<div class="embla__container">
 			{
@@ -21,7 +23,7 @@ const t = useTranslations(currentLocale as Locales);
 					<div class="embla__slide">
 						<a class="flex aspect-[3/2] w-full h-full" href={image.src} data-pswp-width={image.width / 2} data-pswp-height={image.height / 2} target="_blank">
 							<Image
-								class="w-full h-full object-cover object-top rounded-4xl"
+								class="w-full h-full object-cover object-center lg:object-top rounded-4xl"
 								src={image}
 								alt={`${t('imageAlt')} ${++i}`}
 								height={image.height / 3}
@@ -38,16 +40,30 @@ const t = useTranslations(currentLocale as Locales);
 </div>
 
 <script>
+	import PhotoSwipeLightbox from 'photoswipe/lightbox';
+	import 'photoswipe/style.css';
 	import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
 
-	const SLIDER_SELECTOR = '.embla[data-slider="about-us-slider"]';
 	const VIEWPORT_SELECTOR = '.embla[data-slider="about-us-slider"] .embla__viewport';
 
-	const OPTIONS: EmblaOptionsType = { axis: 'y' };
+	const emblaOptions: EmblaOptionsType = { axis: 'y', loop: true };
 
 	const emblaNode = document.querySelector<HTMLElement>(VIEWPORT_SELECTOR);
 
 	if (emblaNode) {
-		const emblaApi = EmblaCarousel(emblaNode, OPTIONS);
+		EmblaCarousel(emblaNode, emblaOptions);
 	}
+
+	const SLIDER_SELECTOR = '.embla[data-slider="about-us-slider"]';
+
+	const lightbox = new PhotoSwipeLightbox({
+		gallery: SLIDER_SELECTOR,
+		children: `${SLIDER_SELECTOR} a`,
+		pswpModule: () => import('photoswipe'),
+
+		loop: false,
+		clickToCloseNonZoomable: false,
+	});
+
+	lightbox.init();
 </script>

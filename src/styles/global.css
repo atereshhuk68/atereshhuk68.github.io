@@ -85,52 +85,109 @@ textarea[aria-invalid] {
 	}
 }
 
+/* First Screen Grid */
+[data-first-screen] {
+	grid-template-areas:
+		'intro'
+		'slider'
+		'aboutus'
+		'aboutusslider'
+		'reviews';
+
+	@variant md {
+		@apply grid-cols-2;
+		grid-template-areas:
+			'intro intro'
+			'slider slider'
+			'aboutus aboutus'
+			'aboutusslider reviews';
+	}
+
+	@variant lg {
+		@apply grid-cols-2;
+		grid-template-areas:
+			'intro intro'
+			'slider slider'
+			'reviews reviews'
+			'aboutusslider aboutus';
+	}
+
+	@variant xl {
+		@apply grid-cols-[0.85fr_1fr];
+		grid-template-areas:
+			'intro slider'
+			'aboutusslider aboutus'
+			'aboutusslider reviews';
+	}
+}
+
 button[aria-pressed='true'] {
 	@apply bg-golden-200 text-black-900 pointer-events-none;
 }
 
 /* Hero Slider */
 .embla[data-slider='hero-slider'] {
-	max-width: 48rem;
-	margin: auto;
-	--slide-height: 19rem;
 	--slide-spacing: 1rem;
-	--slide-size: 80%;
+	--slide-height: 14rem;
+	--slide-size: 60%;
+
+	@apply rounded-4xl overflow-hidden;
+
+	@variant md {
+		--slide-spacing: 2rem;
+		--slide-height: 18rem;
+		--slide-size: 40%;
+	}
+
+	@variant lg {
+		--slide-height: 24rem;
+		--slide-size: 50%;
+	}
+
+	@variant xl {
+		--slide-height: 32rem;
+		--slide-size: 70%;
+	}
 
 	.embla__viewport {
 		overflow: hidden;
 	}
+
 	.embla__container {
 		display: flex;
 		touch-action: pan-y pinch-zoom;
 		margin-left: calc(var(--slide-spacing) * -1);
+		height: var(--slide-height);
 	}
+
 	.embla__slide {
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 var(--slide-size);
 		min-width: 0;
 		padding-left: var(--slide-spacing);
-	}
-	.embla__slide__number {
-		border: 1px solid black;
-		border-radius: 1.8rem;
-		font-size: 4rem;
-		font-weight: 600;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		height: var(--slide-height);
-		user-select: none;
 	}
 }
 
 /* About Us Slider */
 .embla[data-slider='about-us-slider'] {
-	--slide-height: 50rem;
-	--slide-spacing: 1rem;
-	--slide-size: 90%;
+	--slide-height: 61rem;
+	--slide-spacing: 2rem;
+	--slide-size: 100%;
 
 	@apply rounded-4xl overflow-hidden;
+
+	@variant md {
+		--slide-height: 32rem;
+	}
+
+	@variant lg {
+		--slide-height: 40rem;
+	}
+
+	@variant xl {
+		--slide-height: 52rem;
+	}
 
 	.embla__viewport {
 		@apply h-full;
@@ -141,7 +198,7 @@ button[aria-pressed='true'] {
 		display: flex;
 		touch-action: pan-x pinch-zoom;
 		margin-top: calc(var(--slide-spacing) * -1);
-		height: calc(var(--slide-spacing) + var(--slide-height));
+		height: var(--slide-height);
 		flex-direction: column;
 	}
 
