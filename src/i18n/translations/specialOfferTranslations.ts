@@ -7,6 +7,7 @@ export const specialOfferTranslations = {
 		'specialOffer.submitText': 'Umów się teraz',
 		'specialOffer.later': 'Nie, dziękuję. Może później',
 		'specialOffer.note': 'Oferta ważna tylko dla pierwszych 50 klientów',
+		'specialOffer.serviceSelect': 'Wybierz kategorię usługi',
 	},
 	en: {
 		'specialOffer.heading': 'Hey, Beautiful!',
@@ -16,6 +17,7 @@ export const specialOfferTranslations = {
 		'specialOffer.submitText': 'Book now',
 		'specialOffer.later': 'No, thanks. Maybe later',
 		'specialOffer.note': 'Offer valid for the first 50 clients only',
+		'specialOffer.serviceSelect': 'Select a service category',
 	},
 	uk: {
 		'specialOffer.heading': 'Привіт, красуне!',
@@ -25,6 +27,7 @@ export const specialOfferTranslations = {
 		'specialOffer.note': 'Акція діє тільки для перших 50 клієнтів',
 		'specialOffer.submitText': 'Записатися зараз',
 		'specialOffer.later': 'Ні, дякую. Можливо пізніше',
+		'specialOffer.serviceSelect': 'Виберіть категорію послуги',
 	},
 	ru: {
 		'specialOffer.heading': 'Привет, красотка!',
@@ -34,5 +37,6 @@ export const specialOfferTranslations = {
 		'specialOffer.submitText': 'Записаться сейчас',
 		'specialOffer.later': 'Нет, спасибо. Возможно позже',
 		'specialOffer.note': 'Акция действует только для первых 50 клиентов',
+		'specialOffer.serviceSelect': 'Выберите категорию услуги',
 	},
 } as const;

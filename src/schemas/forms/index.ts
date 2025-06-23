@@ -26,6 +26,9 @@ const createOfferFormSchema = (locale: Locales) => {
 			.min(9, { message: messages.PHONE_TOO_SHORT })
 			.max(15, { message: messages.PHONE_TOO_LONG })
 			.regex(/^\+?[0-9\s\-()]+$/, { message: messages.PHONE_INVALID }),
+		userServiceCategory: z.string().min(1, {
+			message: messages.SERVICE_CATEGORY_REQUIRED,
+		}),
 	});
 };
 

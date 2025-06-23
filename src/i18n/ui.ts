@@ -5,6 +5,7 @@ import { headerTranslations } from './translations/headerTranslations';
 import { heroTranslations } from './translations/heroTranslations';
 import { otherTranslations } from './translations/otherTranslations';
 import { servicesTranslations } from './translations/servicesTranslations';
+import { slidersTranslations } from './translations/slidersTranslations';
 import { specialOfferTranslations } from './translations/specialOfferTranslations';
 
 export const ui = {
@@ -17,6 +18,7 @@ export const ui = {
 		...specialOfferTranslations.pl,
 		...otherTranslations.pl,
 		...dialogTranslations.pl,
+		...slidersTranslations.pl,
 	},
 	en: {
 		...headerTranslations.en,
@@ -27,6 +29,7 @@ export const ui = {
 		...contactTranslations.en,
 		...otherTranslations.en,
 		...dialogTranslations.en,
+		...slidersTranslations.en,
 	},
 	uk: {
 		...headerTranslations.uk,
@@ -37,6 +40,7 @@ export const ui = {
 		...contactTranslations.uk,
 		...otherTranslations.uk,
 		...dialogTranslations.uk,
+		...slidersTranslations.uk,
 	},
 	ru: {
 		...headerTranslations.ru,
@@ -47,5 +51,6 @@ export const ui = {
 		...contactTranslations.ru,
 		...otherTranslations.ru,
 		...dialogTranslations.ru,
+		...slidersTranslations.ru,
 	},
 } as const;

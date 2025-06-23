@@ -2,11 +2,12 @@
 $response = array();
 
 $inputs = array(
-	'formTitle'       => '',
-	'userName'       => '',
-	'userPhone'      => '',
-	'userEmail'      => '',
-	'userMessage'    => '',
+	'formTitle'                => '',
+	'userName'                 => '',
+	'userPhone'                => '',
+	'userEmail'                => '',
+	'userServiceCategory'      => '',
+	'userMessage'              => '',
 );
 
 /**
@@ -67,13 +68,17 @@ function form_validation() {
 		$inputs['userName'] = sanitize_input( $_POST['userName'] );
 	}
 
+	if ( field_exist_and_not_empty( 'userServiceCategory' ) ) {
+		$inputs['userServiceCategory'] = sanitize_input( $_POST['userServiceCategory'] );
+	}
+
 	if ( field_exist_and_not_empty( 'userPhone' ) ) {
 		if ( is_phone_number( $_POST['userPhone'] ) ) {
 			$inputs['userPhone'] = sanitize_input( $_POST['userPhone'] );
 		} else {
 			array_push( $response, array( 'userPhone' => 'Invalid phone number format' ) );
 		}
-}
+    }
 
 	if ( field_exist_and_not_empty( 'userEmail' ) ) {
 		if ( is_email( $_POST['userEmail'] ) ) {
@@ -126,6 +131,10 @@ class ContactMessageFormatter {
                         <td style="padding: 10px; border: 1px solid #ddd;">%userPhone%</td>
                     </tr>
                     <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💅🏻 Категорія послуг:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">%userServiceCategory%</td>
+                    </tr>
+                    <tr>
                         <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💬 Повідомлення:</strong></td>
                         <td style="padding: 10px; border: 1px solid #ddd;">%userMessage%</td>
                     </tr>
@@ -137,6 +146,7 @@ class ContactMessageFormatter {
             '%userName%' => htmlspecialchars($this->data['userName'] ?? '', ENT_QUOTES, 'UTF-8'),
             '%userEmail%' => htmlspecialchars($this->data['userEmail'] ?? '', ENT_QUOTES, 'UTF-8'),
             '%userPhone%' => htmlspecialchars($this->data['userPhone'] ?? '', ENT_QUOTES, 'UTF-8'),
+            '%userServiceCategory%' => htmlspecialchars($this->data['userServiceCategory'] ?? '', ENT_QUOTES, 'UTF-8'),
             '%userMessage%' => nl2br(htmlspecialchars($this->data['userMessage'] ?? '', ENT_QUOTES, 'UTF-8'))
         ]);
     }
@@ -148,8 +158,9 @@ class ContactMessageFormatter {
         $isFormTypeOffer = 'offer' === $this->data['formTitle'];
 
         $template = $isFormTypeOffer ? "💥 *Спеціальна пропозиція*\n\n" : "💌 *Нове повідомлення з форми зворотного зв'язку*\n\n";
-        $template .= "*👤 Персона:* %userName%\n";
-        $template .= "*📱 Номер телефону:* %userPhone%\n";
+        $template .= ">*👤 Персона:* %userName%\n";
+        $template .= ">*📱 Номер телефону:* %userPhone%\n";
+        $template .= ">*💅🏻 Категорія послуг:* %userServiceCategory%\n";
 
         if (!$isFormTypeOffer) {
             $template .= "*📧 Пошта:* %userEmail%\n";
@@ -159,6 +170,7 @@ class ContactMessageFormatter {
                 '%userName%' => $this->escapeMarkdownV2($this->data['userName'] ?? ''),
                 '%userPhone%' => $this->escapeMarkdownV2($this->data['userPhone'] ?? ''),
                 '%userEmail%' => $this->escapeMarkdownV2($this->data['userEmail'] ?? ''),
+                '%userServiceCategory%' => $this->escapeMarkdownV2($this->data['userServiceCategory'] ?? ''),
                 '%userMessage%' => $this->escapeMarkdownV2($this->data['userMessage'] ?? '')
             ]);
         }
@@ -166,6 +178,7 @@ class ContactMessageFormatter {
         return $this->replacePlaceholders($template, [
             '%userName%' => $this->escapeMarkdownV2($this->data['userName'] ?? ''),
             '%userPhone%' => $this->escapeMarkdownV2($this->data['userPhone'] ?? ''),
+            '%userServiceCategory%' => $this->escapeMarkdownV2($this->data['userServiceCategory'] ?? ''),
         ]);
     }
 

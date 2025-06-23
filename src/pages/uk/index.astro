@@ -1,7 +1,6 @@
 ---
-import SectionAbout from '@/components/sections/SectionAbout.astro';
 import SectionContact from '@/components/sections/SectionContact.astro';
-import SectionHero from '@/components/sections/SectionHero.astro';
+import SectionFirstScreen from '@/components/sections/SectionFirstScreen.astro';
 import SectionServices from '@/components/sections/SectionServices.astro';
 import Layout from '@/layouts/Layout.astro';
 
@@ -11,8 +10,7 @@ const description =
 ---
 
 <Layout {title} {description}>
-	<SectionHero />
-	<SectionAbout />
+	<SectionFirstScreen />
 	<SectionServices />
 	<SectionContact />
 </Layout>
