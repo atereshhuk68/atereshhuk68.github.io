@@ -1,12 +1,12 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { Languages, SITE } from '@/constants';
-import { getTranslatedURL } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Languages, SITE } from "@/constants";
+import { getTranslatedURL } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
 const {
 	url: { pathname },
-	currentLocale = 'pl',
+	currentLocale = "pl",
 } = Astro;
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);

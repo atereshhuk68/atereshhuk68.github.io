@@ -1,9 +1,9 @@
 ---
-import { ChevronDown } from '@lucide/astro';
-import type { HTMLAttributes } from 'astro/types';
-import { tv } from 'tailwind-variants';
+import { ChevronDown } from "@lucide/astro";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
 
-type Props = Omit<HTMLAttributes<'button'>, 'role' | 'type'> & {
+type Props = Omit<HTMLAttributes<"button">, "role" | "type"> & {
 	/**
 	 * The content to be rendered inside the select trigger
 	 */
@@ -19,10 +19,10 @@ type Props = Omit<HTMLAttributes<'button'>, 'role' | 'type'> & {
 
 const selectTrigger = tv({
 	base: [
-		'starwind-select-trigger',
-		'border-black-500 bg-white flex py-3 px-6 w-full items-center justify-between rounded-md border',
-		'focus:outline-outline focus:outline-2 focus:outline-offset-2',
-		'disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
+		"starwind-select-trigger",
+		"border-black-500 bg-white flex py-3 px-6 w-full items-center justify-between rounded-md border",
+		"focus:outline-outline focus:outline-2 focus:outline-offset-2",
+		"disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
 	],
 });
 
@@ -31,10 +31,8 @@ const { class: className, required = false, ...rest } = Astro.props;
 
 <button
 	class={selectTrigger({ class: className })}
-	type="button"
 	role="combobox"
 	aria-label="Select field"
-	aria-controls=""
 	aria-expanded="false"
 	aria-haspopup="listbox"
 	aria-autocomplete="none"
@@ -42,5 +40,5 @@ const { class: className, required = false, ...rest } = Astro.props;
 	data-state="closed"
 	{...rest}>
 	<slot />
-	<ChevronDown class="size-4 opacity-50" />
+	<ChevronDown class="size-4 opacity-50 transition-[rotate]" />
 </button>

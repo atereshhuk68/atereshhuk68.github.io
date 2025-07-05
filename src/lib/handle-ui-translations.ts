@@ -1,6 +1,6 @@
-import { DEFAULT_LANG, ISOLocales } from '@/constants';
-import { ui } from '@/i18n/ui';
-import type { Locales } from '@/types';
+import { DEFAULT_LANG, DEFAULT_LOCALE, ISOLocales } from "@/constants";
+import { ui } from "@/i18n/ui";
+import type { Locales } from "@/types";
 
 /**
  * Creates a translation function for the specified locale.
@@ -25,16 +25,17 @@ export const useTranslations = (locale: Locales) => {
  * - getTranslatedURL('/uk/about', 'en') -> '/about' (if 'en' is default)
  */
 export function getTranslatedURL(basePath: string, locale: Locales) {
-	const localePrefix = locale ? `/${locale}` : '';
+	const localePrefix = locale ? `/${locale}` : "";
 	let pathname = basePath;
 
 	if (locale && basePath.startsWith(`${localePrefix}/`)) {
 		pathname = basePath.substring(localePrefix.length);
 	} else if (locale && basePath === localePrefix) {
-		pathname = '/';
+		pathname = "/";
 	}
 
-	return (pathname = pathname || '/');
+	pathname = pathname || "/";
+	return pathname;
 }
 
 /**
@@ -54,7 +55,9 @@ export const getISOLocale = (locale: Locales) => {
  * @returns Array of alternative ISO locale codes, defaults to ['pl-PL'] if no alternates found
  */
 export const getISOLocaleAlternates = (locale: Locales) => {
-	const alternates = ISOLocales.values().filter((ISOLocale) => ISOLocale !== getISOLocale(locale));
+	const alternates = ISOLocales.values().filter(
+		(ISOLocale) => ISOLocale !== getISOLocale(locale),
+	);
 
 	return alternates ? alternates : [DEFAULT_LOCALE];
 };

@@ -1,9 +1,9 @@
 ---
-import { Check } from '@lucide/astro';
-import type { HTMLAttributes } from 'astro/types';
-import { tv } from 'tailwind-variants';
+import { Check } from "@lucide/astro";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
 
-type Props = HTMLAttributes<'div'> & {
+type Props = HTMLAttributes<"div"> & {
 	/**
 	 * The value associated with this select item
 	 */
@@ -16,14 +16,16 @@ type Props = HTMLAttributes<'div'> & {
 
 const selectItem = tv({
 	base: [
-		'relative flex w-full cursor-pointer items-center rounded-sm py-1.5 pr-2 pl-6 outline-none select-none',
-		'focus:bg-accent focus:text-accent-foreground',
-		'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-		'not-aria-selected:[&_svg]:hidden aria-selected:[&_svg]:flex',
+		"relative flex w-full cursor-pointer items-center rounded-sm py-1.5 pr-2 pl-6 outline-none select-none",
+		"focus:bg-accent focus:text-accent-foreground",
+		"data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+		"not-aria-selected:[&_svg]:hidden aria-selected:[&_svg]:flex",
 	],
 });
 
-const selectItemIcon = tv({ base: 'absolute left-1 top-1/2 -translate-y-1/2 size-3.5 items-center justify-center' });
+const selectItemIcon = tv({
+	base: "absolute left-1 top-1/2 -translate-y-1/2 size-3.5 items-center justify-center",
+});
 
 const { class: className, value, disabled, ...rest } = Astro.props;
 ---

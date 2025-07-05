@@ -1,12 +1,12 @@
-import { aboutTranslations } from './translations/aboutTranslations';
-import { contactTranslations } from './translations/contactTranslations';
-import { dialogTranslations } from './translations/dialogTranslations';
-import { headerTranslations } from './translations/headerTranslations';
-import { heroTranslations } from './translations/heroTranslations';
-import { otherTranslations } from './translations/otherTranslations';
-import { servicesTranslations } from './translations/servicesTranslations';
-import { slidersTranslations } from './translations/slidersTranslations';
-import { specialOfferTranslations } from './translations/specialOfferTranslations';
+import { aboutTranslations } from "./translations/aboutTranslations";
+import { contactTranslations } from "./translations/contactTranslations";
+import { dialogTranslations } from "./translations/dialogTranslations";
+import { headerTranslations } from "./translations/headerTranslations";
+import { heroTranslations } from "./translations/heroTranslations";
+import { otherTranslations } from "./translations/otherTranslations";
+import { servicesTranslations } from "./translations/servicesTranslations";
+import { slidersTranslations } from "./translations/slidersTranslations";
+import { specialOfferTranslations } from "./translations/specialOfferTranslations";
 
 export const ui = {
 	pl: {

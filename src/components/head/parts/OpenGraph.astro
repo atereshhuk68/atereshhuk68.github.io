@@ -1,7 +1,10 @@
 ---
-import { SITE } from '@/constants';
-import { getISOLocale, getISOLocaleAlternates } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
+import { SITE } from "@/constants";
+import {
+	getISOLocale,
+	getISOLocaleAlternates,
+} from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
 const { title, description, currentLocale } = Astro.props;
 const { pathname } = Astro.url;

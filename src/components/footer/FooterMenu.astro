@@ -1,8 +1,8 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { Languages } from '@/constants/langs';
-import { getTranslatedURL } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Languages } from "@/constants/langs";
+import { getTranslatedURL } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
 const {
 	url: { pathname },
@@ -11,7 +11,9 @@ const {
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 
-const langsWithoutCurrent = Array.from(Languages.entries()).filter(([locale]) => locale !== currentLocale);
+const langsWithoutCurrent = Array.from(Languages.entries()).filter(
+	([locale]) => locale !== currentLocale,
+);
 ---
 
 <ul class="flex items-center gap-4 lg:w-[280px] text-sm">

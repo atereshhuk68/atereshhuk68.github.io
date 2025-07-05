@@ -1,8 +1,8 @@
 ---
-import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---

@@ -2,11 +2,13 @@ type LazyBgElement = HTMLElement & { dataset: { lazyBg?: string } };
 
 export const backgroundImageLazyLoader = (() => {
 	const options: IntersectionObserverInit = {
-		rootMargin: '150px',
+		rootMargin: "150px",
 		threshold: 0.1,
 	};
 
-	const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
+	const callback: IntersectionObserverCallback = (
+		entries: IntersectionObserverEntry[],
+	) => {
 		for (const entry of entries) {
 			if (entry.isIntersecting) {
 				const element = entry.target as LazyBgElement;
@@ -22,11 +24,12 @@ export const backgroundImageLazyLoader = (() => {
 	};
 
 	const initObserver = () => {
-		const LAZY_BG_SELECTOR = '[data-bg-name]';
+		const LAZY_BG_SELECTOR = "[data-bg-name]";
 
-		const lazyBgElements = document.querySelectorAll<LazyBgElement>(LAZY_BG_SELECTOR);
+		const lazyBgElements =
+			document.querySelectorAll<LazyBgElement>(LAZY_BG_SELECTOR);
 
-		if ('IntersectionObserver' in window) {
+		if ("IntersectionObserver" in window) {
 			const observer = new IntersectionObserver(callback, options);
 
 			for (const element of lazyBgElements) observer.observe(element);

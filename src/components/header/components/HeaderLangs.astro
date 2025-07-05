@@ -1,15 +1,20 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import Button from '@/components/starwind/button';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@/components/starwind/dropdown';
-import { Languages } from '@/constants';
-import { getTranslatedURL } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
-import { Languages as LanguagesIcon } from '@lucide/astro';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Languages as LanguagesIcon } from "@lucide/astro";
+import Button from "@/components/starwind/button";
+import {
+	Dropdown,
+	DropdownContent,
+	DropdownItem,
+	DropdownTrigger,
+} from "@/components/starwind/dropdown";
+import { Languages } from "@/constants";
+import { getTranslatedURL } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
 const {
 	url: { pathname },
-	currentLocale = 'pl',
+	currentLocale = "pl",
 } = Astro;
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);
@@ -20,7 +25,9 @@ const langs = Array.from(Languages.entries()).map(([locale, name]) => ({
 	href: getRelativeLocaleUrl(locale, basePath),
 }));
 
-const langsWithoutCurrent = langs.filter(({ locale }) => locale !== currentLocale);
+const langsWithoutCurrent = langs.filter(
+	({ locale }) => locale !== currentLocale,
+);
 ---
 
 <Dropdown>

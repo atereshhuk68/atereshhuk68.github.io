@@ -1,13 +1,13 @@
-import { getValidationMessages } from '@/constants/validation-messages';
-import type { Locales } from '@/types';
-import { z } from 'zod';
+import { z } from "zod";
+import { getValidationMessages } from "@/constants/validation-messages";
+import type { Locales } from "@/types";
 
 const getCurrentLanguage = (locale?: Locales): Locales => {
 	if (locale) return locale;
-	if (typeof document !== 'undefined') {
-		return (document.body.dataset.currentLocale ?? 'pl') as Locales;
+	if (typeof document !== "undefined") {
+		return (document.body.dataset.currentLocale ?? "pl") as Locales;
 	}
-	return 'pl'; // fallback для SSR
+	return "pl"; // fallback для SSR
 };
 
 const createOfferFormSchema = (locale: Locales) => {
@@ -53,6 +53,8 @@ const createContactFormSchema = (locale: Locales) => {
 };
 
 // Export factory functions
-export const getOfferFormSchema = (locale?: Locales) => createOfferFormSchema(getCurrentLanguage(locale));
+export const getOfferFormSchema = (locale?: Locales) =>
+	createOfferFormSchema(getCurrentLanguage(locale));
 
-export const getContactFormSchema = (locale?: Locales) => createContactFormSchema(getCurrentLanguage(locale));
+export const getContactFormSchema = (locale?: Locales) =>
+	createContactFormSchema(getCurrentLanguage(locale));

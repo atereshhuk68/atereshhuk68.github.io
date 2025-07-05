@@ -1,16 +1,18 @@
 ---
-import { Image } from 'astro:assets';
-import Logo from '@/assets/images/vector/logo/footer-logo-w160.svg';
-import { DEFAULT_LANG } from '@/constants/langs';
+import { Image } from "astro:assets";
+import Logo from "@/assets/images/vector/logo/footer-logo-w160.svg";
+import { DEFAULT_LANG } from "@/constants/langs";
 
 const { currentLocale } = Astro;
 
-const homePageUrl = currentLocale === DEFAULT_LANG ? '/' : `/${currentLocale}/`;
+const homePageUrl = currentLocale === DEFAULT_LANG ? "/" : `/${currentLocale}/`;
 
 const isHomepage = Astro.url.pathname === homePageUrl;
 
-const Comp = isHomepage ? 'div' : 'a';
-const CompProps = isHomepage ? {} : { href: '/', 'aria-label': 'Go to homepage' };
+const Comp = isHomepage ? "div" : "a";
+const CompProps = isHomepage
+	? {}
+	: { href: "/", "aria-label": "Go to homepage" };
 ---
 
 <div class="flex lg:justify-center flex-grow order-first lg:order-[initial]">
