@@ -1,8 +1,16 @@
 ---
+import { CompanyDefaultData } from '@/constants';
 import Layout from "./Layout.astro";
+import type { CareerPostSchema } from '@/types/career';
+import SchemaJobPosting from '@/components/schema/SchemaJobPosting.astro';
 
 const { frontmatter } = Astro.props;
 const { title, description } = frontmatter;
+
+const careers: CareerPostSchema = {
+	...frontmatter,
+	...CompanyDefaultData,
+};
 ---
 
 <Layout {title} {description}>
@@ -11,4 +19,6 @@ const { title, description } = frontmatter;
 			<slot />
 		</article>
 	</div>
+
+	<SchemaJobPosting {...careers} />
 </Layout>

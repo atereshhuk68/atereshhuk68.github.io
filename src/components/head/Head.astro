@@ -7,15 +7,29 @@ import Clarity from "./parts/Clarity.astro";
 import Favicons from "./parts/Favicons.astro";
 import GTM from "./parts/GTM.astro";
 import OpenGraph from "./parts/OpenGraph.astro";
+import SchemaWebsite from '@/components/schema/SchemaWebsite.astro';
+
+import { DEFAULT_LANG } from "@/constants/langs";
 
 const { title, description, currentLocale } = Astro.props;
+
+const homePageUrl = currentLocale === DEFAULT_LANG ? "/" : `/${currentLocale}/`;
+
+const isHomepage = Astro.url.pathname === homePageUrl;
 ---
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" />
+
 	<Favicons />
+
 	<Canonical />
+
+	{isHomepage && (
+		<SchemaWebsite name={title} description={description}/>
+	)}
+
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<OpenGraph {title} {description} {currentLocale} />

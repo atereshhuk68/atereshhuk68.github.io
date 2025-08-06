@@ -9,5 +9,5 @@ export type Service = {
 	id: number;
 	name: string;
 	list: ServiceListItem[];
-	type: "visage" | "massage" | "nails" | "eyelashes";
+	type: 'visage' | 'massage' | 'nails' | 'eyelashes' | 'hair';
 };

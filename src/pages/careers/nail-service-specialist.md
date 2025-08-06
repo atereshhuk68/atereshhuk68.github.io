@@ -2,7 +2,8 @@
 layout: '@/layouts/TextContentLayout.astro'
 title: Stylista/ka paznokcie
 description: Nowy salon kosmetyczny w centrum Warszawy poszukuje utalentowanego i kreatywnego stylisty/stki paznokcie!
-location: Warszawa
+city: Warszawa
+country: Polska
 ---
 
 # Stylista/ka paznokcie
