@@ -534,6 +534,10 @@
 			{
 				"title": "4 длина",
 				"price": 1250
+			},
+			{
+				"title": "Контуринг",
+				"price": 450
 			}
 		],
 		"type": "hair"
@@ -639,17 +643,6 @@
 	},
 	{
 		"id": 30,
-		"name": "Другое",
-		"list": [
-			{
-				"title": "Контуринг",
-				"price": 450
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 31,
 		"name": "Total Blonde",
 		"list": [
 			{

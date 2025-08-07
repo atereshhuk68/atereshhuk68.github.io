@@ -556,17 +556,6 @@
 	},
 	{
 		"id": 26,
-		"name": "Inne",
-		"list": [
-			{
-				"title": "Contouring",
-				"price": 450
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 27,
 		"name": "Airtouch",
 		"list": [
 			{
@@ -584,12 +573,16 @@
 			{
 				"title": "4 długość",
 				"price": 1250
+			},
+			{
+				"title": "Contouring",
+				"price": 450
 			}
 		],
 		"type": "hair"
 	},
 	{
-		"id": 28,
+		"id": 27,
 		"name": "Balayage",
 		"list": [
 			{
@@ -612,7 +605,7 @@
 		"type": "hair"
 	},
 	{
-		"id": 29,
+		"id": 28,
 		"name": "Babylights",
 		"list": [
 			{
@@ -635,7 +628,7 @@
 		"type": "hair"
 	},
 	{
-		"id": 30,
+		"id": 29,
 		"name": "Ściąganie koloru",
 		"list": [
 			{
@@ -658,7 +651,7 @@
 		"type": "hair"
 	},
 	{
-		"id": 31,
+		"id": 30,
 		"name": "Zabiegi pielęgnacyjne",
 		"list": [
 			{
