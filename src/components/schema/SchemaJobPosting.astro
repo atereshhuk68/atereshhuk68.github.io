@@ -1,0 +1,52 @@
+---
+import type { CareerPostSchema } from '../../types/career/index';
+
+interface Props extends Omit<CareerPostSchema, 'locationCountry'> {
+  datePosted?: string;
+}
+
+const {
+  title,
+  description,
+  city,
+  country,
+  organizationName,
+  organizationUrl,
+  datePosted = new Date().toISOString(),
+  postalCode,
+  street,
+  region
+} = Astro.props;
+
+const validThroughDate = new Date();
+validThroughDate.setFullYear(validThroughDate.getFullYear() + 5);
+const validThrough = validThroughDate.toISOString();
+
+const jobPostingSchema = {
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  "title": title,
+  "description": description,
+  "datePosted": datePosted,
+  "validThrough": validThrough,
+  "employmentType": "FULL_TIME",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": organizationName,
+    "sameAs": organizationUrl
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": postalCode,
+      "addressLocality": city,
+      "streetAddress": street,
+      "addressRegion": region,
+      "addressCountry": country
+    }
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jobPostingSchema)}></script>

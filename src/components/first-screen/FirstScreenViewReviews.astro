@@ -1,12 +1,12 @@
 ---
-import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
-import { ExternalLink } from '@lucide/astro';
+import { ExternalLink } from "@lucide/astro";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 const t = useTranslations(currentLocale as Locales);
 
-const { class: className = '' } = Astro.props;
+const { class: className = "" } = Astro.props;
 ---
 
 <div class={`bg-shell-300 text-black-900 rounded-2xl py-6 px-5 sm:p-6 lg:p-8 space-y-4 ${className}`} style="grid-area: reviews;">

@@ -386,5 +386,284 @@
 			}
 		],
 		"type": "massage"
+	},
+	{
+		"id": 18,
+		"name": "Blow-dry",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 90
+			},
+			{
+				"title": "2 length",
+				"price": 100
+			},
+			{
+				"title": "3 length",
+				"price": 120
+			},
+			{
+				"title": "4 length",
+				"price": 140
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 19,
+		"name": "Curls",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 120
+			},
+			{
+				"title": "2 length",
+				"price": 140
+			},
+			{
+				"title": "3 length",
+				"price": 160
+			},
+			{
+				"title": "4 length",
+				"price": 180
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 20,
+		"name": "Hairstyle",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 220
+			},
+			{
+				"title": "2 length",
+				"price": 260
+			},
+			{
+				"title": "3 length",
+				"price": 300
+			},
+			{
+				"title": "4 length",
+				"price": 340
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 21,
+		"name": "Haircuts",
+		"list": [
+			{
+				"title": "Women’s haircut",
+				"price": 150
+			},
+			{
+				"title": "bangs trim",
+				"price": 60
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 22,
+		"name": "Coloring",
+		"list": [
+			{
+				"title": "Root touch-up",
+				"price": 250
+			},
+			{
+				"title": "Root touch-up (blonde)",
+				"price": 300
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 23,
+		"name": "All-over color",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 260
+			},
+			{
+				"title": "2 length",
+				"price": 300
+			},
+			{
+				"title": "3 length",
+				"price": 340
+			},
+			{
+				"title": "4 length",
+				"price": 400
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 24,
+		"name": "Toning",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 200
+			},
+			{
+				"title": "2 length",
+				"price": 260
+			},
+			{
+				"title": "3 length",
+				"price": 300
+			},
+			{
+				"title": "4 length",
+				"price": 360
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 25,
+		"name": "Total Blonde",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 450
+			},
+			{
+				"title": "2 length",
+				"price": 500
+			},
+			{
+				"title": "3 length",
+				"price": 650
+			},
+			{
+				"title": "4 length",
+				"price": 800
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 26,
+		"name": "Airtouch",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 800
+			},
+			{
+				"title": "2 length",
+				"price": 950
+			},
+			{
+				"title": "3 length",
+				"price": 1100
+			},
+			{
+				"title": "4 length",
+				"price": 1250
+			},
+			{
+				"title": "Contouring",
+				"price": 450
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 27,
+		"name": "Balayage",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 450
+			},
+			{
+				"title": "2 length",
+				"price": 600
+			},
+			{
+				"title": "3 length",
+				"price": 750
+			},
+			{
+				"title": "4 length",
+				"price": 800
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 28,
+		"name": "Babylights",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 500
+			},
+			{
+				"title": "2 length",
+				"price": 650
+			},
+			{
+				"title": "3 length",
+				"price": 700
+			},
+			{
+				"title": "4 length",
+				"price": 850
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 29,
+		"name": "Color removal",
+		"list": [
+			{
+				"title": "1 length",
+				"price": 200
+			},
+			{
+				"title": "2 length",
+				"price": 250
+			},
+			{
+				"title": "3 length",
+				"price": 300
+			},
+			{
+				"title": "4 length",
+				"price": 350
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 30,
+		"name": "Treatments",
+		"list": [
+			{
+				"title": "Mask",
+				"price": 50
+			},
+			{
+				"title": "Treatment when coloring",
+				"price": 120
+			}
+		],
+		"type": "hair"
 	}
 ]

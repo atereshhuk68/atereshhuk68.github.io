@@ -1,14 +1,17 @@
 ---
-import { Image } from 'astro:assets';
-import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
-import type { ImageMetadata } from 'astro';
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
-const examplesImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/pixel/examples/*.webp', { eager: true });
+const examplesImages = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/images/pixel/examples/*.webp",
+	{ eager: true },
+);
 
 const images = Object.values(examplesImages).map((mod) => mod.default);
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 const t = useTranslations(currentLocale as Locales);
 ---
 

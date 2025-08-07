@@ -2,7 +2,8 @@
 layout: '@/layouts/TextContentLayout.astro'
 title: Майстер манікюру
 description: Новий салон краси в центрі Варшави шукає талановитого та креативного майстра манікюру!
-location: Варшава
+city: Варшава
+country: Польща
 ---
 
 # Майстер манікюру

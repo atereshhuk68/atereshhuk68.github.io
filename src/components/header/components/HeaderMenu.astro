@@ -1,16 +1,21 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import Button from '@/components/starwind/button';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@/components/starwind/dropdown';
-import { DEFAULT_LANG } from '@/constants';
-import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
-import { Menu } from '@lucide/astro';
-import cx from 'classix';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Menu } from "@lucide/astro";
+import cx from "classix";
+import Button from "@/components/starwind/button";
+import {
+	Dropdown,
+	DropdownContent,
+	DropdownItem,
+	DropdownTrigger,
+} from "@/components/starwind/dropdown";
+import { DEFAULT_LANG } from "@/constants";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
 
 const {
 	url: { pathname },
-	currentLocale = 'pl',
+	currentLocale = "pl",
 } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
@@ -24,16 +29,17 @@ const modifyUrl = (anchor: string) => {
 };
 
 const menuItems = [
-	{ href: modifyUrl('#services'), label: t('header.nav.services') },
-	{ href: modifyUrl('#aboutUs'), label: t('header.nav.aboutUs') },
+	{ href: modifyUrl("#services"), label: t("header.nav.services") },
+	{ href: modifyUrl("#aboutUs"), label: t("header.nav.aboutUs") },
 	{
-		href: getRelativeLocaleUrl(currentLocale, 'careers'),
-		label: t('header.nav.careers'),
+		href: getRelativeLocaleUrl(currentLocale, "careers"),
+		label: t("header.nav.careers"),
 	},
 ];
 
-const ACTIVE_LINK_CLASSES = 'pointer-events-none text-cove-700';
-const BASE_LINK_CLASSES = 'text-black-900 hover:text-black-600 transition-[color] duration-200';
+const ACTIVE_LINK_CLASSES = "pointer-events-none text-cove-700";
+const BASE_LINK_CLASSES =
+	"text-black-900 hover:text-black-600 transition-[color] duration-200";
 ---
 
 <nav class="lg:w-[350px] lg:order-[initial] lg:min-w-10">

@@ -1,14 +1,19 @@
 ---
-import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales } from '@/types';
-import { Briefcase, MapPin } from '@lucide/astro';
+import { Briefcase, MapPin } from "@lucide/astro";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { CareerDataType, Locales } from "@/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
+interface Props {
+	frontmatter: CareerDataType;
+	url: string;
+}
+
 const {
-	frontmatter: { title, location, description },
+	frontmatter: { title, country, city, description },
 	url,
 } = Astro.props;
 ---
@@ -22,7 +27,7 @@ const {
 			<div class="flex items-center gap-1 text-small text-default-500">
 				<MapPin size={16} />
 
-				<span class="text-sm">{location}</span>
+				<span class="text-sm">{country}, {city}</span>
 			</div>
 		</div>
 	</header>

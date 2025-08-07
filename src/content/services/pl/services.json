@@ -385,5 +385,284 @@
 			}
 		],
 		"type": "massage"
+	},
+	{
+		"id": 18,
+		"name": "Modelowanie",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 90
+			},
+			{
+				"title": "2 długość",
+				"price": 100
+			},
+			{
+				"title": "3 długość",
+				"price": 120
+			},
+			{
+				"title": "4 długość",
+				"price": 140
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 19,
+		"name": "Loki",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 120
+			},
+			{
+				"title": "2 długość",
+				"price": 140
+			},
+			{
+				"title": "3 długość",
+				"price": 160
+			},
+			{
+				"title": "4 długość",
+				"price": 180
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 20,
+		"name": "Upięcia / Fryzury okolicznościowe",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 220
+			},
+			{
+				"title": "2 długość",
+				"price": 260
+			},
+			{
+				"title": "3 długość",
+				"price": 300
+			},
+			{
+				"title": "4 długość",
+				"price": 340
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 21,
+		"name": "Strzyżenie",
+		"list": [
+			{
+				"title": "Strzyżenie damskie",
+				"price": 150
+			},
+			{
+				"title": "Podcięcie grzywki",
+				"price": 60
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 22,
+		"name": "Koloryzacje",
+		"list": [
+			{
+				"title": "Koloryzacja odrostu",
+				"price": 250
+			},
+			{
+				"title": "Koloryzacja odrostu blond",
+				"price": 300
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 23,
+		"name": "Koloryzacja ton w ton",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 260
+			},
+			{
+				"title": "2 długość",
+				"price": 300
+			},
+			{
+				"title": "3 długość",
+				"price": 340
+			},
+			{
+				"title": "4 długość",
+				"price": 400
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 24,
+		"name": "Tonowanie",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 200
+			},
+			{
+				"title": "2 długość",
+				"price": 260
+			},
+			{
+				"title": "3 długość",
+				"price": 300
+			},
+			{
+				"title": "4 długość",
+				"price": 360
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 25,
+		"name": "Total Blond",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 450
+			},
+			{
+				"title": "2 długość",
+				"price": 500
+			},
+			{
+				"title": "3 długość",
+				"price": 650
+			},
+			{
+				"title": "4 długość",
+				"price": 800
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 26,
+		"name": "Airtouch",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 800
+			},
+			{
+				"title": "2 długość",
+				"price": 950
+			},
+			{
+				"title": "3 długość",
+				"price": 1100
+			},
+			{
+				"title": "4 długość",
+				"price": 1250
+			},
+			{
+				"title": "Contouring",
+				"price": 450
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 27,
+		"name": "Balayage",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 450
+			},
+			{
+				"title": "2 długość",
+				"price": 600
+			},
+			{
+				"title": "3 długość",
+				"price": 750
+			},
+			{
+				"title": "4 długość",
+				"price": 800
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 28,
+		"name": "Babylights",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 500
+			},
+			{
+				"title": "2 długość",
+				"price": 650
+			},
+			{
+				"title": "3 długość",
+				"price": 700
+			},
+			{
+				"title": "4 długość",
+				"price": 850
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 29,
+		"name": "Ściąganie koloru",
+		"list": [
+			{
+				"title": "1 długość",
+				"price": 200
+			},
+			{
+				"title": "2 długość",
+				"price": 250
+			},
+			{
+				"title": "3 długość",
+				"price": 300
+			},
+			{
+				"title": "4 długość",
+				"price": 350
+			}
+		],
+		"type": "hair"
+	},
+	{
+		"id": 30,
+		"name": "Zabiegi pielęgnacyjne",
+		"list": [
+			{
+				"title": "Maska",
+				"price": 50
+			},
+			{
+				"title": "Zabieg pielęgnacyjny przy koloryzacji",
+				"price": 120
+			}
+		],
+		"type": "hair"
 	}
 ]

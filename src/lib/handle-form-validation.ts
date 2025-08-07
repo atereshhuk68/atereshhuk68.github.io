@@ -1,4 +1,4 @@
-import type { z } from 'zod';
+import type { z } from "zod";
 
 /**
  * Removes all non-digit characters from a phone number string.
@@ -6,7 +6,7 @@ import type { z } from 'zod';
  * @returns The sanitized phone number containing only digits
  */
 export const sanitizePhoneNumber = (phoneNumber: string): string => {
-	return phoneNumber.replaceAll(/\D/g, '');
+	return phoneNumber.replaceAll(/\D/g, "");
 };
 
 /**
@@ -15,7 +15,10 @@ export const sanitizePhoneNumber = (phoneNumber: string): string => {
  * @param schema - The Zod schema to validate against
  * @returns Safe parse result containing validation outcome and data/errors
  */
-export const validateFormBySchema = <T extends z.ZodTypeAny>(form: HTMLFormElement, schema: T): z.SafeParseReturnType<z.infer<T>, z.infer<T>> => {
+export const validateFormBySchema = <T extends z.ZodTypeAny>(
+	form: HTMLFormElement,
+	schema: T,
+): z.SafeParseReturnType<z.infer<T>, z.infer<T>> => {
 	const formData = new FormData(form);
 	const formValues = Object.fromEntries(formData);
 

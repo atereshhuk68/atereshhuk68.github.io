@@ -1,23 +1,31 @@
 ---
-import { getCollection } from 'astro:content';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/starwind/select';
-import { useTranslations } from '@/lib/handle-ui-translations';
-import type { Locales, Service } from '@/types';
+import { getCollection } from "astro:content";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/starwind/select";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales, Service } from "@/types";
 
-const { currentLocale = 'pl' } = Astro;
+const { currentLocale = "pl" } = Astro;
 const t = useTranslations(currentLocale as Locales);
 
-const Services = await getCollection('services');
-const ServicesFiltered = Services.find((entry) => entry.id.startsWith(currentLocale));
+const Services = await getCollection("services");
+const ServicesFiltered = Services.find((entry) =>
+	entry.id.startsWith(currentLocale),
+);
 
 const services: Service[] = ServicesFiltered?.data ?? [];
 const serviceTypes = [...new Set(services.map((s) => s.type))];
 ---
 
-<label class="relative flex w-full">
-	<span class="sr-only">Field Name Add Later</span>
+<div class="relative flex w-full">
+	<label class="sr-only">Field Name Add Later</label>
 
-	<Select name="userServiceCategory" class="w-full text-base">
+	<Select id="userServiceCategory" name="userServiceCategory" class="w-full text-base">
 		<SelectTrigger class="w-full">
 			<SelectValue placeholder={t('specialOffer.serviceSelect')} />
 		</SelectTrigger>
@@ -27,4 +35,4 @@ const serviceTypes = [...new Set(services.map((s) => s.type))];
 	</Select>
 
 	<span class="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]" data-error="userServiceCategory"></span>
-</label>
+</>

@@ -11,5 +11,5 @@ export const servicesCollectionsSchema = z.object({
 	id: z.number(),
 	name: z.string(),
 	list: z.array(serviceListItemSchema),
-	type: z.enum(['visage', 'massage', 'nails', 'eyelashes']),
+	type: z.enum(['visage', 'massage', 'nails', 'eyelashes', 'hair']),
 });
