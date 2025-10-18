@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import cx from "classix";
 import Logo from "@/assets/images/vector/logo/bfancy-logo-w220.svg";
 import SquareLogo from "@/assets/images/vector/logo/bfancy-square-w96.svg";
 import { DEFAULT_LANG } from "@/constants/langs";
@@ -24,14 +23,14 @@ const CompProps = isSamePage
   : { href: homePageUrl, "aria-label": "Go to homepage" };
 ---
 
-<Comp class={cx("order-first lg:order-[initial]", className)} {...CompProps}>
+<Comp class:list={["order-first lg:order-[initial]", className]} {...CompProps}>
   <Image
     src={Logo}
     alt="BFancy Logo"
-    class={cx(
+    class:list={[
       mainLogoAspectRatioClass,
-      "w-[180px] xl:w-[220px] h-auto hidden sm:inline-flex",
-    )}
+      "hidden h-auto w-[180px] sm:inline-flex xl:w-[220px]",
+    ]}
     width={Logo.width}
     height={Logo.height}
   />
