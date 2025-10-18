@@ -8,9 +8,17 @@ const t = useTranslations(currentLocale as Locales);
 ---
 
 <label class="relative w-full">
-	<span class="sr-only">
-		{t('contact.username')}
-	</span>
-	<input placeholder={t('contact.username')} required type="text" name="userName" class="border border-black-500 bg-white placeholder:text-black-300 py-3 px-6 w-full rounded-md" />
-	<span class="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]" data-error="userName"></span>
+  <span class="sr-only">
+    {t("contact.username")}
+  </span>
+  <input
+    placeholder={t("contact.username")}
+    required
+    type="text"
+    name="userName"
+    class="border-black-500 placeholder:text-black-300 w-full rounded-md border bg-white px-6 py-3"
+  />
+  <span
+    class="absolute bottom-0 left-0 -mb-[2lh] h-[2lh] text-xs text-red-500"
+    data-error="userName"></span>
 </label>

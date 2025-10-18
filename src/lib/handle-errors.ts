@@ -3,25 +3,25 @@
  * @param field - The HTML input element to clear errors for
  */
 export const clearInputError = (field: HTMLInputElement) => {
-	const inputName = field.name;
-	const form = field.closest("form");
+  const inputName = field.name;
+  const form = field.closest("form");
 
-	if (!form) return;
+  if (!form) return;
 
-	const errorElement = form.querySelector<HTMLInputElement>(
-		`[data-error="${inputName}"]`,
-	);
-	const inputWithError = form.querySelector<HTMLInputElement>(
-		`[name="${inputName}"]`,
-	);
+  const errorElement = form.querySelector<HTMLInputElement>(
+    `[data-error="${inputName}"]`,
+  );
+  const inputWithError = form.querySelector<HTMLInputElement>(
+    `[name="${inputName}"]`,
+  );
 
-	if (errorElement) {
-		errorElement.textContent = "";
-	}
+  if (errorElement) {
+    errorElement.textContent = "";
+  }
 
-	if (inputWithError) {
-		inputWithError.removeAttribute("aria-invalid");
-	}
+  if (inputWithError) {
+    inputWithError.removeAttribute("aria-invalid");
+  }
 };
 
 /**
@@ -29,18 +29,18 @@ export const clearInputError = (field: HTMLInputElement) => {
  * @param form - The HTML form element to reset errors for
  */
 export const resetFormErrors = (form: HTMLFormElement) => {
-	const errorElements = form.querySelectorAll<HTMLElement>("[data-error]");
-	const inputsWithError = form.querySelectorAll<HTMLInputElement>(
-		"input, textarea, select",
-	);
+  const errorElements = form.querySelectorAll<HTMLElement>("[data-error]");
+  const inputsWithError = form.querySelectorAll<HTMLInputElement>(
+    "input, textarea, select",
+  );
 
-	for (const errorElement of errorElements) {
-		errorElement.textContent = "";
-	}
+  for (const errorElement of errorElements) {
+    errorElement.textContent = "";
+  }
 
-	for (const inputWithError of inputsWithError) {
-		inputWithError.removeAttribute("aria-invalid");
-	}
+  for (const inputWithError of inputsWithError) {
+    inputWithError.removeAttribute("aria-invalid");
+  }
 };
 
 /**
@@ -49,22 +49,22 @@ export const resetFormErrors = (form: HTMLFormElement) => {
  * @param errors - Record mapping field names to arrays of error messages
  */
 export const renderFieldErrors = (
-	form: HTMLFormElement,
-	errors: Record<string, string[] | undefined>,
+  form: HTMLFormElement,
+  errors: Record<string, string[] | undefined>,
 ) => {
-	for (const [fieldName, fieldErrors] of Object.entries(errors)) {
-		if (fieldErrors && fieldErrors.length > 0) {
-			const errorElement = form.querySelector<HTMLElement>(
-				`[data-error="${fieldName}"]`,
-			);
-			const inputWithError = form.querySelector<HTMLInputElement>(
-				`[name="${fieldName}"]`,
-			);
+  for (const [fieldName, fieldErrors] of Object.entries(errors)) {
+    if (fieldErrors && fieldErrors.length > 0) {
+      const errorElement = form.querySelector<HTMLElement>(
+        `[data-error="${fieldName}"]`,
+      );
+      const inputWithError = form.querySelector<HTMLInputElement>(
+        `[name="${fieldName}"]`,
+      );
 
-			if (inputWithError && errorElement) {
-				inputWithError.setAttribute("aria-invalid", "true");
-				errorElement.textContent = fieldErrors[0];
-			}
-		}
-	}
+      if (inputWithError && errorElement) {
+        inputWithError.setAttribute("aria-invalid", "true");
+        errorElement.textContent = fieldErrors[0];
+      }
+    }
+  }
 };

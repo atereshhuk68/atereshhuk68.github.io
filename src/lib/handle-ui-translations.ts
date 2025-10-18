@@ -8,9 +8,9 @@ import type { Locales } from "@/types";
  * @returns Translation function that retrieves localized strings with fallback to default language
  */
 export const useTranslations = (locale: Locales) => {
-	return function t(key: keyof (typeof ui)[typeof DEFAULT_LANG]) {
-		return ui[locale][key] || ui[DEFAULT_LANG][key];
-	};
+  return function t(key: keyof (typeof ui)[typeof DEFAULT_LANG]) {
+    return ui[locale][key] || ui[DEFAULT_LANG][key];
+  };
 };
 
 /**
@@ -25,17 +25,17 @@ export const useTranslations = (locale: Locales) => {
  * - getTranslatedURL('/uk/about', 'en') -> '/about' (if 'en' is default)
  */
 export function getTranslatedURL(basePath: string, locale: Locales) {
-	const localePrefix = locale ? `/${locale}` : "";
-	let pathname = basePath;
+  const localePrefix = locale ? `/${locale}` : "";
+  let pathname = basePath;
 
-	if (locale && basePath.startsWith(`${localePrefix}/`)) {
-		pathname = basePath.substring(localePrefix.length);
-	} else if (locale && basePath === localePrefix) {
-		pathname = "/";
-	}
+  if (locale && basePath.startsWith(`${localePrefix}/`)) {
+    pathname = basePath.substring(localePrefix.length);
+  } else if (locale && basePath === localePrefix) {
+    pathname = "/";
+  }
 
-	pathname = pathname || "/";
-	return pathname;
+  pathname = pathname || "/";
+  return pathname;
 }
 
 /**
@@ -44,9 +44,9 @@ export function getTranslatedURL(basePath: string, locale: Locales) {
  * @returns The ISO locale string
  */
 export const getISOLocale = (locale: Locales) => {
-	if (!ISOLocales.has(locale)) return DEFAULT_LOCALE;
+  if (!ISOLocales.has(locale)) return DEFAULT_LOCALE;
 
-	return ISOLocales.get(locale);
+  return ISOLocales.get(locale);
 };
 
 /**
@@ -55,9 +55,9 @@ export const getISOLocale = (locale: Locales) => {
  * @returns Array of alternative ISO locale codes, defaults to ['pl-PL'] if no alternates found
  */
 export const getISOLocaleAlternates = (locale: Locales) => {
-	const alternates = ISOLocales.values().filter(
-		(ISOLocale) => ISOLocale !== getISOLocale(locale),
-	);
+  const alternates = ISOLocales.values().filter(
+    (ISOLocale) => ISOLocale !== getISOLocale(locale),
+  );
 
-	return alternates ? alternates : [DEFAULT_LOCALE];
+  return alternates ? alternates : [DEFAULT_LOCALE];
 };

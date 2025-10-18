@@ -10,18 +10,19 @@ const t = useTranslations(currentLocale as Locales);
 ---
 
 <dialog
-	id="errorModal"
-	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white px-8 pb-10 pt-8 text-center text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
-	style="transform: scale(0.4); opacity: 0;">
-	<div class="mx-auto grid gap-4">
-		<div class="flex justify-center text-red-500">
-			<X size={32} stroke-width={3} />
-		</div>
+  id="errorModal"
+  class="text-black-800 shadow-card backdrop:bg-black-900/60 m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white px-8 pt-8 pb-10 text-center outline-none"
+  style="transform: scale(0.4); opacity: 0;"
+>
+  <div class="mx-auto grid gap-4">
+    <div class="flex justify-center text-red-500">
+      <X size={32} stroke-width={3} />
+    </div>
 
-		<div class="text-xl font-medium">
-			{t('dialog.message.error')}
-		</div>
-	</div>
+    <div class="text-xl font-medium">
+      {t("dialog.message.error")}
+    </div>
+  </div>
 
-	<Button variant="primary" size="sm" data-close-dialog>Ok</Button>
+  <Button variant="primary" size="sm" data-close-dialog>Ok</Button>
 </dialog>

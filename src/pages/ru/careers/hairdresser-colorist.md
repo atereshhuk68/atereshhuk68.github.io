@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/TextContentLayout.astro'
+layout: "@/layouts/TextContentLayout.astro"
 title: Парикмахер / Колорист
 description: Сейчас в поиске парикмахера / колориста, который чувствует стиль, работает с любовью к своему делу и хочет развиваться в нашей команде BFancy.
 city: Варшава

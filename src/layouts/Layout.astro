@@ -21,33 +21,40 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
 ---
 
 <!doctype html>
-<html lang={ISOLocale} class="scroll-smooth min-h-full">
-	<Head {title} {description} {currentLocale} />
+<html lang={ISOLocale} class="min-h-full scroll-smooth">
+  <Head {title} {description} {currentLocale} />
 
-	<body class="font-sans bg-shell-50 min-w-[360px] overflow-x-hidden grid grid-rows-[auto_1fr_auto] min-h-[100dvh] text-black-900" data-current-locale={currentLocale}>
-		<Header />
+  <body
+    class="bg-shell-50 text-black-900 grid min-h-[100dvh] min-w-[360px] grid-rows-[auto_1fr_auto] overflow-x-hidden font-sans"
+    data-current-locale={currentLocale}
+  >
+    <Header />
 
-		<main class="pb-20">
-			<slot />
-		</main>
+    <main class="pb-20">
+      <slot />
+    </main>
 
-		<Footer />
+    <Footer />
 
-		<SpecialOffer />
+    <SpecialOffer />
 
-		<SuccessDialog />
+    <SuccessDialog />
 
-		<ErrorDialog />
+    <ErrorDialog />
 
-		<CookiePopup />
-	</body>
+    <CookiePopup />
+  </body>
 </html>
 
 <script>
-	(async () => {
-		const [{ backgroundImageLazyLoader }, { scrollToViaUrl }] = await Promise.all([import('@/scripts/lazy-bg-loader'), import('@/scripts/scroll-to-via-url')]);
+  (async () => {
+    const [{ backgroundImageLazyLoader }, { scrollToViaUrl }] =
+      await Promise.all([
+        import("@/scripts/lazy-bg-loader"),
+        import("@/scripts/scroll-to-via-url"),
+      ]);
 
-		backgroundImageLazyLoader.init();
-		scrollToViaUrl.init();
-	})();
+    backgroundImageLazyLoader.init();
+    scrollToViaUrl.init();
+  })();
 </script>

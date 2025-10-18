@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/TextContentLayout.astro'
+layout: "@/layouts/TextContentLayout.astro"
 title: Hairdresser / Colorist
 description: We’re currently looking for a hairdresser/colorist who has a great sense of style, works with passion, and wants to grow as part of the BFancy team.
 city: Warsaw

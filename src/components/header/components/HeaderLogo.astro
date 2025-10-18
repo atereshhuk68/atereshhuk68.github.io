@@ -6,8 +6,8 @@ import SquareLogo from "@/assets/images/vector/logo/bfancy-square-w96.svg";
 import { DEFAULT_LANG } from "@/constants/langs";
 
 const {
-	url: { pathname },
-	currentLocale = "pl",
+  url: { pathname },
+  currentLocale = "pl",
 } = Astro;
 
 const { class: className } = Astro.props;
@@ -20,12 +20,27 @@ const isSamePage = pathname === homePageUrl;
 
 const Comp = isSamePage ? "div" : "a";
 const CompProps = isSamePage
-	? {}
-	: { href: homePageUrl, "aria-label": "Go to homepage" };
+  ? {}
+  : { href: homePageUrl, "aria-label": "Go to homepage" };
 ---
 
-<Comp class={cx('order-first lg:order-[initial]', className)} {...CompProps}>
-	<Image src={Logo} alt="BFancy Logo" class={cx(mainLogoAspectRatioClass, 'w-[180px] xl:w-[220px] h-auto hidden sm:inline-flex')} width={Logo.width} height={Logo.height} />
+<Comp class={cx("order-first lg:order-[initial]", className)} {...CompProps}>
+  <Image
+    src={Logo}
+    alt="BFancy Logo"
+    class={cx(
+      mainLogoAspectRatioClass,
+      "w-[180px] xl:w-[220px] h-auto hidden sm:inline-flex",
+    )}
+    width={Logo.width}
+    height={Logo.height}
+  />
 
-	<Image src={SquareLogo} alt="BFancy Logo" class="aspect-square w-24 sm:hidden" width={SquareLogo.width} height={SquareLogo.height} />
+  <Image
+    src={SquareLogo}
+    alt="BFancy Logo"
+    class="aspect-square w-24 sm:hidden"
+    width={SquareLogo.width}
+    height={SquareLogo.height}
+  />
 </Comp>

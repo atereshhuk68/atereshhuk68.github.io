@@ -1,7 +1,7 @@
 ---
-layout: '@/layouts/TextContentLayout.astro'
-title: 'Privacy Policy'
-description: 'BFancy Salon Privacy Policy. Learn how we protect your personal data, what information we collect and how you can manage your data.'
+layout: "@/layouts/TextContentLayout.astro"
+title: "Privacy Policy"
+description: "BFancy Salon Privacy Policy. Learn how we protect your personal data, what information we collect and how you can manage your data."
 ---
 
 # Privacy Policy

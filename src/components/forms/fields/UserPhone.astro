@@ -8,28 +8,32 @@ const t = useTranslations(currentLocale as Locales);
 ---
 
 <label class="relative w-full">
-	<span class="sr-only">{t('contact.userphone')}</span>
-	<input
-		placeholder={t('contact.userphone')}
-		required
-		type="text"
-		inputmode="numeric"
-		name="userPhone"
-		class="border border-black-500 bg-white placeholder:text-black-300 py-3 px-6 w-full rounded-md"
-	/>
-	<span class="text-red-500 text-xs absolute bottom-0 left-0 h-[2lh] -mb-[2lh]" data-error="userPhone"></span>
+  <span class="sr-only">{t("contact.userphone")}</span>
+  <input
+    placeholder={t("contact.userphone")}
+    required
+    type="text"
+    inputmode="numeric"
+    name="userPhone"
+    class="border-black-500 placeholder:text-black-300 w-full rounded-md border bg-white px-6 py-3"
+  />
+  <span
+    class="absolute bottom-0 left-0 -mb-[2lh] h-[2lh] text-xs text-red-500"
+    data-error="userPhone"></span>
 </label>
 
 <script>
-	import { MaskInput } from 'maska';
+  import { MaskInput } from "maska";
 
-	const phoneFields = document.querySelectorAll<HTMLInputElement>('input[name="userPhone"]');
+  const phoneFields = document.querySelectorAll<HTMLInputElement>(
+    'input[name="userPhone"]',
+  );
 
-	if (phoneFields.length > 0) {
-		for (const phoneField of phoneFields) {
-			new MaskInput(phoneField, {
-				mask: '+#################',
-			});
-		}
-	}
+  if (phoneFields.length > 0) {
+    for (const phoneField of phoneFields) {
+      new MaskInput(phoneField, {
+        mask: "+#################",
+      });
+    }
+  }
 </script>

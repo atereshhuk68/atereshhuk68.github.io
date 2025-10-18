@@ -6,32 +6,31 @@ import { useTranslations } from "@/lib/handle-ui-translations";
 import type { Locales, Service } from "@/types";
 
 const { currentLocale = "pl" } = Astro;
-
 const t = useTranslations(currentLocale as Locales);
 
-const Services = await getCollection("services");
-const ServicesFiltered = Services.find((entry) =>
-	entry.id.startsWith(currentLocale),
+const services = await getCollection("services");
+const servicesByLocale = services.find((entry) =>
+  entry.id.startsWith(currentLocale),
 );
 
-const services: Service[] = ServicesFiltered?.data ?? [];
-const serviceTypes = [...new Set(services.map((s) => s.type))];
+const servicesData: Service[] = servicesByLocale?.data ?? [];
+const serviceTypes = [...new Set(servicesData.map((s) => s.type))];
 ---
 
-<section id="services" class="py-12 min-h-[800px]">
-	<div class="container">
-		<div class="flex flex-wrap gap-6 xl:gap-8 xl:justify-between">
-			<div class="text-lg space-y-3 xl:max-w-[560px] 2xl:max-w-3xl">
-				<h2 class="text-4xl lg:text-5xl font-heading text-balance">
-					{t('services.h2')}
-				</h2>
+<section id="services" class="min-h-[800px] py-12">
+  <div class="container">
+    <div class="flex flex-wrap gap-6 xl:justify-between xl:gap-8">
+      <div class="space-y-3 text-lg xl:max-w-[560px] 2xl:max-w-3xl">
+        <h2 class="font-heading text-4xl text-balance lg:text-5xl">
+          {t("services.h2")}
+        </h2>
 
-				<p class="min-w-0">{t('services.p')}</p>
-			</div>
+        <p class="min-w-0">{t("services.p")}</p>
+      </div>
 
-			<TabControl {serviceTypes} />
-		</div>
+      <TabControl serviceTypes={serviceTypes} />
+    </div>
 
-		<Catalog {services} client:visible />
-	</div>
+    <Catalog services={servicesData} client:visible />
+  </div>
 </section>

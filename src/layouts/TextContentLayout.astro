@@ -1,24 +1,26 @@
 ---
-import { CompanyDefaultData } from '@/constants';
+import { CompanyDefaultData } from "@/constants";
 import Layout from "./Layout.astro";
-import type { CareerPostSchema } from '@/types/career';
-import SchemaJobPosting from '@/components/schema/SchemaJobPosting.astro';
+import type { CareerPostSchema } from "@/types/career";
+import SchemaJobPosting from "@/components/schema/SchemaJobPosting.astro";
 
 const { frontmatter } = Astro.props;
 const { title, description } = frontmatter;
 
 const careers: CareerPostSchema = {
-	...frontmatter,
-	...CompanyDefaultData,
+  ...frontmatter,
+  ...CompanyDefaultData,
 };
 ---
 
 <Layout {title} {description}>
-	<div class="container py-12">
-		<article class="prose lg:prose-lg prose-headings:font-heading mx-auto max-w-[860px]">
-			<slot />
-		</article>
-	</div>
+  <div class="container py-12">
+    <article
+      class="prose lg:prose-lg prose-headings:font-heading mx-auto max-w-[860px]"
+    >
+      <slot />
+    </article>
+  </div>
 
-	<SchemaJobPosting {...careers} />
+  <SchemaJobPosting {...careers} />
 </Layout>

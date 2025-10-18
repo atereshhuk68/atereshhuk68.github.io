@@ -9,71 +9,78 @@ const t = useTranslations(currentLocale as Locales);
 const { class: className = "" } = Astro.props;
 ---
 
-<div id="aboutUs" class={`bg-cove-600/20 rounded-3xl px-4 py-6 md:p-8 space-y-4 ${className}`} style="grid-area: aboutus">
-	<h2 class="text-4xl lg:text-5xl font-heading text-balance">
-		{t('about.h2')}
-	</h2>
+<div
+  id="aboutUs"
+  class={`bg-cove-600/20 rounded-3xl px-4 py-6 md:p-8 space-y-4 ${className}`}
+  style="grid-area: aboutus"
+>
+  <h2 class="font-heading text-4xl text-balance lg:text-5xl">
+    {t("about.h2")}
+  </h2>
 
-	<p class="text-base md:text-lg">
-		{t('about.p1')}
-	</p>
+  <p class="text-base md:text-lg">
+    {t("about.p1")}
+  </p>
 
-	<p class="text-base md:text-lg">
-		{t('about.p2')}
-	</p>
+  <p class="text-base md:text-lg">
+    {t("about.p2")}
+  </p>
 
-	<p class="text-base md:text-lg">
-		<a
-			class="text-black-900 underline hover:no-underline font-semibold cursor-pointer inline-flex gap-1 items-center"
-			href="https://www.instagram.com/bfancy.warsaw"
-			rel="noopener"
-			target="_blank">
-			<span>
-				{t('about.instagram')}
-			</span>
+  <p class="text-base md:text-lg">
+    <a
+      class="text-black-900 inline-flex cursor-pointer items-center gap-1 font-semibold underline hover:no-underline"
+      href="https://www.instagram.com/bfancy.warsaw"
+      rel="noopener"
+      target="_blank"
+    >
+      <span>
+        {t("about.instagram")}
+      </span>
 
-			<ExternalLink size={20} stroke-width={2} />
-		</a>
-	</p>
+      <ExternalLink size={20} stroke-width={2} />
+    </a>
+  </p>
 
-	<hr />
+  <hr />
 
-	<p class="text-base md:text-lg">{t('about.other')}</p>
+  <p class="text-base md:text-lg">{t("about.other")}</p>
 
-	<ul class="custom-list space-y-4">
-		<li>
-			<a
-				href="https://www.facebook.com/share/18dnZPTrj1/?mibextid=wwXIfr"
-				class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
-				target="_blank"
-				rel="noopener">
-				Facebook
-			</a>
-		</li>
-		<li>
-			<a
-				href="https://t.me/bfancy_warsaw"
-				class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
-				target="_blank"
-				rel="noopener">
-				Telegram
-			</a>
-		</li>
-		<li>
-			<a
-				href="https://api.whatsapp.com/send/?phone=48690647476&type=phone_number&app_absent=0"
-				class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
-				target="_blank"
-				rel="noopener">Whatsapp</a
-			>
-		</li>
-		<li>
-			<a
-				href="viber://chat?number=48690647476"
-				class="text-black-900 underline hover:no-underline font-bold cursor-pointer transition-[color] duration-200"
-				target="_blank"
-				rel="noopener">Viber</a
-			>
-		</li>
-	</ul>
+  <ul class="custom-list space-y-4">
+    <li>
+      <a
+        href="https://www.facebook.com/share/18dnZPTrj1/?mibextid=wwXIfr"
+        class="text-black-900 cursor-pointer font-bold underline transition-[color] duration-200 hover:no-underline"
+        target="_blank"
+        rel="noopener"
+      >
+        Facebook
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://t.me/bfancy_warsaw"
+        class="text-black-900 cursor-pointer font-bold underline transition-[color] duration-200 hover:no-underline"
+        target="_blank"
+        rel="noopener"
+      >
+        Telegram
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://api.whatsapp.com/send/?phone=48690647476&type=phone_number&app_absent=0"
+        class="text-black-900 cursor-pointer font-bold underline transition-[color] duration-200 hover:no-underline"
+        target="_blank"
+        rel="noopener">Whatsapp</a
+      >
+    </li>
+    <li>
+      <a
+        href="viber://chat?number=48690647476"
+        class="text-black-900 cursor-pointer font-bold underline transition-[color] duration-200 hover:no-underline"
+        target="_blank"
+        rel="noopener">Viber</a
+      >
+    </li>
+  </ul>
 </div>

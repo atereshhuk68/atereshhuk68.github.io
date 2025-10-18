@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/TextContentLayout.astro'
+layout: "@/layouts/TextContentLayout.astro"
 title: Fryzjer / Kolorysta
 description: Obecnie poszukujemy fryzjera / kolorysty, który ma wyczucie stylu, pracuje z pasją i chce się rozwijać w zespole BFancy.
 city: Warszawa

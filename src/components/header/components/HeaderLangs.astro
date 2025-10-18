@@ -3,48 +3,50 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { Languages as LanguagesIcon } from "@lucide/astro";
 import Button from "@/components/starwind/button";
 import {
-	Dropdown,
-	DropdownContent,
-	DropdownItem,
-	DropdownTrigger,
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownTrigger,
 } from "@/components/starwind/dropdown";
 import { Languages } from "@/constants";
 import { getTranslatedURL } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
 
 const {
-	url: { pathname },
-	currentLocale = "pl",
+  url: { pathname },
+  currentLocale = "pl",
 } = Astro;
 
 const basePath = getTranslatedURL(pathname, currentLocale as Locales);
 
 const langs = Array.from(Languages.entries()).map(([locale, name]) => ({
-	locale,
-	name,
-	href: getRelativeLocaleUrl(locale, basePath),
+  locale,
+  name,
+  href: getRelativeLocaleUrl(locale, basePath),
 }));
 
 const langsWithoutCurrent = langs.filter(
-	({ locale }) => locale !== currentLocale,
+  ({ locale }) => locale !== currentLocale,
 );
 ---
 
 <Dropdown>
-	<DropdownTrigger asChild>
-		<Button variant="ghost" size="icon" aria-label="Toggle Lang Menu">
-			<LanguagesIcon size={24} />
-		</Button>
-	</DropdownTrigger>
-	<DropdownContent align="end">
-		{
-			langsWithoutCurrent.map(({ href, name }: { href: string; name: string }) => (
-				<DropdownItem as="li" class="text-sm cursor-pointer font-medium p-0">
-					<a class="flex w-full p-1.5" {href} title={name}>
-						{name}
-					</a>
-				</DropdownItem>
-			))
-		}
-	</DropdownContent>
+  <DropdownTrigger asChild>
+    <Button variant="ghost" size="icon" aria-label="Toggle Lang Menu">
+      <LanguagesIcon size={24} />
+    </Button>
+  </DropdownTrigger>
+  <DropdownContent align="end">
+    {
+      langsWithoutCurrent.map(
+        ({ href, name }: { href: string; name: string }) => (
+          <DropdownItem as="li" class="cursor-pointer p-0 text-sm font-medium">
+            <a class="flex w-full p-1.5" {href} title={name}>
+              {name}
+            </a>
+          </DropdownItem>
+        ),
+      )
+    }
+  </DropdownContent>
 </Dropdown>
