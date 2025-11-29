@@ -2,6 +2,7 @@
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
+import moveIslandsStyle from './src/hooks/move-island-styles-to-head.ts';
 
 import react from "@astrojs/react";
 
@@ -19,7 +20,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), moveIslandsStyle()],
   vite: {
     plugins: [tailwindcss()],
     build: {
