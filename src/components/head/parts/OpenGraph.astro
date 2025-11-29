@@ -1,8 +1,8 @@
 ---
 import { SITE } from "@/constants";
 import {
-	getISOLocale,
-	getISOLocaleAlternates,
+  getISOLocale,
+  getISOLocaleAlternates,
 } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
 
@@ -23,7 +23,11 @@ const ISOLocaleAlternates = getISOLocaleAlternates(currentLocale as Locales);
 
 <meta property="og:locale" content={ISOLocale} />
 
-{ISOLocaleAlternates.map((ISOLocale) => <meta property="og:locale:alternate" content={ISOLocale} />)}
+{
+  ISOLocaleAlternates.map((ISOLocale) => (
+    <meta property="og:locale:alternate" content={ISOLocale} />
+  ))
+}
 
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />

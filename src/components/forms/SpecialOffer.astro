@@ -13,197 +13,241 @@ const t = useTranslations(currentLocale as Locales);
 ---
 
 <button
-	class="fixed bottom-4 left-4 z-50 bg-golden-200 size-12 rounded-full shadow-lg hover:bg-golden-300 cursor-pointer hover:scale-110 transition-transform"
-	data-open-special-dialog
-	aria-label="Open Special Offer">
-	<span class="pointer-events-none">🔥</span>
+  class="bg-golden-200 hover:bg-golden-300 fixed bottom-4 left-4 z-50 size-12 cursor-pointer rounded-full shadow-lg transition-transform hover:scale-110"
+  data-open-special-dialog
+  aria-label="Open Special Offer"
+>
+  <span class="pointer-events-none">🔥</span>
 </button>
 
 <dialog
-	id="specialOfferDialog"
-	class="m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white text-black-800 shadow-card outline-none backdrop:bg-black-900/60"
-	style="transform: scale(0.4); opacity: 0;">
-	<div class="prose md:prose-lg mb-0 p-4 md:px-8 md:pb-10 md:pt-8">
-		<div class="font-heading text-2xl md:text-3xl text-center">
-			{t('specialOffer.heading')}
-		</div>
+  id="specialOfferDialog"
+  class="text-black-800 shadow-card backdrop:bg-black-900/60 m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white outline-none"
+  style="transform: scale(0.4); opacity: 0;"
+>
+  <div class="prose md:prose-lg mb-0 p-4 md:px-8 md:pt-8 md:pb-10">
+    <div class="font-heading text-center text-2xl md:text-3xl">
+      {t("specialOffer.heading")}
+    </div>
 
-		<p class="text-center grid place-items-center">
-			<span class="block">{t('specialOffer.p1')}</span>
-			<span class="bg-cove-600 px-4 rounded-sm font-bold block text-white">{t('specialOffer.p2')}</span>
-		</p>
+    <p class="grid place-items-center text-center">
+      <span class="block">{t("specialOffer.p1")}</span>
+      <span class="bg-cove-600 block rounded-sm px-4 font-bold text-white"
+        >{t("specialOffer.p2")}</span
+      >
+    </p>
 
-		<p class="text-base text-center">{t('specialOffer.cta')}</p>
+    <p class="text-center text-base">{t("specialOffer.cta")}</p>
 
-		<form class="grid min-[450px]:place-items-center space-y-6 max-w-[512px] mx-auto" method="post" data-special-offer-form>
-			<input type="hidden" name="formTitle" value="offer" />
+    <form
+      class="mx-auto grid max-w-lg space-y-6 min-[450px]:place-items-center"
+      method="post"
+      data-special-offer-form
+    >
+      <input type="hidden" name="formTitle" value="offer" />
 
-			<UserName />
+      <UserName />
 
-			<UserPhone />
+      <UserPhone />
 
-			<UserServiceCategory />
+      <UserServiceCategory />
 
-			<div class="grid gap-4 mb-0">
-				<Button size="lg" variant="secondary" class="disabled:opacity-50 min-w-[200px]" type="submit">
-					{t('specialOffer.submitText')}
-				</Button>
+      <div class="mb-0 grid gap-4">
+        <Button
+          size="lg"
+          variant="secondary"
+          class="min-w-[200px] disabled:opacity-50"
+          type="submit"
+        >
+          {t("specialOffer.submitText")}
+        </Button>
 
-				<Button size="sm" variant="ghost" class="min-w-[200px]" type="button" data-close-special-offer>
-					{t('specialOffer.later')}
-				</Button>
-			</div>
-		</form>
+        <Button
+          size="sm"
+          variant="ghost"
+          class="min-w-[200px]"
+          type="button"
+          data-close-special-offer
+        >
+          {t("specialOffer.later")}
+        </Button>
+      </div>
+    </form>
+  </div>
 
-		<small class="block text-center text-black-700 text-sm mt-10">{t('specialOffer.note')}</small>
-	</div>
-
-	<Button
-		size="md"
-		variant="ghost"
-		aria-label="Close special offer modal"
-		class="cursor-pointer absolute top-1 right-1 text-black-900 hover:text-black-500 focus:outline-none transition-colors px-2"
-		data-close-special-offer>
-		<X />
-	</Button>
+  <Button
+    size="md"
+    variant="ghost"
+    aria-label="Close special offer modal"
+    class="text-black-900 hover:text-black-500 absolute top-1 right-1 cursor-pointer px-2 transition-colors focus:outline-none"
+    data-close-special-offer
+  >
+    <X />
+  </Button>
 </dialog>
 
 <script>
-	import { getCookie, setCookie } from 'typescript-cookie';
-	import { resetFormErrors, clearInputError, renderFieldErrors } from '@/lib/handle-errors';
-	import { setSubmitButtonDisabled, setSubmitButtonEnabled } from '@/lib/handle-submit-button';
-	import { validateFormBySchema } from '@/lib/handle-form-validation';
-	import { SPECIAL_OFFER_COOKIE_NAME } from '../../constants';
-	import { toggleDialog } from '@/lib/handle-dialogs';
-	import { postFormPayload } from '@/lib/handle-form-submit';
-	import { getOfferFormSchema } from '@/schemas/forms';
-	import type { Locales } from '@/types';
+  import { getCookie, setCookie } from "typescript-cookie";
+  import {
+    resetFormErrors,
+    clearInputError,
+    renderFieldErrors,
+  } from "@/lib/handle-errors";
+  import {
+    setSubmitButtonDisabled,
+    setSubmitButtonEnabled,
+  } from "@/lib/handle-submit-button";
+  import { validateFormBySchema } from "@/lib/handle-form-validation";
+  import { SPECIAL_OFFER_COOKIE_NAME } from "../../constants";
+  import { toggleDialog } from "@/lib/handle-dialogs";
+  import { postFormPayload } from "@/lib/handle-form-submit";
+  import { getOfferFormSchema } from "@/schemas/forms";
+  import type { Locales } from "@/types";
 
-	const currentLocale = (document.body.dataset.currentLocale || 'pl') as Locales;
-	const offerFormSchema = getOfferFormSchema(currentLocale);
+  const currentLocale = (document.body.dataset.currentLocale ||
+    "pl") as Locales;
+  const offerFormSchema = getOfferFormSchema(currentLocale);
 
-	const specialOfferDialogModule = (() => {
-		const specialOfferTrigger = document.querySelector<HTMLButtonElement>('[data-open-special-dialog]');
-		const specialOfferDialog = document.querySelector<HTMLDialogElement>('#specialOfferDialog')!;
-		const specialOfferForm = document.querySelector<HTMLFormElement>('form[data-special-offer-form]');
-		const specialOfferFormFields = specialOfferForm?.querySelectorAll<HTMLInputElement>('input, textarea, select');
-		const closeSpecialOfferDialogButtons = document.querySelectorAll<HTMLButtonElement>('[data-close-special-offer]');
-		const errorDialog = document.querySelector<HTMLDialogElement>('#errorModal');
-		const successDialog = document.querySelector<HTMLDialogElement>('#successModal');
+  const specialOfferDialogModule = (() => {
+    const specialOfferTrigger = document.querySelector<HTMLButtonElement>(
+      "[data-open-special-dialog]",
+    );
+    const specialOfferDialog = document.querySelector<HTMLDialogElement>(
+      "#specialOfferDialog",
+    )!;
+    const specialOfferForm = document.querySelector<HTMLFormElement>(
+      "form[data-special-offer-form]",
+    );
+    const specialOfferFormFields =
+      specialOfferForm?.querySelectorAll<HTMLInputElement>(
+        "input, textarea, select",
+      );
+    const closeSpecialOfferDialogButtons =
+      document.querySelectorAll<HTMLButtonElement>(
+        "[data-close-special-offer]",
+      );
+    const errorDialog =
+      document.querySelector<HTMLDialogElement>("#errorModal");
+    const successDialog =
+      document.querySelector<HTMLDialogElement>("#successModal");
 
-		const isUserSawOffer = getCookie(SPECIAL_OFFER_COOKIE_NAME);
+    const isUserSawOffer = getCookie(SPECIAL_OFFER_COOKIE_NAME);
 
-		const handleSubmit = async (event: SubmitEvent) => {
-			event.preventDefault();
+    const handleSubmit = async (event: SubmitEvent) => {
+      event.preventDefault();
 
-			const submittedForm = event.currentTarget as HTMLFormElement;
-			const submitButton = event.submitter as HTMLButtonElement;
+      const submittedForm = event.currentTarget as HTMLFormElement;
+      const submitButton = event.submitter as HTMLButtonElement;
 
-			resetFormErrors(submittedForm);
+      resetFormErrors(submittedForm);
 
-			const { success: validationSuccess, data, error: validationErrors } = validateFormBySchema(submittedForm, offerFormSchema);
+      const {
+        success: validationSuccess,
+        data,
+        error: validationErrors,
+      } = validateFormBySchema(submittedForm, offerFormSchema);
 
-			if (!validationSuccess) {
-				const errors = validationErrors.flatten().fieldErrors;
+      if (!validationSuccess) {
+        const errors = validationErrors.flatten().fieldErrors;
 
-				renderFieldErrors(submittedForm, errors);
+        renderFieldErrors(submittedForm, errors);
 
-				return;
-			}
+        return;
+      }
 
-			setSubmitButtonDisabled(submitButton);
+      setSubmitButtonDisabled(submitButton);
 
-			const { success } = await postFormPayload(data);
+      const { success } = await postFormPayload(data);
 
-			if (success) {
-				if (successDialog) {
-					toggleDialog(specialOfferDialog, false);
-					toggleDialog(successDialog, true);
-					submittedForm.reset();
+      if (success) {
+        if (successDialog) {
+          toggleDialog(specialOfferDialog, false);
+          toggleDialog(successDialog, true);
+          submittedForm.reset();
 
-					setCookie(SPECIAL_OFFER_COOKIE_NAME, 'true', {
-						expires: 365,
-						path: '/',
-						sameSite: 'None',
-						secure: true,
-					});
-				}
-			} else {
-				if (errorDialog) {
-					toggleDialog(errorDialog, true);
-				}
-			}
+          setCookie(SPECIAL_OFFER_COOKIE_NAME, "true", {
+            expires: 365,
+            path: "/",
+            sameSite: "None",
+            secure: true,
+          });
+        }
+      } else {
+        if (errorDialog) {
+          toggleDialog(errorDialog, true);
+        }
+      }
 
-			setSubmitButtonEnabled(submitButton);
-		};
+      setSubmitButtonEnabled(submitButton);
+    };
 
-		const setEventListeners = () => {
-			specialOfferForm?.addEventListener('submit', handleSubmit);
+    const setEventListeners = () => {
+      specialOfferForm?.addEventListener("submit", handleSubmit);
 
-			specialOfferDialog.addEventListener('click', (event: MouseEvent) => {
-				if (event.target === specialOfferDialog) {
-					toggleDialog(specialOfferDialog, false);
-				}
-			});
+      specialOfferDialog.addEventListener("click", (event: MouseEvent) => {
+        if (event.target === specialOfferDialog) {
+          toggleDialog(specialOfferDialog, false);
+        }
+      });
 
-			window.addEventListener('load', () => {
-				if (!isUserSawOffer) {
-					setTimeout(() => {
-						toggleDialog(specialOfferDialog, true);
-					}, 2000);
-				}
-			});
+      window.addEventListener("load", () => {
+        if (!isUserSawOffer) {
+          setTimeout(() => {
+            toggleDialog(specialOfferDialog, true);
+          }, 2000);
+        }
+      });
 
-			document.addEventListener('keydown', (event) => {
-				if (!specialOfferDialog) return;
+      document.addEventListener("keydown", (event) => {
+        if (!specialOfferDialog) return;
 
-				if (event.key === 'Escape' && specialOfferDialog.open) {
-					toggleDialog(specialOfferDialog, false);
-				}
-			});
+        if (event.key === "Escape" && specialOfferDialog.open) {
+          toggleDialog(specialOfferDialog, false);
+        }
+      });
 
-			specialOfferTrigger?.addEventListener('click', () => {
-				toggleDialog(specialOfferDialog, true);
-			});
+      specialOfferTrigger?.addEventListener("click", () => {
+        toggleDialog(specialOfferDialog, true);
+      });
 
-			if (specialOfferFormFields) {
-				for (const formField of specialOfferFormFields) {
-					formField.addEventListener('input', (event) => {
-						const field = event.currentTarget as HTMLInputElement;
+      if (specialOfferFormFields) {
+        for (const formField of specialOfferFormFields) {
+          formField.addEventListener("input", (event) => {
+            const field = event.currentTarget as HTMLInputElement;
 
-						clearInputError(field);
-					});
+            clearInputError(field);
+          });
 
-					formField.addEventListener('starwind-select:change', (event) => {
-						const field = event.currentTarget as HTMLInputElement;
+          formField.addEventListener("starwind-select:change", (event) => {
+            const field = event.currentTarget as HTMLInputElement;
 
-						clearInputError(field);
-					});
-				}
-			}
+            clearInputError(field);
+          });
+        }
+      }
 
-			if (closeSpecialOfferDialogButtons) {
-				for (const closeDialogButton of closeSpecialOfferDialogButtons) {
-					closeDialogButton.addEventListener('click', (event) => {
-						toggleDialog(specialOfferDialog, false);
+      if (closeSpecialOfferDialogButtons) {
+        for (const closeDialogButton of closeSpecialOfferDialogButtons) {
+          closeDialogButton.addEventListener("click", (event) => {
+            toggleDialog(specialOfferDialog, false);
 
-						setCookie(SPECIAL_OFFER_COOKIE_NAME, 'true', {
-							expires: 365,
-							path: '/',
-							sameSite: 'None',
-							secure: true,
-						});
-					});
-				}
-			}
-		};
+            setCookie(SPECIAL_OFFER_COOKIE_NAME, "true", {
+              expires: 365,
+              path: "/",
+              sameSite: "None",
+              secure: true,
+            });
+          });
+        }
+      }
+    };
 
-		return {
-			init: () => {
-				setEventListeners();
-			},
-		};
-	})();
+    return {
+      init: () => {
+        setEventListeners();
+      },
+    };
+  })();
 
-	specialOfferDialogModule.init();
+  specialOfferDialogModule.init();
 </script>

@@ -1,237 +1,112 @@
-@import 'tailwindcss';
-@import './modules/lazy-bg.css';
-@import './modules/services-icon.css';
+@import "tailwindcss";
+@import "./modules/lazy-bg.css";
+@import "./modules/services-icon.css";
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--color-golden-200: #ffce6b;
+  --color-golden-200: #ffce6b;
 
-	--color-black-100: #eceff2;
-	--color-black-200: #d5dbe2;
-	--color-black-300: #b0bbc9;
-	--color-black-500: #667a91;
-	--color-black-600: #516278;
-	--color-black-700: #4a596d;
-	--color-black-900: #333c47;
+  --color-black-100: #eceff2;
+  --color-black-200: #d5dbe2;
+  --color-black-300: #b0bbc9;
+  --color-black-500: #667a91;
+  --color-black-600: #516278;
+  --color-black-700: #4a596d;
+  --color-black-900: #333c47;
 
-	--color-white: #fefefe;
+  --color-white: #fefefe;
 
-	--color-cove-50: #f3f7fb;
-	--color-cove-600: #5b76b5;
-	--color-cove-700: #5065a5;
+  --color-cove-50: #f3f7fb;
+  --color-cove-600: #5b76b5;
+  --color-cove-700: #5065a5;
 
-	--color-shell-50: #faf7f6;
-	--color-shell-300: #debdb4;
+  --color-shell-50: #faf7f6;
+  --color-shell-300: #debdb4;
 
-	--font-sans: var(--font-inter);
-	--font-heading: 'Gropled', serif;
+  --font-sans: var(--font-inter);
+  --font-heading: "Gropled", serif;
 }
 
 @utility container {
-	margin-inline: auto;
-	padding-inline: 20px;
+  margin-inline: auto;
+  padding-inline: 20px;
 
-	@variant sm {
-		padding-inline: 1rem;
-	}
+  @variant sm {
+    padding-inline: 1rem;
+  }
 }
 
 button:has(+ select[aria-invalid]),
 input[aria-invalid],
 textarea[aria-invalid] {
-	@apply border-red-500;
+  @apply border-red-500;
 }
 
 .custom-list {
-	li {
-		@apply relative;
-		@apply flex items-start gap-3;
+  li {
+    @apply relative;
+    @apply flex items-start gap-3;
 
-		&::before {
-			@apply content-[''];
-			@apply w-4 inline-flex;
-			@apply bg-black-900;
-			@apply transition-[background-color] duration-200;
-			@apply h-[1lh];
+    &::before {
+      @apply content-[''];
+      @apply inline-flex w-4;
+      @apply bg-black-900;
+      @apply transition-[background-color] duration-200;
+      @apply h-lh;
+      @apply mask-center mask-no-repeat mask-cover;
 
-			mask-image: url('../assets/images/vector/star-marker-w16.svg');
-			mask-size: contain;
-			mask-position: center;
-			mask-repeat: no-repeat;
-		}
+      mask-image: url("../assets/images/vector/star-marker-w16.svg");
+    }
 
-		&:hover {
-			&::before {
-				animation: rotate 300ms ease-in-out forwards;
-			}
+    &:hover {
+      &::before {
+        animation: rotate 300ms ease-in-out forwards;
+      }
 
-			a {
-				@apply text-cove-600;
-			}
-		}
+      a {
+        @apply text-cove-600;
+      }
+    }
 
-		&:hover::before {
-			@apply bg-cove-600;
-		}
-	}
+    &:hover::before {
+      @apply bg-cove-600;
+    }
+  }
 }
 
 @keyframes rotate {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(90deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
 }
 
 /* First Screen Grid */
 [data-first-screen] {
-	grid-template-areas:
-		'intro'
-		'slider'
-		'aboutus'
-		'aboutusslider'
-		'reviews';
 
-	@variant md {
-		@apply grid-cols-2;
-		grid-template-areas:
-			'intro intro'
-			'slider slider'
-			'aboutus aboutus'
-			'aboutusslider reviews';
-	}
+  grid-template-areas:
+    "intro"
+    "slider"
+    "aboutus"
+    "reviews";
 
-	@variant lg {
-		@apply grid-cols-2;
-		grid-template-areas:
-			'intro intro'
-			'slider slider'
-			'reviews reviews'
-			'aboutusslider aboutus';
-	}
+  @variant lg {
+    @apply grid-cols-[500px_1fr];
+    grid-template-areas:
+      "intro slider"
+      "aboutus reviews"
+  }
 
-	@variant xl {
-		@apply grid-cols-[0.85fr_1fr];
-		grid-template-areas:
-			'intro slider'
-			'aboutusslider aboutus'
-			'aboutusslider reviews';
-	}
+  @variant xl {
+    @apply grid-cols-[0.85fr_1fr_1fr_1.5fr];
+    grid-template-areas:
+      "intro intro slider slider"
+      "aboutus aboutus aboutus reviews"
+  }
 }
 
-button[aria-pressed='true'] {
-	@apply bg-golden-200 text-black-900 pointer-events-none;
-}
-
-/* Hero Slider */
-.embla[data-slider='hero-slider'] {
-	--slide-spacing: 1rem;
-	--slide-height: 14rem;
-	--slide-size: 60%;
-
-	@apply rounded-4xl overflow-hidden;
-
-	@variant md {
-		--slide-spacing: 2rem;
-		--slide-height: 18rem;
-		--slide-size: 40%;
-	}
-
-	@variant lg {
-		--slide-height: 24rem;
-		--slide-size: 50%;
-	}
-
-	@variant xl {
-		--slide-height: 32rem;
-		--slide-size: 70%;
-	}
-
-	.embla__viewport {
-		@apply h-full;
-		overflow: hidden;
-	}
-
-	.embla__container {
-		display: flex;
-		touch-action: pan-y pinch-zoom;
-		margin-left: calc(var(--slide-spacing) * -1);
-		height: var(--slide-height);
-	}
-
-	.embla__slide {
-		transform: translate3d(0, 0, 0);
-		flex: 0 0 var(--slide-size);
-		min-width: 0;
-		padding-left: var(--slide-spacing);
-		height: var(--slide-height);
-	}
-}
-
-/* About Us Slider */
-.embla[data-slider='about-us-slider'] {
-	--slide-spacing: 1rem;
-	--slide-height: 18rem;
-	--slide-size: 65%;
-
-	@apply rounded-4xl overflow-hidden;
-
-	@variant sm {
-		--slide-height: 24rem;
-		--slide-size: 50%;
-	}
-
-	@variant md {
-		--slide-height: 32rem;
-		--slide-size: 100%;
-		--slide-spacing: 2rem;
-	}
-
-	@variant lg {
-		--slide-height: 40rem;
-	}
-
-	@variant xl {
-		--slide-height: 52rem;
-	}
-
-	.embla__viewport {
-		@apply h-full;
-		overflow: hidden;
-	}
-
-	.embla__container {
-		display: flex;
-		touch-action: pan-y pinch-zoom;
-		margin-left: calc(var(--slide-spacing) * -1);
-		height: var(--slide-height);
-
-		@variant md {
-			touch-action: pan-x pinch-zoom;
-			margin-left: 0;
-			margin-top: calc(var(--slide-spacing) * -1);
-			flex-direction: column;
-		}
-	}
-
-	.embla__slide {
-		transform: translate3d(0, 0, 0);
-		flex: 0 0 var(--slide-size);
-		min-width: 0;
-		padding-left: var(--slide-spacing);
-		height: var(--slide-height);
-		overflow: hidden;
-
-		@variant md {
-			@apply rounded-4xl;
-			display: grid;
-			place-items: center;
-			min-height: 0;
-			padding-left: 0;
-			padding-top: var(--slide-spacing);
-			height: 100%;
-		}
-	}
+button[aria-pressed="true"] {
+  @apply bg-golden-200 text-black-900 pointer-events-none;
 }

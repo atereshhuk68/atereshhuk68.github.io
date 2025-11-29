@@ -1,668 +1,668 @@
 [
-	{
-		"id": 1,
-		"name": "Manicure",
-		"list": [
-			{
-				"title": "Manicure klasyczny",
-				"price": 80
-			},
-			{
-				"title": "Manicure męski",
-				"price": 100
-			},
-			{
-				"title": "Japoński manicure",
-				"price": 130
-			},
-			{
-				"title": "Manicure ze zwykłym lakierem",
-				"price": 100
-			},
-			{
-				"title": "Manicure hybrydowy",
-				"price": 140
-			},
-			{
-				"title": "Manicure kompleksowy",
-				"price": 150,
-				"description": "(ściągnięcie hybrydy , manicure, hybryda)"
-			}
-		],
-		"type": "nails"
-	},
-	{
-		"id": 2,
-		"name": "Przedłużanie paznokci",
-		"list": [
-			{
-				"title": "Krótkie",
-				"price": 200
-			},
-			{
-				"title": "Średnie",
-				"price": 220
-			},
-			{
-				"title": "Długie",
-				"price": 250
-			}
-		],
-		"type": "nails"
-	},
-	{
-		"id": 3,
-		"name": "Korekta przedłużanych paznokci",
-		"list": [
-			{
-				"title": "Krótkie",
-				"price": 180
-			},
-			{
-				"title": "Średnie",
-				"price": 200
-			},
-			{
-				"title": "Długie",
-				"price": 220
-			}
-		],
-		"type": "nails"
-	},
-	{
-		"id": 4,
-		"name": "Slay Nails",
-		"list": [
-			{
-				"title": "Standard",
-				"price": 300,
-				"description": "(przedłużanie i dowolna stylizacja)"
-			},
-			{
-				"title": "Extra",
-				"price": 350,
-				"description": "(super długość i dowolna stylizacja)"
-			}
-		],
-		"type": "nails"
-	},
-	{
-		"id": 5,
-		"name": "Usługi dodatkowe",
-		"list": [
-			{
-				"title": "Wzmocnienie paznokci",
-				"price": 40
-			},
-			{
-				"title": "Wzmocnienie końcówek paznokci",
-				"price": 30
-			},
-			{
-				"title": "Zdobienie paznokci",
-				"price": "5-15",
-				"currency": "zł / paznokieć"
-			},
-			{
-				"title": "Ściągnięcie lakieru hybrydowego",
-				"price": 30
-			},
-			{
-				"title": "Naprawa paznokcia",
-				"price": 15
-			}
-		],
-		"type": "nails"
-	},
-	{
-		"id": 6,
-		"name": "Pedicure",
-		"list": [
-			{
-				"title": "Pedicure higieniczny",
-				"price": 110
-			},
-			{
-				"title": "Pedicure męski",
-				"price": 130
-			},
-			{
-				"title": "Pedicure japoński",
-				"price": 150
-			},
-			{
-				"title": "Pedicure z lakierem klasycznym",
-				"price": 130
-			},
-			{
-				"title": "Pedicure z lakierem hybrydowym",
-				"price": 170,
-				"description": "(hybrid)"
-			},
-			{
-				"title": "Pedicure kompleksowy",
-				"price": 190,
-				"description": "(ściągnięcie, pedicure, lakier hybrydowy)"
-			}
-		],
-		"type": "nails"
-	},
-	{
-		"id": 7,
-		"name": "Brwi",
-		"list": [
-			{
-				"title": "Korekta kształtu",
-				"price": 50
-			},
-			{
-				"title": "Nadanie kształtu",
-				"price": 70
-			},
-			{
-				"title": "Koloryzacja",
-				"price": 60
-			},
-			{
-				"title": "Laminacja",
-				"price": 100
-			},
-			{
-				"title": "Pakiet",
-				"price": 200,
-				"description": "(laminacja, koloryzacja, korekta)"
-			}
-		],
-		"type": "visage"
-	},
-	{
-		"id": 8,
-		"name": "Rzęsy",
-		"list": [
-			{
-				"title": "Koloryzacja",
-				"price": 50
-			},
-			{
-				"title": "Laminacja",
-				"price": 70
-			},
-			{
-				"title": "Laminacja brwi i rzęs",
-				"price": 350
-			}
-		],
-		"type": "eyelashes"
-	},
-	{
-		"id": 9,
-		"name": "Przedłużanie rzęs",
-		"list": [
-			{
-				"title": "1:1",
-				"price": 170
-			},
-			{
-				"title": "2:1",
-				"price": 180
-			},
-			{
-				"title": "3:1",
-				"price": 190
-			},
-			{
-				"title": "4:1",
-				"price": 200
-			},
-			{
-				"title": "5:1",
-				"price": 210
-			}
-		],
-		"type": "eyelashes"
-	},
-	{
-		"id": 10,
-		"name": "Korekta przedłużanych rzęs",
-		"list": [
-			{
-				"title": "1:1",
-				"price": 150
-			},
-			{
-				"title": "2:1",
-				"price": 160
-			},
-			{
-				"title": "3:1",
-				"price": 170
-			},
-			{
-				"title": "4:1",
-				"price": 180
-			},
-			{
-				"title": "5:1",
-				"price": 190
-			}
-		],
-		"type": "eyelashes"
-	},
-	{
-		"id": 11,
-		"name": "Dodatkowo",
-		"list": [
-			{
-				"title": "Efekt mokrych rzęs",
-				"price": 30
-			},
-			{
-				"title": "Kolorowe rzęsy",
-				"price": 30
-			},
-			{
-				"title": "Ściągnięcie rzęs",
-				"price": 50
-			}
-		],
-		"type": "eyelashes"
-	},
-	{
-		"id": 12,
-		"name": "Makijaż",
-		"list": [
-			{
-				"title": "Makijaż light",
-				"price": 130
-			},
-			{
-				"title": "Makijaż dzienny",
-				"price": 150
-			},
-			{
-				"title": "Makijaż koktajlowy",
-				"price": 170
-			},
-			{
-				"title": "Makijaż wieczorowy",
-				"price": 200
-			},
-			{
-				"title": "Makijaż okolicznościowy",
-				"price": 300,
-				"description": "(ślub, sesja zdjęciowa itp.)"
-			},
-			{
-				"title": "Makijaż próbny",
-				"price": 150
-			},
-			{
-				"title": "Płatki pod oczy",
-				"price": 25
-			},
-			{
-				"title": "Nawilżająca maseczka",
-				"price": 50
-			}
-		],
-		"type": "visage"
-	},
-	{
-		"id": 13,
-		"name": "Masaż klasyczny",
-		"list": [
-			{
-				"title": "1 godzina",
-				"price": 180
-			},
-			{
-				"title": "1.5 godziny",
-				"price": 250
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 14,
-		"name": "Masaż sportowy",
-		"list": [
-			{
-				"title": "1 godzina",
-				"price": 220
-			},
-			{
-				"title": "1.5 godziny",
-				"price": 290
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 15,
-		"name": "Masaż męski",
-		"list": [
-			{
-				"title": "Klasyczny",
-				"price": 220
-			},
-			{
-				"title": "1,5 godziny",
-				"price": 290
-			},
-			{
-				"title": "Sportowy",
-				"price": 250
-			},
-			{
-				"title": "Sportowy 1,5 godziny",
-				"price": 320
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 16,
-		"name": "Dodatkowo",
-		"list": [
-			{
-				"title": "Masaż głowy",
-				"price": 50
-			},
-			{
-				"title": "Masaż twarzy",
-				"price": 100
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 17,
-		"name": "Masaż",
-		"list": [
-			{
-				"title": "Masaż antycellulitowy",
-				"price": 220
-			}
-		],
-		"type": "massage"
-	},
-	{
-		"id": 18,
-		"name": "Modelowanie",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 90
-			},
-			{
-				"title": "2 długość",
-				"price": 100
-			},
-			{
-				"title": "3 długość",
-				"price": 120
-			},
-			{
-				"title": "4 długość",
-				"price": 140
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 19,
-		"name": "Loki",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 120
-			},
-			{
-				"title": "2 długość",
-				"price": 140
-			},
-			{
-				"title": "3 długość",
-				"price": 160
-			},
-			{
-				"title": "4 długość",
-				"price": 180
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 20,
-		"name": "Upięcia / Fryzury okolicznościowe",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 220
-			},
-			{
-				"title": "2 długość",
-				"price": 260
-			},
-			{
-				"title": "3 długość",
-				"price": 300
-			},
-			{
-				"title": "4 długość",
-				"price": 340
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 21,
-		"name": "Strzyżenie",
-		"list": [
-			{
-				"title": "Strzyżenie damskie",
-				"price": 150
-			},
-			{
-				"title": "Podcięcie grzywki",
-				"price": 60
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 22,
-		"name": "Koloryzacje",
-		"list": [
-			{
-				"title": "Koloryzacja odrostu",
-				"price": 250
-			},
-			{
-				"title": "Koloryzacja odrostu blond",
-				"price": 300
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 23,
-		"name": "Koloryzacja ton w ton",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 260
-			},
-			{
-				"title": "2 długość",
-				"price": 300
-			},
-			{
-				"title": "3 długość",
-				"price": 340
-			},
-			{
-				"title": "4 długość",
-				"price": 400
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 24,
-		"name": "Tonowanie",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 200
-			},
-			{
-				"title": "2 długość",
-				"price": 260
-			},
-			{
-				"title": "3 długość",
-				"price": 300
-			},
-			{
-				"title": "4 długość",
-				"price": 360
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 25,
-		"name": "Total Blond",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 450
-			},
-			{
-				"title": "2 długość",
-				"price": 500
-			},
-			{
-				"title": "3 długość",
-				"price": 650
-			},
-			{
-				"title": "4 długość",
-				"price": 800
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 26,
-		"name": "Airtouch",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 800
-			},
-			{
-				"title": "2 długość",
-				"price": 950
-			},
-			{
-				"title": "3 długość",
-				"price": 1100
-			},
-			{
-				"title": "4 długość",
-				"price": 1250
-			},
-			{
-				"title": "Contouring",
-				"price": 450
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 27,
-		"name": "Balayage",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 450
-			},
-			{
-				"title": "2 długość",
-				"price": 600
-			},
-			{
-				"title": "3 długość",
-				"price": 750
-			},
-			{
-				"title": "4 długość",
-				"price": 800
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 28,
-		"name": "Babylights",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 500
-			},
-			{
-				"title": "2 długość",
-				"price": 650
-			},
-			{
-				"title": "3 długość",
-				"price": 700
-			},
-			{
-				"title": "4 długość",
-				"price": 850
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 29,
-		"name": "Ściąganie koloru",
-		"list": [
-			{
-				"title": "1 długość",
-				"price": 200
-			},
-			{
-				"title": "2 długość",
-				"price": 250
-			},
-			{
-				"title": "3 długość",
-				"price": 300
-			},
-			{
-				"title": "4 długość",
-				"price": 350
-			}
-		],
-		"type": "hair"
-	},
-	{
-		"id": 30,
-		"name": "Zabiegi pielęgnacyjne",
-		"list": [
-			{
-				"title": "Maska",
-				"price": 50
-			},
-			{
-				"title": "Zabieg pielęgnacyjny przy koloryzacji",
-				"price": 120
-			}
-		],
-		"type": "hair"
-	}
+  {
+    "id": 1,
+    "name": "Manicure",
+    "list": [
+      {
+        "title": "Manicure klasyczny",
+        "price": 80
+      },
+      {
+        "title": "Manicure męski",
+        "price": 100
+      },
+      {
+        "title": "Japoński manicure",
+        "price": 130
+      },
+      {
+        "title": "Manicure ze zwykłym lakierem",
+        "price": 100
+      },
+      {
+        "title": "Manicure hybrydowy",
+        "price": 140
+      },
+      {
+        "title": "Manicure kompleksowy",
+        "price": 150,
+        "description": "(ściągnięcie hybrydy , manicure, hybryda)"
+      }
+    ],
+    "type": "nails"
+  },
+  {
+    "id": 2,
+    "name": "Przedłużanie paznokci",
+    "list": [
+      {
+        "title": "Krótkie",
+        "price": 200
+      },
+      {
+        "title": "Średnie",
+        "price": 220
+      },
+      {
+        "title": "Długie",
+        "price": 250
+      }
+    ],
+    "type": "nails"
+  },
+  {
+    "id": 3,
+    "name": "Korekta przedłużanych paznokci",
+    "list": [
+      {
+        "title": "Krótkie",
+        "price": 180
+      },
+      {
+        "title": "Średnie",
+        "price": 200
+      },
+      {
+        "title": "Długie",
+        "price": 220
+      }
+    ],
+    "type": "nails"
+  },
+  {
+    "id": 4,
+    "name": "Slay Nails",
+    "list": [
+      {
+        "title": "Standard",
+        "price": 300,
+        "description": "(przedłużanie i dowolna stylizacja)"
+      },
+      {
+        "title": "Extra",
+        "price": 350,
+        "description": "(super długość i dowolna stylizacja)"
+      }
+    ],
+    "type": "nails"
+  },
+  {
+    "id": 5,
+    "name": "Usługi dodatkowe",
+    "list": [
+      {
+        "title": "Wzmocnienie paznokci",
+        "price": 40
+      },
+      {
+        "title": "Wzmocnienie końcówek paznokci",
+        "price": 30
+      },
+      {
+        "title": "Zdobienie paznokci",
+        "price": "5-15",
+        "currency": "zł / paznokieć"
+      },
+      {
+        "title": "Ściągnięcie lakieru hybrydowego",
+        "price": 30
+      },
+      {
+        "title": "Naprawa paznokcia",
+        "price": 15
+      }
+    ],
+    "type": "nails"
+  },
+  {
+    "id": 6,
+    "name": "Pedicure",
+    "list": [
+      {
+        "title": "Pedicure higieniczny",
+        "price": 110
+      },
+      {
+        "title": "Pedicure męski",
+        "price": 130
+      },
+      {
+        "title": "Pedicure japoński",
+        "price": 150
+      },
+      {
+        "title": "Pedicure z lakierem klasycznym",
+        "price": 130
+      },
+      {
+        "title": "Pedicure z lakierem hybrydowym",
+        "price": 170,
+        "description": "(hybrid)"
+      },
+      {
+        "title": "Pedicure kompleksowy",
+        "price": 190,
+        "description": "(ściągnięcie, pedicure, lakier hybrydowy)"
+      }
+    ],
+    "type": "nails"
+  },
+  {
+    "id": 7,
+    "name": "Brwi",
+    "list": [
+      {
+        "title": "Korekta kształtu",
+        "price": 50
+      },
+      {
+        "title": "Nadanie kształtu",
+        "price": 70
+      },
+      {
+        "title": "Koloryzacja",
+        "price": 60
+      },
+      {
+        "title": "Laminacja",
+        "price": 100
+      },
+      {
+        "title": "Pakiet",
+        "price": 200,
+        "description": "(laminacja, koloryzacja, korekta)"
+      }
+    ],
+    "type": "visage"
+  },
+  {
+    "id": 8,
+    "name": "Rzęsy",
+    "list": [
+      {
+        "title": "Koloryzacja",
+        "price": 50
+      },
+      {
+        "title": "Laminacja",
+        "price": 150
+      },
+      {
+        "title": "Laminacja brwi i rzęs",
+        "price": 300
+      }
+    ],
+    "type": "eyelashes"
+  },
+  {
+    "id": 9,
+    "name": "Przedłużanie rzęs",
+    "list": [
+      {
+        "title": "1:1",
+        "price": 170
+      },
+      {
+        "title": "2:1",
+        "price": 180
+      },
+      {
+        "title": "3:1",
+        "price": 190
+      },
+      {
+        "title": "4:1",
+        "price": 200
+      },
+      {
+        "title": "5:1",
+        "price": 210
+      }
+    ],
+    "type": "eyelashes"
+  },
+  {
+    "id": 10,
+    "name": "Korekta przedłużanych rzęs",
+    "list": [
+      {
+        "title": "1:1",
+        "price": 150
+      },
+      {
+        "title": "2:1",
+        "price": 160
+      },
+      {
+        "title": "3:1",
+        "price": 170
+      },
+      {
+        "title": "4:1",
+        "price": 180
+      },
+      {
+        "title": "5:1",
+        "price": 190
+      }
+    ],
+    "type": "eyelashes"
+  },
+  {
+    "id": 11,
+    "name": "Dodatkowo",
+    "list": [
+      {
+        "title": "Efekt mokrych rzęs",
+        "price": 30
+      },
+      {
+        "title": "Kolorowe rzęsy",
+        "price": 30
+      },
+      {
+        "title": "Ściągnięcie rzęs",
+        "price": 50
+      }
+    ],
+    "type": "eyelashes"
+  },
+  {
+    "id": 12,
+    "name": "Makijaż",
+    "list": [
+      {
+        "title": "Makijaż light",
+        "price": 150
+      },
+      {
+        "title": "Makijaż dzienny",
+        "price": 170
+      },
+      {
+        "title": "Makijaż koktajlowy",
+        "price": 190
+      },
+      {
+        "title": "Makijaż wieczorowy",
+        "price": 220
+      },
+      {
+        "title": "Makijaż okolicznościowy",
+        "price": 300,
+        "description": "(ślub, sesja zdjęciowa itp.)"
+      },
+      {
+        "title": "Makijaż próbny",
+        "price": 150
+      },
+      {
+        "title": "Płatki pod oczy",
+        "price": 25
+      },
+      {
+        "title": "Nawilżająca maseczka",
+        "price": 50
+      }
+    ],
+    "type": "visage"
+  },
+  {
+    "id": 13,
+    "name": "Masaż klasyczny",
+    "list": [
+      {
+        "title": "1 godzina",
+        "price": 180
+      },
+      {
+        "title": "1.5 godziny",
+        "price": 250
+      }
+    ],
+    "type": "massage"
+  },
+  {
+    "id": 14,
+    "name": "Masaż sportowy",
+    "list": [
+      {
+        "title": "1 godzina",
+        "price": 220
+      },
+      {
+        "title": "1.5 godziny",
+        "price": 290
+      }
+    ],
+    "type": "massage"
+  },
+  {
+    "id": 15,
+    "name": "Masaż męski",
+    "list": [
+      {
+        "title": "Klasyczny",
+        "price": 220
+      },
+      {
+        "title": "1,5 godziny",
+        "price": 290
+      },
+      {
+        "title": "Sportowy",
+        "price": 250
+      },
+      {
+        "title": "Sportowy 1,5 godziny",
+        "price": 320
+      }
+    ],
+    "type": "massage"
+  },
+  {
+    "id": 16,
+    "name": "Dodatkowo",
+    "list": [
+      {
+        "title": "Masaż głowy",
+        "price": 50
+      },
+      {
+        "title": "Masaż twarzy",
+        "price": 100
+      }
+    ],
+    "type": "massage"
+  },
+  {
+    "id": 17,
+    "name": "Masaż",
+    "list": [
+      {
+        "title": "Masaż antycellulitowy",
+        "price": 220
+      }
+    ],
+    "type": "massage"
+  },
+  {
+    "id": 18,
+    "name": "Modelowanie",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 90
+      },
+      {
+        "title": "2 długość",
+        "price": 100
+      },
+      {
+        "title": "3 długość",
+        "price": 120
+      },
+      {
+        "title": "4 długość",
+        "price": 140
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 19,
+    "name": "Loki",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 120
+      },
+      {
+        "title": "2 długość",
+        "price": 140
+      },
+      {
+        "title": "3 długość",
+        "price": 160
+      },
+      {
+        "title": "4 długość",
+        "price": 180
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 20,
+    "name": "Upięcia / Fryzury okolicznościowe",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 220
+      },
+      {
+        "title": "2 długość",
+        "price": 260
+      },
+      {
+        "title": "3 długość",
+        "price": 300
+      },
+      {
+        "title": "4 długość",
+        "price": 340
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 21,
+    "name": "Strzyżenie",
+    "list": [
+      {
+        "title": "Strzyżenie damskie",
+        "price": 150
+      },
+      {
+        "title": "Podcięcie grzywki",
+        "price": 60
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 22,
+    "name": "Koloryzacje",
+    "list": [
+      {
+        "title": "Koloryzacja odrostu",
+        "price": 250
+      },
+      {
+        "title": "Koloryzacja odrostu blond",
+        "price": 300
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 23,
+    "name": "Koloryzacja ton w ton",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 260
+      },
+      {
+        "title": "2 długość",
+        "price": 300
+      },
+      {
+        "title": "3 długość",
+        "price": 340
+      },
+      {
+        "title": "4 długość",
+        "price": 400
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 24,
+    "name": "Tonowanie",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 200
+      },
+      {
+        "title": "2 długość",
+        "price": 260
+      },
+      {
+        "title": "3 długość",
+        "price": 300
+      },
+      {
+        "title": "4 długość",
+        "price": 360
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 25,
+    "name": "Total Blond",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 450
+      },
+      {
+        "title": "2 długość",
+        "price": 500
+      },
+      {
+        "title": "3 długość",
+        "price": 650
+      },
+      {
+        "title": "4 długość",
+        "price": 800
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 26,
+    "name": "Airtouch",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 800
+      },
+      {
+        "title": "2 długość",
+        "price": 950
+      },
+      {
+        "title": "3 długość",
+        "price": 1100
+      },
+      {
+        "title": "4 długość",
+        "price": 1250
+      },
+      {
+        "title": "Contouring",
+        "price": 450
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 27,
+    "name": "Balayage",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 450
+      },
+      {
+        "title": "2 długość",
+        "price": 600
+      },
+      {
+        "title": "3 długość",
+        "price": 750
+      },
+      {
+        "title": "4 długość",
+        "price": 800
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 28,
+    "name": "Babylights",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 500
+      },
+      {
+        "title": "2 długość",
+        "price": 650
+      },
+      {
+        "title": "3 długość",
+        "price": 700
+      },
+      {
+        "title": "4 długość",
+        "price": 850
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 29,
+    "name": "Ściąganie koloru",
+    "list": [
+      {
+        "title": "1 długość",
+        "price": 200
+      },
+      {
+        "title": "2 długość",
+        "price": 250
+      },
+      {
+        "title": "3 długość",
+        "price": 300
+      },
+      {
+        "title": "4 długość",
+        "price": 350
+      }
+    ],
+    "type": "hair"
+  },
+  {
+    "id": 30,
+    "name": "Zabiegi pielęgnacyjne",
+    "list": [
+      {
+        "title": "Maska",
+        "price": 50
+      },
+      {
+        "title": "Zabieg pielęgnacyjny przy koloryzacji",
+        "price": 120
+      }
+    ],
+    "type": "hair"
+  }
 ]

@@ -2,7 +2,7 @@ import ky from "ky";
 import { isDev } from "@/constants";
 
 type PostSubmissionResponse = {
-	success: boolean;
+  success: boolean;
 };
 
 /**
@@ -11,26 +11,26 @@ type PostSubmissionResponse = {
  * @returns Promise resolving to submission response or error object
  */
 export const postFormPayload = async <T extends Record<string, string>>(
-	payload: T,
+  payload: T,
 ) => {
-	const url = isDev ? "http://localhost:8000/send.php" : "/send.php";
+  const url = isDev ? "http://localhost:8000/send.php" : "/send.php";
 
-	const formData = new FormData();
+  const formData = new FormData();
 
-	for (const [key, value] of Object.entries(payload)) {
-		if (value !== undefined && value !== null) {
-			formData.append(key, value);
-		}
-	}
+  for (const [key, value] of Object.entries(payload)) {
+    if (value !== undefined && value !== null) {
+      formData.append(key, value);
+    }
+  }
 
-	try {
-		const response = await ky
-			.post(url, { body: formData })
-			.json<PostSubmissionResponse>();
+  try {
+    const response = await ky
+      .post(url, { body: formData })
+      .json<PostSubmissionResponse>();
 
-		return response;
-	} catch (error) {
-		console.error("Error:", error);
-		return { success: false };
-	}
+    return response;
+  } catch (error) {
+    console.error("Error:", error);
+    return { success: false };
+  }
 };

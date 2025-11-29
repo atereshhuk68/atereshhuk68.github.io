@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/TextContentLayout.astro'
+layout: "@/layouts/TextContentLayout.astro"
 title: Перукар / Колорист
 description: Зараз шукаємо перукаря / колориста, який відчуває стиль, працює з любов’ю до своєї справи та хоче розвиватися в нашій команді BFancy.
 city: Варшава

@@ -1,78 +1,83 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Menu } from "@lucide/astro";
-import cx from "classix";
 import Button from "@/components/starwind/button";
 import {
-	Dropdown,
-	DropdownContent,
-	DropdownItem,
-	DropdownTrigger,
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownTrigger,
 } from "@/components/starwind/dropdown";
 import { DEFAULT_LANG } from "@/constants";
 import { useTranslations } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
 
 const {
-	url: { pathname },
-	currentLocale = "pl",
+  url: { pathname },
+  currentLocale = "pl",
 } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
 const modifyUrl = (anchor: string) => {
-	if (currentLocale !== DEFAULT_LANG) {
-		return `/${currentLocale}/${anchor}`;
-	}
+  if (currentLocale !== DEFAULT_LANG) {
+    return `/${currentLocale}/${anchor}`;
+  }
 
-	return `/${anchor}`;
+  return `/${anchor}`;
 };
 
 const menuItems = [
-	{ href: modifyUrl("#services"), label: t("header.nav.services") },
-	{ href: modifyUrl("#aboutUs"), label: t("header.nav.aboutUs") },
-	{
-		href: getRelativeLocaleUrl(currentLocale, "careers"),
-		label: t("header.nav.careers"),
-	},
+  { href: modifyUrl("#services"), label: t("header.nav.services") },
+  { href: modifyUrl("#aboutUs"), label: t("header.nav.aboutUs") },
+  {
+    href: getRelativeLocaleUrl(currentLocale, "careers"),
+    label: t("header.nav.careers"),
+  },
 ];
 
 const ACTIVE_LINK_CLASSES = "pointer-events-none text-cove-700";
 const BASE_LINK_CLASSES =
-	"text-black-900 hover:text-black-600 transition-[color] duration-200";
+  "text-black-900 hover:text-black-600 transition-[color] duration-200";
 ---
 
-<nav class="lg:w-[350px] lg:order-[initial] lg:min-w-10">
-	<ul class="hidden lg:flex items-center gap-8 font-medium">
-		{
-			menuItems.map(({ href, label }) => (
-				<li>
-					<a class={cx(BASE_LINK_CLASSES, pathname === href && ACTIVE_LINK_CLASSES)} {href}>
-						{label}
-					</a>
-				</li>
-			))
-		}
-	</ul>
+<nav class="lg:order-[initial] lg:w-[350px] lg:min-w-10">
+  <ul class="hidden items-center gap-8 font-medium lg:flex">
+    {
+      menuItems.map(({ href, label }) => (
+        <li>
+          <a
+            class={[
+              BASE_LINK_CLASSES,
+              pathname === href && ACTIVE_LINK_CLASSES,
+            ]}
+            {href}
+          >
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </nav>
 
 <div class="order-last lg:hidden">
-	<Dropdown>
-		<DropdownTrigger asChild>
-			<Button variant="ghost" size="icon" aria-label="Toggle Lang Menu">
-				<Menu size={32} stroke-width={1.5} />
-			</Button>
-		</DropdownTrigger>
-		<DropdownContent align="end">
-			{
-				menuItems.map(({ href, label }: { href: string; label: string }) => (
-					<DropdownItem as="li" class="text-sm cursor-pointer font-medium p-0">
-						<a class="flex w-full p-1.5" {href} title={label}>
-							{label}
-						</a>
-					</DropdownItem>
-				))
-			}
-		</DropdownContent>
-	</Dropdown>
+  <Dropdown>
+    <DropdownTrigger asChild>
+      <Button variant="ghost" size="icon" aria-label="Toggle Lang Menu">
+        <Menu size={32} stroke-width={1.5} />
+      </Button>
+    </DropdownTrigger>
+    <DropdownContent align="end">
+      {
+        menuItems.map(({ href, label }: { href: string; label: string }) => (
+          <DropdownItem as="li" class="cursor-pointer p-0 text-sm font-medium">
+            <a class="flex w-full p-1.5" {href} title={label}>
+              {label}
+            </a>
+          </DropdownItem>
+        ))
+      }
+    </DropdownContent>
+  </Dropdown>
 </div>

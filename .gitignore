@@ -1,6 +1,5 @@
 # build output
 dist/
-.vscode
 # generated types
 .astro/
 

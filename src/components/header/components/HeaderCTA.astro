@@ -9,11 +9,24 @@ const { currentLocale = "pl" } = Astro;
 const t = useTranslations(currentLocale as Locales);
 ---
 
-<Button variant="outline" size="icon" class="text-cove-700 border-2 border-cove-700 hover:text-cove-600 inline-flex md:hidden" href={BOOKY_LINK} target="_blank" rel="noopener">
-	<span class="sr-only">{t('header.cta.appointment')}</span>
-	<Calendar size={24} />
+<Button
+  variant="outline"
+  size="icon"
+  class="text-cove-700 border-cove-700 hover:text-cove-600 inline-flex border-2 md:hidden"
+  href={BOOKY_LINK}
+  target="_blank"
+  rel="noopener"
+>
+  <span class="sr-only">{t("header.cta.appointment")}</span>
+  <Calendar size={24} />
 </Button>
 
-<Button variant="outline" class="text-cove-700 border-2 border-cove-700 hover:text-cove-600 hidden md:inline-flex" href={BOOKY_LINK} target="_blank" rel="noopener">
-	<span>{t('header.cta.appointment')}</span>
+<Button
+  variant="outline"
+  class="text-cove-700 border-cove-700 hover:text-cove-600 hidden border-2 md:inline-flex"
+  href={BOOKY_LINK}
+  target="_blank"
+  rel="noopener"
+>
+  <span>{t("header.cta.appointment")}</span>
 </Button>

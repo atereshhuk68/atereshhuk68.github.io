@@ -3,9 +3,9 @@
  * @param submitButton - The HTML button element to disable
  */
 export const setSubmitButtonDisabled = (submitButton: HTMLButtonElement) => {
-	if (submitButton) {
-		submitButton.disabled = true;
-	}
+  if (submitButton) {
+    submitButton.disabled = true;
+  }
 };
 
 /**
@@ -13,7 +13,7 @@ export const setSubmitButtonDisabled = (submitButton: HTMLButtonElement) => {
  * @param submitButton - The HTML button element to enable
  */
 export const setSubmitButtonEnabled = (submitButton: HTMLButtonElement) => {
-	if (submitButton) {
-		submitButton.disabled = false;
-	}
+  if (submitButton) {
+    submitButton.disabled = false;
+  }
 };

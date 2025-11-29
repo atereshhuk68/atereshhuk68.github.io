@@ -2,9 +2,9 @@
  * Default animation options for dialog transitions with 300ms duration and ease-in-out easing.
  */
 const dialogAnimationOptions: KeyframeAnimationOptions = {
-	duration: 300,
-	easing: "ease-in-out",
-	fill: "forwards",
+  duration: 300,
+  easing: "ease-in-out",
+  fill: "forwards",
 };
 
 /**
@@ -12,16 +12,16 @@ const dialogAnimationOptions: KeyframeAnimationOptions = {
  * @param dialog - The HTML dialog element to animate and show
  */
 const animateDialogOpening = (dialog: HTMLDialogElement) => {
-	const dialogOpenKeyframes: Keyframe[] = [
-		{ transform: "scale(0.4)", opacity: "0" },
-		{ transform: "scale(1)", opacity: "1" },
-	];
+  const dialogOpenKeyframes: Keyframe[] = [
+    { transform: "scale(0.4)", opacity: "0" },
+    { transform: "scale(1)", opacity: "1" },
+  ];
 
-	dialog.animate(dialogOpenKeyframes, dialogAnimationOptions);
+  dialog.animate(dialogOpenKeyframes, dialogAnimationOptions);
 
-	dialog.showModal();
+  dialog.showModal();
 
-	document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
 };
 
 /**
@@ -29,20 +29,20 @@ const animateDialogOpening = (dialog: HTMLDialogElement) => {
  * @param dialog - The dialog element to animate
  */
 const animateDialogClosing = (dialog: HTMLDialogElement) => {
-	const dialogCloseKeyframes: Keyframe[] = [
-		{ transform: "scale(1)", opacity: "1" },
-		{ transform: "scale(0.4)", opacity: "0" },
-	];
+  const dialogCloseKeyframes: Keyframe[] = [
+    { transform: "scale(1)", opacity: "1" },
+    { transform: "scale(0.4)", opacity: "0" },
+  ];
 
-	const dialogCloseAnimation = dialog.animate(
-		dialogCloseKeyframes,
-		dialogAnimationOptions,
-	);
+  const dialogCloseAnimation = dialog.animate(
+    dialogCloseKeyframes,
+    dialogAnimationOptions,
+  );
 
-	dialogCloseAnimation.onfinish = () => {
-		dialog.close();
-		document.body.style.overflow = "auto";
-	};
+  dialogCloseAnimation.onfinish = () => {
+    dialog.close();
+    document.body.style.overflow = "auto";
+  };
 };
 
 /**
@@ -51,4 +51,4 @@ const animateDialogClosing = (dialog: HTMLDialogElement) => {
  * @param isOpen - Whether the dialog should be opened (true) or closed (false)
  */
 export const toggleDialog = (dialog: HTMLDialogElement, isOpen: boolean) =>
-	isOpen ? animateDialogOpening(dialog) : animateDialogClosing(dialog);
+  isOpen ? animateDialogOpening(dialog) : animateDialogClosing(dialog);

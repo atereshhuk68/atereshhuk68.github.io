@@ -9,26 +9,30 @@ const t = useTranslations(currentLocale as Locales);
 const { class: className = "" } = Astro.props;
 ---
 
-<div class={`bg-shell-300 text-black-900 rounded-2xl py-6 px-5 sm:p-6 lg:p-8 space-y-4 ${className}`} style="grid-area: reviews;">
-	<strong class="text-2xl lg:text-3xl font-heading flex mb-3">
-		{t('hero.strong')}
-	</strong>
+<div
+  class={`bg-shell-300 text-black-900 rounded-2xl py-6 px-5 sm:p-6 lg:p-8 space-y-4 ${className}`}
+  style="grid-area: reviews;"
+>
+  <strong class="font-heading mb-3 flex text-3xl lg:text-4xl">
+    {t("hero.strong")}
+  </strong>
 
-	<p class="text-base lg:text-lg">
-		{t('hero.second.p')}
-	</p>
+  <p class="text-base lg:text-lg">
+    {t("hero.second.p")}
+  </p>
 
-	<hr />
+  <hr />
 
-	<a
-		target="_blank"
-		class="text-black-900 underline hover:no-underline font-semibold cursor-pointer inline-flex gap-1 items-center"
-		href="https://maps.app.goo.gl/MNJ9LVHxZKGLBDd86?g_st=com.google.maps.preview.copy"
-		rel="noopener noreferrer">
-		<span>
-			{t('hero.reviews')}
-		</span>
+  <a
+    target="_blank"
+    class="text-black-900 inline-flex cursor-pointer items-center gap-1 font-semibold underline hover:no-underline"
+    href="https://maps.app.goo.gl/MNJ9LVHxZKGLBDd86?g_st=com.google.maps.preview.copy"
+    rel="noopener noreferrer"
+  >
+    <span>
+      {t("hero.reviews")}
+    </span>
 
-		<ExternalLink size={20} stroke-width={2} />
-	</a>
+    <ExternalLink size={20} stroke-width={2} />
+  </a>
 </div>

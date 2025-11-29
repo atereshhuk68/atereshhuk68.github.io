@@ -11,40 +11,51 @@ const { class: className = "" } = Astro.props;
 ---
 
 <div
-	class={`bg-golden-200 text-black-900 px-4 py-6 md:p-10 rounded-2xl grid content-start justify-items-start gap-6 sm:col-span-2 lg:col-span-1 lg:row-span-2 relative isolate overflow-hidden ${className}`}
-	style="grid-area: intro;">
-	<div class="grid gap-3">
-		<h1 class="text-3xl lg:text-4xl xl:text-5xl font-heading text-balance">
-			{t('hero.h1')}
-		</h1>
+  class={`bg-golden-200 text-black-900 px-4 py-6 md:p-10 rounded-2xl grid content-start justify-items-start gap-6 sm:col-span-2 lg:col-span-1 lg:row-span-2 relative isolate overflow-hidden ${className}`}
+  style="grid-area: intro;"
+>
+  <div class="grid gap-3">
+    <h1 class="font-heading text-3xl text-balance md:text-4xl lg:text-5xl">
+      {t("hero.h1")}
+    </h1>
 
-		<p class="text-lg">
-			{t('hero.p')}
-		</p>
-	</div>
+    <p class="text-lg">
+      {t("hero.p")}
+    </p>
+  </div>
 
-	<Button variant="default" size="lg" href={BOOKY_LINK} target="_blank" rel="noopener">
-		{t('hero.cta')}
-	</Button>
+  <Button
+    variant="default"
+    size="lg"
+    href={BOOKY_LINK}
+    target="_blank"
+    rel="noopener"
+  >
+    {t("hero.cta")}
+  </Button>
 
-	<small class="text-xs font-medium text-black-500">{t('hero.note')}</small>
+  <small class="text-black-500 text-xs font-medium">{t("hero.note")}</small>
 
-	<div
-		id="rotatedStar"
-		class="lazy-mask inline-flex size-[200px] lg:size-[300px] decor-star-w300 absolute bottom-[-70px] right-[-70px] lg:bottom-[-120px] lg:right-[-120px] z-[-1] pointer-events-none">
-	</div>
+  <div
+    id="rotatedStar"
+    class="lazy-mask decor-star-w300 pointer-events-none absolute right-[-70px] bottom-[-70px] z-[-1] inline-flex size-[200px] lg:right-[-120px] lg:bottom-[-120px] lg:size-[300px]"
+  >
+  </div>
 </div>
 
 <script>
-	const rotatedStar = document.getElementById('rotatedStar');
+  const rotatedStar = document.getElementById("rotatedStar");
 
-	const keyframes = [{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }];
+  const keyframes = [
+    { transform: "rotate(0deg)" },
+    { transform: "rotate(360deg)" },
+  ];
 
-	const options = {
-		duration: 20000,
-		iterations: Infinity,
-		easing: 'linear',
-	};
+  const options = {
+    duration: 20000,
+    iterations: Infinity,
+    easing: "linear",
+  };
 
-	rotatedStar?.animate(keyframes, options);
+  rotatedStar?.animate(keyframes, options);
 </script>

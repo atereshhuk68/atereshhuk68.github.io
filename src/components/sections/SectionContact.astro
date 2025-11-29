@@ -9,45 +9,59 @@ const t = useTranslations(currentLocale as Locales);
 ---
 
 <section class="relative isolate overflow-x-clip">
-	<div class="container">
-		<div class="space-y-4 text-center text-base sm:text-lg lg:text-xl mb-12">
-			<h2 class="text-3xl sm:text-4xl text-balance font-heading">
-				{t('contact.heading')}
-			</h2>
+  <div class="container">
+    <div class="mb-12 space-y-4 text-center text-base sm:text-lg lg:text-xl">
+      <h2 class="font-heading text-3xl text-balance sm:text-4xl">
+        {t("contact.heading")}
+      </h2>
 
-			<p class="text-black-600 max-w-3xl mx-auto">
-				{t('contact.p1')}
-			</p>
+      <p class="text-black-600 mx-auto max-w-3xl">
+        {t("contact.p1")}
+      </p>
 
-			<p class="text-black-600 max-w-3xl mx-auto">
-				{t('contact.p2_start')}
-				<a href="https://ig.me/m/bfancy.warsaw" target="_blank" rel="noopener" class="underline font-medium hover:text-cove-600 transition-[color] duration-200">Instagram Direct</a
-				>
-				{t('contact.p2_end')}
-			</p>
-		</div>
+      <p class="text-black-600 mx-auto max-w-3xl">
+        {t("contact.p2_start")}
+        <a
+          href="https://ig.me/m/bfancy.warsaw"
+          target="_blank"
+          rel="noopener"
+          class="hover:text-cove-600 font-medium underline transition-[color] duration-200"
+          >Instagram Direct</a
+        >
+        {t("contact.p2_end")}
+      </p>
+    </div>
 
-		<div class="max-w-5xl mx-auto relative isolate">
-			<ContactForm />
+    <div class="relative isolate mx-auto max-w-5xl">
+      <ContactForm />
 
-			<div id="rotatedText" class="lazy-bg absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 aspect-square w-[400px] h-auto z-[-1]" data-bg-name="rotated-sentence-w550">
-			</div>
-		</div>
-	</div>
+      <div
+        id="rotatedText"
+        class="lazy-bg absolute top-1/2 left-0 z-[-1] aspect-square h-auto w-[400px] -translate-x-1/2 -translate-y-1/2"
+        data-bg-name="rotated-sentence-w550"
+      >
+      </div>
+    </div>
+  </div>
 
-	<span class="lazy-bg absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 aspect-square w-[770px] h-auto z-[-1]" data-bg-name="decor-blur-yellow-star-w770"></span>
+  <span
+    class="lazy-bg absolute top-1/2 right-0 z-[-1] aspect-square h-auto w-[770px] translate-x-1/2 -translate-y-1/2"
+    data-bg-name="decor-blur-yellow-star-w770"></span>
 </section>
 
 <script>
-	const rotatedText = document.getElementById('rotatedText');
+  const rotatedText = document.getElementById("rotatedText");
 
-	const keyframes: Keyframe[] = [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-360deg)' }];
+  const keyframes: Keyframe[] = [
+    { transform: "rotate(0deg)" },
+    { transform: "rotate(-360deg)" },
+  ];
 
-	const options: KeyframeAnimationOptions = {
-		duration: 20000,
-		iterations: Infinity,
-		easing: 'linear',
-	};
+  const options: KeyframeAnimationOptions = {
+    duration: 20000,
+    iterations: Infinity,
+    easing: "linear",
+  };
 
-	rotatedText?.animate(keyframes, options);
+  rotatedText?.animate(keyframes, options);
 </script>
