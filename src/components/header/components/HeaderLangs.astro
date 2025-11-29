@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { Languages as LanguagesIcon } from "@lucide/astro";
+import { Globe } from "@lucide/astro";
 import Button from "@/components/starwind/button";
 import {
   Dropdown,
@@ -33,7 +33,7 @@ const langsWithoutCurrent = langs.filter(
 <Dropdown>
   <DropdownTrigger asChild>
     <Button variant="ghost" size="icon" aria-label="Toggle Lang Menu">
-      <LanguagesIcon size={24} />
+      <Globe size={24} />
     </Button>
   </DropdownTrigger>
   <DropdownContent align="end">
