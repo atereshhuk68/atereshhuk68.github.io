@@ -186,11 +186,11 @@
       },
       {
         "title": "Lash lamination",
-        "price": 70
+        "price": 150
       },
       {
         "title": "Brow & Lash lamination",
-        "price": 350
+        "price": 300
       }
     ],
     "type": "eyelashes"
@@ -274,19 +274,19 @@
     "list": [
       {
         "title": "Light Makeup",
-        "price": 130
-      },
-      {
-        "title": "Daily Makeup",
         "price": 150
       },
       {
-        "title": "Cocktail Makeup",
+        "title": "Daily Makeup",
         "price": 170
       },
       {
+        "title": "Cocktail Makeup",
+        "price": 190
+      },
+      {
         "title": "Evening Makeup",
-        "price": 200
+        "price": 220
       },
       {
         "title": "Occasional Makeup",

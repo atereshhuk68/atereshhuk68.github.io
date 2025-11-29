@@ -185,11 +185,11 @@
       },
       {
         "title": "Laminacja",
-        "price": 70
+        "price": 150
       },
       {
         "title": "Laminacja brwi i rzęs",
-        "price": 350
+        "price": 300
       }
     ],
     "type": "eyelashes"
@@ -273,19 +273,19 @@
     "list": [
       {
         "title": "Makijaż light",
-        "price": 130
-      },
-      {
-        "title": "Makijaż dzienny",
         "price": 150
       },
       {
-        "title": "Makijaż koktajlowy",
+        "title": "Makijaż dzienny",
         "price": 170
       },
       {
+        "title": "Makijaż koktajlowy",
+        "price": 190
+      },
+      {
         "title": "Makijaż wieczorowy",
-        "price": 200
+        "price": 220
       },
       {
         "title": "Makijaż okolicznościowy",
