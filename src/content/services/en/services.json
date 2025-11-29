@@ -4,7 +4,7 @@
     "name": "Manicure",
     "list": [
       {
-        "title": "Manicure",
+        "title": "Classic Manicure",
         "price": 80
       },
       {
@@ -16,13 +16,12 @@
         "price": 130
       },
       {
-        "title": "Manicure with regular polish",
+        "title": "Manicure with Regular Polish",
         "price": 100
       },
       {
-        "title": "Manicure with gel polish",
-        "price": 140,
-        "description": "(hybrid)"
+        "title": "Manicure with Gel Polish",
+        "price": 140
       },
       {
         "title": "Combo Manicure",
@@ -53,7 +52,7 @@
   },
   {
     "id": 3,
-    "name": "Nail extension Correction",
+    "name": "Nail Extension Correction",
     "list": [
       {
         "title": "Short",
@@ -89,27 +88,27 @@
   },
   {
     "id": 5,
-    "name": "Extras",
+    "name": "Additional Services",
     "list": [
       {
-        "title": "Nail strengthening",
+        "title": "Nail Strengthening",
         "price": 40
       },
       {
-        "title": "Tip strengthening",
+        "title": "Nail Tip Strengthening",
         "price": 30
       },
       {
-        "title": "Nail design",
+        "title": "Nail Design",
         "price": "5-15",
         "currency": "zł / nail"
       },
       {
-        "title": "Gel polish removal",
+        "title": "Gel Polish Removal",
         "price": 30
       },
       {
-        "title": "Nail repair",
+        "title": "Nail Repair",
         "price": 15
       }
     ],
@@ -132,13 +131,12 @@
         "price": 150
       },
       {
-        "title": "Pedicure with regular polish",
+        "title": "Pedicure with Regular Polish",
         "price": 130
       },
       {
-        "title": "Pedicure with gel polish",
-        "price": 170,
-        "description": "(hybrid)"
+        "title": "Pedicure with Gel Polish",
+        "price": 170
       },
       {
         "title": "Combo Pedicure",
@@ -150,14 +148,14 @@
   },
   {
     "id": 7,
-    "name": "Brows",
+    "name": "Eyebrows",
     "list": [
       {
-        "title": "Shape correction",
+        "title": "Shape Correction",
         "price": 50
       },
       {
-        "title": "Full shaping",
+        "title": "Shaping",
         "price": 70
       },
       {
@@ -165,13 +163,13 @@
         "price": 60
       },
       {
-        "title": "Brow lamination",
+        "title": "Brow Lamination",
         "price": 100
       },
       {
-        "title": "Brow lamination combo",
+        "title": "Lamination Package",
         "price": 200,
-        "description": "(shaping, tinting)"
+        "description": "(lamination, tinting, shaping)"
       }
     ],
     "type": "visage"
@@ -181,15 +179,15 @@
     "name": "Lashes",
     "list": [
       {
-        "title": "Lash tinting",
+        "title": "Lash Tinting",
         "price": 50
       },
       {
-        "title": "Lash lamination",
+        "title": "Lash Lamination",
         "price": 150
       },
       {
-        "title": "Brow & Lash lamination",
+        "title": "Brow & Lash Lamination",
         "price": 300
       }
     ],
@@ -224,7 +222,7 @@
   },
   {
     "id": 10,
-    "name": "Eyelash extensions correction",
+    "name": "Eyelash Extension Correction",
     "list": [
       {
         "title": "1:1",
@@ -251,18 +249,18 @@
   },
   {
     "id": 11,
-    "name": "Extras",
+    "name": "Add-ons",
     "list": [
       {
-        "title": "Wet effect",
+        "title": "Wet-look Effect",
         "price": 30
       },
       {
-        "title": "Colored lashes",
+        "title": "Colored Lashes",
         "price": 30
       },
       {
-        "title": "Lash removal",
+        "title": "Lash Removal",
         "price": 50
       }
     ],
@@ -289,7 +287,7 @@
         "price": 220
       },
       {
-        "title": "Occasional Makeup",
+        "title": "Special Occasion Makeup",
         "price": 300,
         "description": "(wedding, photo shoot, birthday, etc.)"
       },
@@ -298,11 +296,11 @@
         "price": 150
       },
       {
-        "title": "Eye patches",
+        "title": "Eye Patches",
         "price": 25
       },
       {
-        "title": "Hydrating face mask",
+        "title": "Hydrating Face Mask",
         "price": 50
       }
     ],
@@ -313,11 +311,11 @@
     "name": "Classic Massage",
     "list": [
       {
-        "title": "1 hour",
+        "title": "1 Hour",
         "price": 180
       },
       {
-        "title": "1.5 hours",
+        "title": "1.5 Hours",
         "price": 250
       }
     ],
@@ -328,11 +326,11 @@
     "name": "Sports Massage",
     "list": [
       {
-        "title": "1 hour",
+        "title": "1 Hour",
         "price": 220
       },
       {
-        "title": "1.5 hours",
+        "title": "1.5 Hours",
         "price": 290
       }
     ],
@@ -343,11 +341,11 @@
     "name": "Men’s Massage",
     "list": [
       {
-        "title": "Regular",
+        "title": "Classic",
         "price": 220
       },
       {
-        "title": "1.5 hours",
+        "title": "1.5 Hours",
         "price": 290
       },
       {
@@ -355,7 +353,7 @@
         "price": 250
       },
       {
-        "title": "Sports 1.5 hours",
+        "title": "Sports 1.5 Hours",
         "price": 320
       }
     ],
@@ -363,7 +361,7 @@
   },
   {
     "id": 16,
-    "name": "Additional Massage",
+    "name": "Massage Add-ons",
     "list": [
       {
         "title": "Head Massage",
@@ -392,19 +390,19 @@
     "name": "Blow-dry",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 90
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 100
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 120
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 140
       }
     ],
@@ -415,19 +413,19 @@
     "name": "Curls",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 120
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 140
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 160
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 180
       }
     ],
@@ -435,22 +433,22 @@
   },
   {
     "id": 20,
-    "name": "Hairstyle",
+    "name": "Updos / Occasion Hairstyles",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 220
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 260
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 300
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 340
       }
     ],
@@ -461,11 +459,11 @@
     "name": "Haircuts",
     "list": [
       {
-        "title": "Women’s haircut",
+        "title": "Women’s Haircut",
         "price": 150
       },
       {
-        "title": "bangs trim",
+        "title": "Bangs Trim",
         "price": 60
       }
     ],
@@ -476,11 +474,11 @@
     "name": "Coloring",
     "list": [
       {
-        "title": "Root touch-up",
+        "title": "Root Touch-up",
         "price": 250
       },
       {
-        "title": "Root touch-up (blonde)",
+        "title": "Root Touch-up (Blonde)",
         "price": 300
       }
     ],
@@ -488,22 +486,22 @@
   },
   {
     "id": 23,
-    "name": "All-over color",
+    "name": "Tone-on-tone Coloring",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 260
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 300
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 340
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 400
       }
     ],
@@ -514,19 +512,19 @@
     "name": "Toning",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 200
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 260
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 300
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 360
       }
     ],
@@ -534,22 +532,22 @@
   },
   {
     "id": 25,
-    "name": "Total Blonde",
+    "name": "Total Blond",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 450
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 500
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 650
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 800
       }
     ],
@@ -560,19 +558,19 @@
     "name": "Airtouch",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 800
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 950
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 1100
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 1250
       },
       {
@@ -587,19 +585,19 @@
     "name": "Balayage",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 450
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 600
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 750
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 800
       }
     ],
@@ -610,19 +608,19 @@
     "name": "Babylights",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 500
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 650
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 700
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 850
       }
     ],
@@ -630,22 +628,22 @@
   },
   {
     "id": 29,
-    "name": "Color removal",
+    "name": "Color Removal",
     "list": [
       {
-        "title": "1 length",
+        "title": "Length 1",
         "price": 200
       },
       {
-        "title": "2 length",
+        "title": "Length 2",
         "price": 250
       },
       {
-        "title": "3 length",
+        "title": "Length 3",
         "price": 300
       },
       {
-        "title": "4 length",
+        "title": "Length 4",
         "price": 350
       }
     ],
@@ -656,11 +654,11 @@
     "name": "Treatments",
     "list": [
       {
-        "title": "Mask",
+        "title": "Hair Mask",
         "price": 50
       },
       {
-        "title": "Treatment when coloring",
+        "title": "Treatment During Coloring",
         "price": 120
       }
     ],
