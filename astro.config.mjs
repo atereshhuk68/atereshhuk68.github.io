@@ -30,11 +30,15 @@ export default defineConfig({
   experimental: {
     fonts: [
       {
-        provider: fontProviders.google(),
+        provider: fontProviders.fontsource(),
         name: "Inter",
         cssVariable: "--font-inter",
+        styles: ["normal"],
         weights: ["100 900"],
+        display: "swap",
+        stretch: "100%",
         subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
+        optimizedFallbacks: false,
         unicodeRange: [
           "U+A,U+20,U+21,U+28,U+29,U+2C-3A,U+3F-47,U+49-50,U+52-57,U+5A,U+61-70,U+72-7A,U+F3,U+105,U+107,U+119,U+141,U+142,U+144,U+15A,U+15B,U+17A,U+17C,U+400-45F,U+2013,U+2116",
         ],
