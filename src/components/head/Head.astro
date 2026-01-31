@@ -33,7 +33,6 @@ const isHomepage = Astro.url.pathname === homePageUrl;
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<OpenGraph {title} {description} {currentLocale} />
-	<link rel="sitemap" href="/sitemap-index.xml" />
 
 	{!isDev && (
 		<GTM />
