@@ -1,8 +1,0 @@
-/* inter-latin-wght-normal */
-@font-face {
-  font-family: "Gropled";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url("../assets/fonts/gropled.woff2") format("woff2");
-}

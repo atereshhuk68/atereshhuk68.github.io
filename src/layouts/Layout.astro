@@ -1,5 +1,4 @@
 ---
-import "@/styles/font.css";
 import "@/styles/global.css";
 import "@/styles/starwind.css";
 
@@ -25,7 +24,7 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
   <Head {title} {description} {currentLocale} />
 
   <body
-    class="bg-shell-50 text-black-900 grid min-h-dvh min-w-[360px] grid-rows-[auto_1fr_auto] overflow-x-hidden font-sans"
+    class="bg-shell-50 text-black-900 grid min-h-dvh min-w-90 grid-rows-[auto_1fr_auto] overflow-x-hidden font-sans"
     data-current-locale={currentLocale}
   >
     <Header />
