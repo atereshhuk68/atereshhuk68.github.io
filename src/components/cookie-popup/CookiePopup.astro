@@ -11,7 +11,7 @@ const t = useTranslations(currentLocale as Locales);
 <div
   id="cookiePopup"
   class="fixed bottom-4 left-1/2 grid max-w-100 -translate-x-1/2 place-items-center gap-4 rounded-xl bg-white p-4 text-center shadow-2xl"
-  style="transform: scale(0.4); opacity: 0;"
+  style="transform: scale(0.4); opacity: 0; visibility: hidden;"
 >
   <p class="text-black-900 text-sm text-pretty">
     {t("cookie.p")}
@@ -58,7 +58,7 @@ const t = useTranslations(currentLocale as Locales);
     if (cookiePopup) {
       const keyframes: Keyframe[] = [
         { transform: "scale(1)", opacity: 1 },
-        { transform: "scale(0.4)", opacity: 0 },
+        { transform: "scale(0.4)", opacity: 0, visibility: "hidden" },
       ];
 
       const options: KeyframeAnimationOptions = {
@@ -85,7 +85,7 @@ const t = useTranslations(currentLocale as Locales);
     if (cookiePopup) {
       const keyframes: Keyframe[] = [
         { transform: "scale(0.4)", opacity: 0 },
-        { transform: "scale(1)", opacity: 1 },
+        { transform: "scale(1)", opacity: 1, visibility: "visible" },
       ];
 
       const options: KeyframeAnimationOptions = {
