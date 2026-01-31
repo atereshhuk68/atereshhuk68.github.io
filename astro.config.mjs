@@ -2,7 +2,7 @@
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
-import moveIslandsStyle from './src/hooks/move-island-styles-to-head.ts';
+import moveIslandsStyle from "./src/hooks/move-island-styles-to-head.ts";
 
 import react from "@astrojs/react";
 
@@ -30,11 +30,50 @@ export default defineConfig({
   experimental: {
     fonts: [
       {
-        provider: fontProviders.fontsource(),
+        provider: fontProviders.local(),
+        name: "Gropled",
+        cssVariable: "--font-gropled",
+        display: "swap",
+        stretch: "100%",
+        optimizedFallbacks: false,
+        options: {
+          variants: [
+            {
+              weight: "700",
+              style: "normal",
+              src: ["./src/assets/fonts/gropled.woff2"],
+            },
+          ],
+        },
+      },
+      {
+        provider: fontProviders.local(),
         name: "Inter",
         cssVariable: "--font-inter",
-        styles: ["normal"],
-        weights: ["100 900"],
+        options: {
+          variants: [
+            {
+              weight: "100 900",
+              style: "normal",
+              src: ["./src/assets/fonts/inter-cyrillic-critical.woff2"],
+            },
+            {
+              weight: "100 900",
+              style: "normal",
+              src: ["./src/assets/fonts/inter-cyrillic-ext-critical.woff2"],
+            },
+            {
+              weight: "100 900",
+              style: "normal",
+              src: ["./src/assets/fonts/inter-latin-critical.woff2"],
+            },
+            {
+              weight: "100 900",
+              style: "normal",
+              src: ["./src/assets/fonts/inter-latin-ext-critical.woff2"],
+            },
+          ],
+        },
         display: "swap",
         stretch: "100%",
         subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],

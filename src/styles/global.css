@@ -23,8 +23,8 @@
   --color-shell-50: #faf7f6;
   --color-shell-300: #debdb4;
 
-  --font-sans: var(--font-inter);
-  --font-heading: "Gropled", serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-gropled), serif;
 }
 
 @utility container {
@@ -53,7 +53,7 @@ textarea[aria-invalid] {
       @apply bg-black-900;
       @apply transition-[background-color] duration-200;
       @apply h-lh;
-      @apply mask-center mask-no-repeat mask-cover;
+      @apply mask-cover mask-center mask-no-repeat;
 
       mask-image: url("../assets/images/vector/star-marker-w16.svg");
     }
@@ -85,7 +85,6 @@ textarea[aria-invalid] {
 
 /* First Screen Grid */
 [data-first-screen] {
-
   grid-template-areas:
     "intro"
     "slider"
@@ -96,14 +95,14 @@ textarea[aria-invalid] {
     @apply grid-cols-[500px_1fr];
     grid-template-areas:
       "intro slider"
-      "aboutus reviews"
+      "aboutus reviews";
   }
 
   @variant xl {
     @apply grid-cols-[0.85fr_1fr_1fr_1.5fr];
     grid-template-areas:
       "intro intro slider slider"
-      "aboutus aboutus aboutus reviews"
+      "aboutus aboutus aboutus reviews";
   }
 }
 
