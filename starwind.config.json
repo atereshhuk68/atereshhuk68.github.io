@@ -22,6 +22,10 @@
     {
       "name": "carousel",
       "version": "1.0.1"
+    },
+    {
+      "name": "image",
+      "version": "1.0.0"
     }
   ]
 }
