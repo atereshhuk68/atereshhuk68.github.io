@@ -5,9 +5,9 @@ import { tv } from "tailwind-variants";
 
 export const image = tv({ base: "starwind-image h-auto w-full" });
 
-type Props = Partial<ComponentProps<typeof AstroImage>> & { inferSize?: boolean };
+type Props = Partial<ComponentProps<typeof AstroImage>>;
 
-const { class: className, src, alt = "", inferSize = true, ...rest } = Astro.props;
+const { class: className, src, alt = "", ...rest } = Astro.props;
 ---
 
 {
@@ -16,7 +16,6 @@ const { class: className, src, alt = "", inferSize = true, ...rest } = Astro.pro
       class={image({ class: className })}
       src={src}
       alt={alt}
-      inferSize={inferSize}
       data-slot="image"
       {...(rest as any)}
     />
