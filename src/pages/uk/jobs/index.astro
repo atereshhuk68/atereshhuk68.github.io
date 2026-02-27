@@ -1,0 +1,43 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import CareerCard from "@/components/cards/CareerCard.astro";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const { currentLocale = "pl" } = Astro;
+
+const t = useTranslations(currentLocale as Locales);
+
+const metaTitle = t("career.heading");
+const metaDescription = t("career.p");
+
+type JobProps = CollectionEntry<"jobs">;
+
+const jobs = await getCollection("jobs");
+const filteredJobsByLocale = jobs.filter((job) => job.id?.startsWith("uk/"));
+---
+
+<Layout metaTitle={metaTitle} metaDescription={metaDescription}>
+  <div class="container py-12">
+    <div class="mb-12 space-y-4 text-center">
+      <h1 class="font-heading text-4xl">{t("career.heading")}</h1>
+      <p class="text-lg text-pretty">{t("career.p")}</p>
+    </div>
+
+    <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+      {
+        filteredJobsByLocale.length > 0 ? (
+          filteredJobsByLocale.map((job: JobProps) => (
+            <CareerCard {...job.data} />
+          ))
+        ) : (
+          <p class="text-default-500 col-span-full text-center">
+            No jobs available at the moment
+          </p>
+        )
+      }
+    </div>
+  </div>
+</Layout>

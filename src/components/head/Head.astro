@@ -11,7 +11,13 @@ import SchemaWebsite from '@/components/schema/SchemaWebsite.astro';
 
 import { DEFAULT_LANG } from "@/constants/langs";
 
-const { title, description, currentLocale } = Astro.props;
+interface Props {
+	metaTitle: string;
+	metaDescription: string;
+	currentLocale: string | undefined;
+}
+
+const { metaTitle, metaDescription, currentLocale } = Astro.props;
 
 const homePageUrl = currentLocale === DEFAULT_LANG ? "/" : `/${currentLocale}/`;
 
@@ -27,12 +33,12 @@ const isHomepage = Astro.url.pathname === homePageUrl;
 	<Canonical />
 
 	{isHomepage && (
-		<SchemaWebsite name={title} description={description}/>
+		<SchemaWebsite name={metaTitle} description={metaDescription}/>
 	)}
 
-	<title>{title}</title>
-	<meta name="description" content={description} />
-	<OpenGraph {title} {description} {currentLocale} />
+	<title>{metaTitle}</title>
+	<meta name="description" content={metaDescription} />
+	<OpenGraph {metaTitle} {metaDescription} {currentLocale} />
 
 	{!isDev && (
 		<GTM />

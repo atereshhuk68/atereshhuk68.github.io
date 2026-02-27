@@ -1,26 +1,24 @@
 ---
-import { CompanyDefaultData } from "@/constants";
 import Layout from "./Layout.astro";
-import type { CareerPostSchema } from "@/types/career";
-import SchemaJobPosting from "@/components/schema/SchemaJobPosting.astro";
 
-const { frontmatter } = Astro.props;
-const { title, description } = frontmatter;
+interface Props {
+  frontmatter: {
+    metaTitle: string;
+    metaDescription: string;
+  };
+}
 
-const careers: CareerPostSchema = {
-  ...frontmatter,
-  ...CompanyDefaultData,
-};
+const {
+  frontmatter: { metaTitle, metaDescription },
+} = Astro.props;
 ---
 
-<Layout {title} {description}>
+<Layout metaTitle={metaTitle} metaDescription={metaDescription}>
   <div class="container py-12">
     <article
-      class="prose lg:prose-lg prose-headings:font-heading mx-auto max-w-[860px]"
+      class="prose lg:prose-lg prose-headings:font-heading mx-auto max-w-215"
     >
       <slot />
     </article>
   </div>
-
-  <SchemaJobPosting {...careers} />
 </Layout>

@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import SchemaJobPosting from "@/components/schema/SchemaJobPosting.astro";
+
+type JobEntry = CollectionEntry<"jobs">;
+
+export const getStaticPaths = async () => {
+  const jobEntries = await getCollection("jobs", ({ id }) =>
+    id.startsWith("pl/"),
+  );
+
+  // Extract slug from the file path (e.g., 'pl/my-post.md' -> 'my-post')
+  return jobEntries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props as { entry: JobEntry };
+const { Content } = await render(entry);
+const { data } = entry;
+---
+
+<Layout
+  metaTitle={data.metaTitle || data.title}
+  metaDescription={data.metaDescription || ""}
+>
+  <div class="container py-12">
+    <article
+      class="prose lg:prose-lg prose-headings:font-heading mx-auto max-w-215"
+    >
+      <h1>{data.title}</h1>
+
+      <Content />
+    </article>
+  </div>
+
+  <SchemaJobPosting {...data} />
+</Layout>

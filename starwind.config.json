@@ -26,6 +26,10 @@
     {
       "name": "image",
       "version": "1.0.0"
+    },
+    {
+      "name": "dialog",
+      "version": "1.4.3"
     }
   ]
 }

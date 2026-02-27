@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+site_url: https://atereshhuk68.github.io/bfancy-astro
+
+logo:
+  src: /favicon/favicon.svg
+  show_in_header: true
+
+backend:
+  name: github
+  repo: atereshhuk68/bfancy-astro
+  branch: master
+  skip_ci: false
+  base_url: https://atereshhuk68.github.io
+  auth_endpoint: /bfancy-astro/mystery
+
+media_folder: /public/media
+public_folder: /public
+
+i18n:
+  structure: multiple_folders
+  locales: ["pl", "en", "uk", "ru"]
+  default_locale: "pl"
+
+slug:
+  encoding: unicode
+  clean_accents: false
+  sanitize_replacement: "-"
+
+collections:
+  - name: jobs
+    label: Вакансії
+    label_singular: Вакансія
+    description: "Управління вакансіями на сайті. Додайте нову вакансію, щоб вона з'явилася на сайті."
+    folder: src/content/jobs
+    slug: "{{fields.slug}}"
+    i18n: true
+    summary: "{{title}} – ({{publishedDate | date('dddd, MMMM D, YYYY h:mm A')}})"
+    sortable_fields: [title, publishedDate]
+    icon: "assignment"
+    fields:
+      - label: Slug
+        name: slug
+        widget: string
+        comment: "Унікальний ідентифікатор вакансії, який буде використовуватися в URL. Він не повинен містити пробілів і спеціальних символів. Пишіть його англійскьою мовою, а пробіли заміняйте на дефіси. Наприклад, 'manicure-specialist'."
+        hint: "⚠️ Не змінюйте його після публікації вакансії, інакше URL зміниться."
+        i18n: duplicate
+        preview: false
+      - label: Чи актуальна вакансія?
+        name: isJobActive
+        widget: boolean
+        i18n: duplicate
+        default: true
+        preview: false
+      - label: Meta Title
+        name: metaTitle
+        widget: string
+        hint: "Це заголовок, який відображається в результатах пошуку Google. Він повинен бути коротким і містити ключові слова, пов'язані з вакансією."
+        i18n: true
+        preview: true
+        required: true
+      - label: Meta Description
+        name: metaDescription
+        widget: string
+        hint: "Це опис, який відображається в результатах пошуку Google. Довжина опису повинна бути від 150 до 160 символів і містити ключові слова, пов'язані з вакансією."
+        i18n: true
+        preview: true
+        required: true
+      - label: Назва вакансії
+        name: title
+        widget: string
+        hint: "Введіть назву вакансії. Це буде H1 на сторінці вакансії."
+        i18n: true
+        preview: true
+      - label: Дата створення вакансії
+        name: publishedDate
+        widget: datetime
+        i18n: duplicate
+        preview: false
+        default: "{{now}}"
+      - label: Місто
+        name: city
+        widget: string
+        i18n: true
+        default: "Warszawa"
+        preview: false
+      - label: Країна
+        name: country
+        widget: string
+        i18n: true
+        default: "Polska"
+        preview: false
+      - label: Контент
+        name: body
+        widget: richtext
+        i18n: true

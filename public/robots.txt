@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /mystery/
 
 Sitemap: https://bfancy.pl/sitemap-index.xml

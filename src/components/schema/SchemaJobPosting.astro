@@ -1,21 +1,17 @@
 ---
-import type { CareerPostSchema } from "../../types/career/index";
+import { CompanyDefaultData } from "@/constants";
+import type { InferEntrySchema } from "astro:content";
 
-interface Props extends Omit<CareerPostSchema, "locationCountry"> {
-  datePosted?: string;
-}
+type JobPostSchema = InferEntrySchema<"jobs">;
+
+interface Props extends Omit<JobPostSchema, "slug" | "isJobActive"> {}
 
 const {
   title,
-  description,
+  metaDescription: description,
   city,
   country,
-  organizationName,
-  organizationUrl,
-  datePosted = new Date().toISOString(),
-  postalCode,
-  street,
-  region,
+  publishedDate,
 } = Astro.props;
 
 const validThroughDate = new Date();
@@ -27,22 +23,22 @@ const jobPostingSchema = {
   "@type": "JobPosting",
   title: title,
   description: description,
-  datePosted: datePosted,
+  datePosted: publishedDate,
   validThrough: validThrough,
   employmentType: "FULL_TIME",
   hiringOrganization: {
     "@type": "Organization",
-    name: organizationName,
-    sameAs: organizationUrl,
+    name: CompanyDefaultData.organizationName,
+    sameAs: CompanyDefaultData.organizationUrl,
   },
   jobLocation: {
     "@type": "Place",
     address: {
       "@type": "PostalAddress",
-      postalCode: postalCode,
+      postalCode: CompanyDefaultData.postalCode,
       addressLocality: city,
-      streetAddress: street,
-      addressRegion: region,
+      streetAddress: CompanyDefaultData.street,
+      addressRegion: CompanyDefaultData.region,
       addressCountry: country,
     },
   },

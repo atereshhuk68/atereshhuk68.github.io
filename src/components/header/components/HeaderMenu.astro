@@ -31,8 +31,8 @@ const menuItems = [
   { href: modifyUrl("#services"), label: t("header.nav.services") },
   { href: modifyUrl("#aboutUs"), label: t("header.nav.aboutUs") },
   {
-    href: getRelativeLocaleUrl(currentLocale, "careers"),
-    label: t("header.nav.careers"),
+    href: getRelativeLocaleUrl(currentLocale, "jobs"),
+    label: t("header.nav.jobs"),
   },
 ];
 
@@ -41,13 +41,13 @@ const BASE_LINK_CLASSES =
   "text-black-900 hover:text-black-600 transition-[color] duration-200";
 ---
 
-<nav class="lg:order-[initial] lg:w-[350px] lg:min-w-10">
+<nav class="lg:order-[initial] lg:w-87.5 lg:min-w-10">
   <ul class="hidden items-center gap-8 font-medium lg:flex">
     {
       menuItems.map(({ href, label }) => (
         <li>
           <a
-            class={[
+            class:list={[
               BASE_LINK_CLASSES,
               pathname === href && ACTIVE_LINK_CLASSES,
             ]}

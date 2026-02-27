@@ -17,6 +17,10 @@ pnpm-debug.log*
 .env
 .env.production
 
+# PHP config with secrets
+public/send.config.php
+public/send.config.local.php
+
 # macOS-specific files
 .DS_Store
 

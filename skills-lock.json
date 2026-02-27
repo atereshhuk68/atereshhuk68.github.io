@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "skills": {
+    "component-refactoring": {
+      "source": "langgenius/dify",
+      "sourceType": "github",
+      "computedHash": "98d951503a52e094d701a15fedfe9448d1dffa7f50cc075c2e8483a3cb754c10"
+    },
+    "frontend-code-review": {
+      "source": "langgenius/dify",
+      "sourceType": "github",
+      "computedHash": "79fa87cd5460c80dc842153155b26bd4a3cad9858475c2e1ee50cab6dcd1fbbe"
+    },
+    "react-composition-patterns": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "computedHash": "81fcf95a63235527f54afbe21b48764fae0ccf3a784980e7d2e4f49bf4740619"
+    },
+    "react-native-skills": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "computedHash": "634ed5d30e783648d89cdca383b3f6d74e1b1f0cb703f02e46572fe0c46cba32"
+    },
+    "seo-keyword-cluster-builder": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "computedHash": "90a42a22685276bf9e4406bd57358e20b4b4679d1739fb1cdb41d0451b2acc2c"
+    },
+    "seo-optimizer": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "computedHash": "93d65c3aeb1faa474336d12a384b16bd9cf6cf588c82edb309b89ea2b826347d"
+    },
+    "skill-planner": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "af03e2d70a1d973ec959c46503d51c3482d90df90ee9667551d49b907cd8054f"
+    },
+    "skill-web-implementation": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "9e43b56edf037715831d34bf47d1b4cb9de29a50b70fd9f3a21a2ad36a0e0669"
+    },
+    "skill-web-research": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "857e24231ceb17aec0e28049b50fae14a231a627928af187dec9ad731863839b"
+    },
+    "sveltia-cms": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "computedHash": "d1a22a27778ad91b24eeb50c02cbf9cf8790f9595b6d82293bd2be9bade0c7a6"
+    },
+    "zod": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "computedHash": "df8b575c28f7f93fbd7d7971d785d47b84055063654a05ddbebf8ebd3536b2c4"
+    }
+  }
+}
