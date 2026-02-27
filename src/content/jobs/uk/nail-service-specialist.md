@@ -2,7 +2,7 @@
 slug: nail-service-specialist
 isJobActive: true
 metaTitle: Майстер манікюру
-metaDescription: Новий салон краси в центрі Варшави шукає талановитого та креативного майстра манікюру!
+metaDescription: Салон краси в центрі Варшави шукає талановитого та креативного майстра манікюру!
 title: Майстер манікюру
 publishedDate: 2026-02-07T14:09:00
 city: Warszawa
