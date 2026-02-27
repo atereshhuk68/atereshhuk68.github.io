@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/TextContentLayout.astro"
-title: "Polityka Prywatności"
-description: "Polityka Prywatności salonu BFancy. Sprawdź, jak chronimy Twoje dane osobowe, jakie informacje zbieramy i jak możesz zarządzać swoimi danymi."
+metaTitle: "Polityka Prywatności"
+metaDescription: "Polityka Prywatności salonu BFancy. Sprawdź, jak chronimy Twoje dane osobowe, jakie informacje zbieramy i jak możesz zarządzać swoimi danymi."
 ---
 
 # Polityka Prywatności

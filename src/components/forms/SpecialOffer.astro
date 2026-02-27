@@ -1,90 +1,81 @@
 ---
-import { X } from "@lucide/astro";
 import UserName from "@/components/forms/fields/UserName.astro";
 import UserPhone from "@/components/forms/fields/UserPhone.astro";
 import { Button } from "@/components/starwind/button";
 import { useTranslations } from "@/lib/handle-ui-translations";
-import type { Locales } from "@/types";
+import { type Locales } from "@/types";
 import UserServiceCategory from "./fields/UserServiceCategory.astro";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogClose,
+} from "@/components/starwind/dialog";
 
 const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
 
-<button
-  class="bg-golden-200 hover:bg-golden-300 fixed bottom-4 left-4 z-50 size-12 cursor-pointer rounded-full shadow-lg transition-transform hover:scale-110"
-  data-open-special-dialog
-  aria-label="Open Special Offer"
->
-  <span class="pointer-events-none">🔥</span>
-</button>
-
-<dialog
-  id="specialOfferDialog"
-  class="text-black-800 shadow-card backdrop:bg-black-900/60 m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white outline-none"
-  style="transform: scale(0.4); opacity: 0;"
->
-  <div class="prose md:prose-lg mb-0 p-4 md:px-8 md:pt-8 md:pb-10">
-    <div class="font-heading text-center text-2xl md:text-3xl">
-      {t("specialOffer.heading")}
-    </div>
-
-    <p class="grid place-items-center text-center">
-      <span class="block">{t("specialOffer.p1")}</span>
-      <span class="bg-cove-600 block rounded-sm px-4 font-bold text-white"
-        >{t("specialOffer.p2")}</span
-      >
-    </p>
-
-    <p class="text-center text-base">{t("specialOffer.cta")}</p>
-
-    <form
-      class="mx-auto grid max-w-lg space-y-6 min-[450px]:place-items-center"
-      method="post"
-      data-special-offer-form
+<Dialog data-close-special-offer>
+  <DialogTrigger asChild>
+    <button
+      class="bg-golden-200 hover:bg-golden-300 fixed bottom-4 left-4 z-50 size-12 cursor-pointer rounded-full shadow-lg transition-transform hover:scale-110"
+      data-open-special-dialog
+      aria-label="Open Special Offer"
     >
-      <input type="hidden" name="formTitle" value="offer" />
+      <span class="pointer-events-none">🔥</span>
+    </button>
+  </DialogTrigger>
 
-      <UserName />
-
-      <UserPhone />
-
-      <UserServiceCategory />
-
-      <div class="mb-0 grid gap-4">
-        <Button
-          size="lg"
-          variant="secondary"
-          class="min-w-[200px] disabled:opacity-50"
-          type="submit"
-        >
-          {t("specialOffer.submitText")}
-        </Button>
-
-        <Button
-          size="sm"
-          variant="ghost"
-          class="min-w-[200px]"
-          type="button"
-          data-close-special-offer
-        >
-          {t("specialOffer.later")}
-        </Button>
+  <DialogContent id="specialOfferDialog" class="p-5 md:p-6">
+    <div class="prose md:prose-lg">
+      <div class="font-heading text-center text-2xl md:text-3xl">
+        {t("specialOffer.heading")}
       </div>
-    </form>
-  </div>
 
-  <Button
-    size="md"
-    variant="ghost"
-    aria-label="Close special offer modal"
-    class="text-black-900 hover:text-black-500 absolute top-1 right-1 cursor-pointer px-2 transition-colors focus:outline-none"
-    data-close-special-offer
-  >
-    <X />
-  </Button>
-</dialog>
+      <p class="grid place-items-center text-center">
+        <span class="block">{t("specialOffer.p1")}</span>
+        <span class="bg-cove-600 block rounded-sm px-4 font-bold text-white"
+          >{t("specialOffer.p2")}</span
+        >
+      </p>
+
+      <p class="text-center text-base">{t("specialOffer.cta")}</p>
+
+      <form
+        class="mx-auto grid max-w-lg space-y-6 min-[450px]:place-items-center"
+        method="post"
+        data-special-offer-form
+      >
+        <input type="hidden" name="formTitle" value="offer" />
+
+        <UserName />
+
+        <UserPhone />
+
+        <UserServiceCategory />
+
+        <div class="mb-0 grid gap-4">
+          <Button
+            size="lg"
+            variant="secondary"
+            class="min-w-50 disabled:opacity-50"
+            type="submit"
+          >
+            {t("specialOffer.submitText")}
+          </Button>
+
+          <DialogClose asChild>
+            <Button size="sm" variant="ghost" class="min-w-50" type="button">
+              {t("specialOffer.later")}
+            </Button>
+          </DialogClose>
+        </div>
+      </form>
+    </div>
+  </DialogContent>
+</Dialog>
 
 <script>
   import { getCookie, setCookie } from "typescript-cookie";
@@ -109,27 +100,41 @@ const t = useTranslations(currentLocale as Locales);
   const offerFormSchema = getOfferFormSchema(currentLocale);
 
   const specialOfferDialogModule = (() => {
-    const specialOfferTrigger = document.querySelector<HTMLButtonElement>(
-      "[data-open-special-dialog]",
-    );
-    const specialOfferDialog = document.querySelector<HTMLDialogElement>(
-      "#specialOfferDialog",
-    )!;
-    const specialOfferForm = document.querySelector<HTMLFormElement>(
-      "form[data-special-offer-form]",
-    );
-    const specialOfferFormFields =
-      specialOfferForm?.querySelectorAll<HTMLInputElement>(
-        "input, textarea, select",
-      );
-    const closeSpecialOfferDialogButtons =
-      document.querySelectorAll<HTMLButtonElement>(
-        "[data-close-special-offer]",
-      );
-    const errorDialog =
-      document.querySelector<HTMLDialogElement>("#errorModal");
-    const successDialog =
-      document.querySelector<HTMLDialogElement>("#successModal");
+    const SELECTORS = {
+      specialOfferTrigger: "[data-open-special-dialog]",
+      specialOfferDialog: "#specialOfferDialog",
+      specialOfferForm: "form[data-special-offer-form]",
+      specialOfferFormFields:
+        "form[data-special-offer-form] input, form[data-special-offer-form] textarea, form[data-special-offer-form] select",
+      closeSpecialOfferDialogButtons: "[data-close-special-offer]",
+      errorDialog: "#errorModal",
+      successDialog: "#successModal",
+    };
+
+    const ELEMENTS = {
+      specialOfferTrigger: document.querySelector<HTMLButtonElement>(
+        SELECTORS.specialOfferTrigger,
+      ),
+      specialOfferDialog: document.querySelector<HTMLDialogElement>(
+        SELECTORS.specialOfferDialog,
+      )!,
+      specialOfferForm: document.querySelector<HTMLFormElement>(
+        SELECTORS.specialOfferForm,
+      ),
+      specialOfferFormFields: document.querySelectorAll<HTMLInputElement>(
+        SELECTORS.specialOfferFormFields,
+      ),
+      closeSpecialOfferDialogButtons:
+        document.querySelectorAll<HTMLButtonElement>(
+          SELECTORS.closeSpecialOfferDialogButtons,
+        ),
+      errorDialog: document.querySelector<HTMLDialogElement>(
+        SELECTORS.errorDialog,
+      ),
+      successDialog: document.querySelector<HTMLDialogElement>(
+        SELECTORS.successDialog,
+      ),
+    };
 
     const isUserSawOffer = getCookie(SPECIAL_OFFER_COOKIE_NAME);
 
@@ -160,9 +165,9 @@ const t = useTranslations(currentLocale as Locales);
       const { success } = await postFormPayload(data);
 
       if (success) {
-        if (successDialog) {
-          toggleDialog(specialOfferDialog, false);
-          toggleDialog(successDialog, true);
+        if (ELEMENTS.successDialog) {
+          toggleDialog(ELEMENTS.specialOfferDialog, false);
+          toggleDialog(ELEMENTS.successDialog, true);
           submittedForm.reset();
 
           setCookie(SPECIAL_OFFER_COOKIE_NAME, "true", {
@@ -173,8 +178,8 @@ const t = useTranslations(currentLocale as Locales);
           });
         }
       } else {
-        if (errorDialog) {
-          toggleDialog(errorDialog, true);
+        if (ELEMENTS.errorDialog) {
+          toggleDialog(ELEMENTS.errorDialog, true);
         }
       }
 
@@ -182,36 +187,21 @@ const t = useTranslations(currentLocale as Locales);
     };
 
     const setEventListeners = () => {
-      specialOfferForm?.addEventListener("submit", handleSubmit);
-
-      specialOfferDialog.addEventListener("click", (event: MouseEvent) => {
-        if (event.target === specialOfferDialog) {
-          toggleDialog(specialOfferDialog, false);
-        }
-      });
+      ELEMENTS.specialOfferForm?.addEventListener("submit", handleSubmit);
 
       window.addEventListener("load", () => {
         if (!isUserSawOffer) {
           setTimeout(() => {
-            toggleDialog(specialOfferDialog, true);
-          }, 2000);
+            // add dispatch event to trigger dialog open with starwind dialog trigger
+            ELEMENTS.specialOfferTrigger?.dispatchEvent(
+              new MouseEvent("click", { bubbles: true }),
+            );
+          }, 2500);
         }
       });
 
-      document.addEventListener("keydown", (event) => {
-        if (!specialOfferDialog) return;
-
-        if (event.key === "Escape" && specialOfferDialog.open) {
-          toggleDialog(specialOfferDialog, false);
-        }
-      });
-
-      specialOfferTrigger?.addEventListener("click", () => {
-        toggleDialog(specialOfferDialog, true);
-      });
-
-      if (specialOfferFormFields) {
-        for (const formField of specialOfferFormFields) {
+      if (ELEMENTS.specialOfferFormFields) {
+        for (const formField of ELEMENTS.specialOfferFormFields) {
           formField.addEventListener("input", (event) => {
             const field = event.currentTarget as HTMLInputElement;
 
@@ -226,11 +216,9 @@ const t = useTranslations(currentLocale as Locales);
         }
       }
 
-      if (closeSpecialOfferDialogButtons) {
-        for (const closeDialogButton of closeSpecialOfferDialogButtons) {
+      if (ELEMENTS.closeSpecialOfferDialogButtons) {
+        for (const closeDialogButton of ELEMENTS.closeSpecialOfferDialogButtons) {
           closeDialogButton.addEventListener("click", (event) => {
-            toggleDialog(specialOfferDialog, false);
-
             setCookie(SPECIAL_OFFER_COOKIE_NAME, "true", {
               expires: 365,
               path: "/",

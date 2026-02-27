@@ -14,14 +14,19 @@ import Header from "../components/header/Header.astro";
 
 const { currentLocale } = Astro;
 
-const { title, description } = Astro.props;
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+}
+
+const { metaTitle, metaDescription } = Astro.props;
 
 const ISOLocale = getISOLocale(currentLocale as Locales);
 ---
 
 <!doctype html>
 <html lang={ISOLocale} class="min-h-full scroll-smooth">
-  <Head {title} {description} {currentLocale} />
+  <Head {metaTitle} {metaDescription} {currentLocale} />
 
   <body
     class="bg-shell-50 text-black-900 grid min-h-dvh min-w-90 grid-rows-[auto_1fr_auto] overflow-x-hidden font-sans"

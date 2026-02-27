@@ -4,12 +4,12 @@ import SectionFirstScreen from "@/components/sections/SectionFirstScreen.astro";
 import SectionServices from "@/components/sections/SectionServices.astro";
 import Layout from "@/layouts/Layout.astro";
 
-const title = "BFancy: Професійний манікюр, макіяж та косметичні послуги";
-const description =
+const metaTitle = "BFancy: Професійний манікюр, макіяж та косметичні послуги";
+const metaDescription =
   "Відкрийте для себе BFancy: майстерний манікюр, дизайн нігтів, макіяж, догляд за бровами та масаж. Ми гарантуємо якість та задоволення завдяки преміальним продуктам. Відчуйте себе впевнено та особливо!";
 ---
 
-<Layout {title} {description}>
+<Layout metaTitle={metaTitle} metaDescription={metaDescription}>
   <SectionFirstScreen />
   <SectionServices />
   <SectionContact />

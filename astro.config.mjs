@@ -5,11 +5,34 @@ import { defineConfig, fontProviders } from "astro/config";
 import moveIslandsStyle from "./src/hooks/move-island-styles-to-head.ts";
 
 import react from "@astrojs/react";
+import { DEFAULT_LANG, LOCALES_SETTING, SITE } from "./src/constants";
+import { redirectsConfig } from "./src/constants/redirects/redirects.ts";
+
+// Determine environment-specific configuration
+const buildTarget = process.env.BUILD_TARGET ?? "production";
+const isGitHubPages = buildTarget === "github-pages";
+const githubOwner = process.env.GITHUB_REPOSITORY_OWNER ?? "atereshhuk68";
+const githubRepo =
+  process.env.GITHUB_REPOSITORY?.split("/")?.[1] ?? "bfancy-astro";
+
+const siteUrl = isGitHubPages
+  ? `https://${githubOwner}.github.io`
+  : "https://bfancy.pl";
+
+const isUserPagesRepo = githubRepo === `${githubOwner}.github.io`;
+
+const base = isGitHubPages
+  ? isUserPagesRepo
+    ? "/"
+    : `/${githubRepo}`
+  : undefined;
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bfancy.pl",
+  site: siteUrl,
+  base: base,
   trailingSlash: "always",
+  redirects: redirectsConfig,
   i18n: {
     locales: ["pl", "en", "uk", "ru"],
     defaultLocale: "pl",
@@ -20,7 +43,22 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  integrations: [react(), sitemap(), moveIslandsStyle()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => page !== `${SITE}/admin/`,
+      i18n: {
+        defaultLocale: DEFAULT_LANG,
+        locales: Object.fromEntries(
+          Object.entries(LOCALES_SETTING).map(([key, value]) => [
+            key,
+            value.lang ?? key,
+          ]),
+        ),
+      },
+    }),
+    moveIslandsStyle(),
+  ],
   vite: {
     plugins: [tailwindcss()],
     build: {

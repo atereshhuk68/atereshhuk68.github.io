@@ -14,7 +14,7 @@ const t = useTranslations(currentLocale as Locales);
 
 <div class="border-black-300 bg-black-100 rounded-xl border px-4 py-12 md:px-8">
   <form
-    class="mx-auto grid max-w-[512px] place-items-center space-y-8"
+    class="mx-auto grid max-w-lg place-items-center space-y-8"
     method="post"
     data-contact-form
   >
@@ -29,7 +29,7 @@ const t = useTranslations(currentLocale as Locales);
     <Button
       variant="secondary"
       size="lg"
-      class="bg-golden-200 text-black-900 peer inline-flex min-w-[200px] items-center gap-2 font-medium disabled:opacity-50"
+      class="bg-golden-200 text-black-900 peer inline-flex min-w-50 items-center gap-2 font-medium disabled:opacity-50"
       type="submit"
     >
       {t("contact.submittext")}

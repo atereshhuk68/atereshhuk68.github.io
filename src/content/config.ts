@@ -11,4 +11,21 @@ export const collections = {
     }),
     schema: z.array(servicesCollectionsSchema),
   }),
+  jobs: defineCollection({
+    loader: glob({
+      pattern: "**/*.md",
+      base: "src/content/jobs",
+      generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+    }),
+    schema: z.object({
+      title: z.string(),
+      publishedDate: z.date(),
+      slug: z.string(),
+      isJobActive: z.boolean().default(true),
+      metaTitle: z.string().optional(),
+      metaDescription: z.string(),
+      city: z.string(),
+      country: z.string(),
+    }),
+  }),
 };
