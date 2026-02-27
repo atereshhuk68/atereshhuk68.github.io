@@ -10,8 +10,9 @@ const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
-const metaTitle = t("career.heading");
-const metaDescription = t("career.p");
+const metaTitle = "Oferty Pracy Salon Beauty Warszawa Ochota | BFancy";
+const metaDescription =
+  "Aktualne oferty pracy w salonie BFancy: stylistka paznokci, fryzjer, kolorysta i inne role beauty w Warszawie (Ochota).";
 
 type JobProps = CollectionEntry<"jobs">;
 

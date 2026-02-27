@@ -10,8 +10,9 @@ const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
-const metaTitle = t("career.heading");
-const metaDescription = t("career.p");
+const metaTitle = "Salon Jobs in Warsaw Ochota | BFancy Careers";
+const metaDescription =
+  "Explore BFancy salon jobs in Warsaw Ochota: nail jobs, hairdresser and colorist roles, plus other beauty career opportunities.";
 
 type JobProps = CollectionEntry<"jobs">;
 

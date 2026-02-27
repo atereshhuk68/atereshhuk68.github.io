@@ -1,15 +1,15 @@
 ---
 slug: nail-service-specialist
 isJobActive: true
-metaTitle: Stylista/ka paznokcie
-metaDescription: Nowy salon kosmetyczny w centrum Warszawy poszukuje utalentowanego i kreatywnego stylisty/stki paznokcie!
+metaTitle: Praca Stylistka Paznokci Warszawa Ochota | BFancy
+metaDescription: Oferta pracy dla stylistki paznokci w salonie BFancy Warszawa Ochota. Szukamy specjalistki manicure, pedicure i stylizacji paznokci.
 title: Stylista/ka paznokcie
 publishedDate: 2026-02-07T14:09:00
 city: Warszawa
 country: Polska
 ---
 
-Nowy salon kosmetyczny w centrum Warszawy poszukuje utalentowanego i kreatywnego stylisty/stki paznokcie!
+Salon BFancy w Warszawie (Ochota) poszukuje utalentowanej stylistki paznokci do pracy przy manicure, pedicure i stylizacji paznokci.
 
 ## Wymagania:
 

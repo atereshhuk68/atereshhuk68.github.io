@@ -1,8 +1,8 @@
 export const otherTranslations = {
   pl: {
-    "career.heading": "Dołącz do Naszego Zespołu",
+    "career.heading": "Oferty Pracy w Salonie BFancy",
     "career.p":
-      "Szukamy utalentowanych osób, które pomogą nam się rozwijać. Sprawdź nasze otwarte stanowiska poniżej.",
+      "Szukamy utalentowanych specjalistów beauty: manicure, stylizacja paznokci, fryzjer-kolorysta i inne role. Sprawdź aktualne oferty pracy w naszym salonie w Warszawie.",
     "career.status": "Wolne stanowisko",
     "career.more": "Zobacz szczegóły",
     "cookie.p":
@@ -15,9 +15,9 @@ export const otherTranslations = {
       "Wystąpił błąd podczas wysyłania wiadomości. Proszę spróbować ponownie później",
   },
   en: {
-    "career.heading": "Join Our Team",
+    "career.heading": "Salon Jobs at BFancy",
     "career.p":
-      "We're looking for talented individuals to help us grow. Explore our open positions below.",
+      "We’re hiring talented beauty professionals for nail jobs, hair colorist roles and more. Explore open positions in our Warsaw salon.",
     "career.status": "Open position",
     "career.more": "View details",
     "cookie.p":
@@ -30,9 +30,9 @@ export const otherTranslations = {
       "There was an error sending your message. Please, try again later",
   },
   uk: {
-    "career.heading": "Приєднуйтесь до Нашої Команди",
+    "career.heading": "Вакансії в салоні BFancy",
     "career.p":
-      "Ми шукаємо талановитих людей, які допоможуть нам розвиватися. Ознайомтеся з нашими відкритими вакансіями нижче.",
+      "Ми шукаємо талановитих beauty-фахівців: манікюр, стилізація нігтів, колорист і суміжні ролі. Перегляньте актуальні вакансії в нашому салоні у Варшаві.",
     "career.status": "Відкрита вакансія",
     "career.more": "Переглянути деталі",
     "cookie.p":
@@ -45,9 +45,9 @@ export const otherTranslations = {
       "Під час надсилання повідомлення сталася помилка. Будь ласка, спробуйте ще раз пізніше",
   },
   ru: {
-    "career.heading": "Присоединяйтесь к Нашей Команде",
+    "career.heading": "Вакансии в салоне BFancy",
     "career.p":
-      "Мы ищем талантливых людей, которые помогут нам расти. Ознакомьтесь с нашими открытыми вакансиями ниже.",
+      "Ищем талантливых beauty-специалистов: маникюр, дизайн ногтей, колорист и смежные роли. Смотрите актуальные вакансии в нашем салоне в Варшаве.",
     "career.status": "Открытая вакансия",
     "career.more": "Посмотреть детали",
     "cookie.p":

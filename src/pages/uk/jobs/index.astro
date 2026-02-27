@@ -10,8 +10,9 @@ const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
-const metaTitle = t("career.heading");
-const metaDescription = t("career.p");
+const metaTitle = "Вакансії в Салоні Краси Варшава | BFancy";
+const metaDescription =
+  "Актуальні вакансії BFancy у Варшаві (Охота): майстер манікюру, перукар-колорист та інші beauty-позиції.";
 
 type JobProps = CollectionEntry<"jobs">;
 

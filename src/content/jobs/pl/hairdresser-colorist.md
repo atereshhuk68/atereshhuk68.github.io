@@ -1,15 +1,15 @@
 ---
 slug: hairdresser-colorist
 isJobActive: true
-metaTitle: Fryzjer / Kolorysta | BFancy
-metaDescription: Obecnie poszukujemy fryzjera / kolorysty, który ma wyczucie stylu, pracuje z pasją i chce się rozwijać w zespole BFancy.
+metaTitle: Praca Fryzjer Kolorysta Warszawa | BFancy
+metaDescription: Oferta pracy fryzjer/kolorysta w salonie BFancy Warszawa Ochota. Dołącz do nowoczesnego salonu beauty i rozwijaj karierę.
 title: Fryzjer / Kolorysta
 publishedDate: 2026-02-07T12:57:00
 city: Warszawa
 country: Polska
 ---
 
-Jesteśmy salonem urody BFANCY, znajdujemy się w Warszawie, Aleje Jerozolimskie 109.
+Jesteśmy salonem urody BFANCY w Warszawie (Ochota), Aleje Jerozolimskie 109.
 
 Obecnie poszukujemy fryzjera / kolorysty, który ma wyczucie stylu, pracuje z pasją i chce się rozwijać w zespole BFancy.
 

@@ -2,7 +2,7 @@ export const heroTranslations = {
   pl: {
     "hero.h1": "W BFancy spełniamy nie tylko marzenia, ale i stylowe fantazje!",
     "hero.p":
-      "Profesjonalny manicure, stylizacja paznokci, makijaż, pielęgnacja brwi i relaksujące masaże - wszystko, abyś poczuła się pewnie i wyjątkowo. Nasi specjaliści zadbają o każdy szczegół, a Ty możesz po prostu... być sobą.",
+      "Profesjonalny manicure i pedicure, manicure hybrydowy, stylizacja paznokci oraz pielęgnacja brwi w Warszawie - wszystko, abyś poczuła się pewnie i wyjątkowo. Nasi specjaliści zadbają o każdy szczegół, a Ty możesz po prostu... być sobą.",
     "hero.cta": "Umów wizytę",
     "hero.note":
       "BFancy - piękno zaczyna się właśnie tutaj. Umów się na wizytę już dziś!",
@@ -16,7 +16,7 @@ export const heroTranslations = {
     "hero.h1":
       "At BFancy, we fulfill not only dreams, but also stylish fantasies!",
     "hero.p":
-      "Professional manicure, nail styling, make-up, eyebrows grooming and relaxing massages - everything to make you feel confident and special. Our specialists will take care of every detail, and you can just... be yourself.",
+      "Professional manicure and pedicure, hybrid manicure, nail styling and brow care in Warsaw - everything to make you feel confident and special. Our specialists will take care of every detail, and you can just... be yourself.",
     "hero.cta": "Book an appointment",
     "hero.note":
       "BFancy - beauty starts right here. Make an appointment today!",
@@ -29,7 +29,7 @@ export const heroTranslations = {
   uk: {
     "hero.h1": "У BFancy ми втілюємо не лише мрії, а й стильні фантазії!",
     "hero.p":
-      "Професійний манікюр, моделювання нігтів, макіяж, догляд за бровами та розслаблюючі масажі - все, щоб ви почувалися впевнено та особливо. Наші фахівці подбають про кожну деталь, а ви можете просто... бути собою.",
+      "Професійний манікюр і педикюр, гібридний манікюр, моделювання нігтів та догляд за бровами у Варшаві - все, щоб ви почувалися впевнено та особливо. Наші фахівці подбають про кожну деталь, а ви можете просто... бути собою.",
     "hero.cta": "Забронювати час",
     "hero.note":
       "BFancy - краса починається саме тут. Запишіться на прийом сьогодні!",
@@ -41,7 +41,7 @@ export const heroTranslations = {
   ru: {
     "hero.h1": "В BFancy мы воплощаем не только мечты, но и стильные фантазии!",
     "hero.p":
-      "Профессиональный маникюр, моделирование ногтей, макияж, уход за бровями и расслабляющие массажи - все, чтобы вы чувствовали себя уверенно и особенно. Наши специалисты позаботятся о каждой детали, а вы можете просто... быть собой.",
+      "Профессиональный маникюр и педикюр, гибридный маникюр, моделирование ногтей и уход за бровями в Варшаве - все, чтобы вы чувствовали себя уверенно и особенно. Наши специалисты позаботятся о каждой детали, а вы можете просто... быть собой.",
     "hero.cta": "Записаться на прием",
     "hero.note":
       "BFancy - красота начинается именно здесь. Запишитесь на прием сегодня!",
