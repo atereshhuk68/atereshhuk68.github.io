@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
-site_url: https://atereshhuk68.github.io/bfancy-astro
+site_url: https://atereshhuk68.github.io/
 
 logo:
   src: /favicon/favicon.svg
@@ -7,11 +7,11 @@ logo:
 
 backend:
   name: github
-  repo: atereshhuk68/bfancy-astro
+  repo: atereshhuk68/atereshhuk68.github.io
   branch: master
   skip_ci: false
   base_url: https://atereshhuk68.github.io
-  auth_endpoint: /bfancy-astro/mystery
+  auth_endpoint: /mystery
 
 media_folder: /public/media
 public_folder: /public
