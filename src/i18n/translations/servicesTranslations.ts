@@ -2,7 +2,7 @@ export const servicesTranslations = {
   pl: {
     "services.h2": "Cennik Usług",
     "services.p":
-      "Odkryj wszystkie oferowane przez nas usługi, pogrupowane w pomocne kategorie. Interaktywne karty kategorii pozwalają filtrować widok i skupić się na tym, co Cię interesuje.",
+      "Odkryj wszystkie nasze usługi: paznokcie, manicure klasyczny i hybrydowy, pedicure, stylizacja brwi oraz pozostałe zabiegi beauty w Warszawie. Interaktywne karty kategorii pozwalają filtrować widok i skupić się na tym, co Cię interesuje.",
     "services.cta": "Wyświetl wszystkie usługi",
     "services.type.all": "Wszystkie",
     "services.type.nails": "Paznokcie",
@@ -14,7 +14,7 @@ export const servicesTranslations = {
   en: {
     "services.h2": "Services Price List",
     "services.p":
-      "Discover all the services we offer, grouped into helpful categories. Interactive category cards allow you to filter the view and focus on what interests you.",
+      "Discover all services we offer: nails, classic and hybrid manicure, pedicure, brow styling and more beauty treatments in Warsaw. Interactive category cards let you filter the view and focus on what interests you.",
     "services.cta": "Display all services",
     "services.type.all": "All",
     "services.type.nails": "Nails",
@@ -26,7 +26,7 @@ export const servicesTranslations = {
   uk: {
     "services.h2": "Прайс-лист послуг",
     "services.p":
-      "Відкрийте для себе всі послуги, які ми пропонуємо, згруповані у зручні категорії. Інтерактивні картки категорій дозволяють фільтрувати перегляд та зосередитись на тому, що вас цікавить.",
+      "Відкрийте всі наші послуги: нігті, класичний і гібридний манікюр, педикюр, стилізація брів та інші beauty-процедури у Варшаві. Інтерактивні картки категорій дозволяють фільтрувати перегляд та зосередитись на тому, що вас цікавить.",
     "services.cta": "Показати всі послуги",
     "services.type.all": "Усі",
     "services.type.nails": "Нігті",
@@ -38,7 +38,7 @@ export const servicesTranslations = {
   ru: {
     "services.h2": "Прайс-лист услуг",
     "services.p":
-      "Откройте для себя все предлагаемые нами услуги, сгруппированные по полезным категориям. Интерактивные карточки категорий позволяют фильтровать представление и сосредоточиться на том, что вас интересует.",
+      "Откройте все наши услуги: ногти, классический и гибридный маникюр, педикюр, оформление бровей и другие beauty-процедуры в Варшаве. Интерактивные карточки категорий позволяют фильтровать представление и сосредоточиться на том, что вас интересует.",
     "services.cta": "Показать все услуги",
     "services.type.all": "Все",
     "services.type.nails": "Ногти",

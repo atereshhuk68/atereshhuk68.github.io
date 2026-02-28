@@ -1,15 +1,15 @@
 ---
 slug: hairdresser-colorist
 isJobActive: true
-metaTitle: Hairdresser / Colorist | BFancy
-metaDescription: We’re currently looking for a hairdresser/colorist who has a great sense of style, works with passion, and wants to grow as part of the BFancy team.
+metaTitle: Hairdresser Colorist Job Warsaw | BFancy
+metaDescription: BFancy is hiring a hairdresser/colorist in Warsaw, Ochota. Join our beauty team and grow your professional career.
 title: Hairdresser / Colorist
 publishedDate: 2026-02-07T12:57:00
 city: Warsaw
 country: Poland
 ---
 
-We are BFANCY Beauty Salon, located in Warsaw at Aleje Jerozolimskie 109.
+We are BFANCY Beauty Salon, located in Warsaw Ochota at Aleje Jerozolimskie 109.
 
 We’re currently looking for a hairdresser/colorist who has a great sense of style, works with passion, and wants to grow as part of the BFancy team.
 

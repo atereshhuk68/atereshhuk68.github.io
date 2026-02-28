@@ -10,8 +10,9 @@ const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 
-const metaTitle = t("career.heading");
-const metaDescription = t("career.p");
+const metaTitle = "Oferty Pracy Salon Beauty Warszawa Ochota | BFancy";
+const metaDescription =
+  "Aktualne oferty pracy w salonie BFancy: stylistka paznokci, fryzjer, kolorysta i inne role beauty w Warszawie (Ochota).";
 
 type JobProps = CollectionEntry<"jobs">;
 
@@ -22,10 +23,10 @@ const filteredJobsByLocale = jobs.filter((job) =>
 ---
 
 <Layout metaTitle={metaTitle} metaDescription={metaDescription}>
-  <div class="container py-12">
+  <div class="container py-6 md:py-12">
     <div class="mb-12 space-y-4 text-center">
       <h1 class="font-heading text-4xl">{t("career.heading")}</h1>
-      <p class="text-lg text-pretty">{t("career.p")}</p>
+      <p class="mx-auto max-w-3xl text-lg text-pretty">{t("career.p")}</p>
     </div>
 
     <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">

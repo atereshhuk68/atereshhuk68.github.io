@@ -1,15 +1,15 @@
 ---
 slug: nail-service-specialist
 isJobActive: true
-metaTitle: Nail Service Specialist
-metaDescription: A new beauty salon in the center of Warsaw is looking for a talented and creative nail service specialist!
+metaTitle: Nail Jobs Warsaw Ochota | BFancy Beauty Salon
+metaDescription: BFancy is hiring a nail service specialist in Warsaw Ochota. Apply for a salon job in manicure, pedicure and nail styling.
 title: Nail Service Specialist
 publishedDate: 2026-02-07T14:09:00
 city: Warsaw
 country: Poland
 ---
 
-A new beauty salon in the center of Warsaw is looking for a talented and creative nail service specialist!
+BFancy beauty salon in Warsaw Ochota is hiring a talented and creative nail service specialist for manicure, pedicure and nail styling services.
 
 ## Requirements:
 

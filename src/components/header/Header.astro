@@ -1,27 +1,35 @@
 ---
-import { Minus } from '@lucide/astro';
-import HeaderCTA from './components/HeaderCTA.astro';
-import HeaderLangs from './components/HeaderLangs.astro';
-import HeaderLogo from './components/HeaderLogo.astro';
-import HeaderMenu from './components/HeaderMenu.astro';
+import { Minus } from "@lucide/astro";
+import HeaderCTA from "./components/HeaderCTA.astro";
+import HeaderLangs from "./components/HeaderLangs.astro";
+import HeaderLogo from "./components/HeaderLogo.astro";
+import HeaderMenu from "./components/HeaderMenu.astro";
 ---
 
 <header class="py-8">
-	<div class="container">
-		<div class="flex items-center justify-between">
-			<HeaderMenu />
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <HeaderMenu />
 
-			<HeaderLogo class="grow lg:grow-0" />
+      <HeaderLogo class="grow lg:grow-0" />
 
-			<div class="contents items-center justify-end md:w-87.5 lg:flex">
-				<HeaderCTA />
+      <div class="contents items-center justify-end md:w-87.5 lg:flex">
+        <HeaderCTA />
 
-				<Minus stroke-width={1} size={32} class="text-black-900 rotate-90 opacity-25" />
+        <Minus
+          stroke-width={1}
+          size={32}
+          class="text-black-900 rotate-90 opacity-25"
+        />
 
-				<HeaderLangs />
+        <HeaderLangs />
 
-				<Minus stroke-width={1} size={32} class="text-black-900 rotate-90 opacity-25 lg:hidden" />
-			</div>
-		</div>
-	</div>
+        <Minus
+          stroke-width={1}
+          size={32}
+          class="text-black-900 rotate-90 opacity-25 lg:hidden"
+        />
+      </div>
+    </div>
+  </div>
 </header>
