@@ -1,0 +1,73 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import type { HTMLAttributes } from "astro/types";
+import { tv, type VariantProps } from "tailwind-variants";
+
+type Props = Omit<HTMLAttributes<"select">, "size"> &
+  VariantProps<typeof nativeSelect>;
+
+export const nativeSelectWrapper = tv({
+  base: [
+    "starwind-native-select-wrapper",
+    "group/native-select relative w-full has-[select:disabled]:opacity-50",
+  ],
+});
+
+export const nativeSelect = tv({
+  base: [
+    "starwind-native-select",
+    "border-black-500 bg-white flex py-2 w-full items-center justify-between rounded-md border",
+    "focus:outline-outline focus:outline-2 focus:outline-offset-2",
+    "disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+  ],
+  variants: {
+    size: {
+      sm: "h-9 pr-8 pl-2 text-sm",
+      md: "h-[50px] pr-9 pl-6 text-base",
+      lg: "h-12 pr-10 pl-4 text-lg",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export const nativeSelectIcon = tv({
+  base: [
+    "text-foreground pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-50",
+  ],
+  variants: {
+    size: {
+      sm: "right-2 size-3.5",
+      md: "right-3 size-4",
+      lg: "right-4 size-5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+const { class: className, size, ...rest } = Astro.props;
+---
+
+<div
+  class={nativeSelectWrapper()}
+  data-size={size}
+  data-slot="native-select-wrapper"
+>
+  <select
+    class={nativeSelect({ size, class: className })}
+    {...rest}
+    data-slot="native-select"
+  >
+    <slot />
+  </select>
+  <slot name="icon">
+    <ChevronDown
+      class={nativeSelectIcon({ size })}
+      aria-hidden="true"
+      data-slot="native-select-icon"
+    />
+  </slot>
+</div>

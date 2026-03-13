@@ -181,22 +181,16 @@ const { class: className, ...rest } = Astro.props;
         });
       });
 
-      // Close on click outside
+      // Close only on backdrop clicks. Native select interactions can emit clicks
+      // with unreliable coordinates, so we rely on event target instead.
       this.dialog.addEventListener("click", (e) => {
         if (!this.dialog) return;
-        const dialogDimensions = this.dialog.getBoundingClientRect();
-        const clickedInDialog =
-          e.clientX >= dialogDimensions.left &&
-          e.clientX <= dialogDimensions.right &&
-          e.clientY >= dialogDimensions.top &&
-          e.clientY <= dialogDimensions.bottom;
+        if (e.target !== this.dialog) return;
 
-        if (!clickedInDialog) {
-          // Only close if this is the topmost dialog
-          const openDialogs = document.querySelectorAll("dialog[open]");
-          if (openDialogs.length > 0 && openDialogs[openDialogs.length - 1] === this.dialog) {
-            this.close();
-          }
+        // Only close if this is the topmost dialog
+        const openDialogs = document.querySelectorAll("dialog[open]");
+        if (openDialogs.length > 0 && openDialogs[openDialogs.length - 1] === this.dialog) {
+          this.close();
         }
       });
 
