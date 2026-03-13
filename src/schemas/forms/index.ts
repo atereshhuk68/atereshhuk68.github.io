@@ -1,6 +1,6 @@
 import { getValidationMessages } from "@/constants/validation-messages";
 import type { Locales } from "@/types";
-import { z } from "zod";
+import { z } from "astro/zod";
 
 const getCurrentLanguage = (locale?: Locales): Locales => {
   if (locale) return locale;

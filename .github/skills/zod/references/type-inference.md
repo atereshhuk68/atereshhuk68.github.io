@@ -25,7 +25,7 @@ For schemas with transformations, Zod distinguishes between input and output typ
 ```typescript
 const TransformSchema = z.string().transform((s) => s.length);
 
-type Input = z.input<typeof TransformSchema>;   // string
+type Input = z.input<typeof TransformSchema>; // string
 type Output = z.output<typeof TransformSchema>; // number
 
 // Use z.infer for output type (most common)
@@ -126,12 +126,12 @@ const jsonSchema = z.toJSONSchema(UserSchema);
 
 ```typescript
 z.toJSONSchema(schema, {
-  target: "openapi-3.0",           // Target version
-  metadata: true,                  // Include .meta() data
-  cycles: "ref",                   // Handle recursive schemas
-  reused: "defs",                  // Extract repeated schemas
-  io: "input",                     // Use input types instead of output
-  unrepresentable: "any",          // Handle unsupported types
+  target: "openapi-3.0", // Target version
+  metadata: true, // Include .meta() data
+  cycles: "ref", // Handle recursive schemas
+  reused: "defs", // Extract repeated schemas
+  io: "input", // Use input types instead of output
+  unrepresentable: "any", // Handle unsupported types
 });
 ```
 
@@ -183,7 +183,7 @@ interface GlobalMeta {
 }
 
 // Extend with TypeScript declaration merging for type safety
-declare module "zod" {
+declare module "astro/zod" {
   interface GlobalMeta {
     placeholder?: string;
     helpText?: string;
@@ -281,8 +281,8 @@ const registry = z.registry<{
 
 registry.add(TransformSchema, {
   description: "Converts string to length",
-  exampleInput: "hello",    // Type: string
-  exampleOutput: 5,         // Type: number
+  exampleInput: "hello", // Type: string
+  exampleOutput: 5, // Type: number
 });
 ```
 
@@ -292,10 +292,7 @@ Restrict which schema types can be registered in a custom registry:
 
 ```typescript
 // Only allow string schemas
-const stringRegistry = z.registry<
-  { label: string },
-  z.ZodString
->();
+const stringRegistry = z.registry<{ label: string }, z.ZodString>();
 
 const nameSchema = z.string();
 stringRegistry.add(nameSchema, { label: "Name" }); // ✓ OK
@@ -310,11 +307,14 @@ Metadata integrates seamlessly with `z.toJSONSchema()`:
 
 ```typescript
 const UserSchema = z.object({
-  email: z.string().email().meta({
-    title: "Email Address",
-    description: "The user's email",
-    examples: ["user@example.com"],
-  }),
+  email: z
+    .string()
+    .email()
+    .meta({
+      title: "Email Address",
+      description: "The user's email",
+      examples: ["user@example.com"],
+    }),
   age: z.number().int().positive().meta({
     title: "Age",
     description: "User's age in years",
@@ -395,18 +395,23 @@ if (isUser(data)) {
 ### Conditional Types with Refinements
 
 ```typescript
-const ConditionalSchema = z.object({
-  type: z.enum(["email", "phone"]),
-  value: z.string(),
-}).refine(
-  (data) => {
-    if (data.type === "email") {
-      return z.string().email().safeParse(data.value).success;
-    }
-    return z.string().regex(/^\+?[1-9]\d{1,14}$/).safeParse(data.value).success;
-  },
-  { message: "Invalid format for selected type" }
-);
+const ConditionalSchema = z
+  .object({
+    type: z.enum(["email", "phone"]),
+    value: z.string(),
+  })
+  .refine(
+    (data) => {
+      if (data.type === "email") {
+        return z.string().email().safeParse(data.value).success;
+      }
+      return z
+        .string()
+        .regex(/^\+?[1-9]\d{1,14}$/)
+        .safeParse(data.value).success;
+    },
+    { message: "Invalid format for selected type" },
+  );
 
 type ConditionalData = z.infer<typeof ConditionalSchema>;
 // { type: "email" | "phone"; value: string }
@@ -418,18 +423,22 @@ type ConditionalData = z.infer<typeof ConditionalSchema>;
 const UserId = z.string().brand<"UserId">();
 const PostId = z.string().brand<"PostId">();
 
-type UserId = z.infer<typeof UserId>;     // string & Brand<"UserId">
-type PostId = z.infer<typeof PostId>;     // string & Brand<"PostId">
+type UserId = z.infer<typeof UserId>; // string & Brand<"UserId">
+type PostId = z.infer<typeof PostId>; // string & Brand<"PostId">
 
 // Prevents mixing IDs
-function getUser(id: UserId) { /* ... */ }
-function getPost(id: PostId) { /* ... */ }
+function getUser(id: UserId) {
+  /* ... */
+}
+function getPost(id: PostId) {
+  /* ... */
+}
 
 const userId = UserId.parse("user-123");
 const postId = PostId.parse("post-456");
 
-getUser(userId);  // ✓ OK
-getUser(postId);  // ✗ Type error - prevents bugs!
+getUser(userId); // ✓ OK
+getUser(postId); // ✗ Type error - prevents bugs!
 ```
 
 ---
@@ -447,5 +456,6 @@ getUser(postId);  // ✗ Type error - prevents bugs!
 ---
 
 **See also:**
+
 - `advanced-patterns.md` for transforms and codecs
 - `error-handling.md` for type-safe error handling

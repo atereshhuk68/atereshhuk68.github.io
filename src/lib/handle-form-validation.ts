@@ -1,4 +1,4 @@
-import type { z } from "zod";
+import type { z } from "astro/zod";
 
 /**
  * Removes all non-digit characters from a phone number string.
@@ -18,7 +18,7 @@ export const sanitizePhoneNumber = (phoneNumber: string): string => {
 export const validateFormBySchema = <T extends z.ZodTypeAny>(
   form: HTMLFormElement,
   schema: T,
-): z.SafeParseReturnType<z.infer<T>, z.infer<T>> => {
+): z.ZodSafeParseResult<z.core.output<T>> => {
   const formData = new FormData(form);
   const formValues = Object.fromEntries(formData);
 

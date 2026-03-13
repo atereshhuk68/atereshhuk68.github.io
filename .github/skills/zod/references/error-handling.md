@@ -16,9 +16,9 @@ const result = schema.safeParse(data);
 if (!result.success) {
   // ZodError structure
   result.error.issues.forEach((issue) => {
-    console.log(issue.code);      // Error type
-    console.log(issue.path);      // Field path
-    console.log(issue.message);   // Error message
+    console.log(issue.code); // Error type
+    console.log(issue.path); // Field path
+    console.log(issue.message); // Error message
   });
 }
 ```
@@ -86,10 +86,12 @@ const NestedSchema = z.object({
       notifications: z.boolean(),
     }),
   }),
-  posts: z.array(z.object({
-    title: z.string(),
-    content: z.string(),
-  })),
+  posts: z.array(
+    z.object({
+      title: z.string(),
+      content: z.string(),
+    }),
+  ),
 });
 
 const result = NestedSchema.safeParse({
@@ -115,13 +117,20 @@ if (!result.success) {
   // [] - No errors at root level
 
   // Navigate nested errors with optional chaining (IMPORTANT!)
-  console.log(tree.properties?.user?.properties?.profile?.properties?.name?.errors);
+  console.log(
+    tree.properties?.user?.properties?.profile?.properties?.name?.errors,
+  );
   // ["String must contain at least 1 character(s)"]
 
-  console.log(tree.properties?.user?.properties?.profile?.properties?.email?.errors);
+  console.log(
+    tree.properties?.user?.properties?.profile?.properties?.email?.errors,
+  );
   // ["Invalid email"]
 
-  console.log(tree.properties?.user?.properties?.settings?.properties?.notifications?.errors);
+  console.log(
+    tree.properties?.user?.properties?.settings?.properties?.notifications
+      ?.errors,
+  );
   // ["Expected boolean, received string"]
 
   // Array errors use 'items' property
@@ -131,13 +140,15 @@ if (!result.success) {
 ```
 
 **Tree Structure**:
+
 ```typescript
 interface ErrorTree {
-  errors: string[];              // Errors at current level
-  properties?: {                 // Object property errors
+  errors: string[]; // Errors at current level
+  properties?: {
+    // Object property errors
     [key: string]: ErrorTree;
   };
-  items?: ErrorTree[];           // Array item errors
+  items?: ErrorTree[]; // Array item errors
 }
 ```
 
@@ -195,11 +206,11 @@ Output:
 
 ### Comparison Table
 
-| Method | Best For | Output Type | Nested Support |
-|--------|----------|-------------|----------------|
-| `z.flattenError()` | Forms, single-level schemas | Object `{ formErrors, fieldErrors }` | No |
-| `z.treeifyError()` | Nested data, complex structures | Tree object | Yes |
-| `z.prettifyError()` | Debugging, logging | String | Yes |
+| Method              | Best For                        | Output Type                          | Nested Support |
+| ------------------- | ------------------------------- | ------------------------------------ | -------------- |
+| `z.flattenError()`  | Forms, single-level schemas     | Object `{ formErrors, fieldErrors }` | No             |
+| `z.treeifyError()`  | Nested data, complex structures | Tree object                          | Yes            |
+| `z.prettifyError()` | Debugging, logging              | String                               | Yes            |
 
 ---
 
@@ -207,8 +218,8 @@ Output:
 
 ```typescript
 // ❌ Zod v3 (Deprecated in v4)
-error.format();   // Use z.treeifyError(error) instead
-error.flatten();  // Use z.flattenError(error) instead
+error.format(); // Use z.treeifyError(error) instead
+error.flatten(); // Use z.flattenError(error) instead
 
 // ✅ Zod v4
 z.treeifyError(error);
@@ -249,7 +260,7 @@ const AgeSchema = z.number().min(18, {
 const result = UserSchema.parse(data, {
   error: (issue) => {
     // Custom error logic for this specific parse
-    return { message: `Validation failed at ${issue.path.join('.')}` };
+    return { message: `Validation failed at ${issue.path.join(".")}` };
   },
 });
 
@@ -273,14 +284,14 @@ Error customization functions receive an issue context object with detailed info
 z.string().min(5, {
   error: (issue) => {
     // Available properties:
-    console.log(issue.code);      // Error type (e.g., "too_small")
-    console.log(issue.input);     // The data being validated
-    console.log(issue.inst);      // The schema instance
-    console.log(issue.path);      // Path in nested structures
+    console.log(issue.code); // Error type (e.g., "too_small")
+    console.log(issue.input); // The data being validated
+    console.log(issue.inst); // The schema instance
+    console.log(issue.path); // Path in nested structures
 
     // Type-specific properties
     if (issue.code === "too_small") {
-      console.log(issue.minimum);   // The minimum value
+      console.log(issue.minimum); // The minimum value
       console.log(issue.inclusive); // Whether minimum is inclusive
     }
 
@@ -328,15 +339,15 @@ schema.parse(data, {
 Zod v4 includes built-in support for 40+ locales:
 
 ```typescript
-import { z } from "zod";
+import { z } from "astro/zod";
 
 // Set global locale
-z.config(z.locales.en());  // English (default)
-z.config(z.locales.es());  // Spanish
-z.config(z.locales.fr());  // French
-z.config(z.locales.de());  // German
-z.config(z.locales.ja());  // Japanese
-z.config(z.locales.zh());  // Chinese
+z.config(z.locales.en()); // English (default)
+z.config(z.locales.es()); // Spanish
+z.config(z.locales.fr()); // French
+z.config(z.locales.de()); // German
+z.config(z.locales.ja()); // Japanese
+z.config(z.locales.zh()); // Chinese
 // ... and 34+ more locales
 
 // Per-parse locale override
@@ -426,7 +437,8 @@ if (!result.success) {
   const tree = z.treeifyError(result.error);
 
   // Access nested errors with optional chaining
-  const firstNameError = tree.properties?.personal?.properties?.firstName?.errors?.[0];
+  const firstNameError =
+    tree.properties?.personal?.properties?.firstName?.errors?.[0];
   const emailError = tree.properties?.contact?.properties?.email?.errors?.[0];
 
   setFieldError("personal.firstName", firstNameError);
@@ -440,10 +452,12 @@ if (!result.success) {
 
 ```typescript
 const TodoListSchema = z.object({
-  todos: z.array(z.object({
-    title: z.string().min(1),
-    completed: z.boolean(),
-  })),
+  todos: z.array(
+    z.object({
+      title: z.string().min(1),
+      completed: z.boolean(),
+    }),
+  ),
 });
 
 const result = TodoListSchema.safeParse(data);
@@ -467,16 +481,16 @@ if (!result.success) {
 
 Common Zod error codes you'll encounter:
 
-| Code | Description | Example |
-|------|-------------|---------|
-| `invalid_type` | Wrong data type | Expected string, got number |
-| `too_small` | Value below minimum | String length < 5 |
-| `too_big` | Value above maximum | Number > 100 |
-| `invalid_string` | String format invalid | Email validation failed |
-| `invalid_enum_value` | Not in enum | Value not in ["a", "b", "c"] |
-| `custom` | Custom refinement failed | Password doesn't match |
-| `invalid_union` | No union branch matched | Neither string nor number |
-| `invalid_date` | Invalid Date object | NaN date |
+| Code                 | Description              | Example                      |
+| -------------------- | ------------------------ | ---------------------------- |
+| `invalid_type`       | Wrong data type          | Expected string, got number  |
+| `too_small`          | Value below minimum      | String length < 5            |
+| `too_big`            | Value above maximum      | Number > 100                 |
+| `invalid_string`     | String format invalid    | Email validation failed      |
+| `invalid_enum_value` | Not in enum              | Value not in ["a", "b", "c"] |
+| `custom`             | Custom refinement failed | Password doesn't match       |
+| `invalid_union`      | No union branch matched  | Neither string nor number    |
+| `invalid_date`       | Invalid Date object      | NaN date                     |
 
 ---
 
@@ -496,5 +510,6 @@ Common Zod error codes you'll encounter:
 ---
 
 **See also:**
+
 - `migration-guide.md` for v3 to v4 error API changes
 - `advanced-patterns.md` for custom refinements and validation

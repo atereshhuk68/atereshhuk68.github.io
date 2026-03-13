@@ -39,7 +39,9 @@ const {
   import { initCarousel } from "./index";
 
   const setupCarousels = () => {
-    const carousels = document.querySelectorAll(".starwind-carousel") as NodeListOf<HTMLElement>;
+    const carousels = document.querySelectorAll(
+      ".starwind-carousel",
+    ) as NodeListOf<HTMLElement>;
     carousels.forEach((carousel) => {
       if (carousel.dataset.autoInit === "false") {
         return;

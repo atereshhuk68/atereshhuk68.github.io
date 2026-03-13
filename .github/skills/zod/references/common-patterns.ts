@@ -8,7 +8,7 @@
  * @note Uses Zod 4 APIs: z.codec, z.iso.datetime, z.flattenError, z.prettifyError
  */
 
-import { z } from "zod";
+import { z } from "astro/zod";
 
 // ============================================================================
 // ENVIRONMENT VARIABLES
@@ -35,7 +35,11 @@ export type Env = z.infer<typeof EnvSchema>;
 
 // Create User Request
 export const CreateUserRequest = z.object({
-  username: z.string().min(3).max(20).regex(/^[a-zA-Z0-9_]+$/),
+  username: z
+    .string()
+    .min(3)
+    .max(20)
+    .regex(/^[a-zA-Z0-9_]+$/),
   email: z.string().email(),
   password: z.string().min(8).max(100),
   firstName: z.string().min(1).max(50).optional(),
@@ -159,12 +163,18 @@ export type Notification = z.infer<typeof NotificationSchema>;
 export const StrongPasswordSchema = z
   .string()
   .min(8, "Password must be at least 8 characters")
-  .refine((val) => /[A-Z]/.test(val), "Must contain at least one uppercase letter")
-  .refine((val) => /[a-z]/.test(val), "Must contain at least one lowercase letter")
+  .refine(
+    (val) => /[A-Z]/.test(val),
+    "Must contain at least one uppercase letter",
+  )
+  .refine(
+    (val) => /[a-z]/.test(val),
+    "Must contain at least one lowercase letter",
+  )
   .refine((val) => /[0-9]/.test(val), "Must contain at least one number")
   .refine(
     (val) => /[^A-Za-z0-9]/.test(val),
-    "Must contain at least one special character"
+    "Must contain at least one special character",
   );
 
 // URL slug validation and transformation
@@ -175,19 +185,23 @@ export const SlugSchema = z
   .transform((val) => val.toLowerCase().replace(/\s+/g, "-"))
   .refine(
     (val) => /^[a-z0-9-]+$/.test(val),
-    "Slug can only contain lowercase letters, numbers, and hyphens"
+    "Slug can only contain lowercase letters, numbers, and hyphens",
   );
 
 // Async username validation (checks database)
-export const UsernameSchema = z.string().min(3).max(20).refine(
-  async (username) => {
-    // Simulated database check
-    // const exists = await db.user.findUnique({ where: { username } });
-    // return !exists;
-    return true; // Replace with actual check
-  },
-  { message: "Username is already taken" }
-);
+export const UsernameSchema = z
+  .string()
+  .min(3)
+  .max(20)
+  .refine(
+    async (username) => {
+      // Simulated database check
+      // const exists = await db.user.findUnique({ where: { username } });
+      // return !exists;
+      return true; // Replace with actual check
+    },
+    { message: "Username is already taken" },
+  );
 
 // ============================================================================
 // CODECS (BIDIRECTIONAL TRANSFORMATIONS)
@@ -196,23 +210,19 @@ export const UsernameSchema = z.string().min(3).max(20).refine(
 // Date codec: ISO string <-> Date object
 export const DateCodec = z.codec(
   z.iso.datetime(), // Input: ISO string
-  z.date(),         // Output: Date object
+  z.date(), // Output: Date object
   {
     decode: (str) => new Date(str),
     encode: (date) => date.toISOString(),
-  }
+  },
 );
 
 // JSON codec: string <-> object
 export const JSONCodec = <T extends z.ZodTypeAny>(schema: T) =>
-  z.codec(
-    z.string(),
-    schema,
-    {
-      decode: (str) => JSON.parse(str),
-      encode: (obj) => JSON.stringify(obj),
-    }
-  );
+  z.codec(z.string(), schema, {
+    decode: (str) => JSON.parse(str),
+    encode: (obj) => JSON.stringify(obj),
+  });
 
 // Usage: const UserJSONCodec = JSONCodec(UserResponse);
 
@@ -262,7 +272,7 @@ export const CategorySchema: z.ZodType<Category> = z.lazy(() =>
     id: z.string().uuid(),
     name: z.string().min(1).max(100),
     subcategories: z.array(CategorySchema),
-  })
+  }),
 );
 
 // ============================================================================
@@ -272,10 +282,13 @@ export const CategorySchema: z.ZodType<Category> = z.lazy(() =>
 export const ImageUploadSchema = z.object({
   file: z
     .instanceof(File)
-    .refine((file) => file.size <= 5 * 1024 * 1024, "File must be less than 5MB")
+    .refine(
+      (file) => file.size <= 5 * 1024 * 1024,
+      "File must be less than 5MB",
+    )
     .refine(
       (file) => ["image/jpeg", "image/png", "image/webp"].includes(file.type),
-      "Only JPEG, PNG, and WebP images are allowed"
+      "Only JPEG, PNG, and WebP images are allowed",
     ),
   alt: z.string().max(200).optional(),
 });

@@ -9,14 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.7.0",
-    "@internationalized/date": "^3.11.0",
-    "@lucide/astro": "^0.575.0",
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
+    "@internationalized/date": "^3.12.0",
+    "@lucide/astro": "^0.577.0",
     "@nanostores/react": "^1.0.0",
     "embla-carousel": "^8.6.0",
-    "es-toolkit": "^1.44.0",
-    "framer-motion": "^12.34.3",
+    "es-toolkit": "^1.45.1",
+    "framer-motion": "^12.36.0",
     "ky": "^1.14.3",
     "maska": "^3.2.0",
     "nanostores": "^1.1.1",
@@ -24,8 +24,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwind-variants": "^3.2.2",
-    "typescript-cookie": "^1.0.6",
-    "zod": "3.25.76"
+    "typescript-cookie": "^1.0.6"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",
@@ -34,7 +33,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.18.0",
+    "astro": "^6.0.4",
     "glob": "^13.0.6",
     "prettier": "3.8.1",
     "prettier-plugin-astro": "^0.14.1",
@@ -49,5 +48,8 @@
       "esbuild",
       "sharp"
     ]
+  },
+  "volta": {
+    "node": "24.14.0"
   }
 }
