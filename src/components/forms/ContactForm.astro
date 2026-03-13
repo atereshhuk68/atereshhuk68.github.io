@@ -49,7 +49,10 @@ const t = useTranslations(currentLocale as Locales);
   } from "@/lib/handle-submit-button";
   import { validateFormBySchema } from "@/lib/handle-form-validation";
   import { postFormPayload } from "@/lib/handle-form-submit";
-  import { toggleDialog } from "@/lib/handle-dialogs";
+  import {
+    closeStarwindUiDialog,
+    openStarwindUiDialog,
+  } from "@/lib/handle-dialogs";
   import { getContactFormSchema } from "@/schemas/forms";
   import type { Locales } from "@/types";
 
@@ -58,18 +61,26 @@ const t = useTranslations(currentLocale as Locales);
 
   const contactFormSchema = getContactFormSchema(currentLocale);
 
-  const contactForm = document.querySelector<HTMLFormElement>(
-    "form[data-contact-form]",
-  );
-  const contactFormFields =
-    contactForm?.querySelectorAll<HTMLInputElement>("input, textarea");
+  const SELECTORS = {
+    contactForm: "form[data-contact-form]",
+    contactFormFields:
+      "form[data-contact-form] input, form[data-contact-form] textarea",
+    errorDialogWrapper: "#errorModal",
+    successDialogWrapper: "#successModal",
+  };
 
-  const errorDialog = document.querySelector<HTMLDialogElement>("#errorModal");
-  const successDialog =
-    document.querySelector<HTMLDialogElement>("#successModal");
-  const closeDialogButtons = document.querySelectorAll<HTMLButtonElement>(
-    "[data-close-dialog]",
-  );
+  const ELEMENTS = {
+    contactForm: document.querySelector<HTMLFormElement>(SELECTORS.contactForm),
+    contactFormFields: document.querySelectorAll<HTMLInputElement>(
+      SELECTORS.contactFormFields,
+    ),
+    errorDialogWrapper: document.querySelector<HTMLDivElement>(
+      SELECTORS.errorDialogWrapper,
+    ),
+    successDialogWrapper: document.querySelector<HTMLDivElement>(
+      SELECTORS.successDialogWrapper,
+    ),
+  };
 
   const handleSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
@@ -98,13 +109,14 @@ const t = useTranslations(currentLocale as Locales);
     const { success } = await postFormPayload(data);
 
     if (success) {
-      if (successDialog) {
-        toggleDialog(successDialog, true);
+      if (ELEMENTS.successDialogWrapper) {
+        openStarwindUiDialog(ELEMENTS.successDialogWrapper);
+
         submittedForm.reset();
       }
     } else {
-      if (errorDialog) {
-        toggleDialog(errorDialog, true);
+      if (ELEMENTS.errorDialogWrapper) {
+        openStarwindUiDialog(ELEMENTS.errorDialogWrapper);
       }
     }
 
@@ -112,23 +124,10 @@ const t = useTranslations(currentLocale as Locales);
   };
 
   const setEventListeners = () => {
-    contactForm?.addEventListener("submit", handleSubmit);
+    ELEMENTS.contactForm?.addEventListener("submit", handleSubmit);
 
-    if (closeDialogButtons) {
-      for (const closeDialogButton of closeDialogButtons) {
-        closeDialogButton.addEventListener("click", (event) => {
-          const openedDialog =
-            document.querySelector<HTMLDialogElement>("dialog[open]");
-
-          if (openedDialog) {
-            toggleDialog(openedDialog, false);
-          }
-        });
-      }
-    }
-
-    if (contactFormFields) {
-      for (const formField of contactFormFields) {
+    if (ELEMENTS.contactFormFields) {
+      for (const formField of ELEMENTS.contactFormFields) {
         formField.addEventListener("input", (event) => {
           const field = event.currentTarget as HTMLInputElement;
 

@@ -3,26 +3,33 @@ import { X } from "@lucide/astro";
 import { Button } from "@/components/starwind/button";
 import { useTranslations } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/starwind/dialog";
 
 const { currentLocale = "pl" } = Astro;
 
 const t = useTranslations(currentLocale as Locales);
 ---
 
-<dialog
-  id="errorModal"
-  class="text-black-800 shadow-card backdrop:bg-black-900/60 m-auto w-[90%] max-w-[544px] space-y-8 rounded-lg bg-white px-8 pt-8 pb-10 text-center outline-none"
-  style="transform: scale(0.4); opacity: 0;"
->
-  <div class="mx-auto grid gap-4">
-    <div class="flex justify-center text-red-500">
-      <X size={32} stroke-width={3} />
-    </div>
+<Dialog id="errorModal">
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle class="text-center">😲</DialogTitle>
+    </DialogHeader>
 
-    <div class="text-xl font-medium">
-      {t("dialog.message.error")}
-    </div>
-  </div>
+    <div class="py-4 text-center">{t("dialog.message.error")}</div>
 
-  <Button variant="primary" size="sm" data-close-dialog>Ok</Button>
-</dialog>
+    <DialogFooter class="sm:justify-center">
+      <DialogClose asChild>
+        <Button variant="default">{t("dialog.button.error")}</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
