@@ -26,3 +26,7 @@ public/send.config.local.php
 
 # jetbrains setting folder
 .idea/
+
+# local skills for Copilot/OpenCode (keep out of repo)
+.github/skills/local-*/
+.opencode/skills/

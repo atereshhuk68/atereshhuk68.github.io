@@ -14,7 +14,7 @@
     "type-check": "tsc --noEmit"
   },
   "keywords": [
-    "zod",
+    "astro/zod",
     "validation",
     "typescript",
     "schema"
@@ -22,7 +22,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "zod": "^4.3.6"
+    "astro/zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

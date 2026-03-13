@@ -90,10 +90,12 @@ yarn add zod
 ```
 
 **Requirements**:
+
 - TypeScript v5.5+ with `"strict": true` in `tsconfig.json`
 - Zod 4.x (4.1.12+)
 
 **Important**: This skill documents **Zod 4.x** features. The following APIs require Zod 4 and are NOT available in Zod 3.x:
+
 - `z.codec()` - Bidirectional transformations
 - `z.iso.date()`, `z.iso.time()`, `z.iso.datetime()`, `z.iso.duration()` - ISO format validators
 - `z.toJSONSchema()` - JSON Schema generation
@@ -126,7 +128,7 @@ Zod v4 introduces breaking changes for better performance:
 ### Basic Usage Pattern
 
 ```typescript
-import { z } from "zod";
+import { z } from "astro/zod";
 
 // Define schema
 const UserSchema = z.object({
@@ -166,71 +168,71 @@ Use the appropriate parsing method based on error handling needs:
 ### Strings
 
 ```typescript
-z.string()                    // Basic string
-z.string().min(5)            // Minimum length
-z.string().max(100)          // Maximum length
-z.string().length(10)        // Exact length
-z.string().email()           // Email validation
-z.string().url()             // URL validation
-z.string().uuid()            // UUID format
-z.string().regex(/^\d+$/)    // Custom pattern
-z.string().startsWith("pre") // Prefix check
-z.string().endsWith("suf")   // Suffix check
-z.string().trim()            // Auto-trim whitespace
-z.string().toLowerCase()     // Auto-lowercase
-z.string().toUpperCase()     // Auto-uppercase
+z.string(); // Basic string
+z.string().min(5); // Minimum length
+z.string().max(100); // Maximum length
+z.string().length(10); // Exact length
+z.string().email(); // Email validation
+z.string().url(); // URL validation
+z.string().uuid(); // UUID format
+z.string().regex(/^\d+$/); // Custom pattern
+z.string().startsWith("pre"); // Prefix check
+z.string().endsWith("suf"); // Suffix check
+z.string().trim(); // Auto-trim whitespace
+z.string().toLowerCase(); // Auto-lowercase
+z.string().toUpperCase(); // Auto-uppercase
 
 // ISO formats (Zod 4+)
-z.iso.date()                 // YYYY-MM-DD
-z.iso.time()                 // HH:MM:SS
-z.iso.datetime()             // ISO 8601 datetime
-z.iso.duration()             // ISO 8601 duration
+z.iso.date(); // YYYY-MM-DD
+z.iso.time(); // HH:MM:SS
+z.iso.datetime(); // ISO 8601 datetime
+z.iso.duration(); // ISO 8601 duration
 
 // Network formats
-z.ipv4()                     // IPv4 address
-z.ipv6()                     // IPv6 address
-z.cidrv4()                   // IPv4 CIDR notation
-z.cidrv6()                   // IPv6 CIDR notation
+z.ipv4(); // IPv4 address
+z.ipv6(); // IPv6 address
+z.cidrv4(); // IPv4 CIDR notation
+z.cidrv6(); // IPv6 CIDR notation
 
 // Other formats
-z.jwt()                      // JWT token
-z.nanoid()                   // Nanoid
-z.cuid()                     // CUID
-z.cuid2()                    // CUID2
-z.ulid()                     // ULID
-z.base64()                   // Base64 encoded
-z.hex()                      // Hexadecimal
+z.jwt(); // JWT token
+z.nanoid(); // Nanoid
+z.cuid(); // CUID
+z.cuid2(); // CUID2
+z.ulid(); // ULID
+z.base64(); // Base64 encoded
+z.hex(); // Hexadecimal
 ```
 
 ### Numbers
 
 ```typescript
-z.number()                   // Basic number
-z.number().int()             // Integer only
-z.number().positive()        // > 0
-z.number().nonnegative()     // >= 0
-z.number().negative()        // < 0
-z.number().nonpositive()     // <= 0
-z.number().min(0)            // Minimum value
-z.number().max(100)          // Maximum value
-z.number().gt(0)             // Greater than
-z.number().gte(0)            // Greater than or equal
-z.number().lt(100)           // Less than
-z.number().lte(100)          // Less than or equal
-z.number().multipleOf(5)     // Must be multiple of 5
-z.int()                      // Shorthand for z.number().int()
-z.int32()                    // 32-bit integer
-z.nan()                      // NaN value
+z.number(); // Basic number
+z.number().int(); // Integer only
+z.number().positive(); // > 0
+z.number().nonnegative(); // >= 0
+z.number().negative(); // < 0
+z.number().nonpositive(); // <= 0
+z.number().min(0); // Minimum value
+z.number().max(100); // Maximum value
+z.number().gt(0); // Greater than
+z.number().gte(0); // Greater than or equal
+z.number().lt(100); // Less than
+z.number().lte(100); // Less than or equal
+z.number().multipleOf(5); // Must be multiple of 5
+z.int(); // Shorthand for z.number().int()
+z.int32(); // 32-bit integer
+z.nan(); // NaN value
 ```
 
 ### Coercion (Type Conversion)
 
 ```typescript
-z.coerce.string()            // Convert to string
-z.coerce.number()            // Convert to number
-z.coerce.boolean()           // Convert to boolean
-z.coerce.bigint()            // Convert to bigint
-z.coerce.date()              // Convert to Date
+z.coerce.string(); // Convert to string
+z.coerce.number(); // Convert to number
+z.coerce.boolean(); // Convert to boolean
+z.coerce.bigint(); // Convert to bigint
+z.coerce.date(); // Convert to Date
 
 // Example: Parse query parameters
 const QuerySchema = z.object({
@@ -244,15 +246,15 @@ const QuerySchema = z.object({
 ### Other Primitives
 
 ```typescript
-z.boolean()                  // Boolean
-z.date()                     // Date object
-z.date().min(new Date("2020-01-01"))
-z.date().max(new Date("2030-12-31"))
-z.bigint()                   // BigInt
-z.symbol()                   // Symbol
-z.null()                     // Null
-z.undefined()                // Undefined
-z.void()                     // Void (undefined)
+z.boolean(); // Boolean
+z.date(); // Date object
+z.date().min(new Date("2020-01-01"));
+z.date().max(new Date("2030-12-31"));
+z.bigint(); // BigInt
+z.symbol(); // Symbol
+z.null(); // Null
+z.undefined(); // Undefined
+z.void(); // Void (undefined)
 ```
 
 ## Complex Types
@@ -291,21 +293,21 @@ z.looseObject({ ... })            // Allows extra keys
 ### Arrays
 
 ```typescript
-z.array(z.string())              // String array
-z.array(z.number()).min(1)       // At least 1 element
-z.array(z.number()).max(10)      // At most 10 elements
-z.array(z.number()).length(5)    // Exactly 5 elements
-z.array(z.number()).nonempty()   // At least 1 element
+z.array(z.string()); // String array
+z.array(z.number()).min(1); // At least 1 element
+z.array(z.number()).max(10); // At most 10 elements
+z.array(z.number()).length(5); // Exactly 5 elements
+z.array(z.number()).nonempty(); // At least 1 element
 
 // Nested arrays
-z.array(z.array(z.number()))     // number[][]
+z.array(z.array(z.number())); // number[][]
 ```
 
 ### Tuples
 
 ```typescript
-z.tuple([z.string(), z.number()]) // [string, number]
-z.tuple([z.string(), z.number()]).rest(z.boolean()) // [string, number, ...boolean[]]
+z.tuple([z.string(), z.number()]); // [string, number]
+z.tuple([z.string(), z.number()]).rest(z.boolean()); // [string, number, ...boolean[]]
 ```
 
 ### Enums and Literals
@@ -316,28 +318,28 @@ const RoleEnum = z.enum(["admin", "user", "guest"]);
 type Role = z.infer<typeof RoleEnum>; // "admin" | "user" | "guest"
 
 // Literal values
-z.literal("exact_value")
-z.literal(42)
-z.literal(true)
+z.literal("exact_value");
+z.literal(42);
+z.literal(true);
 
 // Native TypeScript enum
 enum Fruits {
   Apple,
   Banana,
 }
-z.nativeEnum(Fruits)
+z.nativeEnum(Fruits);
 
 // Enum methods
-RoleEnum.enum.admin              // "admin"
-RoleEnum.exclude(["guest"])      // Exclude values
-RoleEnum.extract(["admin", "user"]) // Include only
+RoleEnum.enum.admin; // "admin"
+RoleEnum.exclude(["guest"]); // Exclude values
+RoleEnum.extract(["admin", "user"]); // Include only
 ```
 
 ### Unions
 
 ```typescript
 // Basic union
-z.union([z.string(), z.number()])
+z.union([z.string(), z.number()]);
 
 // Discriminated union (better performance & type inference)
 const ResponseSchema = z.discriminatedUnion("status", [
@@ -363,15 +365,15 @@ const Combined = z.intersection(BaseSchema, ExtendedSchema);
 
 ```typescript
 // Record: object with typed keys and values
-z.record(z.string())             // { [key: string]: string }
-z.record(z.string(), z.number()) // { [key: string]: number }
+z.record(z.string()); // { [key: string]: string }
+z.record(z.string(), z.number()); // { [key: string]: number }
 
 // Partial record (some keys optional)
-z.partialRecord(z.enum(["a", "b"]), z.string())
+z.partialRecord(z.enum(["a", "b"]), z.string());
 
 // Map
-z.map(z.string(), z.number())    // Map<string, number>
-z.set(z.string())                // Set<string>
+z.map(z.string(), z.number()); // Map<string, number>
+z.set(z.string()); // Set<string>
 ```
 
 ## Advanced Patterns
@@ -381,44 +383,48 @@ z.set(z.string())                // Set<string>
 ### Quick Reference
 
 **Refinements** (custom validation):
+
 ```typescript
 z.string().refine((val) => val.length >= 8, "Too short");
-z.object({ password, confirmPassword }).superRefine((data, ctx) => { /* ... */ });
+z.object({ password, confirmPassword }).superRefine((data, ctx) => {
+  /* ... */
+});
 ```
 
 **Transformations** (modify data):
+
 ```typescript
 z.string().transform((val) => val.trim());
 z.string().pipe(z.coerce.number());
 ```
 
 **Codecs** (bidirectional transforms - NEW in v4.1):
+
 ```typescript
-const DateCodec = z.codec(
-  z.iso.datetime(),
-  z.date(),
-  {
-    decode: (str) => new Date(str),
-    encode: (date) => date.toISOString(),
-  }
-);
+const DateCodec = z.codec(z.iso.datetime(), z.date(), {
+  decode: (str) => new Date(str),
+  encode: (date) => date.toISOString(),
+});
 ```
 
 **Recursive Types**:
+
 ```typescript
 const CategorySchema: z.ZodType<Category> = z.lazy(() =>
-  z.object({ name: z.string(), subcategories: z.array(CategorySchema) })
+  z.object({ name: z.string(), subcategories: z.array(CategorySchema) }),
 );
 ```
 
 **Optional/Nullable**:
+
 ```typescript
-z.string().optional()            // string | undefined
-z.string().nullable()            // string | null
-z.string().default("default")    // Provides default if undefined
+z.string().optional(); // string | undefined
+z.string().nullable(); // string | null
+z.string().default("default"); // Provides default if undefined
 ```
 
 **Readonly & Brand**:
+
 ```typescript
 z.object({ ... }).readonly()     // Readonly properties
 z.string().brand<"UserId">()     // Nominal typing
@@ -433,6 +439,7 @@ z.string().brand<"UserId">()     // Nominal typing
 ### Quick Reference
 
 **Error Formatting Methods**:
+
 ```typescript
 // For forms
 const { fieldErrors } = z.flattenError(error);
@@ -446,6 +453,7 @@ console.log(z.prettifyError(error));
 ```
 
 **Custom Error Messages** (three levels):
+
 ```typescript
 // 1. Schema-level (highest priority)
 z.string({ error: "Custom message" });
@@ -459,9 +467,10 @@ z.config({ customError: (issue) => ({ message: "..." }) });
 ```
 
 **Localization** (40+ languages):
+
 ```typescript
-z.config(z.locales.es());  // Spanish
-z.config(z.locales.fr());  // French
+z.config(z.locales.es()); // Spanish
+z.config(z.locales.fr()); // French
 ```
 
 **→ Load `references/error-handling.md` for:** Complete error formatting examples, custom error patterns, localization setup, error code reference
@@ -473,19 +482,22 @@ z.config(z.locales.fr());  // French
 ### Quick Reference
 
 **Basic Type Inference**:
+
 ```typescript
 const UserSchema = z.object({ name: z.string() });
 type User = z.infer<typeof UserSchema>; // { name: string }
 ```
 
 **Input vs Output** (for transforms):
+
 ```typescript
 const TransformSchema = z.string().transform((s) => s.length);
-type Input = z.input<typeof TransformSchema>;   // string
+type Input = z.input<typeof TransformSchema>; // string
 type Output = z.output<typeof TransformSchema>; // number
 ```
 
 **JSON Schema Conversion**:
+
 ```typescript
 const jsonSchema = z.toJSONSchema(UserSchema, {
   target: "openapi-3.0",
@@ -494,6 +506,7 @@ const jsonSchema = z.toJSONSchema(UserSchema, {
 ```
 
 **Metadata**:
+
 ```typescript
 // Add metadata
 const EmailSchema = z.string().email().meta({
@@ -512,9 +525,10 @@ const formRegistry = z.registry<FormFieldMeta>();
 Validate function inputs and outputs:
 
 ```typescript
-const AddFunction = z.function()
-  .args(z.number(), z.number())  // Arguments
-  .returns(z.number());           // Return type
+const AddFunction = z
+  .function()
+  .args(z.number(), z.number()) // Arguments
+  .returns(z.number()); // Return type
 
 // Implement typed function
 const add = AddFunction.implement((a, b) => {
@@ -522,7 +536,8 @@ const add = AddFunction.implement((a, b) => {
 });
 
 // Async functions
-const FetchFunction = z.function()
+const FetchFunction = z
+  .function()
   .args(z.string())
   .returns(z.promise(z.object({ data: z.any() })))
   .implementAsync(async (url) => {
@@ -622,11 +637,14 @@ const AuthorSchema = z.object({
 });
 
 // Compose into larger schemas
-const PostSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  content: z.string(),
-}).merge(TimestampSchema).merge(AuthorSchema);
+const PostSchema = z
+  .object({
+    id: z.string(),
+    title: z.string(),
+    content: z.string(),
+  })
+  .merge(TimestampSchema)
+  .merge(AuthorSchema);
 ```
 
 ## Ecosystem Integration
@@ -636,16 +654,19 @@ const PostSchema = z.object({
 ### Quick Reference
 
 **ESLint Plugins**:
+
 - `eslint-plugin-zod-x` - Enforces best practices
 - `eslint-plugin-import-zod` - Enforces import style
 
 **Framework Integrations**:
+
 - **tRPC** - End-to-end typesafe APIs
 - **React Hook Form** - Form validation (see `react-hook-form-zod` skill)
 - **Prisma** - Generate Zod from database models
 - **NestJS** - DTOs and validation pipes
 
 **Code Generation**:
+
 - **orval** - OpenAPI → Zod
 - **Hey API** - OpenAPI to TypeScript + Zod
 - **kubb** - API toolkit with codegen
@@ -659,6 +680,7 @@ const PostSchema = z.object({
 ### Quick Reference
 
 **Common Issues**:
+
 1. TypeScript strict mode required → Enable in `tsconfig.json`
 2. Large bundle size → Use `z.lazy()` for code splitting
 3. Slow async refinements → Cache or debounce
@@ -667,12 +689,14 @@ const PostSchema = z.object({
 6. Transform vs refine confusion → Use `.refine()` for validation, `.transform()` for modification
 
 **Performance Tips**:
+
 - Use `.discriminatedUnion()` (5-10x faster than `.union()`)
 - Cache schema instances
 - Use `.safeParse()` (avoids try-catch overhead)
 - Lazy load large schemas
 
 **Best Practices**:
+
 - Define schemas at module level
 - Use type inference (`z.infer`)
 - Add custom error messages
@@ -728,6 +752,7 @@ z.toJSONSchema(schema, options)
 ## When to Load References
 
 **Load `references/migration-guide.md` when:**
+
 - Upgrading from Zod v3 to v4
 - Questions about breaking changes
 - Need migration checklist or rollback strategy
@@ -735,6 +760,7 @@ z.toJSONSchema(schema, options)
 - Number validation issues with `Infinity` or unsafe integers
 
 **Load `references/error-handling.md` when:**
+
 - Need to format errors for forms or UI
 - Implementing custom error messages
 - Questions about `z.flattenError()`, `z.treeifyError()`, or `z.prettifyError()`
@@ -742,6 +768,7 @@ z.toJSONSchema(schema, options)
 - Need error code reference or pattern examples
 
 **Load `references/advanced-patterns.md` when:**
+
 - Implementing custom refinements or async validation
 - Need bidirectional transformations (codecs)
 - Working with recursive types or self-referential data
@@ -750,6 +777,7 @@ z.toJSONSchema(schema, options)
 - Implementing conditional validation
 
 **Load `references/type-inference.md` when:**
+
 - Questions about TypeScript type inference
 - Need to generate JSON Schema for OpenAPI or AI
 - Implementing metadata system for forms or documentation
@@ -758,6 +786,7 @@ z.toJSONSchema(schema, options)
 - Using brand types for ID safety
 
 **Load `references/ecosystem-integrations.md` when:**
+
 - Integrating with tRPC, React Hook Form, Prisma, or NestJS
 - Setting up ESLint plugins for best practices
 - Generating Zod schemas from OpenAPI (orval, Hey API, kubb)
@@ -765,6 +794,7 @@ z.toJSONSchema(schema, options)
 - Need framework-specific integration examples
 
 **Load `references/troubleshooting.md` when:**
+
 - Encountering TypeScript strict mode errors
 - Bundle size concerns or lazy loading needs
 - Performance issues with large unions or async refinements
@@ -784,6 +814,7 @@ z.toJSONSchema(schema, options)
 ---
 
 **Production Notes**:
+
 - Package version: 4.1.12+ (Zod 4.x stable)
 - Zero dependencies
 - Bundle size: 2kb (gzipped)
@@ -793,6 +824,7 @@ z.toJSONSchema(schema, options)
 - Skill version: 2.0.0 (Updated with v4.1 enhancements)
 
 **What's New in This Version**:
+
 - ✨ Comprehensive v3 to v4 migration guide with breaking changes
 - ✨ Enhanced error customization with three-level system
 - ✨ Expanded metadata API with registry system
