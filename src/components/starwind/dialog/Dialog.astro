@@ -6,7 +6,7 @@ type Props = HTMLAttributes<"div">;
 const { class: className, ...rest } = Astro.props;
 ---
 
-<div class:list={["starwind-dialog", className]} data-slot="dialog" {...rest}>
+<div class:list={["starwind-dialog", className]} {...rest} data-slot="dialog">
   <slot />
 </div>
 
@@ -181,8 +181,7 @@ const { class: className, ...rest } = Astro.props;
         });
       });
 
-      // Close only on backdrop clicks. Native select interactions can emit clicks
-      // with unreliable coordinates, so we rely on event target instead.
+      // Close only on backdrop clicks.
       this.dialog.addEventListener("click", (e) => {
         if (!this.dialog) return;
         if (e.target !== this.dialog) return;
