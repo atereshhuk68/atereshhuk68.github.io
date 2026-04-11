@@ -3,7 +3,7 @@ slug: hairdresser-colorist
 isJobActive: true
 metaTitle: Praca Fryzjer Kolorysta Warszawa | BFancy
 metaDescription: Oferta pracy fryzjer/kolorysta w salonie BFancy Warszawa Ochota. Dołącz do nowoczesnego salonu beauty i rozwijaj karierę.
-title: Fryzjer / Kolorysta
+title: Fryzjer / Kolorysta 1
 publishedDate: 2026-02-07T12:57:00
 city: Warszawa
 country: Polska
