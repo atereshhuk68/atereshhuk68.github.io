@@ -1,0 +1,42 @@
+{
+  "name": "BFancy",
+  "short_name": "BFancy",
+  "dir": "auto",
+  "lang": "pl-PL",
+  "orientation": "any",
+  "start_url": "/?homescreen=1",
+  "id": "/?homescreen=1",
+  "icons": [
+    {
+      "src": "/favicon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#FECE6C",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "screenshots": [
+    {
+      "src": "/favicon/app-desktop-screenshot.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Main Screen of the BFancy Desktop Application"
+    },
+    {
+      "src": "/favicon/app-mobile-screenshot.webp",
+      "sizes": "480x800",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Main Screen of the BFancy Mobile Application"
+    }
+  ]
+}
