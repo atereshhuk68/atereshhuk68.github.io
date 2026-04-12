@@ -1,0 +1,9 @@
+@reference "#global.css";
+
+.breadcrumbs {
+  @apply mb-8;
+
+  :global(.c-breadcrumbs__crumb):last-child a {
+    @apply pointer-events-none text-gray-500;
+  }
+}

@@ -1,0 +1,31 @@
+---
+import "astro-breadcrumbs/breadcrumbs.css";
+import styles from "./Breadcrumbs.module.css";
+import { Breadcrumbs as BreadcrumbsComponent } from "astro-breadcrumbs";
+import { House, Slash } from "@lucide/astro";
+import { breadcrumbsBuilder } from "@/assets/ts/modules/breadcrumbs-builder";
+import { DEFAULT_LANG } from "@/constants";
+
+const currentPath = Astro.url.pathname;
+
+const currentLang = Astro.currentLocale ?? DEFAULT_LANG;
+
+const customBreadcrumbs = await breadcrumbsBuilder({
+  currentPath,
+  currentLang,
+});
+---
+
+<div class={styles.breadcrumbs}>
+  <div class="container">
+    <BreadcrumbsComponent
+      schemaJsonScript={true}
+      linkTextFormat="capitalized"
+      truncated="true"
+      crumbs={customBreadcrumbs}
+    >
+      <House slot="index" size={16} />
+      <Slash slot="separator" size={12} />
+    </BreadcrumbsComponent>
+  </div>
+</div>

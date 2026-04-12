@@ -15,12 +15,11 @@ type CustomImageMetadata = ImageMetadata & {
   priority?: boolean;
 };
 
-const examplesImages = import.meta.glob<{ default: CustomImageMetadata }>(
-  "/src/assets/images/pixel/examples/*.webp",
-  { eager: true },
-);
+const firstScreenSliderImages = import.meta.glob<{
+  default: CustomImageMetadata;
+}>("/src/assets/images/pixel/2026/*.webp", { eager: true });
 
-const images = Object.values(examplesImages).map((mod) => mod.default);
+const images = Object.values(firstScreenSliderImages).map((mod) => mod.default);
 
 /* Set priority for the first two images and the last image */
 images[0].priority = true;

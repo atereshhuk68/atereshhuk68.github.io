@@ -1,0 +1,147 @@
+---
+import type { ImageMetadata } from "astro";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
+import { Image } from "@/components/starwind/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/starwind/carousel";
+import { ExternalLink } from "@lucide/astro";
+
+const { currentLocale = "pl" } = Astro;
+const t = useTranslations(currentLocale as Locales);
+
+type CustomImageMetadata = ImageMetadata & {
+  priority?: boolean;
+};
+
+const ourWorksImages = import.meta.glob<{ default: CustomImageMetadata }>(
+  "/src/assets/images/pixel/examples/*.webp",
+  { eager: true },
+);
+
+const images = Object.values(ourWorksImages).map((mod) => mod.default);
+---
+
+<section class="pt-12">
+  <div class="container">
+    <div class="grid gap-4">
+      <h2 class="font-heading text-4xl text-balance lg:text-5xl">
+        {t("ourWorks.h2")}
+      </h2>
+
+      <p class="max-w-4xl text-lg">
+        {t("ourWorks.p")}
+      </p>
+
+      <p class="max-w-4xl text-lg">
+        {t("ourWorks.cta1")}
+        <a
+          class="text-black-900 inline-flex cursor-pointer items-center gap-1 font-semibold underline hover:no-underline"
+          href="https://www.instagram.com/bfancy.warsaw"
+          target="_blank"
+          rel="noopener"
+        >
+          <span>{t("ourWorks.instagram")}</span>
+          <ExternalLink size={20} stroke-width={2} />
+        </a>
+        {t("ourWorks.cta2")}
+      </p>
+    </div>
+  </div>
+
+  <Carousel
+    id="carousel-autoplay"
+    autoInit={false}
+    opts={{ align: "start" }}
+    class="mt-6 flex w-dvw min-w-0 flex-col gap-4"
+  >
+    <CarouselContent>
+      {
+        images.map((image, index) => (
+          <CarouselItem class="min-[375px]:basis-1/2 md:basis-1/3 lg:basis-1/4">
+            <a
+              class="inline-flex aspect-square w-full overflow-hidden rounded-xl lg:h-full"
+              href={image.src}
+              data-pswp-width={image.width / 2}
+              data-pswp-height={image.height / 2}
+              target="_blank"
+            >
+              <Image
+                class="size-full object-cover object-center"
+                src={image}
+                alt={`Image ${index + 1}`}
+                height={image.height / 2}
+                width={image.width / 2}
+                format="webp"
+                quality={"mid"}
+                loading="lazy"
+              />
+            </a>
+          </CarouselItem>
+        ))
+      }
+    </CarouselContent>
+
+    <div class="container flex flex-row-reverse items-center gap-4 md:hidden">
+      <CarouselNext size="lg" variant="primary" class="w-full" />
+      <CarouselPrevious size="lg" variant="primary" class="w-full" />
+    </div>
+  </Carousel>
+</section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import Autoplay from "embla-carousel-autoplay";
+  import {
+    initCarousel,
+    type CarouselOptions,
+  } from "@/components/starwind/carousel";
+  import "photoswipe/style.css";
+
+  const SELECTORS = {
+    autoplayCarousel: "#carousel-autoplay",
+  };
+
+  const ELEMENTS = {
+    autoplayCarousel: document.querySelector(
+      SELECTORS.autoplayCarousel,
+    ) as HTMLElement,
+  };
+
+  function initAutoplayCarousel() {
+    if (!ELEMENTS.autoplayCarousel) return;
+
+    const sliderOptions: CarouselOptions = {
+      opts: { align: "start", loop: true },
+    };
+
+    if (window.innerWidth >= 768) {
+      sliderOptions.plugins = [
+        Autoplay({
+          delay: 4000,
+        }),
+      ];
+    }
+
+    initCarousel(ELEMENTS.autoplayCarousel, sliderOptions);
+  }
+
+  initAutoplayCarousel();
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: SELECTORS.autoplayCarousel,
+    children: `${SELECTORS.autoplayCarousel} a`,
+    pswpModule: () => import("photoswipe"),
+    loop: false,
+    clickToCloseNonZoomable: false,
+  });
+
+  lightbox.init();
+
+  document.addEventListener("astro:after-swap", initAutoplayCarousel);
+</script>

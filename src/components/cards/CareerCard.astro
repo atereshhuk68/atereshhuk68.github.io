@@ -3,16 +3,19 @@ import { Briefcase, MapPin } from "@lucide/astro";
 import { useTranslations } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
 import type { InferEntrySchema } from "astro:content";
-import { DEFAULT_LANG } from "@/constants";
+import Badge from "@/components/starwind/badge";
 
 type JobProps = InferEntrySchema<"jobs">;
 
 const { currentLocale = "pl" } = Astro;
 const t = useTranslations(currentLocale as Locales);
 
-interface Props extends Pick<JobProps, "title" | "country" | "city" | "slug"> {}
+interface Props extends Pick<
+  JobProps,
+  "title" | "country" | "city" | "slug" | "isJobActive"
+> {}
 
-const { title, country, city, slug } = Astro.props;
+const { title, country, city, slug, isJobActive } = Astro.props;
 ---
 
 <div class="grid gap-3 rounded-2xl bg-white p-4 shadow-2xs">
@@ -30,12 +33,23 @@ const { title, country, city, slug } = Astro.props;
   </header>
 
   <div class="flex items-center justify-between gap-2">
-    <div class="rounded-full bg-green-600 px-2 py-1 text-sm text-white">
-      {t("career.status")}
-    </div>
+    {
+      isJobActive ? (
+        <Badge variant="success">{t("career.positiveStatus")}</Badge>
+      ) : (
+        <Badge variant="outline">{t("career.negativeStatus")}</Badge>
+      )
+    }
 
-    <a class="text-cove-600 hover:text-cove-600/75 text-sm" href={`${slug}/`}>
-      <span>{t("career.more")}</span>
-    </a>
+    {
+      isJobActive && (
+        <a
+          class="text-cove-600 hover:text-cove-600/75 text-sm"
+          href={`${slug}/`}
+        >
+          <span>{t("career.more")}</span>
+        </a>
+      )
+    }
   </div>
 </div>

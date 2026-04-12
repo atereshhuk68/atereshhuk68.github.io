@@ -17,10 +17,10 @@ const servicesData: Service[] = servicesByLocale?.data ?? [];
 const serviceTypes = [...new Set(servicesData.map((s) => s.type))];
 ---
 
-<section id="services" class="min-h-[800px] py-12">
+<section id="services" class="min-h-200 py-12">
   <div class="container">
     <div class="flex flex-wrap gap-6 xl:justify-between xl:gap-8">
-      <div class="space-y-3 text-lg xl:max-w-[560px] 2xl:max-w-3xl">
+      <div class="space-y-3 text-lg xl:max-w-140 2xl:max-w-3xl">
         <h2 class="font-heading text-4xl text-balance lg:text-5xl">
           {t("services.h2")}
         </h2>

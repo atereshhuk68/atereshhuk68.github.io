@@ -11,6 +11,7 @@ import Head from "@/components/head/Head.astro";
 import { getISOLocale } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
 import Header from "../components/header/Header.astro";
+import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs.astro";
 
 const { currentLocale } = Astro;
 
@@ -22,6 +23,8 @@ interface Props {
 const { metaTitle, metaDescription } = Astro.props;
 
 const ISOLocale = getISOLocale(currentLocale as Locales);
+
+const isHomePage = ["/", "/en/", "/uk/", "/ru/"].includes(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -35,6 +38,8 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
     <Header />
 
     <main class="pb-20">
+      {!isHomePage && <Breadcrumbs />}
+
       <slot />
     </main>
 
@@ -54,8 +59,8 @@ const ISOLocale = getISOLocale(currentLocale as Locales);
   (async () => {
     const [{ backgroundImageLazyLoader }, { scrollToViaUrl }] =
       await Promise.all([
-        import("@/scripts/lazy-bg-loader"),
-        import("@/scripts/scroll-to-via-url"),
+        import("@/assets/ts/utils/lazy-bg-loader"),
+        import("@/assets/ts/utils/scroll-to-via-url"),
       ]);
 
     backgroundImageLazyLoader.init();

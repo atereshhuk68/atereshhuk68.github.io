@@ -31,6 +31,10 @@
     {
       "name": "dialog",
       "version": "1.4.4"
+    },
+    {
+      "name": "badge",
+      "version": "1.4.2"
     }
   ]
 }

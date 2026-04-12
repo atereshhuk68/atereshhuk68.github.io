@@ -17,6 +17,7 @@ const metaDescription =
 type JobProps = CollectionEntry<"jobs">;
 
 const jobs = await getCollection("jobs");
+
 const filteredJobsByLocale = jobs.filter((job) =>
   job.id?.startsWith(currentLocale),
 );
