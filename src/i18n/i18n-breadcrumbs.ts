@@ -14,18 +14,21 @@ export const breadcrumbs = {
     pl: { text: "Oferty pracy", href: getRelativeLocaleUrl("pl", "jobs") },
   },
   privacyPolicy: {
-    en: { text: "Privacy Policy", href: getRelativeLocaleUrl("en", "privacy") },
+    en: {
+      text: "Privacy Policy",
+      href: getRelativeLocaleUrl("en", "privacy-policy"),
+    },
     uk: {
       text: "Політика конфіденційності",
-      href: getRelativeLocaleUrl("uk", "privacy"),
+      href: getRelativeLocaleUrl("uk", "privacy-policy"),
     },
     ru: {
       text: "Политика конфиденциальности",
-      href: getRelativeLocaleUrl("ru", "privacy"),
+      href: getRelativeLocaleUrl("ru", "privacy-policy"),
     },
     pl: {
       text: "Polityka prywatności",
-      href: getRelativeLocaleUrl("pl", "privacy"),
+      href: getRelativeLocaleUrl("pl", "privacy-policy"),
     },
   },
 };
