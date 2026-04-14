@@ -78,7 +78,7 @@ Państwa dane przechowujemy:
 - przenoszenia danych
 - wniesienia sprzeciwu
 - cofnięcia zgody
-- wniesienia skargi do Prezesa UODO (www.uodo.gov.pl)
+- wniesienia skargi do Prezesa UODO (https://www.uodo.gov.pl/)
 
 ## 8. Pliki cookies
 

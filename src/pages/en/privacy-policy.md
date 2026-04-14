@@ -77,7 +77,7 @@ We store your data:
 - data portability
 - object
 - withdraw consent
-- lodge a complaint with the President of the UODO (www.uodo.gov.pl)
+- lodge a complaint with the President of the UODO (https://www.uodo.gov.pl/)
 
 ## 8. Cookies
 

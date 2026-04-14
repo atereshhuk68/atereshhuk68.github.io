@@ -77,7 +77,7 @@ E-mail: [kontakt@bfancy.pl](mailto:kontakt@bfancy.pl)
 - перенос данных
 - возражение против обработки
 - отзыв согласия
-- подачу жалобы Председателю UODO (www.uodo.gov.pl)
+- подачу жалобы Председателю UODO (https://www.uodo.gov.pl/)
 
 ## 8. Файлы cookies
 

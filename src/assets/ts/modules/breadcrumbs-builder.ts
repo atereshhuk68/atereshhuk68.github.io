@@ -63,8 +63,6 @@ export const breadcrumbsBuilder = async ({
     const privacyPolicyPageText =
       breadcrumbs.privacyPolicy[currentLang as Locales];
 
-    console.log(privacyPolicyPageText);
-
     return [homePageText, privacyPolicyPageText];
   }
 
