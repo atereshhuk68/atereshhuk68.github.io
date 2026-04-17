@@ -1,0 +1,41 @@
+---
+import Button from "@/components/starwind/button/Button.astro";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/lib/handle-ui-translations";
+import type { Locales } from "@/types";
+
+const localeCandidate = Astro.currentLocale ?? Astro.url.pathname.split("/")[1];
+const allowedLocales = new Set<Locales>(["pl", "en", "uk", "ru"]);
+const currentLocale: Locales = allowedLocales.has(localeCandidate as Locales)
+  ? (localeCandidate as Locales)
+  : "pl";
+
+const t = useTranslations(currentLocale);
+
+const homeHref = currentLocale === "pl" ? "/" : `/${currentLocale}/`;
+const metaTitle = `404 | BFancy`;
+const metaDescription = t("404.p");
+---
+
+<Layout metaTitle={metaTitle} metaDescription={metaDescription}>
+  <section class="container grid min-h-[55dvh] place-items-center py-12 md:py-20">
+    <div class="border-black-400 bg-shell-100 w-full max-w-2xl rounded-sm border p-8 text-center shadow-[8px_8px_0px_0px_#121212] md:p-12">
+      <h1 class="font-heading text-black-900 text-4xl leading-[0.95] md:text-6xl">
+        {t("404.heading")}
+      </h1>
+
+      <p class="text-black-700 mx-auto mt-4 max-w-xl text-base leading-relaxed md:text-lg">
+        {t("404.p")}
+      </p>
+
+      <Button
+        href={homeHref}
+        variant="primary"
+        size="md"
+        class="mt-8 min-h-11 min-w-44"
+      >
+        {t("404.cta")}
+      </Button>
+    </div>
+  </section>
+</Layout>

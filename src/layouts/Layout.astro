@@ -25,6 +25,7 @@ const { metaTitle, metaDescription } = Astro.props;
 const ISOLocale = getISOLocale(currentLocale as Locales);
 
 const isHomePage = ["/", "/en/", "/uk/", "/ru/"].includes(Astro.url.pathname);
+const is404Page = Astro.response.status === 404 || Astro.url.pathname === "/404";
 ---
 
 <!doctype html>
@@ -38,14 +39,14 @@ const isHomePage = ["/", "/en/", "/uk/", "/ru/"].includes(Astro.url.pathname);
     <Header />
 
     <main class="pb-20">
-      {!isHomePage && <Breadcrumbs />}
+      {!isHomePage && !is404Page && <Breadcrumbs />}
 
       <slot />
     </main>
 
     <Footer />
 
-    <SpecialOffer />
+    {!is404Page && <SpecialOffer />}
 
     <SuccessDialog />
 

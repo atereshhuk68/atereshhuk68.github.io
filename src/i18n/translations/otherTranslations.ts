@@ -13,6 +13,10 @@ export const otherTranslations = {
     "dialog.success": "Wiadomość wysłana pomyślnie!",
     "dialog.error":
       "Wystąpił błąd podczas wysyłania wiadomości. Proszę spróbować ponownie później",
+    "404.heading": "Strona nie istnieje",
+    "404.p":
+      "Wyglada na to, ze ten adres jest nieaktualny lub wpisany niepoprawnie.",
+    "404.cta": "Wroc na strone glowna",
   },
   en: {
     "career.heading": "Salon Jobs at BFancy",
@@ -29,6 +33,9 @@ export const otherTranslations = {
     "dialog.success": "Message sent successfully!",
     "dialog.error":
       "There was an error sending your message. Please, try again later",
+    "404.heading": "Page not found",
+    "404.p": "Looks like this address is outdated or was entered incorrectly.",
+    "404.cta": "Back to home",
   },
   uk: {
     "career.heading": "Вакансії в салоні BFancy",
@@ -45,6 +52,9 @@ export const otherTranslations = {
     "dialog.success": "Повідомлення успішно надіслано!",
     "dialog.error":
       "Під час надсилання повідомлення сталася помилка. Будь ласка, спробуйте ще раз пізніше",
+    "404.heading": "Сторінку не знайдено",
+    "404.p": "Схоже, ця адреса застаріла або була введена з помилкою.",
+    "404.cta": "Повернутися на головну",
   },
   ru: {
     "career.heading": "Вакансии в салоне BFancy",
@@ -59,5 +69,8 @@ export const otherTranslations = {
     "privacy.anchor": "Политика конфиденциальности",
     "dialog.success": "Сообщение успешно отправлено!",
     "dialog.error": "У нас для тебя маленький подарок — большие скидки:",
+    "404.heading": "Страница не найдена",
+    "404.p": "Похоже, этот адрес устарел или был введен с ошибкой.",
+    "404.cta": "Вернуться на главную",
   },
 } as const;
