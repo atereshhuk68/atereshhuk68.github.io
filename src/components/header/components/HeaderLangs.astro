@@ -40,10 +40,8 @@ const langsWithoutCurrent = langs.filter(
     {
       langsWithoutCurrent.map(
         ({ href, name }: { href: string; name: string }) => (
-          <DropdownItem as="li" class="cursor-pointer p-0 text-sm font-medium">
-            <a class="flex w-full p-1.5" {href} title={name}>
-              {name}
-            </a>
+          <DropdownItem as="a" {href} title={name} class="flex w-full cursor-pointer p-1.5 text-sm font-medium">
+            {name}
           </DropdownItem>
         ),
       )

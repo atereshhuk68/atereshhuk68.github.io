@@ -53,18 +53,18 @@ const is404Page = Astro.response.status === 404 || Astro.url.pathname === "/404"
     <ErrorDialog />
 
     <CookiePopup />
+
+    <script>
+      (async () => {
+        const [{ backgroundImageLazyLoader }, { scrollToViaUrl }] =
+          await Promise.all([
+            import("@/assets/ts/utils/lazy-bg-loader"),
+            import("@/assets/ts/utils/scroll-to-via-url"),
+          ]);
+
+        backgroundImageLazyLoader.init();
+        scrollToViaUrl.init();
+      })();
+    </script>
   </body>
 </html>
-
-<script>
-  (async () => {
-    const [{ backgroundImageLazyLoader }, { scrollToViaUrl }] =
-      await Promise.all([
-        import("@/assets/ts/utils/lazy-bg-loader"),
-        import("@/assets/ts/utils/scroll-to-via-url"),
-      ]);
-
-    backgroundImageLazyLoader.init();
-    scrollToViaUrl.init();
-  })();
-</script>

@@ -71,10 +71,8 @@ const BASE_LINK_CLASSES =
     <DropdownContent align="end">
       {
         menuItems.map(({ href, label }: { href: string; label: string }) => (
-          <DropdownItem as="li" class="cursor-pointer p-0 text-sm font-medium">
-            <a class="flex w-full p-1.5" {href} title={label}>
-              {label}
-            </a>
+          <DropdownItem as="a" {href} title={label} class="flex w-full cursor-pointer p-1.5 text-sm font-medium">
+            {label}
           </DropdownItem>
         ))
       }
