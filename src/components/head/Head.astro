@@ -41,6 +41,7 @@ const isHomepage = Astro.url.pathname === homePageUrl;
 	<OpenGraph {metaTitle} {metaDescription} {currentLocale} />
 
 	{!isDev && (
+		<script is:inline>var dataLayer=[];</script>
 		<GTM />
 		<Ahrefs />
 		<Clarity />
