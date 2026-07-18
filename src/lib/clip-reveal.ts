@@ -10,19 +10,33 @@ export function initClipReveal(containerSelector: string, staggerMs = 0) {
   );
   if (!items.length) return;
 
+  let revealedCount = 0;
+
+  function reveal(el: HTMLElement) {
+    if (el.classList.contains("is-revealed")) return;
+    el.style.animationDelay = `${revealedCount * staggerMs}ms`;
+    el.classList.add("is-revealed");
+    revealedCount++;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
-      entries
-        .filter((entry) => entry.isIntersecting)
-        .forEach((entry, index) => {
-          const el = entry.target as HTMLElement;
-          el.style.animationDelay = `${index * staggerMs}ms`;
-          el.classList.add("is-revealed");
-          observer.unobserve(el);
-        });
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        reveal(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      }
     },
     { rootMargin: "-100px" },
   );
 
-  items.forEach((item) => observer.observe(item));
+  for (const item of items) {
+    const rect = item.getBoundingClientRect();
+    const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+    if (inViewport) {
+      reveal(item);
+    } else {
+      observer.observe(item);
+    }
+  }
 }
