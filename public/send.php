@@ -1,411 +1,233 @@
 <?php
 
-$is_local_env = file_exists(__DIR__ . '/send.config.local.php');
-$is_prod_env = file_exists(__DIR__ . '/send.config.php') && !$is_local_env;
+$is_local = file_exists(__DIR__ . '/send.config.local.php');
 
-$response = array();
-
-$inputs = array(
-	'formTitle'                => '',
-	'userName'                 => '',
-	'userPhone'                => '',
-	'userEmail'                => '',
-	'userServiceCategory'      => '',
-	'userMessage'              => '',
-	'refererUrl'               => '',
-);
-
-/**
- * Sanitizes input data by trimming whitespace and removing backslashes.
- *
- * @param mixed $data The input data to sanitize. It's expected to be a string,
- *                    but the function will attempt to process other types as well.
- * @return mixed The sanitized data. Returns the processed data after trimming
- *               whitespace from the beginning and end, and removing backslashes.
- */
-function sanitize_input( $data ) {
-	$data = trim( $data );
-	$data = stripslashes( $data );
-	$data = htmlspecialchars( $data, ENT_QUOTES, 'UTF-8' );
-
-	return $data;
+if ($is_local && file_exists(__DIR__ . '/cors.local.php')) {
+	include __DIR__ . '/cors.local.php';
 }
 
-/**
- * Checks if a specific field exists and is not empty in the $_POST superglobal.
- *
- * @param string $field_name The name of the field to check.
- * @return bool True if the field exists and is not empty, false otherwise.
- */
-function field_exist_and_not_empty( $field_name ) {
-	return isset( $_POST[ $field_name ] ) && ! empty( $_POST[ $field_name ] );
-}
+$inputs = [
+	'formTitle' => '',
+	'userName' => '',
+	'userPhone' => '',
+	'userEmail' => '',
+	'userServiceCategory' => '',
+	'userMessage' => '',
+	'refererUrl' => '',
+];
 
-function is_email( $email ) {
-	$pattern = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
-	return filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match($pattern, $email);
-}
+function form_validation(): array {
+	global $inputs;
 
-/**
- * Checks if a string contains only digits.
- *
- * @param string $phone_number The string to check.
- * @return bool True if the string contains only digits, false otherwise.
- */
-function is_phone_number( $phone_number ) {
-	$pattern = '/^\+?\d+$/';
-	return preg_match( $pattern, $phone_number );
-}
+	$errors = [];
 
-/**
- * Validates the form submission data from the $_POST.
- *
- * @return bool True if validation passes for all checked fields, false otherwise.
- */
-function form_validation() {
-	global $response, $inputs;
+	$inputs['formTitle'] = $_POST['formTitle'] ?? '';
 
-	$is_valid = false;
-
-    $inputs['formTitle'] = isset($_POST['formTitle']) ? sanitize_input($_POST['formTitle']) : '';
-
-	if ( field_exist_and_not_empty( 'userName' ) ) {
-		$inputs['userName'] = sanitize_input( $_POST['userName'] );
+	if (!empty($_POST['userName'])) {
+		$inputs['userName'] = trim($_POST['userName']);
 	}
 
-	if ( field_exist_and_not_empty( 'userServiceCategory' ) ) {
-		$inputs['userServiceCategory'] = sanitize_input( $_POST['userServiceCategory'] );
+	if (!empty($_POST['userServiceCategory'])) {
+		$inputs['userServiceCategory'] = trim($_POST['userServiceCategory']);
 	}
 
-	if ( field_exist_and_not_empty( 'userPhone' ) ) {
-		if ( is_phone_number( $_POST['userPhone'] ) ) {
-			$inputs['userPhone'] = sanitize_input( $_POST['userPhone'] );
+	if (!empty($_POST['userPhone'])) {
+		$phone = trim($_POST['userPhone']);
+		if (ctype_digit(ltrim($phone, '+'))) {
+			$inputs['userPhone'] = $phone;
 		} else {
-			array_push( $response, array( 'userPhone' => 'Invalid phone number format' ) );
-		}
-    }
-
-	if ( field_exist_and_not_empty( 'userEmail' ) ) {
-		if ( is_email( $_POST['userEmail'] ) ) {
-			$inputs['userEmail'] = sanitize_input( $_POST['userEmail'] );
-		} else {
-			array_push( $response, array( 'userEmail' => 'Invalid email format' ) );
+			$errors[] = ['userPhone' => 'Invalid phone number format'];
 		}
 	}
 
-	if ( field_exist_and_not_empty( 'userMessage' ) ) {
-		$inputs['userMessage'] = sanitize_input( $_POST['userMessage'] );
+	if (!empty($_POST['userEmail'])) {
+		$email = trim($_POST['userEmail']);
+		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$inputs['userEmail'] = $email;
+		} else {
+			$errors[] = ['userEmail' => 'Invalid email format'];
+		}
 	}
 
-	// Додаємо referer URL (джерело запиту)
-	if ( isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER']) ) {
-		$inputs['refererUrl'] = sanitize_input( $_SERVER['HTTP_REFERER'] );
+	if (!empty($_POST['userMessage'])) {
+		$inputs['userMessage'] = trim($_POST['userMessage']);
 	}
 
-	if ( empty( $response ) ) {
-		$is_valid = true;
+	if (!empty($_SERVER['HTTP_REFERER'])) {
+		$inputs['refererUrl'] = $_SERVER['HTTP_REFERER'];
 	}
 
-	return $is_valid;
+	return $errors;
 }
 
-/**
- * Class ContactMessageFormatter
- * Утиліта для форматування повідомлень для різних платформ
- */
-class ContactMessageFormatter {
-    private $data;
-
-    public function __construct(array $data) {
-        $this->data = $data;
-    }
-
-    /**
-     * Форматує повідомлення для HTML (email)
-     */
-    public function toHtml(): string {
-        $template = '
-            <div style="font-family: Arial, sans-serif; max-width: 600px;">
-                <h2 style="color: #333;">%formTitle%</h2>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>👤:</strong></td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">%userName%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>📧:</strong></td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">%userEmail%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>📱:</strong></td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">%userPhone%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💅🏻:</strong></td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">%userServiceCategory%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>💬:</strong></td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">%userMessage%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>🔗:</strong></td>
-                        <td style="padding: 10px; border: 1px solid #ddd;"><a href="%refererUrl%">%refererUrl%</a></td>
-                    </tr>
-                </table>
-            </div>';
-
-        return $this->replacePlaceholders($template, [
-            '%formTitle%' => 'offer' === $this->data['formTitle'] ? "💥 Спеціальна пропозиція" : "💌 Нове повідомлення з форми зворотного зв'язку",
-            '%userName%' => htmlspecialchars($this->data['userName'] ?? '', ENT_QUOTES, 'UTF-8'),
-            '%userEmail%' => htmlspecialchars($this->data['userEmail'] ?? '', ENT_QUOTES, 'UTF-8'),
-            '%userPhone%' => htmlspecialchars($this->data['userPhone'] ?? '', ENT_QUOTES, 'UTF-8'),
-            '%userServiceCategory%' => htmlspecialchars($this->data['userServiceCategory'] ?? '', ENT_QUOTES, 'UTF-8'),
-            '%userMessage%' => nl2br(htmlspecialchars($this->data['userMessage'] ?? '', ENT_QUOTES, 'UTF-8')),
-            '%refererUrl%' => htmlspecialchars($this->data['refererUrl'] ?? 'Не вказано', ENT_QUOTES, 'UTF-8')
-        ]);
-    }
-
-    /**
-     * Форматує повідомлення для Telegram (MarkdownV2)
-     */
-    public function toMarkdownV2(): string {
-        $isFormTypeOffer = 'offer' === $this->data['formTitle'];
-
-        // Заголовок
-        $template = $isFormTypeOffer
-            ? "💥 *Спеціальна пропозиція*\n\n"
-            : "💌 *Нове повідомлення з форми зворотного зв'язку*\n\n";
-
-        // Основна інформація в blockquote
-        $template .= "*Контактна інформація:*\n";
-        $template .= ">👤 *Ім'я:* %userName%\n";
-        $template .= ">\n";
-        $template .= ">📱 *Телефон:* \+[%userPhone%](tel:\+%userPhoneRaw%)\n";
-
-        if (!empty($this->data['userServiceCategory'])) {
-            $template .= ">\n";
-            $template .= ">💅 *Послуга:* %userServiceCategory%\n";
-        }
-
-        if (!$isFormTypeOffer) {
-            $template .= "\n\n";
-            $template .= "*Додатково:*\n";
-            $template .= ">📧 *Email:* %userEmail%\n";
-
-            if (!empty($this->data['userMessage'])) {
-                $template .= "\n\n";
-                $template .= "*💬 Повідомлення:*\n";
-                $template .= ">%userMessage%";
-            }
-
-            if (!empty($this->data['refererUrl'])) {
-                $template .= "\n\n";
-                $template .= "*🔗 Джерело:*\n";
-                $template .= ">%refererUrl%";
-            }
-
-            return $this->replacePlaceholders($template, [
-                '%userName%' => $this->escapeMarkdownV2($this->data['userName'] ?? ''),
-                '%userPhone%' => $this->escapeMarkdownV2($this->data['userPhone'] ?? ''),
-                '%userPhoneRaw%' => $this->data['userPhone'] ?? '',
-                '%userEmail%' => $this->escapeMarkdownV2($this->data['userEmail'] ?? ''),
-                '%userServiceCategory%' => $this->escapeMarkdownV2($this->data['userServiceCategory'] ?? ''),
-                '%userMessage%' => $this->escapeMarkdownV2($this->data['userMessage'] ?? ''),
-                '%refererUrl%' => $this->escapeMarkdownV2($this->data['refererUrl'] ?? '')
-            ]);
-        }
-
-        // Для спеціальної пропозиції теж додаємо referer, якщо є
-        if (!empty($this->data['refererUrl'])) {
-            $template .= "\n\n";
-            $template .= "*🔗 Джерело:*\n";
-            $template .= ">%refererUrl%";
-        }
-
-        return $this->replacePlaceholders($template, [
-            '%userName%' => $this->escapeMarkdownV2($this->data['userName'] ?? ''),
-            '%userPhone%' => $this->escapeMarkdownV2($this->data['userPhone'] ?? ''),
-            '%userPhoneRaw%' => $this->data['userPhone'] ?? '',
-            '%userServiceCategory%' => $this->escapeMarkdownV2($this->data['userServiceCategory'] ?? ''),
-            '%refererUrl%' => $this->escapeMarkdownV2($this->data['refererUrl'] ?? '')
-        ]);
-    }
-
-    /**
-     * Замінює плейсхолдери в шаблоні
-     */
-    private function replacePlaceholders(string $template, array $replacements): string {
-        return str_replace(array_keys($replacements), array_values($replacements), $template);
-    }
-
-    /**
-     * Екранує спеціальні символи для MarkdownV2
-     */
-    private function escapeMarkdownV2(string $text): string {
-        $text = strip_tags($text);
-
-        $specialChars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!'];
-
-        foreach ($specialChars as $char) {
-            $text = str_replace($char, '\\' . $char, $text);
-        }
-
-        return $text;
-    }
+function escapeMarkdownV2(string $text): string {
+	$text = strip_tags($text);
+	foreach (['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!'] as $char) {
+		$text = str_replace($char, "\\{$char}", $text);
+	}
+	return $text;
 }
 
-/**
- * Class NotificationSender
- * Утиліта для відправки повідомлень через різні канали
- */
+function formatTelegram(array $d): string {
+	$e = fn($s) => escapeMarkdownV2($s ?? '');
+	$isOffer = $d['formTitle'] === 'offer';
+
+	$msg = $isOffer
+		? "💥 *Спеціальна пропозиція*\n\n"
+		: "💌 *Нове повідомлення з форми зворотного зв'язку*\n\n";
+
+	$msg .= "*Контактна інформація:*\n";
+	$msg .= ">👤 *Ім'я:* {$e($d['userName'])}\n";
+	$msg .= ">\n";
+	$msg .= ">📱 *Телефон:* \+[{$e($d['userPhone'])}](tel:+{$d['userPhone']})\n";
+
+	if (!empty($d['userServiceCategory'])) {
+		$msg .= ">\n";
+		$msg .= ">💅 *Послуга:* {$e($d['userServiceCategory'])}\n";
+	}
+
+	if (!$isOffer) {
+		$msg .= "\n\n*Додатково:*\n";
+		$msg .= ">📧 *Email:* {$e($d['userEmail'])}\n";
+
+		if (!empty($d['userMessage'])) {
+			$msg .= "\n\n*💬 Повідомлення:*\n>{$e($d['userMessage'])}";
+		}
+
+		if (!empty($d['refererUrl'])) {
+			$msg .= "\n\n*🔗 Джерело:*\n>{$e($d['refererUrl'])}";
+		}
+	} elseif (!empty($d['refererUrl'])) {
+		$msg .= "\n\n*🔗 Джерело:*\n>{$e($d['refererUrl'])}";
+	}
+
+	return $msg;
+}
+
+function formatEmail(array $d): string {
+	$e = fn($s) => htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8');
+	$title = $d['formTitle'] === 'offer'
+		? '💥 Спеціальна пропозиція'
+		: "💌 Нове повідомлення з форми зворотного зв'язку";
+
+	$name = $e($d['userName']);
+	$email = $e($d['userEmail']);
+	$phone = $e($d['userPhone']);
+	$service = $e($d['userServiceCategory']);
+	$message = $d['userMessage'] ? nl2br($e($d['userMessage'])) : '';
+	$ref = $d['refererUrl'];
+	$refEscaped = $e($ref ?: 'Не вказано');
+	$refHtml = $ref ? "<a href=\"{$refEscaped}\">{$refEscaped}</a>" : $refEscaped;
+
+	return '<div style="font-family: Arial, sans-serif; max-width: 600px;">'
+		. '<h2 style="color: #333;">' . $title . '</h2>'
+		. '<table style="width: 100%; border-collapse: collapse;">'
+		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>👤:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $name . '</td></tr>'
+		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>📧:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $email . '</td></tr>'
+		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>📱:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $phone . '</td></tr>'
+		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>💅🏻:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $service . '</td></tr>'
+		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>💬:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $message . '</td></tr>'
+		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>🔗:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $refHtml . '</td></tr>'
+		. '</table>'
+		. '</div>';
+}
+
 class NotificationSender {
-    private $config;
+	private array $config;
 
-    public function __construct(array $config = []) {
-        global $is_local_env, $is_prod_env;
-        // Load config from external file if exists
-        $externalConfig = [];
+	public function __construct() {
+		global $is_local;
+		if ($is_local) {
+			$this->config = include __DIR__ . '/send.config.local.php';
+		} elseif (file_exists(__DIR__ . '/send.config.php')) {
+			$this->config = include __DIR__ . '/send.config.php';
+		} else {
+			$this->config = [];
+		}
+	}
 
-        if ($is_local_env) {
-            $externalConfig = include __DIR__ . '/send.config.local.php';
-        }
+	public function sendTelegram(string $message): bool {
+		$url = "https://api.telegram.org/bot{$this->config['telegram']['bot_token']}/sendMessage";
 
-        if ($is_prod_env) {
-            $externalConfig = include __DIR__ . '/send.config.php';
-        }
+		$result = @file_get_contents($url, false, stream_context_create([
+			'http' => [
+				'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method' => 'POST',
+				'content' => http_build_query([
+					'chat_id' => $this->config['telegram']['chat_id'],
+					'text' => $message,
+					'parse_mode' => 'MarkdownV2',
+					'disable_web_page_preview' => true,
+				]),
+			],
+		]));
 
-        $this->config = $externalConfig;
-    }
+		if ($result === false) {
+			error_log('Telegram API request failed');
+			return false;
+		}
 
-    /**
-     * Відправляє повідомлення через Telegram
-     */
-    public function sendTelegram(string $message): bool {
-        $url = "https://api.telegram.org/bot{$this->config['telegram']['bot_token']}/sendMessage";
+		$response = json_decode($result, true);
 
-        $data = [
-            'chat_id' => $this->config['telegram']['chat_id'],
-            'text' => $message,
-            'parse_mode' => 'MarkdownV2',
-            'disable_web_page_preview' => true,
-        ];
+		if (!($response['ok'] ?? false)) {
+			error_log('Telegram API error: ' . ($response['description'] ?? 'Unknown'));
+			return false;
+		}
 
-        $options = [
-            'http' => [
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data),
-            ],
-        ];
+		return true;
+	}
 
-        $context = stream_context_create($options);
+	public function sendEmail(string $body, array $data): bool {
+		$to = $this->config['email']['to'];
+		$subject = '=?UTF-8?B?' . base64_encode($this->config['email']['subject_prefix'] . ' | Від ' . ($data['userName'] ?? 'Невідомий')) . '?=';
 
-        $result = @file_get_contents($url, false, $context);
+		$headers = "MIME-Version: 1.0\r\nContent-type:text/html;charset=UTF-8\r\n";
+		$headers .= "From: B-Fancy <noreply@bfancy.pl>\r\n";
 
-        if ($result === false) {
-            error_log('Telegram API request failed');
-            return false;
-        }
+		if (!empty($data['userEmail'])) {
+			$headers .= 'Reply-To: ' . $data['userEmail'] . "\r\n";
+		}
 
-        $response = json_decode($result, true);
+		return mail($to, $subject, $body, $headers);
+	}
 
-        if (!isset($response['ok']) || !$response['ok']) {
-            error_log('Telegram API error: ' . ($response['description'] ?? 'Unknown error'));
-            error_log('Message content: ' . $message);
-            return false;
-        }
+	public function sendAll(array $data): array {
+		$results['telegram'] = $this->sendTelegram(formatTelegram($data));
 
-        return true;
-    }
+		if (!$results['telegram']) {
+			$results['email'] = $this->sendEmail(formatEmail($data), $data);
+		}
 
-    /**
-     * Відправляє email
-     */
-    public function sendEmail(string $message, array $fromData): bool {
-        $to = $this->config['email']['to'];
-        $subject = $this->config['email']['subject_prefix'] . ' | Від ' . ($fromData['userName'] ?? 'Невідомий');
-
-        $headers = "MIME-Version: 1.0\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8\r\n";
-        $headers .= 'From: <' . ($fromData['userEmail'] ?? 'noreply@example.com') . '>' . "\r\n";
-
-        return mail($to, $subject, $message, $headers);
-    }
-
-    /**
-     * Відправляє повідомлення через всі доступні канали
-     */
-    public function sendAll(ContactMessageFormatter $formatter, array $fromData): array {
-        $results = [];
-
-        $telegramMessage = $formatter->toMarkdownV2();
-
-        $results['telegram'] = $this->sendTelegram($telegramMessage);
-
-        if (!$results['telegram']) {
-            $emailMessage = $formatter->toHtml();
-            $results['email'] = $this->sendEmail($emailMessage, $fromData);
-        } else {
-        }
-
-        return $results;
-    }
+		return $results;
+	}
 }
 
-/**
- * Sends a JSON success response.
- * Sets the content type header, encodes the data, echoes it, and exits.
- *
- * @param mixed $data The data to include in the JSON response.
- * @param int $status_code Optional HTTP status code (e.g., 400, 500). Default is 200.
- */
-function json_response( $data = array(), $status_code = 200 ) {
-	header( 'Content-Type: application/json' );
-	http_response_code($status_code);
-	echo json_encode( $data );
+function json_response($data = [], int $status = 200): never {
+	header('Content-Type: application/json');
+	http_response_code($status);
+	echo json_encode($data);
 	exit;
 }
 
-/**
- * Оновлена функція для обробки форми
- */
-function handle_contact_form_callback() {
-    global $response, $inputs;
+$errors = form_validation();
 
-    $is_valid = form_validation();
-
-    if ($is_valid) {
-        $formatter = new ContactMessageFormatter($inputs);
-
-        $sender = new NotificationSender();
-
-        $results = $sender->sendAll($formatter, $inputs);
-
-        if (isset($results['telegram']) && $results['telegram']) {
-            json_response([
-                'info' => 'Message sent successfully via Telegram',
-                'channels' => $results,
-                'success' => true
-            ]);
-        }
-
-        if (isset($results['email']) && $results['email']) {
-            json_response([
-                'info' => 'Message sent successfully via Email',
-                'channels' => $results,
-                'success' => true
-            ]);
-        }
-
-        json_response([
-            'mail_error' => 'Failed to send message through any channel. Please try again later.',
-            'channels' => $results,
-            'success' => false
-        ], 400);
-    } else {
-        json_response(['mail_error' => 'Validation failed. Check fields and try again.'], 400);
-    }
+if ($errors) {
+	json_response(['mail_error' => 'Validation failed.', 'fields' => $errors], 400);
 }
 
-handle_contact_form_callback();
+$sender = new NotificationSender();
+$results = $sender->sendAll($inputs);
+
+if ($results['telegram']) {
+	json_response(['info' => 'Message sent successfully via Telegram', 'channels' => $results, 'success' => true]);
+}
+
+if (($results['email'] ?? false)) {
+	json_response(['info' => 'Message sent successfully via Email', 'channels' => $results, 'success' => true]);
+}
+
+json_response([
+	'mail_error' => 'Failed to send message through any channel. Please try again later.',
+	'channels' => $results,
+	'success' => false,
+], 400);
