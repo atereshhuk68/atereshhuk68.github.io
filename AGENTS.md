@@ -57,6 +57,7 @@
 ## Change Verification
 
 - Minimum: `pnpm build`.
+- Playwright: use Firefox only (`--browser firefox` / `browserName: "firefox"`). Chromium/Chrome are not installed on this machine.
 - Routing/i18n changes: verify `/`, `/en/`, `/uk/`, `/ru/`.
 - Form changes: success + validation-error flows for both Contact and SpecialOffer. Confirm `public/send.php` matches posted fields.
 

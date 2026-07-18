@@ -4,7 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import moveIslandsStyle from "./src/hooks/move-island-styles-to-head.ts";
 
-import react from "@astrojs/react";
 import { DEFAULT_LANG, LOCALES_SETTING, SITE } from "./src/constants";
 import { redirectsConfig } from "./src/constants/redirects/redirects.ts";
 
@@ -58,7 +57,6 @@ export default defineConfig({
     enabled: false,
   },
   integrations: [
-    react(),
     sitemap({
       filter: (page) => page !== `${SITE}/mystery/`,
       i18n: {

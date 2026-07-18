@@ -109,3 +109,44 @@ textarea[aria-invalid] {
 button[aria-pressed="true"] {
   @apply bg-golden-200 text-black-900 pointer-events-none;
 }
+
+[data-filter] {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* element reveal для карток послуг: rise + stagger на появу, sink + fade на зникнення */
+[data-service-cards] > .is-entering {
+  animation: service-card-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--reveal-i, 0) * 50ms);
+}
+
+[data-service-cards] > .is-leaving {
+  animation: service-card-out 0.2s ease both;
+}
+
+@keyframes service-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes service-card-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-service-cards] > .is-entering,
+  [data-service-cards] > .is-leaving {
+    animation: none !important;
+  }
+}

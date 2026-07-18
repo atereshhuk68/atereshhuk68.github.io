@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Catalog } from "@/components/sections/Services/Catalog.tsx";
+import ServiceCard from "@/components/sections/Services/ServiceCard.astro";
 import TabControl from "@/components/sections/Services/TabControl.astro";
 import { useTranslations } from "@/lib/handle-ui-translations";
 import type { Locales, Service } from "@/types";
@@ -15,6 +15,8 @@ const servicesByLocale = services.find((entry) =>
 
 const servicesData: Service[] = servicesByLocale?.data ?? [];
 const serviceTypes = [...new Set(servicesData.map((s) => s.type))];
+
+const DEFAULT_SERVICE_TYPE = "nails";
 ---
 
 <section id="services" class="min-h-200 py-12">
@@ -28,9 +30,23 @@ const serviceTypes = [...new Set(servicesData.map((s) => s.type))];
         <p class="min-w-0">{t("services.p")}</p>
       </div>
 
-      <TabControl serviceTypes={serviceTypes} />
+      <TabControl serviceTypes={serviceTypes} activeType={DEFAULT_SERVICE_TYPE} />
     </div>
 
-    <Catalog services={servicesData} client:visible />
+    <div
+      class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:col-span-2 2xl:grid-cols-4"
+      data-service-cards
+    >
+      {
+        servicesData.map((service) => (
+          <div
+            data-type={service.type}
+            hidden={service.type !== DEFAULT_SERVICE_TYPE}
+          >
+            <ServiceCard {...service} />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
