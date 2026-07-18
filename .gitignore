@@ -21,6 +21,7 @@ pnpm-debug.log*
 # PHP config with secrets
 public/send.config.php
 public/send.config.local.php
+public/cors.local.php
 
 # macOS-specific files
 .DS_Store
