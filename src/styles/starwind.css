@@ -111,4 +111,21 @@
     transition-timing-function: var(--default-transition-timing-function);
     transition-duration: var(--default-transition-duration);
   }
+
+  /* Image reveal: https://emilkowal.ski/ui/the-magic-of-clip-path */
+  @media (prefers-reduced-motion: no-preference) {
+    .clip-reveal {
+      clip-path: inset(0 0 100% 0);
+    }
+
+    .clip-reveal.is-revealed {
+      animation: clip-reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+  }
+}
+
+@keyframes clip-reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
