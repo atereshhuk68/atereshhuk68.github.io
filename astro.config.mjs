@@ -30,8 +30,18 @@ const base = isGitHubPages
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
+  markdown: {
+    syntaxHighlight: false,
+  },
   base: base,
+  output: "static",
   trailingSlash: "always",
+  compressHTML: true,
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
   redirects: redirectsConfig,
   i18n: {
     locales: ["pl", "en", "uk", "ru"],
@@ -39,6 +49,10 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false,
     },
+  },
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "tap",
   },
   devToolbar: {
     enabled: false,
@@ -59,6 +73,9 @@ export default defineConfig({
     }),
     moveIslandsStyle(),
   ],
+  build: {
+    inlineStylesheets: "never",
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -120,4 +137,7 @@ export default defineConfig({
       ],
     },
   ],
+  experimental: {
+    contentIntellisense: true,
+  },
 });

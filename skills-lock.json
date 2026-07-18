@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "astro": {
+      "source": "astrolicious/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/astro/SKILL.md",
+      "computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
+    },
     "component-refactoring": {
       "source": "langgenius/dify",
       "sourceType": "github",
@@ -10,6 +16,12 @@
       "source": "langgenius/dify",
       "sourceType": "github",
       "computedHash": "79fa87cd5460c80dc842153155b26bd4a3cad9858475c2e1ee50cab6dcd1fbbe"
+    },
+    "frontend-nomos": {
+      "source": "atereshhuk68/frontend-nomos",
+      "sourceType": "github",
+      "skillPath": "frontend-nomos/SKILL.md",
+      "computedHash": "daebd66b4090c163fbfcbed717b0893ceab730bb2fd496dbd97ca912147c53a7"
     },
     "react-composition-patterns": {
       "source": "secondsky/claude-skills",
@@ -46,9 +58,22 @@
       "sourceType": "github",
       "computedHash": "857e24231ceb17aec0e28049b50fae14a231a627928af187dec9ad731863839b"
     },
+    "starwind-pro": {
+      "source": "starwind-ui/skills",
+      "sourceType": "github",
+      "skillPath": "skills/starwind-pro/SKILL.md",
+      "computedHash": "272e2b7695d22b20ed63044fb3a7ceea34eba9ed1e9334f7e63035f549d591cd"
+    },
+    "starwind-ui": {
+      "source": "starwind-ui/skills",
+      "sourceType": "github",
+      "skillPath": "skills/starwind-ui/SKILL.md",
+      "computedHash": "11925ee0bc6a055a1c210308d85ad075f63cfe270a4af67392a98b96c3647cc3"
+    },
     "sveltia-cms": {
       "source": "secondsky/claude-skills",
       "sourceType": "github",
+      "skillPath": "plugins/sveltia-cms/skills/sveltia-cms/SKILL.md",
       "computedHash": "d1a22a27778ad91b24eeb50c02cbf9cf8790f9595b6d82293bd2be9bade0c7a6"
     },
     "zod": {

@@ -1,6 +1,5 @@
 import EmblaCarousel, {
   type EmblaCarouselType,
-  type EmblaEventType,
   type EmblaOptionsType,
   type EmblaPluginType,
 } from "embla-carousel";
@@ -69,7 +68,7 @@ export function initCarousel(
   const emblaOptions: EmblaOptionsType = {
     axis,
     ...dataOpts,
-    ...(options.opts || {}),
+    ...options.opts,
   };
 
   // Handle plugins - EmblaCarousel expects undefined when no plugins, not empty array

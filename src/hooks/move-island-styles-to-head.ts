@@ -1,13 +1,13 @@
-import type { AstroIntegrationLogger } from 'astro';
-import { readFileSync, writeFileSync } from 'fs';
-import { glob } from 'glob';
-import { fileURLToPath } from 'url';
+import type { AstroIntegrationLogger } from "astro";
+import { readFileSync, writeFileSync } from "fs";
+import { glob } from "tinyglobby";
+import { fileURLToPath } from "url";
 
 export default function moveIslandsStyle() {
   return {
-    name: 'move-islands-style',
+    name: "move-islands-style",
     hooks: {
-      'astro:build:done': async ({
+      "astro:build:done": async ({
         dir,
         logger,
       }: {
@@ -22,15 +22,15 @@ export default function moveIslandsStyle() {
           /<style>astro-island,astro-slot,astro-static-slot\{display:contents\}<\/style>/g;
 
         htmlFiles.forEach((file) => {
-          let html = readFileSync(file, 'utf-8');
+          let html = readFileSync(file, "utf-8");
           const match = html.match(styleRegex);
 
           if (match) {
-            html = html.replace(styleRegex, '');
+            html = html.replace(styleRegex, "");
 
-            html = html.replace('</head>', `  ${match[0]}\n</head>`);
+            html = html.replace("</head>", `  ${match[0]}\n</head>`);
 
-            writeFileSync(file, html, 'utf-8');
+            writeFileSync(file, html, "utf-8");
             logger.info(`Moved islands style in <head> for: ${file}`);
           }
         });
