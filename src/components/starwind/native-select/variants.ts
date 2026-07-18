@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 export const nativeSelectWrapper = tv({
   base: [
     "starwind-native-select-wrapper",
-    "group/native-select relative w-fit has-[select:disabled]:opacity-50",
+    "group/native-select relative w-full has-[select:disabled]:opacity-50",
   ],
 });
 
@@ -15,6 +15,7 @@ export const nativeSelect = tv({
     "focus-visible:border-outline focus-visible:ring-outline/50 transition-[color,box-shadow] outline-none focus-visible:ring-3",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
     "aria-invalid:border-error aria-invalid:focus-visible:ring-error/40 aria-invalid:focus-visible:ring-3",
+    "py-0",
   ],
   variants: {
     size: {
@@ -29,7 +30,9 @@ export const nativeSelect = tv({
 });
 
 export const nativeSelectIcon = tv({
-  base: ["text-foreground pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-50"],
+  base: [
+    "text-foreground pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-50",
+  ],
   variants: {
     size: {
       sm: "right-2 size-3.5",

@@ -28,9 +28,9 @@ const createOfferFormSchema = (locale: Locales) => {
       .refine((phone) => phone.length === 11 && phone.startsWith("48"), {
         message: messages.PHONE_INCOMPLETE,
       }),
-    userServiceCategory: z.string().min(1, {
-      message: messages.SERVICE_CATEGORY_REQUIRED,
-    }),
+    userServiceCategory: z
+      .string({ message: messages.SERVICE_CATEGORY_REQUIRED })
+      .min(1, { message: messages.SERVICE_CATEGORY_REQUIRED }),
   });
 };
 

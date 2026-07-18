@@ -24,7 +24,7 @@ export const specialOfferTranslations = {
     "specialOffer.cta": "Запишись сьогодні, щоб не пропустити цю пропозицію!",
     "specialOffer.submitText": "Записатися зараз",
     "specialOffer.later": "Ні, дякую. Можливо пізніше",
-    "specialOffer.serviceSelect": "Виберіть категорію послуги",
+    "specialOffer.serviceSelect": "Оберіть категорію послуг",
   },
   ru: {
     "specialOffer.heading": "Привет, красотка!",

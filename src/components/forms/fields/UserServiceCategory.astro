@@ -20,14 +20,16 @@ const serviceTypes = [...new Set(services.map((s) => s.type))];
 ---
 
 <div class="relative flex w-full">
-  <label class="sr-only">Field Name Add Later</label>
+  <label class="sr-only" for="userServiceCategory">
+    {t("specialOffer.serviceSelect")}
+  </label>
 
   <NativeSelect
     id="userServiceCategory"
     name="userServiceCategory"
-    class="w-full text-base"
+    class="border-black-500 placeholder:text-black-300 h-12.5 w-full rounded-md border bg-white px-6 text-base"
   >
-    <NativeSelectOption value="" disabled>
+    <NativeSelectOption value="" disabled selected class="text-black-300">
       {t("specialOffer.serviceSelect")}
     </NativeSelectOption>
     {
@@ -40,6 +42,6 @@ const serviceTypes = [...new Set(services.map((s) => s.type))];
   </NativeSelect>
 
   <span
-    class="absolute bottom-0 left-0 -mb-[2lh] h-[2lh] text-xs text-red-500"
+    class="absolute bottom-0 left-0 mb-[-2lh] h-[2lh] text-xs text-red-500"
     data-error="userServiceCategory"></span>
 </div>
