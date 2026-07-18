@@ -1,5 +1,4 @@
 ---
-import { X } from "@lucide/astro";
 import { Button } from "@/components/starwind/button";
 import { useTranslations } from "@/lib/handle-ui-translations";
 import type { Locales } from "@/types";
@@ -21,7 +20,10 @@ const t = useTranslations(currentLocale as Locales);
 <Dialog id="errorModal">
   <DialogContent>
     <DialogHeader>
-      <DialogTitle class="text-center">😲</DialogTitle>
+      <DialogTitle class="text-center">
+        <span class="sr-only">{t("dialog.error")}</span>
+        <span>😲</span>
+      </DialogTitle>
     </DialogHeader>
 
     <div class="py-4 text-center">{t("dialog.message.error")}</div>
