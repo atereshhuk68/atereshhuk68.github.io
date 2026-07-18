@@ -23,6 +23,8 @@ export const postFormPayload = async <T extends Record<string, string>>(
     }
   }
 
+  formData.append("lang", document.documentElement.lang || "unknown");
+
   try {
     const response = await ky
       .post(url, { body: formData })

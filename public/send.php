@@ -13,6 +13,7 @@ $inputs = [
 	'userEmail' => '',
 	'userServiceCategory' => '',
 	'userMessage' => '',
+	'userLang' => '',
 	'refererUrl' => '',
 ];
 
@@ -53,6 +54,10 @@ function form_validation(): array {
 		$inputs['userMessage'] = trim($_POST['userMessage']);
 	}
 
+	if (!empty($_POST['lang'])) {
+		$inputs['userLang'] = substr(trim($_POST['lang']), 0, 8);
+	}
+
 	if (!empty($_SERVER['HTTP_REFERER'])) {
 		$inputs['refererUrl'] = $_SERVER['HTTP_REFERER'];
 	}
@@ -86,6 +91,11 @@ function formatTelegram(array $d): string {
 		$msg .= ">💅 *Послуга:* {$e($d['userServiceCategory'])}\n";
 	}
 
+	if (!empty($d['userLang'])) {
+		$msg .= ">\n";
+		$msg .= ">🌐 *Мова користувача:* {$e($d['userLang'])}\n";
+	}
+
 	if (!$isOffer) {
 		$msg .= "\n\n*Додатково:*\n";
 		$msg .= ">📧 *Email:* {$e($d['userEmail'])}\n";
@@ -95,42 +105,16 @@ function formatTelegram(array $d): string {
 		}
 
 		if (!empty($d['refererUrl'])) {
-			$msg .= "\n\n*🔗 Джерело:*\n>{$e($d['refererUrl'])}";
+			$msg .= "\n\n\n*🔗 Джерело:*\n>{$e($d['refererUrl'])}";
 		}
 	} elseif (!empty($d['refererUrl'])) {
-		$msg .= "\n\n*🔗 Джерело:*\n>{$e($d['refererUrl'])}";
+		$msg .= "\n\n\n*🔗 Джерело:*\n>{$e($d['refererUrl'])}";
 	}
 
 	return $msg;
 }
 
-function formatEmail(array $d): string {
-	$e = fn($s) => htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8');
-	$title = $d['formTitle'] === 'offer'
-		? '💥 Спеціальна пропозиція'
-		: "💌 Нове повідомлення з форми зворотного зв'язку";
-
-	$name = $e($d['userName']);
-	$email = $e($d['userEmail']);
-	$phone = $e($d['userPhone']);
-	$service = $e($d['userServiceCategory']);
-	$message = $d['userMessage'] ? nl2br($e($d['userMessage'])) : '';
-	$ref = $d['refererUrl'];
-	$refEscaped = $e($ref ?: 'Не вказано');
-	$refHtml = $ref ? "<a href=\"{$refEscaped}\">{$refEscaped}</a>" : $refEscaped;
-
-	return '<div style="font-family: Arial, sans-serif; max-width: 600px;">'
-		. '<h2 style="color: #333;">' . $title . '</h2>'
-		. '<table style="width: 100%; border-collapse: collapse;">'
-		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>👤:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $name . '</td></tr>'
-		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>📧:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $email . '</td></tr>'
-		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>📱:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $phone . '</td></tr>'
-		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>💅🏻:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $service . '</td></tr>'
-		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>💬:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $message . '</td></tr>'
-		. '<tr><td style="padding:10px;border:1px solid #ddd;background:#f9f9f9;"><strong>🔗:</strong></td><td style="padding:10px;border:1px solid #ddd;">' . $refHtml . '</td></tr>'
-		. '</table>'
-		. '</div>';
-}
+require_once __DIR__ . '/email-template.php';
 
 class NotificationSender {
 	private array $config;
@@ -195,7 +179,7 @@ class NotificationSender {
 		$results['telegram'] = $this->sendTelegram(formatTelegram($data));
 
 		if (!$results['telegram']) {
-			$results['email'] = $this->sendEmail(formatEmail($data), $data);
+			$results['email'] = $this->sendEmail(render_email_template($data), $data);
 		}
 
 		return $results;
